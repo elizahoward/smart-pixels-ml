@@ -14,7 +14,7 @@ import random
 import logging
 import gc
 
-from . import utils
+import utils
 
 
 # custom quantizer
@@ -295,9 +295,12 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             if self.file_type == "csv":
                 recon_df = pd.read_csv(self.recon_files[file_index])
                 labels_df = pd.read_csv(self.label_files[file_index])[self.labels_list]
+                ylocal_df = pd.read_csv(self.label_files[file_index])["y-local"]
             elif self.file_type == "parquet":
                 recon_df = pd.read_parquet(self.recon_files[file_index], columns=self.use_time_stamps)
                 labels_df = pd.read_parquet(self.label_files[file_index], columns=self.labels_list)
+                ylocal_df = pd.read_parquet(self.label_files[file_index], columns=['y-local'])
+
 
             has_nans = np.any(np.isnan(recon_df.values), axis=1)
             has_nans = np.arange(recon_df.shape[0])[has_nans]
@@ -335,7 +338,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         y = labels_df[index:batch_size] / np.array([75., 18.75, 8.0, 0.5])
     
         if self.include_y_local:
-            y_local = labels_df.iloc[chosen_idxs]["y-local"].values
+            y_local = ylocal_df[index:batch_size]
             return [X, y_local], y
         else:
             return X, y
