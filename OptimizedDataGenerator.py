@@ -306,8 +306,10 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             has_nans = np.arange(recon_df.shape[0])[has_nans]
             recon_df_raw = recon_df.drop(has_nans)
             labels_df_raw = labels_df.drop(has_nans)
+            ylocal_df_raw = ylocal_df.drop(has_nans)
 
             joined_df = recon_df_raw.join(labels_df_raw)
+            joined_df = joined_df.join(ylocal_df_raw)
 
             if self.shuffle: # Changed
                 joined_df = joined_df.sample(frac=1, random_state=self.seed).reset_index(drop=True)  
@@ -329,17 +331,35 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             self.current_dataframes = (
                 recon_values, 
                 joined_df[labels_df_raw.columns].values,
+                joined_df[ylocal_df_raw.columns].values,
             )        
         
-        recon_df, labels_df = self.current_dataframes
+        recon_df, labels_df, ylocal_df = self.current_dataframes
 
         # print(f'start_index: {index}\t end_index: {batch_size}')
         X = recon_df[index:batch_size]
         y = labels_df[index:batch_size] / np.array([75., 18.75, 8.0, 0.5])
+
+        #print(X.shape)
+
     
         if self.include_y_local:
             y_local = ylocal_df[index:batch_size]
-            return [X, y_local], y
+            shape = (len(y_local), 13, 21)
+
+            # Create an empty array with the desired shape
+            y_local_array = np.empty(shape)
+
+            # Fill each slice along the third dimension with corresponding value from ylocal
+            for i in range(len(y_local)):
+                y_local_array[i, :, :] = y_local[i]
+            
+            y_local_expanded = np.expand_dims(y_local_array, axis=-1)
+
+            # Concatenate X and Y along the last axis
+            X = np.concatenate((X, y_local_expanded), axis=-1)
+            
+            return X, y
         else:
             return X, y
 
