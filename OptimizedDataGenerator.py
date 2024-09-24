@@ -345,21 +345,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
     
         if self.include_y_local:
             y_local = ylocal_df[index:batch_size]
-            shape = (len(y_local), 13, 21)
-
-            # Create an empty array with the desired shape
-            y_local_array = np.empty(shape)
-
-            # Fill each slice along the third dimension with corresponding value from ylocal
-            for i in range(len(y_local)):
-                y_local_array[i, :, :] = y_local[i]
-            
-            y_local_expanded = np.expand_dims(y_local_array, axis=-1)
-
-            # Concatenate X and Y along the last axis
-            X = np.concatenate((X, y_local_expanded), axis=-1)
-            
-            return X, y
+            return [X,y_local], y
         else:
             return X, y
 
