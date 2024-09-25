@@ -58,7 +58,7 @@ def conv_network(var, n_filters=5, kernel_size=3):
     var = QActivation("quantized_tanh(4, 0, 1)")(var)    
     return var
 
-def CreateModel(shape, n_filters, pool_size):
+def CreatePredictionModel(shape, n_filters, pool_size):
     x_base = x_in = Input(shape)
     stack = conv_network(x_base, n_filters)
     stack = AveragePooling2D(
@@ -69,5 +69,19 @@ def CreateModel(shape, n_filters, pool_size):
     )(stack)
     stack = QActivation("quantized_bits(8, 0, alpha=1)")(stack)
     stack = var_network(stack, hidden=16, output=14)
+    model = Model(inputs=x_in, outputs=stack)
+    return model
+
+def CreateClassificationModel(shape, n_filters, pool_size):
+    x_base = x_in = Input(shape)
+    stack = conv_network(x_base, n_filters)
+    stack = AveragePooling2D(
+        pool_size=(pool_size, pool_size), 
+        strides=None, 
+        padding="valid", 
+        data_format=None,        
+    )(stack)
+    stack = QActivation("quantized_bits(8, 0, alpha=1)")(stack)
+    stack = var_network(stack, hidden=16, output=1)
     model = Model(inputs=x_in, outputs=stack)
     return model
