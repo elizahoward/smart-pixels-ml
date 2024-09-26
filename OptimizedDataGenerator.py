@@ -46,6 +46,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             file_count = None,
             labels_list: Union[List,str] = "cotAlpha",
             to_standardize: bool = False,
+            normalization: Union[list,int] = 1,
             input_shape: Tuple = (13,21),
             transpose = None,
             include_y_local: bool = False,
@@ -97,8 +98,8 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         seed: Random seed for shuffling.
         quantize: Whether to quantize the data.
         """
-
-
+        self.normalization = normalization
+        
         # decide on which time stamps to load
         self.use_time_stamps = np.arange(0,20) if use_time_stamps == -1 else use_time_stamps
         len_xy, ntime = 13*21, 20
@@ -338,7 +339,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
 
         # print(f'start_index: {index}\t end_index: {batch_size}')
         X = recon_df[index:batch_size]
-        y = labels_df[index:batch_size] / np.array([75., 18.75, 8.0, 0.5])
+        y = labels_df[index:batch_size] / self.normalization 
 
         #print(X.shape)
 
