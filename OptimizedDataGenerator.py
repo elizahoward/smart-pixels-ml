@@ -54,6 +54,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             shuffle=False,
             current=False,
             sample_delta_t=200,
+            tag: str = "",
 
             # Added in Optimized datagenerators 
             load_from_tfrecords_dir: str = None,
@@ -117,10 +118,16 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         if file_type not in ["csv", "parquet"]:
             raise ValueError("file_type can only be \"csv\" or \"parquet\"!")
         self.file_type = file_type
-        self.recon_files = glob.glob(
+        """self.recon_files = glob.glob(
             data_directory_path + "recon" + data_format + "*." + file_type, 
             recursive=is_directory_recursive
-        )
+        )"""
+        self.recon_files = [
+            f for f in glob.glob(
+                data_directory_path + "recon" + data_format + "*." + file_type, 
+                recursive=is_directory_recursive
+            ) if tag in f
+        ]
         
         self.recon_files.sort()
         if file_count != None:

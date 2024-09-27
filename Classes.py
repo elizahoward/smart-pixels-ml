@@ -30,7 +30,7 @@ from loss import *
 from models import *
 
 
-class PredictCluster:
+class PredictClusters:
 
     def __init__(self,
             data_directory_path: str = "./",
@@ -48,7 +48,8 @@ class PredictCluster:
             include_y_local: bool = False,
             use_time_stamps = [0,19],
             output_dir: str = "./ouput",
-            learning_rate: float = 0.001
+            learning_rate: float = 0.001,
+            tag: str = ""
             ):
         if len(labels_list) != 4:
             raise ValueError(f"Invalid list length: {len(labels_list)}. Required length is 4.")
@@ -86,7 +87,8 @@ class PredictCluster:
             transpose = transpose,
             save=True,
             use_time_stamps = use_time_stamps,
-            tfrecords_dir = tfrecords_dir_train
+            tfrecords_dir = tfrecords_dir_train,
+            tag = tag
         )
 
         print("--- Training generator %s seconds ---" % (time.time() - start_time))
@@ -108,7 +110,8 @@ class PredictCluster:
             transpose = transpose,
             save=True,
             use_time_stamps = use_time_stamps,
-            tfrecords_dir = tfrecords_dir_validation
+            tfrecords_dir = tfrecords_dir_validation,
+            tag = tag
         )
 
         print("--- Validation generator %s seconds ---" % (time.time() - start_time))
@@ -123,6 +126,8 @@ class PredictCluster:
         self.createModel()
 
         self.compileModel(learning_rate=learning_rate)
+
+        self.residuals = None
 
     def createModel(self):
         start_time = time.time()
@@ -167,6 +172,8 @@ class PredictCluster:
                         epochs=epochs,
                         shuffle=False,
                         verbose=1)
+
+        self.residuals = None
 
     def checkResiduals(self):
         p_test = self.model.predict(self.validation_generator)
@@ -223,14 +230,22 @@ class PredictCluster:
         
 
     def plotResiduals(self):
+        if self.residuals == None:
+            self.checkResiduals()
+        fig, ax = plt.subplots(nrows=2,ncols=4, figsize=(18,7))
         for i in range(4):
-            sns.regplot(x=self.df[f'{self.labels_list[i]}true'], y=self.residuals[i], x_bins=np.linspace(-self.normalization[i],self.normalization[i],50), fit_reg=None, marker='.',color='b')
-            plt.xlabel(f'True {self.labels_list[i]} {self.units_list[i]}')
-            plt.ylabel(f'{self.labels_list[i]} residuals {self.units_list[i]}')
-            plt.title(f"{self.labels_list[i]} residuals")
-            plt.show()
+            sns.regplot(x=self.df[f'{self.labels_list[i]}true'], y=self.residuals[i], x_bins=np.linspace(-self.normalization[i],self.normalization[i],50), fit_reg=None, marker='.',color='b', ax=ax[0,i])
+            ax[0,i].set_xlabel(f'True {self.labels_list[i]} {self.units_list[i]}')
+            ax[0,i].set_ylabel(f'{self.labels_list[i]} residuals {self.units_list[i]}')
 
-            plt.hist(self.residuals[i], bins = 25, align='mid', density=True, histtype='step', color='b')
-            plt.xlabel(f'{self.labels_list[i]} residuals {self.units_list[i]}')
-            plt.title(f"{self.labels_list[i]} residuals")
-            plt.show()
+            ax[1,i].hist(self.residuals[i], bins = 25, align='mid', weights=1/len(self.residuals[i]) * np.ones(len(self.residuals[i])), histtype='step', color='b')
+            ax[1,i].set_xlabel(f'{self.labels_list[i]} residuals {self.units_list[i]}')
+            ax[1,i].set_ylabel("Fraction of clusters")
+        fig.tight_layout(pad=2.0)
+        plt.show()
+
+
+class FilterClusters(PredictClusters):
+    def __init__(self, data_directory_path: str = "./", labels_directory_path: str = "./", is_directory_recursive: bool = False, file_type: str = "parquet", data_format: str = "3D", batch_size: int = 500, labels_list: list = ['x-midplane', 'y-midplane', 'cotAlpha', 'cotBeta'], units_list: list = ["[\u03BCm]", "[\u03BCm]", "", ""], normalization: list = np.array([75, 18.75, 8, 0.5]), to_standardize: bool = False, input_shape: tuple = (2, 13, 21), transpose=(0, 2, 3, 1), include_y_local: bool = False, use_time_stamps=[0, 19], output_dir: str = "./ouput", learning_rate: float = 0.001, tag: str = ""):
+        super().__init__(data_directory_path, labels_directory_path, is_directory_recursive, file_type, data_format, batch_size, labels_list, units_list, normalization, to_standardize, input_shape, transpose, include_y_local, use_time_stamps, output_dir, learning_rate, tag)
+        
