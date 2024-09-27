@@ -90,6 +90,12 @@ def CreatePredictionModelYLocal(shape, n_filters, pool_size):
     model = Model(inputs=[x_in, y_local_in], outputs=stack)
     return model
 
+
+
+
+
+# I don't know if the following will work or not
+"""
 def CreateClassificationModel(shape, n_filters, pool_size):
     x_base = x_in = Input(shape)
     stack = conv_network(x_base, n_filters)
@@ -120,4 +126,4 @@ def CreateClassificationModelYLocal(shape, n_filters, pool_size):
     stack = Concatenate()([stack, y_local_in])
     stack = var_network(stack, hidden=16, output=1)
     model = Model(inputs=[x_in, y_local_in], outputs=stack)
-    return model
+    return model"""
