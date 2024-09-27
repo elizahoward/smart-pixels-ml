@@ -10,7 +10,7 @@ from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
 
 from qkeras import *
-import OptimizedDataGenerator as ODG
+import OptimizedDataGenerator2 as ODG
 import time
 
 os.environ['TF_USE_LEGACY_KERAS'] = '1' 
@@ -113,6 +113,7 @@ class PredictClusters:
             tfrecords_dir = tfrecords_dir_validation,
             tag = tag
         )
+        self.include_y_local = include_y_local
 
         print("--- Validation generator %s seconds ---" % (time.time() - start_time))
 
@@ -131,7 +132,10 @@ class PredictClusters:
 
     def createModel(self):
         start_time = time.time()
-        self.model=CreatePredictionModel(shape=self.shape, n_filters=self.n_filters, pool_size=self.pool_size)
+        if self.include_y_local:
+            self.model=CreatePredictionModelYLocal(shape=self.shape, n_filters=self.n_filters, pool_size=self.pool_size)
+        else:
+            self.model=CreatePredictionModel(shape=self.shape, n_filters=self.n_filters, pool_size=self.pool_size)
         self.model.summary()
         print("--- Model create and compile %s seconds ---" % (time.time() - start_time))
 
@@ -146,8 +150,7 @@ class PredictClusters:
         self.model.load_weights(weightsFile)
 
 
-    def runTraining(self):
-        epochs = 50
+    def runTraining(self, epochs=50):
         early_stopping_patience = 50
 
         # launch quick training once gpu is available
@@ -230,8 +233,8 @@ class PredictClusters:
         
 
     def plotResiduals(self):
-        if self.residuals == None:
-            self.checkResiduals()
+        #if self.residuals == None:
+        #    self.checkResiduals()
         fig, ax = plt.subplots(nrows=2,ncols=4, figsize=(18,7))
         for i in range(4):
             sns.regplot(x=self.df[f'{self.labels_list[i]}true'], y=self.residuals[i], x_bins=np.linspace(-self.normalization[i],self.normalization[i],50), fit_reg=None, marker='.',color='b', ax=ax[0,i])

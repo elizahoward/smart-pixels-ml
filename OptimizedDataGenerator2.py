@@ -100,7 +100,8 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         quantize: Whether to quantize the data.
         """
         self.normalization = normalization
-        
+
+
         # decide on which time stamps to load
         self.use_time_stamps = np.arange(0,20) if use_time_stamps == -1 else use_time_stamps
         len_xy, ntime = 13*21, 20
@@ -118,10 +119,6 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         if file_type not in ["csv", "parquet"]:
             raise ValueError("file_type can only be \"csv\" or \"parquet\"!")
         self.file_type = file_type
-        """self.recon_files = glob.glob(
-            data_directory_path + "recon" + data_format + "*." + file_type, 
-            recursive=is_directory_recursive
-        )"""
         self.recon_files = [
             f for f in glob.glob(
                 data_directory_path + "recon" + data_format + "*." + file_type, 
@@ -143,6 +140,8 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         self.file_offsets = [0]
         self.dataset_mean = None
         self.dataset_std = None
+        self.include_y_local = include_y_local
+
 
         # If data is already prepared load anduse that data
         if load_from_tfrecords_dir is not None:
@@ -157,8 +156,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             self.input_shape = input_shape
             self.transpose = transpose
             self.to_standardize = to_standardize
-            self.include_y_local = include_y_local
-
+            
             self.process_file_parallel()
     
             self.current_file_index = None
@@ -277,11 +275,19 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         try:
             filename = f"batch_{batch_index}.tfrecord"
             TFRfile_path = os.path.join(self.tfrecords_dir, filename)
-            X, y = self.prepare_batch_data(batch_index)
-            serialized_example = self.serialize_example(X, y)
+
+            if self.include_y_local:
+                X, y, y_local = self.prepare_batch_data(batch_index)
+            else:
+                X, y = self.prepare_batch_data(batch_index)
+                y_local = None
+
+            serialized_example = self.serialize_example(X, y, y_local)
+
             with tf.io.TFRecordWriter(TFRfile_path) as writer:
                 writer.write(serialized_example)
             return TFRfile_path
+        
         except Exception as e:
             return f"Error saving batch {batch_index}: {e}" 
     
@@ -303,7 +309,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             if self.file_type == "csv":
                 recon_df = pd.read_csv(self.recon_files[file_index])
                 labels_df = pd.read_csv(self.label_files[file_index])[self.labels_list]
-                ylocal_df = pd.read_csv(self.label_files[file_index])["y-local"]
+                ylocal_df = pd.read_parquet(self.label_files[file_index], columns=['y-local'])
             elif self.file_type == "parquet":
                 recon_df = pd.read_parquet(self.recon_files[file_index], columns=self.use_time_stamps)
                 labels_df = pd.read_parquet(self.label_files[file_index], columns=self.labels_list)
@@ -316,6 +322,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             labels_df_raw = labels_df.drop(has_nans)
             ylocal_df_raw = ylocal_df.drop(has_nans)
 
+            
             joined_df = recon_df_raw.join(labels_df_raw)
             joined_df = joined_df.join(ylocal_df_raw)
 
@@ -339,7 +346,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             self.current_dataframes = (
                 recon_values, 
                 joined_df[labels_df_raw.columns].values,
-                joined_df[ylocal_df_raw.columns].values,
+                joined_df[ylocal_df_raw.columns].values
             )        
         
         recon_df, labels_df, ylocal_df = self.current_dataframes
@@ -347,18 +354,15 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         # print(f'start_index: {index}\t end_index: {batch_size}')
         X = recon_df[index:batch_size]
         y = labels_df[index:batch_size] / self.normalization 
-
-        #print(X.shape)
-
     
         if self.include_y_local:
             y_local = ylocal_df[index:batch_size]
-            return [X,y_local], y
+            return X, y, y_local
         else:
             return X, y
 
     
-    def serialize_example(self, X, y):
+    def serialize_example(self, X, y, y_local = None):
         """
         Serializes a single example (featuresand labels) to TFRecord format. 
         
@@ -377,6 +381,11 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             'X': self._bytes_feature(tf.io.serialize_tensor(X)),
             'y': self._bytes_feature(tf.io.serialize_tensor(y)),
         }
+
+        if y_local is not None:
+            y_local = tf.cast(y_local, tf.float32)
+            feature['y_local'] = self._bytes_feature(tf.io.serialize_tensor(y_local))
+
         example_proto = tf.train.Example(features=tf.train.Features(feature=feature))
         return example_proto.SerializeToString()
 
@@ -408,10 +417,17 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         raw_dataset = tf.data.TFRecordDataset(tfrecord_path)
         parsed_dataset = raw_dataset.map(self._parse_tfrecord_fn, num_parallel_calls=tf.data.AUTOTUNE)
 
-        for X_batch, y_batch in parsed_dataset:
+        for data in parsed_dataset:
             ''' Add the reshaping in saving'''
+            if self.include_y_local:
+                (X_batch, y_local_batch), y_batch = data
+            else:
+                X_batch, y_batch = data
+
             X_batch = tf.reshape(X_batch, [-1, *X_batch.shape[1:]])
             y_batch = tf.reshape(y_batch, [-1, *y_batch.shape[1:]])
+            if self.include_y_local:
+                y_local_batch = tf.reshape(y_batch, [-1, *y_local_batch.shape[1:]])
 
             if self.quantize:
                 X_batch = QKeras_data_prep_quantizer(X_batch, bits=4, int_bits=0, alpha=1)
@@ -419,14 +435,19 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             if self.shuffle:
                 indices = tf.range(start=0, limit=tf.shape(X_batch)[0], dtype=tf.int32)
                 shuffled_indices = tf.random.shuffle(indices, seed=self.seed)
+
                 X_batch = tf.gather(X_batch, shuffled_indices)
                 y_batch = tf.gather(y_batch, shuffled_indices)
+                if self.include_y_local:
+                    y_local_batch = tf.gather(y_local_batch, shuffled_indices)
                 
             del raw_dataset, parsed_dataset
+            if self.include_y_local:
+                X_batch = [X_batch, y_local_batch]
             return X_batch, y_batch
             
-    @staticmethod
-    def _parse_tfrecord_fn(example):
+    
+    def _parse_tfrecord_fn(self, example):
         """
         Parses a single TFRecord example.
         
@@ -438,10 +459,18 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             'X': tf.io.FixedLenFeature([], tf.string),
             'y': tf.io.FixedLenFeature([], tf.string),
         }
+        if self.include_y_local:
+            feature_description['y_local'] = tf.io.FixedLenFeature([], tf.string)
+
         example = tf.io.parse_single_example(example, feature_description)
         X = tf.io.parse_tensor(example['X'], out_type=tf.float32)
         y = tf.io.parse_tensor(example['y'], out_type=tf.float32)
-        return X, y
+        
+        if self.include_y_local:
+            y_local = tf.io.parse_tensor(example['y_local'], out_type=tf.float32)
+            return (X, y_local), y
+        else:
+            return X, y
 
     def __len__(self):
         if len(self.file_offsets) != 1: # used when TFRecord files are created during initialization
