@@ -91,22 +91,24 @@ def CreatePredictionModelYLocal(shape, n_filters, pool_size):
     return model
 
 
-
-
-
-# I don't know if the following will work or not
-"""
 def CreateClassificationModel(shape, n_filters, pool_size):
     x_base = x_in = Input(shape)
     stack = conv_network(x_base, n_filters)
-    stack = AveragePooling2D(
+    """stack = AveragePooling2D(
         pool_size=(pool_size, pool_size), 
         strides=None, 
         padding="valid", 
         data_format=None,        
     )(stack)
-    stack = QActivation("quantized_bits(8, 0, alpha=1)")(stack)
-    stack = var_network(stack, hidden=16, output=1)
+    stack = QActivation("quantized_bits(8, 0, alpha=1)")(stack)"""
+    stack = Flatten()(stack)
+    stack = QDense(
+        1,
+        kernel_quantizer=quantized_bits(8, 0, alpha=1),
+        bias_quantizer=quantized_bits(8, 0, alpha=1),
+        kernel_regularizer=tf.keras.regularizers.L1L2(0.01),
+    )(stack)
+    #stack = var_network(stack, hidden=16, output=1)
     model = Model(inputs=x_in, outputs=stack)
     return model
 
@@ -126,4 +128,4 @@ def CreateClassificationModelYLocal(shape, n_filters, pool_size):
     stack = Concatenate()([stack, y_local_in])
     stack = var_network(stack, hidden=16, output=1)
     model = Model(inputs=[x_in, y_local_in], outputs=stack)
-    return model"""
+    return model

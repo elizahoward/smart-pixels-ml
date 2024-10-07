@@ -24,6 +24,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 plt.rcParams['figure.dpi'] = 300
 from tqdm import tqdm
+from typing import Union
 
 # custom code
 from loss import *
@@ -38,20 +39,22 @@ class PredictClusters:
             is_directory_recursive: bool = False,
             file_type: str = "parquet",
             data_format: str = "3D",
-            batch_size: int = 500,
+            batch_size: int = 1,
             labels_list: list= ['x-midplane','y-midplane','cotAlpha','cotBeta'],
             units_list: list = ["[\u03BCm]", "[\u03BCm]", "", ""],
-            normalization: list = np.array([75., 18.75, 8.0, 0.5]),
+            normalization: Union[list,int] = np.array([75., 18.75, 8.0, 0.5]),
             to_standardize: bool = False,
             input_shape: tuple = (2,13,21),
             transpose = (0,2,3,1),
             include_y_local: bool = False,
             use_time_stamps = [0,19],
-            output_dir: str = "./ouput",
+            output_dir: str = "./ouput_prediction",
             learning_rate: float = 0.001,
-            tag: str = ""
+            tag: str = "",
+            filteringBIB: bool = False
             ):
-        if len(labels_list) != 4:
+        
+        if labels_list != None and len(labels_list) != 4:
             raise ValueError(f"Invalid list length: {len(labels_list)}. Required length is 4.")
         
         self.labels_list = labels_list
@@ -88,12 +91,13 @@ class PredictClusters:
             save=True,
             use_time_stamps = use_time_stamps,
             tfrecords_dir = tfrecords_dir_train,
-            tag = tag
+            tag = tag,
+            filteringBIB=filteringBIB
         )
 
         print("--- Training generator %s seconds ---" % (time.time() - start_time))
 
-        start_time = time.time()
+        """start_time = time.time()
 
         self.validation_generator = ODG.OptimizedDataGenerator(
             data_directory_path = data_directory_path,
@@ -111,11 +115,13 @@ class PredictClusters:
             save=True,
             use_time_stamps = use_time_stamps,
             tfrecords_dir = tfrecords_dir_validation,
-            tag = tag
+            tag = tag,
+            filteringBIB=filteringBIB
         )
-        self.include_y_local = include_y_local
 
-        print("--- Validation generator %s seconds ---" % (time.time() - start_time))
+        print("--- Validation generator %s seconds ---" % (time.time() - start_time))"""
+        
+        self.include_y_local = include_y_local
 
         # compiles model
         self.n_filters = 5 # model number of filters
@@ -170,7 +176,7 @@ class PredictClusters:
 
         # train
         self.history = self.model.fit(x=self.training_generator,
-                        validation_data=self.validation_generator,
+                        validation_data=self.training_generator,
                         callbacks=[mcp],
                         epochs=epochs,
                         shuffle=False,
@@ -179,10 +185,10 @@ class PredictClusters:
         self.residuals = None
 
     def checkResiduals(self):
-        p_test = self.model.predict(self.validation_generator)
+        p_test = self.model.predict(self.training_generator)
 
         complete_truth = None
-        for _, y in tqdm(self.validation_generator):
+        for _, y in tqdm(self.training_generator):
             if complete_truth is None:
                 complete_truth = y
             else:
@@ -249,6 +255,64 @@ class PredictClusters:
 
 
 class FilterClusters(PredictClusters):
-    def __init__(self, data_directory_path: str = "./", labels_directory_path: str = "./", is_directory_recursive: bool = False, file_type: str = "parquet", data_format: str = "3D", batch_size: int = 500, labels_list: list = ['x-midplane', 'y-midplane', 'cotAlpha', 'cotBeta'], units_list: list = ["[\u03BCm]", "[\u03BCm]", "", ""], normalization: list = np.array([75, 18.75, 8, 0.5]), to_standardize: bool = False, input_shape: tuple = (2, 13, 21), transpose=(0, 2, 3, 1), include_y_local: bool = False, use_time_stamps=[0, 19], output_dir: str = "./ouput", learning_rate: float = 0.001, tag: str = ""):
-        super().__init__(data_directory_path, labels_directory_path, is_directory_recursive, file_type, data_format, batch_size, labels_list, units_list, normalization, to_standardize, input_shape, transpose, include_y_local, use_time_stamps, output_dir, learning_rate, tag)
-        
+    def __init__(self, data_directory_path: str = "./", labels_directory_path: str = "./", is_directory_recursive: bool = False, file_type: str = "parquet", data_format: str = "3D", batch_size: int = 500, labels_list: list = None, units_list: list = None, normalization: int = 1, to_standardize: bool = False, input_shape: tuple = (2, 13, 21), transpose=(0, 2, 3, 1), include_y_local: bool = False, use_time_stamps=[0, 19], output_dir: str = "./ouput_filtering", learning_rate: float = 0.001, tag: str = "", filteringBIB: bool = True):
+        super().__init__(data_directory_path, labels_directory_path, is_directory_recursive, file_type, data_format, batch_size, labels_list, units_list, normalization, to_standardize, input_shape, transpose, include_y_local, use_time_stamps, output_dir, learning_rate, tag, filteringBIB)
+    
+    def createModel(self):
+        start_time = time.time()
+        if self.include_y_local:
+            self.model=CreateClassificationModelYLocal(shape=self.shape, n_filters=self.n_filters, pool_size=self.pool_size)
+        else:
+            self.model=CreateClassificationModel(shape=self.shape, n_filters=self.n_filters, pool_size=self.pool_size)
+        self.model.summary()
+        print("--- Model create and compile %s seconds ---" % (time.time() - start_time))
+
+    def compileModel(self, learning_rate):
+        print(f"Compiling model with learning rate: {learning_rate}")
+        self.learning_rate = learning_rate
+        self.model.compile(optimizer=Adam(learning_rate=learning_rate), loss='binary_crossentropy', metrics=['binary_accuracy'])
+    
+    def checkAccuracy(self):
+        p_test = self.model.predict(self.training_generator)
+
+        complete_truth = None
+        for _, y in tqdm(self.training_generator):
+            if complete_truth is None:
+                complete_truth = y
+            else:
+                complete_truth = np.concatenate((complete_truth, y), axis=0)
+
+        prediction=p_test.flatten()
+        labels = complete_truth.flatten()
+
+        # background regection
+        backgroundCount = 0
+        rejectedBackground = 0
+        # signal efficiency
+        acceptedSignal = 0
+        signalCount = 0
+
+        for l, p in zip(labels, prediction):
+            # background
+            if l <= 0.5:
+                backgroundCount += 1
+                if p <= 0.5:
+                    rejectedBackground += 1
+            else:
+                signalCount += 1
+                if p > 0.5:
+                    acceptedSignal += 1
+
+        signalEfficiency = acceptedSignal/signalCount*100
+        backgroundRejection = rejectedBackground/backgroundCount*100
+
+        accuracy = (acceptedSignal+rejectedBackground)/(signalCount+backgroundCount)*100
+
+        fractionSignal = signalCount/(signalCount+backgroundCount)*100
+
+        print(f"\nSignal Efficiency: {signalEfficiency}%\nBackground Rejection: {backgroundRejection}%\n")
+
+        print(f"Overall Accuracy: {accuracy}%\nFraction of Data that are Signal: {fractionSignal}%")
+
+        print(f"\nTotal number of clusters: {signalCount+backgroundCount}")
+

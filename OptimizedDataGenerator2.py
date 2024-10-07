@@ -13,6 +13,7 @@ import datetime
 import random 
 import logging
 import gc
+import traceback
 
 import utils
 
@@ -44,7 +45,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             data_format: str = "2D",
             batch_size: int = 32,
             file_count = None,
-            labels_list: Union[List,str] = "cotAlpha",
+            labels_list: Union[List,str] = None,
             to_standardize: bool = False,
             normalization: Union[list,int] = 1,
             input_shape: Tuple = (13,21),
@@ -55,6 +56,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             current=False,
             sample_delta_t=200,
             tag: str = "",
+            filteringBIB: bool = False,
 
             # Added in Optimized datagenerators 
             load_from_tfrecords_dir: str = None,
@@ -100,7 +102,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         quantize: Whether to quantize the data.
         """
         self.normalization = normalization
-
+        self.filteringBIB = filteringBIB
 
         # decide on which time stamps to load
         self.use_time_stamps = np.arange(0,20) if use_time_stamps == -1 else use_time_stamps
@@ -289,7 +291,8 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             return TFRfile_path
         
         except Exception as e:
-            return f"Error saving batch {batch_index}: {e}" 
+            tb = traceback.format_exc()
+            return f"Error saving batch {batch_index}: {e} \n{tb}" 
     
     def prepare_batch_data(self, batch_index):
         """
@@ -308,13 +311,20 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             # print(self.recon_files[file_index])
             if self.file_type == "csv":
                 recon_df = pd.read_csv(self.recon_files[file_index])
-                labels_df = pd.read_csv(self.label_files[file_index])[self.labels_list]
+                if not self.filteringBIB:
+                    labels_df = pd.read_csv(self.label_files[file_index])[self.labels_list]
                 ylocal_df = pd.read_parquet(self.label_files[file_index], columns=['y-local'])
             elif self.file_type == "parquet":
                 recon_df = pd.read_parquet(self.recon_files[file_index], columns=self.use_time_stamps)
-                labels_df = pd.read_parquet(self.label_files[file_index], columns=self.labels_list)
+                if not self.filteringBIB:
+                    labels_df = pd.read_parquet(self.label_files[file_index], columns=self.labels_list)
                 ylocal_df = pd.read_parquet(self.label_files[file_index], columns=['y-local'])
 
+            if self.filteringBIB:
+                if "sig" in self.recon_files[file_index]:
+                    labels_df = pd.DataFrame({'signal': [1] * len(recon_df)})
+                else:
+                    labels_df = pd.DataFrame({'signal': [0] * len(recon_df)})    
 
             has_nans = np.any(np.isnan(recon_df.values), axis=1)
             has_nans = np.arange(recon_df.shape[0])[has_nans]
@@ -322,7 +332,6 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             labels_df_raw = labels_df.drop(has_nans)
             ylocal_df_raw = ylocal_df.drop(has_nans)
 
-            
             joined_df = recon_df_raw.join(labels_df_raw)
             joined_df = joined_df.join(ylocal_df_raw)
 
@@ -373,6 +382,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         Returns:
         - string (serialized TFRecord example).
         """
+
         # X and y are float32 (maybe we can reduce this)
         X = tf.cast(X, tf.float32)
         y = tf.cast(y, tf.float32)
@@ -427,7 +437,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             X_batch = tf.reshape(X_batch, [-1, *X_batch.shape[1:]])
             y_batch = tf.reshape(y_batch, [-1, *y_batch.shape[1:]])
             if self.include_y_local:
-                y_local_batch = tf.reshape(y_batch, [-1, *y_local_batch.shape[1:]])
+                y_local_batch = tf.reshape(y_local_batch, [-1, *y_local_batch.shape[1:]])
 
             if self.quantize:
                 X_batch = QKeras_data_prep_quantizer(X_batch, bits=4, int_bits=0, alpha=1)
