@@ -43,6 +43,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             is_directory_recursive: bool = False,
             file_type: str = "csv",
             data_format: str = "2D",
+            muon_collider: bool = False,
             batch_size: int = 32,
             file_count = None,
             labels_list: Union[List,str] = None,
@@ -121,19 +122,45 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         if file_type not in ["csv", "parquet"]:
             raise ValueError("file_type can only be \"csv\" or \"parquet\"!")
         self.file_type = file_type
-        self.recon_files = [
-            f for f in glob.glob(
-                data_directory_path + "recon" + data_format + "*." + file_type, 
-                recursive=is_directory_recursive
-            ) if tag in f
-        ]
+
+        if not muon_collider:
+            self.recon_files = [
+                f for f in glob.glob(
+                    data_directory_path + "recon" + data_format + "*." + file_type, 
+                    recursive=is_directory_recursive
+                ) if tag in f
+            ]
+            self.recon_files.sort()
+        else:
+            self.recon_files_bib = [
+                f for f in glob.glob(
+                    data_directory_path + "recon" + data_format + "bib*." + file_type, 
+                    recursive=is_directory_recursive
+                ) if tag in f
+            ]
+            self.recon_files_sig = [
+                f for f in glob.glob(
+                    data_directory_path + "recon" + data_format + "sig*." + file_type, 
+                    recursive=is_directory_recursive
+                ) if tag in f
+            ]
+            self.recon_files_sig.sort()
+            self.recon_files_bib.sort()
         
-        self.recon_files.sort()
+        
         if file_count != None:
-            if not files_from_end:
-                self.recon_files = self.recon_files[:file_count]
+            if not muon_collider:
+                if not files_from_end:
+                    self.recon_files = self.recon_files[:file_count]
+                else:
+                    self.recon_files = self.recon_files[-file_count:]
             else:
-                self.recon_files = self.recon_files[-file_count:]
+                if not files_from_end:
+                    self.recon_files = self.recon_files_bib[:file_count]+self.recon_files_sig[:file_count]
+                else:
+                    self.recon_files = self.recon_files_bib[-file_count:]+self.recon_files_sig[-file_count:]
+
+        print(self.recon_files)
 
         self.label_files = [
             labels_directory_path + recon_file.split('/')[-1].replace("recon" + data_format, "labels") for recon_file in self.recon_files

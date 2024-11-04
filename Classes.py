@@ -25,6 +25,7 @@ import matplotlib.pyplot as plt
 plt.rcParams['figure.dpi'] = 300
 from tqdm import tqdm
 from typing import Union
+import glob
 
 # custom code
 from loss import *
@@ -35,14 +36,16 @@ class PredictClusters:
 
     def __init__(self,
             data_directory_path: str = "./",
-            labels_directory_path: str = "./",
+            labels_directory_path: str = None,
             is_directory_recursive: bool = False,
             file_type: str = "parquet",
             data_format: str = "3D",
-            batch_size: int = 1,
+            batch_size: int = 20,
             labels_list: list= ['x-midplane','y-midplane','cotAlpha','cotBeta'],
             units_list: list = ["[\u03BCm]", "[\u03BCm]", "", ""],
             normalization: Union[list,int] = np.array([75., 18.75, 8.0, 0.5]),
+            muon_collider: bool = False,
+            file_fraction: float = 0.8,
             to_standardize: bool = False,
             input_shape: tuple = (2,13,21),
             transpose = (0,2,3,1),
@@ -51,12 +54,31 @@ class PredictClusters:
             output_dir: str = "./ouput_prediction",
             learning_rate: float = 0.001,
             tag: str = "",
-            filteringBIB: bool = False
+            filteringBIB: bool = False,
+            use_tfr_records: bool = False,
             ):
         
         if labels_list != None and len(labels_list) != 4:
             raise ValueError(f"Invalid list length: {len(labels_list)}. Required length is 4.")
         
+        if labels_directory_path == None:
+            labels_directory_path=data_directory_path
+
+        # Count total number of bib and sig files
+        if muon_collider==True:
+            total_files = len(glob.glob(
+                    data_directory_path + "recon" + data_format + "bib*." + file_type, 
+                    recursive=is_directory_recursive
+                ))
+            file_count = round(file_fraction*total_files)
+        else:
+            total_files = len(glob.glob(
+                    data_directory_path + "recon" + data_format + f"{tag}*." + file_type, 
+                    recursive=is_directory_recursive
+                ))
+            file_count = round(file_fraction*total_files)
+
+
         self.labels_list = labels_list
         self.units_list = units_list
         self.output_dir = output_dir
@@ -81,10 +103,12 @@ class PredictClusters:
             is_directory_recursive = is_directory_recursive,
             file_type = file_type,
             data_format = data_format,
+            muon_collider = muon_collider,
             batch_size = batch_size,
             to_standardize= to_standardize,
             normalization=normalization,
             include_y_local= include_y_local,
+            file_count=file_count,
             labels_list = labels_list,
             input_shape = input_shape,
             transpose = transpose,
@@ -97,7 +121,7 @@ class PredictClusters:
 
         print("--- Training generator %s seconds ---" % (time.time() - start_time))
 
-        """start_time = time.time()
+        start_time = time.time()
 
         self.validation_generator = ODG.OptimizedDataGenerator(
             data_directory_path = data_directory_path,
@@ -105,10 +129,13 @@ class PredictClusters:
             is_directory_recursive = is_directory_recursive,
             file_type = file_type,
             data_format = data_format,
+            muon_collider = muon_collider,
             batch_size = batch_size,
             to_standardize= to_standardize,
             normalization=normalization,
             include_y_local= include_y_local,
+            file_count=total_files-file_count,
+            files_from_end=True,
             labels_list = labels_list,
             input_shape = input_shape,
             transpose = transpose,
@@ -119,7 +146,7 @@ class PredictClusters:
             filteringBIB=filteringBIB
         )
 
-        print("--- Validation generator %s seconds ---" % (time.time() - start_time))"""
+        print("--- Validation generator %s seconds ---" % (time.time() - start_time))
         
         self.include_y_local = include_y_local
 
@@ -176,7 +203,7 @@ class PredictClusters:
 
         # train
         self.history = self.model.fit(x=self.training_generator,
-                        validation_data=self.training_generator,
+                        validation_data=self.validation_generator,
                         callbacks=[mcp],
                         epochs=epochs,
                         shuffle=False,
@@ -185,10 +212,10 @@ class PredictClusters:
         self.residuals = None
 
     def checkResiduals(self):
-        p_test = self.model.predict(self.training_generator)
+        p_test = self.model.predict(self.validation_generator)
 
         complete_truth = None
-        for _, y in tqdm(self.training_generator):
+        for _, y in tqdm(self.validation_generator):
             if complete_truth is None:
                 complete_truth = y
             else:
@@ -255,8 +282,48 @@ class PredictClusters:
 
 
 class FilterClusters(PredictClusters):
-    def __init__(self, data_directory_path: str = "./", labels_directory_path: str = "./", is_directory_recursive: bool = False, file_type: str = "parquet", data_format: str = "3D", batch_size: int = 500, labels_list: list = None, units_list: list = None, normalization: int = 1, to_standardize: bool = False, input_shape: tuple = (2, 13, 21), transpose=(0, 2, 3, 1), include_y_local: bool = False, use_time_stamps=[0, 19], output_dir: str = "./ouput_filtering", learning_rate: float = 0.001, tag: str = "", filteringBIB: bool = True):
-        super().__init__(data_directory_path, labels_directory_path, is_directory_recursive, file_type, data_format, batch_size, labels_list, units_list, normalization, to_standardize, input_shape, transpose, include_y_local, use_time_stamps, output_dir, learning_rate, tag, filteringBIB)
+    def __init__(self, 
+                 data_directory_path: str = "./", 
+                 labels_directory_path: str = None, 
+                 is_directory_recursive: bool = False, 
+                 file_type: str = "parquet", 
+                 data_format: str = "3D", 
+                 batch_size: int = 500, 
+                 labels_list: list = None, 
+                 units_list: list = None, 
+                 normalization: int = 1, 
+                 muon_collider: bool = False, 
+                 file_fraction: float = None,
+                 to_standardize: bool = False, 
+                 input_shape: tuple = (2, 13, 21), 
+                 transpose=(0, 2, 3, 1), 
+                 include_y_local: bool = False, 
+                 use_time_stamps=[0, 19], 
+                 output_dir: str = "./ouput_filtering", 
+                 learning_rate: float = 0.001, 
+                 tag: str = "", 
+                 filteringBIB: bool = True,
+                 ):
+        
+        super().__init__(data_directory_path, 
+                         labels_directory_path, 
+                         is_directory_recursive, 
+                         file_type, data_format, 
+                         batch_size, 
+                         labels_list, 
+                         units_list,
+                         normalization, 
+                         muon_collider, 
+                         file_fraction,
+                         to_standardize, 
+                         input_shape, 
+                         transpose, 
+                         include_y_local, 
+                         use_time_stamps, 
+                         output_dir, 
+                         learning_rate, 
+                         tag, 
+                         filteringBIB)
     
     def createModel(self):
         start_time = time.time()
@@ -273,10 +340,10 @@ class FilterClusters(PredictClusters):
         self.model.compile(optimizer=Adam(learning_rate=learning_rate), loss='binary_crossentropy', metrics=['binary_accuracy'])
     
     def checkAccuracy(self):
-        p_test = self.model.predict(self.training_generator)
+        p_test = self.model.predict(self.validation_generator)
 
         complete_truth = None
-        for _, y in tqdm(self.training_generator):
+        for _, y in tqdm(self.validation_generator):
             if complete_truth is None:
                 complete_truth = y
             else:
