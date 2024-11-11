@@ -172,7 +172,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         self.include_y_local = include_y_local
 
 
-        # If data is already prepared load anduse that data
+        # If data is already prepared load and use that data
         if load_from_tfrecords_dir is not None:
             if not os.path.isdir(load_from_tfrecords_dir):
                 raise ValueError(f"Directory {load_from_tfrecords_dir} does not exist.")

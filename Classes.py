@@ -47,17 +47,19 @@ class PredictClusters:
             muon_collider: bool = False,
             file_fraction: float = 0.8,
             to_standardize: bool = False,
-            input_shape: tuple = (2,13,21),
+            input_shape: tuple = (1,13,21),
             transpose = (0,2,3,1),
             include_y_local: bool = False,
-            use_time_stamps = [0,19],
+            use_time_stamps = [19],
             output_dir: str = "./ouput_prediction",
             learning_rate: float = 0.001,
             tag: str = "",
             filteringBIB: bool = False,
             use_tfr_records: bool = False,
+            tfrecords_dir_train: str = None,
+            tfrecords_dir_validation: str = None,
             ):
-        
+
         if labels_list != None and len(labels_list) != 4:
             raise ValueError(f"Invalid list length: {len(labels_list)}. Required length is 4.")
         
@@ -70,7 +72,7 @@ class PredictClusters:
                     data_directory_path + "recon" + data_format + "bib*." + file_type, 
                     recursive=is_directory_recursive
                 ))
-            file_count = round(file_fraction*total_files)
+            file_count = total_files#round(file_fraction*total_files)
         else:
             total_files = len(glob.glob(
                     data_directory_path + "recon" + data_format + f"{tag}*." + file_type, 
@@ -88,63 +90,71 @@ class PredictClusters:
             os.mkdir(output_dir)
 
         # create tf records directory
-        stamp = '%08x' % random.randrange(16**8)
-        tfrecords_dir_train = Path(self.output_dir, f"tfrecords_train_{stamp}").resolve()
-        tfrecords_dir_validation = Path(self.output_dir, f"tfrecords_validation_{stamp}").resolve()
-        if not os.path.exists(tfrecords_dir_train):
-            os.mkdir(tfrecords_dir_train)
-            os.mkdir(tfrecords_dir_validation)
+        if not use_tfr_records:
+            stamp = '%08x' % random.randrange(16**8)
+            tfrecords_dir_train = Path(self.output_dir, f"tfrecords_train_{stamp}").resolve()
+            tfrecords_dir_validation = Path(self.output_dir, f"tfrecords_validation_{stamp}").resolve()
+            if not os.path.exists(tfrecords_dir_train):
+                os.mkdir(tfrecords_dir_train)
+                os.mkdir(tfrecords_dir_validation)
+        elif tfrecords_dir_train is None:
+            tfrecords_dir_train = "/home/elizahoward/smart-pixels-ml/ouput_filtering/tfrecords_train_8b8a3df4"
+            tfrecords_dir_validation = '/home/elizahoward/smart-pixels-ml/ouput_filtering/tfrecords_validation_8b8a3df4'
 
         start_time = time.time()
-
-        self.training_generator = ODG.OptimizedDataGenerator(
-            data_directory_path = data_directory_path,
-            labels_directory_path = labels_directory_path,
-            is_directory_recursive = is_directory_recursive,
-            file_type = file_type,
-            data_format = data_format,
-            muon_collider = muon_collider,
-            batch_size = batch_size,
-            to_standardize= to_standardize,
-            normalization=normalization,
-            include_y_local= include_y_local,
-            file_count=file_count,
-            labels_list = labels_list,
-            input_shape = input_shape,
-            transpose = transpose,
-            save=True,
-            use_time_stamps = use_time_stamps,
-            tfrecords_dir = tfrecords_dir_train,
-            tag = tag,
-            filteringBIB=filteringBIB
-        )
+        if use_tfr_records:
+            self.training_generator = ODG.OptimizedDataGenerator(load_from_tfrecords_dir=tfrecords_dir_train)
+        else:
+            self.training_generator = ODG.OptimizedDataGenerator(
+                data_directory_path = data_directory_path,
+                labels_directory_path = labels_directory_path,
+                is_directory_recursive = is_directory_recursive,
+                file_type = file_type,
+                data_format = data_format,
+                muon_collider = muon_collider,
+                batch_size = batch_size,
+                to_standardize= to_standardize,
+                normalization=normalization,
+                include_y_local= include_y_local,
+                file_count=file_count,
+                labels_list = labels_list,
+                input_shape = input_shape,
+                transpose = transpose,
+                save=True,
+                use_time_stamps = use_time_stamps,
+                tfrecords_dir = tfrecords_dir_train,
+                tag = tag,
+                filteringBIB=filteringBIB
+            )
 
         print("--- Training generator %s seconds ---" % (time.time() - start_time))
 
         start_time = time.time()
-
-        self.validation_generator = ODG.OptimizedDataGenerator(
-            data_directory_path = data_directory_path,
-            labels_directory_path = labels_directory_path,
-            is_directory_recursive = is_directory_recursive,
-            file_type = file_type,
-            data_format = data_format,
-            muon_collider = muon_collider,
-            batch_size = batch_size,
-            to_standardize= to_standardize,
-            normalization=normalization,
-            include_y_local= include_y_local,
-            file_count=total_files-file_count,
-            files_from_end=True,
-            labels_list = labels_list,
-            input_shape = input_shape,
-            transpose = transpose,
-            save=True,
-            use_time_stamps = use_time_stamps,
-            tfrecords_dir = tfrecords_dir_validation,
-            tag = tag,
-            filteringBIB=filteringBIB
-        )
+        if use_tfr_records:
+            self.validation_generator = ODG.OptimizedDataGenerator(load_from_tfrecords_dir=tfrecords_dir_validation)
+        else:
+            self.validation_generator = ODG.OptimizedDataGenerator(
+                data_directory_path = data_directory_path,
+                labels_directory_path = labels_directory_path,
+                is_directory_recursive = is_directory_recursive,
+                file_type = file_type,
+                data_format = data_format,
+                muon_collider = muon_collider,
+                batch_size = batch_size,
+                to_standardize= to_standardize,
+                normalization=normalization,
+                include_y_local= include_y_local,
+                file_count=total_files-file_count,
+                files_from_end=True,
+                labels_list = labels_list,
+                input_shape = input_shape,
+                transpose = transpose,
+                save=True,
+                use_time_stamps = use_time_stamps,
+                tfrecords_dir = tfrecords_dir_validation,
+                tag = tag,
+                filteringBIB=filteringBIB
+            )
 
         print("--- Validation generator %s seconds ---" % (time.time() - start_time))
         
@@ -165,10 +175,7 @@ class PredictClusters:
 
     def createModel(self):
         start_time = time.time()
-        if self.include_y_local:
-            self.model=CreatePredictionModelYLocal(shape=self.shape, n_filters=self.n_filters, pool_size=self.pool_size)
-        else:
-            self.model=CreatePredictionModel(shape=self.shape, n_filters=self.n_filters, pool_size=self.pool_size)
+        self.model=CreatePredictionModel(self.shape, self.n_filters, self.pool_size, self.include_y_local)
         self.model.summary()
         print("--- Model create and compile %s seconds ---" % (time.time() - start_time))
 
@@ -293,16 +300,19 @@ class FilterClusters(PredictClusters):
                  units_list: list = None, 
                  normalization: int = 1, 
                  muon_collider: bool = False, 
-                 file_fraction: float = None,
+                 file_fraction: float = .8,
                  to_standardize: bool = False, 
-                 input_shape: tuple = (2, 13, 21), 
-                 transpose=(0, 2, 3, 1), 
+                 input_shape: tuple = (1,13, 21), 
+                 transpose=None, #(0, 2, 3, 1), 
                  include_y_local: bool = False, 
-                 use_time_stamps=[0, 19], 
+                 use_time_stamps=[19], 
                  output_dir: str = "./ouput_filtering", 
                  learning_rate: float = 0.001, 
                  tag: str = "", 
                  filteringBIB: bool = True,
+                 use_tf_records: bool = False,
+                 tfrecords_dir_train: str = None,
+                 tfrecords_dir_validation: str = None,
                  ):
         
         super().__init__(data_directory_path, 
@@ -323,14 +333,14 @@ class FilterClusters(PredictClusters):
                          output_dir, 
                          learning_rate, 
                          tag, 
-                         filteringBIB)
+                         filteringBIB,
+                         use_tfr_records=use_tf_records,
+                         tfrecords_dir_train=tfrecords_dir_train,
+                         tfrecords_dir_validation=tfrecords_dir_validation)
     
     def createModel(self):
         start_time = time.time()
-        if self.include_y_local:
-            self.model=CreateClassificationModelYLocal(shape=self.shape, n_filters=self.n_filters, pool_size=self.pool_size)
-        else:
-            self.model=CreateClassificationModel(shape=self.shape, n_filters=self.n_filters, pool_size=self.pool_size)
+        self.model=CreateClassificationModel(self.shape, self.n_filters, self.pool_size, self.include_y_local)
         self.model.summary()
         print("--- Model create and compile %s seconds ---" % (time.time() - start_time))
 
@@ -383,3 +393,68 @@ class FilterClusters(PredictClusters):
 
         print(f"\nTotal number of clusters: {signalCount+backgroundCount}")
 
+    def checkAccuracyTrainingData(self):
+        p_test = self.model.predict(self.training_generator)
+
+        complete_truth = None
+        for _, y in tqdm(self.training_generator):
+            if complete_truth is None:
+                complete_truth = y
+            else:
+                complete_truth = np.concatenate((complete_truth, y), axis=0)
+
+        prediction=p_test.flatten()
+        labels = complete_truth.flatten()
+
+        # background regection
+        backgroundCount = 0
+        rejectedBackground = 0
+        # signal efficiency
+        acceptedSignal = 0
+        signalCount = 0
+
+        for l, p in zip(labels, prediction):
+            # background
+            if l <= 0.5:
+                backgroundCount += 1
+                if p <= 0.5:
+                    rejectedBackground += 1
+            else:
+                signalCount += 1
+                if p > 0.5:
+                    acceptedSignal += 1
+
+        signalEfficiency = acceptedSignal/signalCount*100
+        backgroundRejection = rejectedBackground/backgroundCount*100
+
+        accuracy = (acceptedSignal+rejectedBackground)/(signalCount+backgroundCount)*100
+
+        fractionSignal = signalCount/(signalCount+backgroundCount)*100
+
+        print(f"\nSignal Efficiency: {signalEfficiency}%\nBackground Rejection: {backgroundRejection}%\n")
+
+        print(f"Overall Accuracy: {accuracy}%\nFraction of Data that are Signal: {fractionSignal}%")
+
+        print(f"\nTotal number of clusters: {signalCount+backgroundCount}")
+
+    def countClusters(self):
+        complete_truth = None
+        for _, y in tqdm(self.training_generator):
+            if complete_truth is None:
+                complete_truth = y
+            else:
+                complete_truth = np.concatenate((complete_truth, y), axis=0)
+
+        labelst = complete_truth.flatten()
+
+        complete_truth = None
+        for _, y in tqdm(self.validation_generator):
+            if complete_truth is None:
+                complete_truth = y
+            else:
+                complete_truth = np.concatenate((complete_truth, y), axis=0)
+
+        labelsv = complete_truth.flatten()
+        
+        print(f"# of training clusters: {len(labelst)}")
+        print(f"# of training clusters: {len(labelsv)}")

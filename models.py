@@ -58,7 +58,7 @@ def conv_network(var, n_filters=5, kernel_size=3):
     var = QActivation("quantized_tanh(4, 0, 1)")(var)    
     return var
 
-def CreatePredictionModel(shape, n_filters, pool_size):
+def CreatePredictionModel(shape, n_filters, pool_size, include_y_local):
     x_base = x_in = Input(shape)
     stack = conv_network(x_base, n_filters)
     stack = AveragePooling2D(
@@ -68,10 +68,14 @@ def CreatePredictionModel(shape, n_filters, pool_size):
         data_format=None,        
     )(stack)
     stack = QActivation("quantized_bits(8, 0, alpha=1)")(stack)
+    if include_y_local:
+        stack = Flatten()(stack)
+        y_local_in = Input(shape=(1,), name="y_local_input")
+        stack = Concatenate()([stack, y_local_in])
     stack = var_network(stack, hidden=16, output=14)
     model = Model(inputs=x_in, outputs=stack)
     return model
-
+"""
 def CreatePredictionModelYLocal(shape, n_filters, pool_size):
     x_base = x_in = Input(shape, name="X_input")  # Main input (X)
     y_local_in = Input(shape=(1,), name="y_local_input")  # y_local input
@@ -89,53 +93,35 @@ def CreatePredictionModelYLocal(shape, n_filters, pool_size):
     stack = var_network(stack, hidden=16, output=14)
     model = Model(inputs=[x_in, y_local_in], outputs=stack)
     return model
+"""
 
-
-def CreateClassificationModel(shape, n_filters, pool_size):
-    x_base = x_in = Input(shape)
-    """stack = conv_network(x_base, n_filters)
-    stack = AveragePooling2D(
-        pool_size=(pool_size, pool_size), 
-        strides=None, 
-        padding="valid", 
-        data_format=None,        
-    )(stack)
-    stack = QActivation("quantized_bits(8, 0, alpha=1)")(stack)"""
-    stack = QActivation("quantized_tanh(4, 0, 1)")(x_base)    
-    stack = Flatten()(stack)
-    stack = QDense(
-        1,
-        kernel_quantizer=quantized_bits(8, 0, alpha=1),
-        bias_quantizer=quantized_bits(8, 0, alpha=1),
-        kernel_regularizer=tf.keras.regularizers.L1L2(0.01),
-    )(stack)
-    #stack = var_network(stack, hidden=16, output=1)
-    model = Model(inputs=x_in, outputs=stack)
-    return model
-
-def CreateClassificationModelYLocal(shape, n_filters, pool_size):
-    x_base = x_in = Input(shape, name="X_input")  # Main input (X)
-    y_local_in = Input(shape=(1,), name="y_local_input")  # y_local input
-    
-    """stack = conv_network(x_base, n_filters)
-    stack = AveragePooling2D(
-        pool_size=(pool_size, pool_size), 
-        strides=None, 
-        padding="valid", 
-        data_format=None,        
-    )(stack)
-    stack = QActivation("quantized_bits(8, 0, alpha=1)")(stack)"""
-    stack = QActivation("quantized_tanh(4, 0, 1)")(x_base)    
-    stack = Flatten()(stack)
-    stack = Concatenate()([stack, y_local_in])
-    stack = QDense(
-        1,
-        kernel_quantizer=quantized_bits(8, 0, alpha=1),
-        bias_quantizer=quantized_bits(8, 0, alpha=1),
-        kernel_regularizer=tf.keras.regularizers.L1L2(0.01),
-    )(stack)
-    """stack = Flatten()(stack)
-    stack = Concatenate()([stack, y_local_in])
-    stack = var_network(stack, hidden=16, output=1)"""
-    model = Model(inputs=[x_in, y_local_in], outputs=stack)
+def CreateClassificationModel(shape, n_filters, pool_size, include_y_local):
+    x_in = Input(shape)
+    stack = Reshape((13, 21))(x_in)
+    stack = Lambda(lambda x: tf.reduce_sum(x, axis=1))(stack) # convert to y_profile
+    #stack = QActivation("quantized_tanh(4, 0, 1)")(stack)    
+    #stack = Flatten()(stack)
+    if include_y_local:
+        stack = QDense(
+            1,
+            kernel_regularizer=tf.keras.regularizers.L1L2(0.01),
+            activity_regularizer=tf.keras.regularizers.L2(0.01),
+        )(stack)
+        y_local_in = Input(shape=(1,), name="y_local_input")
+        stack = Concatenate()([stack, y_local_in])
+        stack = QDense(
+            1,
+            kernel_regularizer=tf.keras.regularizers.L1L2(0.01),
+            activity_regularizer=tf.keras.regularizers.L2(0.01),
+        )(stack)
+        stack = Dense(1, activation='sigmoid')(stack)
+        model = Model(inputs=[x_in, y_local_in], outputs=stack)
+    else:
+        stack = QDense(
+            1,
+            kernel_regularizer=tf.keras.regularizers.L1L2(0.01),
+            activity_regularizer=tf.keras.regularizers.L2(0.01),
+        )(stack)
+        stack = Dense(1, activation='sigmoid')(stack)
+        model = Model(inputs=x_in, outputs=stack)
     return model
