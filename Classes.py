@@ -1,6 +1,5 @@
 # fix for keras v3.0 update
 import os
-os.environ['TF_USE_LEGACY_KERAS'] = '1' 
 
 import tensorflow as tf
 from tensorflow.keras.layers import *
@@ -9,8 +8,10 @@ from tensorflow.keras.utils import Sequence
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
 
+from sklearn.metrics import roc_curve, auc
+
 from qkeras import *
-import OptimizedDataGenerator2 as ODG
+import OptimizedDataGenerator4 as ODG
 import time
 
 os.environ['TF_USE_LEGACY_KERAS'] = '1' 
@@ -22,25 +23,31 @@ import time
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator, FuncFormatter
 plt.rcParams['figure.dpi'] = 300
 from tqdm import tqdm
 from typing import Union
 import glob
+import numpy as np
 
 # custom code
 from loss import *
 from models import *
 
-
-class PredictClusters:
+def scheduler(epoch, lr):
+    if epoch == 100 or epoch == 130 or epoch == 160:
+        return lr/2
+    else:
+        return lr
+    
+class RegressionModel:
 
     def __init__(self,
             data_directory_path: str = "./",
-            labels_directory_path: str = None,
             is_directory_recursive: bool = False,
             file_type: str = "parquet",
             data_format: str = "3D",
-            batch_size: int = 20,
+            batch_size: int = 100,
             labels_list: list= ['x-midplane','y-midplane','cotAlpha','cotBeta'],
             units_list: list = ["[\u03BCm]", "[\u03BCm]", "", ""],
             normalization: Union[list,int] = np.array([75., 18.75, 8.0, 0.5]),
@@ -49,22 +56,19 @@ class PredictClusters:
             to_standardize: bool = False,
             input_shape: tuple = (1,13,21),
             transpose = (0,2,3,1),
-            include_y_local: bool = False,
             use_time_stamps = [19],
             output_dir: str = "./ouput_prediction",
             learning_rate: float = 0.001,
             tag: str = "",
+            x_feature_description: list = ['cluster'],
             filteringBIB: bool = False,
-            use_tfr_records: bool = False,
-            tfrecords_dir_train: str = None,
-            tfrecords_dir_validation: str = None,
+            training_dir: str = None,
+            model_number: int = None,
+            stamp: str = None
             ):
 
         if labels_list != None and len(labels_list) != 4:
             raise ValueError(f"Invalid list length: {len(labels_list)}. Required length is 4.")
-        
-        if labels_directory_path == None:
-            labels_directory_path=data_directory_path
 
         # Count total number of bib and sig files
         if muon_collider==True:
@@ -72,7 +76,7 @@ class PredictClusters:
                     data_directory_path + "recon" + data_format + "bib*." + file_type, 
                     recursive=is_directory_recursive
                 ))
-            file_count = total_files#round(file_fraction*total_files)
+            file_count = round(file_fraction*total_files)
         else:
             total_files = len(glob.glob(
                     data_directory_path + "recon" + data_format + f"{tag}*." + file_type, 
@@ -90,24 +94,34 @@ class PredictClusters:
             os.mkdir(output_dir)
 
         # create tf records directory
-        if not use_tfr_records:
-            stamp = '%08x' % random.randrange(16**8)
-            tfrecords_dir_train = Path(self.output_dir, f"tfrecords_train_{stamp}").resolve()
-            tfrecords_dir_validation = Path(self.output_dir, f"tfrecords_validation_{stamp}").resolve()
-            if not os.path.exists(tfrecords_dir_train):
-                os.mkdir(tfrecords_dir_train)
-                os.mkdir(tfrecords_dir_validation)
-        elif tfrecords_dir_train is None:
-            tfrecords_dir_train = "/home/elizahoward/smart-pixels-ml/ouput_filtering/tfrecords_train_8b8a3df4"
-            tfrecords_dir_validation = '/home/elizahoward/smart-pixels-ml/ouput_filtering/tfrecords_validation_8b8a3df4'
+        
+        if training_dir is None:
+            use_tf_records = False
+        else:
+            use_tf_records = True
+
+        self.history = None
+        
+        if not use_tf_records:
+            if stamp is None:
+                stamp = '%08x' % random.randrange(16**8)
+            training_dir = Path(self.output_dir, f"training_records{stamp}").resolve()
+            if not os.path.exists(training_dir):
+                os.mkdir(training_dir)
+            else: raise Exception("Folder already in use!")
+            training_dir_train = Path(training_dir, "tfrecords_train").resolve()
+            training_dir_validation = Path(training_dir, "tfrecords_test").resolve()
+            os.mkdir(training_dir_train)
+            os.mkdir(training_dir_validation)
+
+        self.training_dir = f'{output_dir}/{training_dir}'
 
         start_time = time.time()
-        if use_tfr_records:
-            self.training_generator = ODG.OptimizedDataGenerator(load_from_tfrecords_dir=tfrecords_dir_train)
+        if use_tf_records:
+            self.training_generator = ODG.OptimizedDataGenerator(load_from_training_dir=self.training_dir, filteringBIB=filteringBIB, tf_records_dir='tfrecords_train')
         else:
             self.training_generator = ODG.OptimizedDataGenerator(
                 data_directory_path = data_directory_path,
-                labels_directory_path = labels_directory_path,
                 is_directory_recursive = is_directory_recursive,
                 file_type = file_type,
                 data_format = data_format,
@@ -115,27 +129,26 @@ class PredictClusters:
                 batch_size = batch_size,
                 to_standardize= to_standardize,
                 normalization=normalization,
-                include_y_local= include_y_local,
                 file_count=file_count,
                 labels_list = labels_list,
                 input_shape = input_shape,
                 transpose = transpose,
-                save=True,
                 use_time_stamps = use_time_stamps,
-                tfrecords_dir = tfrecords_dir_train,
+                training_dir = training_dir,
+                tf_records_dir = "tfrecords_train",
                 tag = tag,
+                x_feature_description=x_feature_description,
                 filteringBIB=filteringBIB
             )
 
         print("--- Training generator %s seconds ---" % (time.time() - start_time))
 
         start_time = time.time()
-        if use_tfr_records:
-            self.validation_generator = ODG.OptimizedDataGenerator(load_from_tfrecords_dir=tfrecords_dir_validation)
+        if use_tf_records:
+            self.validation_generator = ODG.OptimizedDataGenerator(load_from_training_dir=self.training_dir, tf_records_dir='tfrecords_test')
         else:
             self.validation_generator = ODG.OptimizedDataGenerator(
                 data_directory_path = data_directory_path,
-                labels_directory_path = labels_directory_path,
                 is_directory_recursive = is_directory_recursive,
                 file_type = file_type,
                 data_format = data_format,
@@ -143,33 +156,36 @@ class PredictClusters:
                 batch_size = batch_size,
                 to_standardize= to_standardize,
                 normalization=normalization,
-                include_y_local= include_y_local,
                 file_count=total_files-file_count,
                 files_from_end=True,
                 labels_list = labels_list,
                 input_shape = input_shape,
                 transpose = transpose,
-                save=True,
                 use_time_stamps = use_time_stamps,
-                tfrecords_dir = tfrecords_dir_validation,
+                training_dir = training_dir,
+                tf_records_dir="tfrecords_test",
                 tag = tag,
+                x_feature_description=x_feature_description,
                 filteringBIB=filteringBIB
             )
 
         print("--- Validation generator %s seconds ---" % (time.time() - start_time))
-        
-        self.include_y_local = include_y_local
 
-        # compiles model
         self.n_filters = 5 # model number of filters
         self.pool_size = 3 # model pool size
+
+        self.x_features=x_feature_description
 
         # Rearrange input shape for the model
         self.shape = (input_shape[1], input_shape[2], input_shape[0])
 
-        self.createModel()
+        if model_number is None:
+            self.createModel()
+        else:
+            self.loadModel(model_number)
 
-        self.compileModel(learning_rate=learning_rate)
+        if self.model.optimizer is None or self.model.optimizer.lr != learning_rate:
+            self.compileModel(learning_rate=learning_rate)
 
         self.residuals = None
 
@@ -179,19 +195,33 @@ class PredictClusters:
         self.model.summary()
         print("--- Model create and compile %s seconds ---" % (time.time() - start_time))
 
+    def loadModel(self, model_number):
+        self.modelName=f"Model {model_number}"
+        file_path = Path(self.training_dir, f'Model_{model_number}.keras').resolve()
+        self.model=tf.keras.models.load_model(file_path, compile=False)
+
+    def saveModel(self, model_number, overwrite=False):
+        file_path = Path(self.training_dir, f'Model_{model_number}.keras').resolve()
+        if not overwrite and os.path.exists(file_path):
+            raise Exception("Model exists. To overwrite existing saved model, set overwrite to True.")
+        self.modelName=f"Model {model_number}"
+        self.model.save(file_path)
 
     def compileModel(self, learning_rate):
         print(f"Compiling model with learning rate: {learning_rate}")
         self.learning_rate = learning_rate
         self.model.compile(optimizer=Adam(learning_rate=learning_rate), loss=custom_loss)
 
+    def loadWeights(self, fileName):
+        filePath = Path(self.training_dir, f'weights_{fileName}.hdf5').resolve()
+        self.model.load_weights(filePath)
 
-    def loadWeights(self, weightsFile):
-        self.model.load_weights(weightsFile)
+    def saveWeights(self, fileName):
+        filePath = Path(self.training_dir, f'weights_{fileName}.hdf5').resolve()
+        self.model.save_weights(filePath)
 
-
-    def runTraining(self, epochs=50):
-        early_stopping_patience = 50
+    def runTraining(self, epochs=50, early_stopping=True, save_all_weights=False, schedule_lr=True, save_prev_history=False):
+        early_stopping_patience = 5
 
         # launch quick training once gpu is available
         es = EarlyStopping(
@@ -207,16 +237,59 @@ class PredictClusters:
             monitor='val_loss',
             save_best_only=True,
         )
+        
+        # learning rate scheduler
+        lr_scheduler = tf.keras.callbacks.LearningRateScheduler(scheduler)
+
+        callbacks = []
+        if early_stopping:
+            callbacks.append(es)
+        if save_all_weights:
+            callbacks.append(mcp)
+        if schedule_lr:
+            callbacks.append(lr_scheduler)
 
         # train
+        prev_history = self.history
+
         self.history = self.model.fit(x=self.training_generator,
                         validation_data=self.validation_generator,
-                        callbacks=[mcp],
+                        callbacks=callbacks,
                         epochs=epochs,
                         shuffle=False,
                         verbose=1)
 
+        print(type(self.history))
+
+        if save_prev_history and prev_history is not None:
+            self.history += prev_history # check if this works ...
+
         self.residuals = None
+
+        self.plotTraining()
+
+
+    def plotTraining(self):
+        fig, ax = plt.subplots(ncols=1, nrows=2, gridspec_kw={'height_ratios': [3, 1]}, sharex=True)
+        ax[0].plot(range(1,len(self.history.history['val_loss'])+1),self.history.history['val_loss'], c='royalblue')
+        ax[0].set_ylabel("Validation Loss")
+        ax[0].xaxis.set_major_locator(MaxNLocator(integer=True))
+
+        
+        ax[1].plot(range(1,len(self.history.history['lr'])+1),self.history.history['lr'], c='seagreen')
+        ax[1].set_xlabel("Epoch")
+        ax[1].set_ylabel("Learning Rate")
+        ax[1].xaxis.set_major_locator(MaxNLocator(integer=True))
+        ax[1].yaxis.set_major_formatter(FuncFormatter(lambda x, _: '{:.0e}'.format(x)))
+
+
+        ax[0].grid(True, linestyle='--', linewidth=0.5, color='gray')
+        ax[1].grid(True, linestyle='--', linewidth=0.5, color='gray')
+
+        fig.tight_layout()
+
+        plt.show()
+
 
     def checkResiduals(self):
         p_test = self.model.predict(self.validation_generator)
@@ -288,37 +361,36 @@ class PredictClusters:
         plt.show()
 
 
-class FilterClusters(PredictClusters):
+class ClassificationModel(RegressionModel):
     def __init__(self, 
                  data_directory_path: str = "./", 
-                 labels_directory_path: str = None, 
                  is_directory_recursive: bool = False, 
                  file_type: str = "parquet", 
-                 data_format: str = "3D", 
-                 batch_size: int = 500, 
+                 data_format: str = "3D", # can't get 2D working
+                 batch_size: int = 300, 
                  labels_list: list = None, 
                  units_list: list = None, 
                  normalization: int = 1, 
-                 muon_collider: bool = False, 
-                 file_fraction: float = .8,
+                 muon_collider: bool = True, 
+                 file_fraction: float = .8, # fraction of files used for training
                  to_standardize: bool = False, 
-                 input_shape: tuple = (1,13, 21), 
-                 transpose=None, #(0, 2, 3, 1), 
-                 include_y_local: bool = False, 
-                 use_time_stamps=[19], 
-                 output_dir: str = "./ouput_filtering", 
+                 input_shape: tuple = (1,13, 21), # dimension of 3D cluster
+                 transpose=(0, 2, 3, 1), # not sure what this does 
+                 use_time_stamps=[19], # last timestamp is 19
+                 output_dir: str = "./filtering_models", 
                  learning_rate: float = 0.001, 
                  tag: str = "", 
+                 x_feature_description: list = ['x_size', 'y_size', 'y_local', 'z_loc'],
                  filteringBIB: bool = True,
-                 use_tf_records: bool = False,
-                 tfrecords_dir_train: str = None,
-                 tfrecords_dir_validation: str = None,
+                 training_dir: str = None,
+                 model_number: int = None,
+                 stamp: str = None
                  ):
         
         super().__init__(data_directory_path, 
-                         labels_directory_path, 
                          is_directory_recursive, 
-                         file_type, data_format, 
+                         file_type, 
+                         data_format, 
                          batch_size, 
                          labels_list, 
                          units_list,
@@ -328,28 +400,38 @@ class FilterClusters(PredictClusters):
                          to_standardize, 
                          input_shape, 
                          transpose, 
-                         include_y_local, 
                          use_time_stamps, 
                          output_dir, 
                          learning_rate, 
                          tag, 
+                         x_feature_description,
                          filteringBIB,
-                         use_tfr_records=use_tf_records,
-                         tfrecords_dir_train=tfrecords_dir_train,
-                         tfrecords_dir_validation=tfrecords_dir_validation)
+                         training_dir,
+                         model_number,
+                         stamp)
     
-    def createModel(self):
+    def createModel(self, layer1=3, layer2=3, numLayers=1):
         start_time = time.time()
-        self.model=CreateClassificationModel(self.shape, self.n_filters, self.pool_size, self.include_y_local)
+        self.model=CreateClassificationModel(self.x_features, layer1, layer2, numLayers)
         self.model.summary()
         print("--- Model create and compile %s seconds ---" % (time.time() - start_time))
 
-    def compileModel(self, learning_rate):
+    def compileModel(self, learning_rate = 0.001):
         print(f"Compiling model with learning rate: {learning_rate}")
         self.learning_rate = learning_rate
         self.model.compile(optimizer=Adam(learning_rate=learning_rate), loss='binary_crossentropy', metrics=['binary_accuracy'])
     
-    def checkAccuracy(self):
+    def loadWeights(self, weightsFile):
+        self.model.load_weights(weightsFile)
+
+    def saveWeights(self, fileName):
+        filePath = Path(self.training_dir, f'weights_{fileName}.hdf5').resolve()
+        self.model.save_weights(filePath)
+
+    def runTraining(self, epochs=50, early_stopping=True, save_all_weights=False, schedule_lr=True, save_prev_history=False):
+        super().runTraining(epochs=epochs, early_stopping=early_stopping, save_all_weights=save_all_weights, schedule_lr=schedule_lr, save_prev_history=save_prev_history)
+
+    def checkAccuracy(self, threshold=0.5):
         p_test = self.model.predict(self.validation_generator)
 
         complete_truth = None
@@ -371,13 +453,13 @@ class FilterClusters(PredictClusters):
 
         for l, p in zip(labels, prediction):
             # background
-            if l <= 0.5:
+            if l <= threshold:
                 backgroundCount += 1
-                if p <= 0.5:
+                if p <= threshold:
                     rejectedBackground += 1
             else:
                 signalCount += 1
-                if p > 0.5:
+                if p > threshold:
                     acceptedSignal += 1
 
         signalEfficiency = acceptedSignal/signalCount*100
@@ -387,13 +469,14 @@ class FilterClusters(PredictClusters):
 
         fractionSignal = signalCount/(signalCount+backgroundCount)*100
 
-        print(f"\nSignal Efficiency: {signalEfficiency}%\nBackground Rejection: {backgroundRejection}%\n")
+        print(f"\nSignal Efficiency: {round(signalEfficiency,2)}%\nBackground Rejection: {round(backgroundRejection,2)}%\n")
 
-        print(f"Overall Accuracy: {accuracy}%\nFraction of Data that are Signal: {fractionSignal}%")
+        print(f"Overall Accuracy: {round(accuracy,2)}%\nFraction of Data that are Signal: {round(fractionSignal,2)}%")
 
         print(f"\nTotal number of clusters: {signalCount+backgroundCount}")
 
-    def checkAccuracyTrainingData(self):
+
+    def checkAccuracyTrainingData(self, threshold=0.5):
         p_test = self.model.predict(self.training_generator)
 
         complete_truth = None
@@ -415,13 +498,13 @@ class FilterClusters(PredictClusters):
 
         for l, p in zip(labels, prediction):
             # background
-            if l <= 0.5:
+            if l <= threshold:
                 backgroundCount += 1
-                if p <= 0.5:
+                if p <= threshold:
                     rejectedBackground += 1
             else:
                 signalCount += 1
-                if p > 0.5:
+                if p > threshold:
                     acceptedSignal += 1
 
         signalEfficiency = acceptedSignal/signalCount*100
@@ -431,11 +514,12 @@ class FilterClusters(PredictClusters):
 
         fractionSignal = signalCount/(signalCount+backgroundCount)*100
 
-        print(f"\nSignal Efficiency: {signalEfficiency}%\nBackground Rejection: {backgroundRejection}%\n")
+        print(f"\nSignal Efficiency: {round(signalEfficiency,2)}%\nBackground Rejection: {round(backgroundRejection,2)}%\n")
 
-        print(f"Overall Accuracy: {accuracy}%\nFraction of Data that are Signal: {fractionSignal}%")
+        print(f"Overall Accuracy: {round(accuracy,2)}%\nFraction of Data that are Signal: {round(fractionSignal,2)}%")
 
         print(f"\nTotal number of clusters: {signalCount+backgroundCount}")
+
 
     def countClusters(self):
         complete_truth = None
@@ -458,3 +542,107 @@ class FilterClusters(PredictClusters):
         
         print(f"# of training clusters: {len(labelst)}")
         print(f"# of training clusters: {len(labelsv)}")
+    
+
+    def plotTraining(self):
+        fig, ax = plt.subplots(ncols=1, nrows=2, gridspec_kw={'height_ratios': [3, 1]}, sharex=True)
+        ax[0].plot(range(1,len(self.history.history['val_binary_accuracy'])+1),self.history.history['val_binary_accuracy'],c='royalblue')
+        ax[0].set_ylabel("Validation Binary Accuracy")
+        ax[0].xaxis.set_major_locator(MaxNLocator(integer=True))
+
+        
+        ax[1].plot(range(1,len(self.history.history['val_binary_accuracy'])+1),self.history.history['lr'],c='seagreen')
+        ax[1].set_xlabel("Epoch")
+        ax[1].set_ylabel("Learning Rate")
+        ax[1].xaxis.set_major_locator(MaxNLocator(integer=True))
+        ax[1].yaxis.set_major_formatter(FuncFormatter(lambda x, _: '{:.0e}'.format(x)))
+
+        ax[0].grid(True, linestyle='--', linewidth=0.5, color='gray')
+        ax[1].grid(True, linestyle='--', linewidth=0.5, color='gray')
+
+        fig.tight_layout()
+
+        plt.show()
+
+    
+    def plotROCcurve(self):
+        complete_truth = None
+        for _, y in tqdm(self.validation_generator):
+            if complete_truth is None:
+                complete_truth = y
+            else:
+                complete_truth = np.concatenate((complete_truth, y), axis=0)
+        labels = complete_truth.flatten()
+
+        fig, ax = plt.subplots()
+
+        p_test = self.model.predict(self.validation_generator)
+            
+        prediction=p_test.flatten()
+
+        fpr_keras, tpr_keras, thresholds_keras = roc_curve(labels, prediction)
+        auc_keras = auc(fpr_keras, tpr_keras)
+
+        # get index of threshold=0.5
+        selected_threshold = 0.5
+        closest = thresholds_keras[min(range(len(thresholds_keras)), key = lambda i: abs(thresholds_keras[i]-selected_threshold))]
+        selected_index = np.where(thresholds_keras == closest)[0]
+
+        # get index of best threshold
+        temp = tpr_keras-fpr_keras
+        max_value = max(temp)
+        best_index = np.where(temp == max_value)[0]
+
+        print(f"Optimal threshold: {thresholds_keras[best_index][0]}")
+
+        ax.plot(fpr_keras, tpr_keras, label=f'ROC curve (area = {round(auc_keras,3)})')
+        ax.scatter(fpr_keras[selected_index], tpr_keras[selected_index], label='selected threshold: 0.5',c='orange')
+        ax.scatter(fpr_keras[best_index], tpr_keras[best_index], label=f'optimal threshold: {round(thresholds_keras[best_index][0],2)}', c='green')
+        ax.plot([0, 1], [0, 1], 'k--')
+        ax.minorticks_on()
+        ax.grid(which='both', color='lightgray', linestyle='--', linewidth=0.5)
+        ax.set_xlabel('False positive rate')
+        ax.set_ylabel('True positive rate')
+        ax.set_title('ROC curve')
+        ax.legend(loc='best')
+        plt.show()
+
+
+def CompareModelROCCurves(models):
+    fig, ax = plt.subplots()
+
+    for model in models:
+        name=model.modelName
+
+        complete_truth = None
+        for _, y in tqdm(model.validation_generator):
+            if complete_truth is None:
+                complete_truth = y
+            else:
+                complete_truth = np.concatenate((complete_truth, y), axis=0)
+        labels = complete_truth.flatten()
+
+        p_test = model.model.predict(model.validation_generator)
+            
+        prediction=p_test.flatten()
+
+        fpr_keras, tpr_keras, thresholds_keras = roc_curve(labels, prediction)
+        auc_keras = auc(fpr_keras, tpr_keras)
+
+        # get index of best threshold
+        temp = tpr_keras-fpr_keras
+        max_value = max(temp)
+        best_index = np.where(temp == max_value)[0]
+
+        print(f"Optimal threshold for {name}: {thresholds_keras[best_index][0]}")
+
+        ax.plot(fpr_keras, tpr_keras, label=f'{name} (area = {round(auc_keras,3)})')
+
+    ax.plot([0, 1], [0, 1], 'k--')
+    ax.minorticks_on()
+    ax.grid(which='both', color='lightgray', linestyle='--', linewidth=0.5)
+    ax.set_xlabel('False positive rate')
+    ax.set_ylabel('True positive rate')
+    ax.set_title('ROC curve')
+    ax.legend(loc='best')
+    plt.show()

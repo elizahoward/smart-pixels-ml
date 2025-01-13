@@ -464,13 +464,13 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         for data in parsed_dataset:
             ''' Add the reshaping in saving'''
             X_batch, y_batch = data
-            X_batch=tf.unstack(X_batch, axis=0)
+
             y_batch = tf.reshape(y_batch, [-1, *y_batch.shape[1:]])
 
             for batch in X_batch:
                 batch = tf.reshape(batch, [-1, *batch.shape[1:]])       
             
-            return X_batch, y_batch
+            return *X_batch, y_batch
             
     
     def _parse_tfrecord_fn(self, example):
@@ -497,7 +497,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         for x_feature in self.x_feature_description:
             X.append(tf.io.parse_tensor(example[x_feature], out_type=tf.float32))
 
-        return X, y
+        return tuple([row for row in X]), y
 
     def __len__(self):
         if len(self.file_offsets) != 1: # used when TFRecord files are created during initialization
