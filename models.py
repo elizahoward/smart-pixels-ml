@@ -1,6 +1,6 @@
 # fix for keras v3.0 update
 import os
-os.environ['TF_USE_LEGACY_KERAS'] = '1' 
+#os.environ['TF_USE_LEGACY_KERAS'] = '1' 
 
 import tensorflow as tf
 # import keras

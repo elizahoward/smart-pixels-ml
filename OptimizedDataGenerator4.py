@@ -62,6 +62,8 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             use_time_stamps = -1,
             quantize: bool = False,
             max_workers: int = 1,
+            cut_hit_time: bool = False,
+            hit_time_version: str = "adjusted_hit_time"
                  
             ):
         super().__init__() 
@@ -183,6 +185,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             ylocal_df = pd.DataFrame()
             z_loc_df = pd.DataFrame()
             eh_pairs = pd.DataFrame()
+            hit_time_df = pd.DataFrame()
 
             for file in self.recon_files:
                 tempDf = pd.read_parquet(file, columns=self.use_time_stamps)
@@ -197,7 +200,8 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
                         labels_df = pd.concat([labels_df, pd.DataFrame({'signal': [0] * tempDf.shape[0]})])
                 ylocal_df = pd.concat([ylocal_df,pd.read_parquet(file, columns=['y-local'])])
                 eh_pairs = pd.concat([eh_pairs,pd.read_parquet(file, columns=['number_eh_pairs'])])
-                z_loc_df = pd.concat([z_loc_df,pd.read_parquet(file, columns=['hit_z'])])
+                z_loc_df = pd.concat([z_loc_df,pd.read_parquet(file, columns=['z-global'])])
+                hit_time_df = pd.concat([hit_time_df,pd.read_parquet(file, columns=[hit_time_version])])
 
             has_nans = np.any(np.isnan(recon_df.values), axis=1)
             has_nans = np.arange(recon_df.shape[0])[has_nans]
@@ -207,7 +211,32 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             ylocal_df_raw = ylocal_df.drop(has_nans)
             z_loc_df_raw = z_loc_df.drop(has_nans)
             eh_pairs_raw = eh_pairs.drop(has_nans)
+            hit_time_df_raw = hit_time_df.drop(has_nans)
 
+            self.dataPoints = len(labels_df_raw)
+
+            """
+            if cut_hit_time:
+                # First determine how many signal hits are being cut
+                cut = (np.any(hit_time_df_raw.values<0, axis=1) | np.any(hit_time_df_raw.values>0.105, axis=1))&np.any(labels_df_raw.values==1, axis=1)
+                cut = np.arange(recon_df_raw.shape[0])[cut]
+
+                self.signalCut = len(cut)
+
+                cut = np.any(recon_df_raw.values<0, axis=1) | np.any(recon_df_raw.values>0.105, axis=1)
+                cut = np.arange(recon_df_raw.shape[0])[cut]
+
+                self.bibCut = self.signalCut-len(cut)
+
+                recon_df_raw = recon_df_raw.drop(cut)
+                labels_df_raw = labels_df_raw.drop(cut)
+                ylocal_df_raw = ylocal_df_raw.drop(cut)
+                z_loc_df_raw = z_loc_df_raw.drop(cut)
+                eh_pairs_raw = eh_pairs_raw.drop(cut)
+
+                print(f"Total number of clusters: {self.dataPoints}\nNumber of signal clusters cut: {self.signalCut}\nNumber of BIB clusters cut: {self.bib}")
+            """
+            
             recon_values = recon_df_raw.values    
             nonzeros = abs(recon_values) > 0
             recon_values[nonzeros] = np.sign(recon_values[nonzeros])*np.log1p(abs(recon_values[nonzeros]))/math.log(2)
@@ -470,7 +499,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             for batch in X_batch:
                 batch = tf.reshape(batch, [-1, *batch.shape[1:]])       
             
-            return *X_batch, y_batch
+            return X_batch, y_batch # NOTE: list(X_batch) works for venv
             
     
     def _parse_tfrecord_fn(self, example):

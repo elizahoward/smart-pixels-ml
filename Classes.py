@@ -14,7 +14,7 @@ from qkeras import *
 import OptimizedDataGenerator4 as ODG
 import time
 
-os.environ['TF_USE_LEGACY_KERAS'] = '1' 
+#os.environ['TF_USE_LEGACY_KERAS'] = '1' 
 
 # python based
 import random
@@ -31,7 +31,7 @@ import glob
 import numpy as np
 
 # custom code
-from loss import *
+#from loss import *
 from models import *
 
 def scheduler(epoch, lr):
@@ -64,7 +64,9 @@ class RegressionModel:
             filteringBIB: bool = False,
             training_dir: str = None,
             model_number: int = None,
-            stamp: str = None
+            stamp: str = None,
+            cut_hit_time: bool = False,
+            hit_time_version: str = None
             ):
 
         if labels_list != None and len(labels_list) != 4:
@@ -138,7 +140,9 @@ class RegressionModel:
                 tf_records_dir = "tfrecords_train",
                 tag = tag,
                 x_feature_description=x_feature_description,
-                filteringBIB=filteringBIB
+                filteringBIB=filteringBIB,
+                cut_hit_time=cut_hit_time,
+                hit_time_version=hit_time_version
             )
 
         print("--- Training generator %s seconds ---" % (time.time() - start_time))
@@ -166,7 +170,9 @@ class RegressionModel:
                 tf_records_dir="tfrecords_test",
                 tag = tag,
                 x_feature_description=x_feature_description,
-                filteringBIB=filteringBIB
+                filteringBIB=filteringBIB,
+                cut_hit_time=cut_hit_time,
+                hit_time_version=hit_time_version
             )
 
         print("--- Validation generator %s seconds ---" % (time.time() - start_time))
@@ -184,8 +190,7 @@ class RegressionModel:
         else:
             self.loadModel(model_number)
 
-        if self.model.optimizer is None or self.model.optimizer.lr != learning_rate:
-            self.compileModel(learning_rate=learning_rate)
+        self.compileModel(learning_rate=learning_rate)
 
         self.residuals = None
 
@@ -221,7 +226,7 @@ class RegressionModel:
         self.model.save_weights(filePath)
 
     def runTraining(self, epochs=50, early_stopping=True, save_all_weights=False, schedule_lr=True, save_prev_history=False):
-        early_stopping_patience = 5
+        early_stopping_patience = 10
 
         # launch quick training once gpu is available
         es = EarlyStopping(
@@ -230,7 +235,7 @@ class RegressionModel:
         )
     
         # checkpoint path
-        checkpoint_filepath = Path(self.output_dir,"weights", 'weights.{epoch:02d}-t{loss:.2f}-v{val_loss:.2f}.hdf5').resolve()
+        checkpoint_filepath = Path(self.output_dir,"weights", 'epoch.{epoch:02d}-t{loss:.2f}-v{val_loss:.2f}.weights.h5').resolve()
         mcp = tf.keras.callbacks.ModelCheckpoint(
             filepath=checkpoint_filepath,
             save_weights_only=True,
@@ -380,11 +385,13 @@ class ClassificationModel(RegressionModel):
                  output_dir: str = "./filtering_models", 
                  learning_rate: float = 0.001, 
                  tag: str = "", 
-                 x_feature_description: list = ['x_size', 'y_size', 'y_local', 'z_loc'],
+                 x_feature_description: list = ['x_size', 'y_size', 'y_local', 'z_global'],
                  filteringBIB: bool = True,
                  training_dir: str = None,
                  model_number: int = None,
-                 stamp: str = None
+                 stamp: str = None,
+                 cut_hit_time: bool = False,
+                 hit_time_version: str = "adjusted_hit_time"
                  ):
         
         super().__init__(data_directory_path, 
@@ -408,7 +415,10 @@ class ClassificationModel(RegressionModel):
                          filteringBIB,
                          training_dir,
                          model_number,
-                         stamp)
+                         stamp,
+                         cut_hit_time,
+                         hit_time_version
+                         )
     
     def createModel(self, layer1=3, layer2=3, numLayers=1):
         start_time = time.time()
@@ -551,7 +561,7 @@ class ClassificationModel(RegressionModel):
         ax[0].xaxis.set_major_locator(MaxNLocator(integer=True))
 
         
-        ax[1].plot(range(1,len(self.history.history['val_binary_accuracy'])+1),self.history.history['lr'],c='seagreen')
+        ax[1].plot(range(1,len(self.history.history['val_binary_accuracy'])+1),self.history.history['learning_rate'],c='seagreen')
         ax[1].set_xlabel("Epoch")
         ax[1].set_ylabel("Learning Rate")
         ax[1].xaxis.set_major_locator(MaxNLocator(integer=True))
