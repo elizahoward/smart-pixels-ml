@@ -52,6 +52,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             input_shape: Tuple = (13,21),
             transpose = None,
             include_y_local: bool = False,
+            include_z_loc: bool = False,
             files_from_end = False,
             shuffle=False,
             current=False,
@@ -159,18 +160,19 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
                     self.recon_files = self.recon_files_bib[:file_count]+self.recon_files_sig[:file_count]
                 else:
                     self.recon_files = self.recon_files_bib[-file_count:]+self.recon_files_sig[-file_count:]
+        else:
+            if not muon_collider:
+                    self.recon_files = self.recon_files
+            else:
+                    self.recon_files = self.recon_files_bib+self.recon_files_sig
 
-        print(self.recon_files)
-
-        self.label_files = [
-            labels_directory_path + recon_file.split('/')[-1].replace("recon" + data_format, "labels") for recon_file in self.recon_files
-        ]
+        
+        self.include_y_local = include_y_local
+        self.include_z_loc = include_z_loc
 
         self.file_offsets = [0]
         self.dataset_mean = None
         self.dataset_std = None
-        self.include_y_local = include_y_local
-
 
         # If data is already prepared load and use that data
         if load_from_tfrecords_dir is not None:
@@ -186,10 +188,51 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             self.transpose = transpose
             self.to_standardize = to_standardize
             
-            self.process_file_parallel()
-    
-            self.current_file_index = None
-            self.current_dataframes = None
+            labels_df = pd.DataFrame()
+            recon_df = pd.DataFrame()
+            ylocal_df = pd.DataFrame()
+            z_loc_df = pd.DataFrame()
+
+            for file in self.recon_files:
+                tempDf = pd.read_parquet(file, columns=self.use_time_stamps)
+                recon_df = pd.concat([recon_df,tempDf])
+                file = file.replace(f"recon{data_format}","labels")
+                if not self.filteringBIB:
+                    labels_df = pd.concat([labels_df,pd.read_parquet(file, columns=self.labels_list)])
+                else:
+                    if "sig" in file:
+                        labels_df = pd.concat([labels_df, pd.DataFrame({'signal': [1] * tempDf.shape[0]})])
+                    else:
+                        labels_df = pd.concat([labels_df, pd.DataFrame({'signal': [0] * tempDf.shape[0]})])
+                ylocal_df = pd.concat([ylocal_df,pd.read_parquet(file, columns=['y-local'])])
+                z_loc_df = pd.concat([z_loc_df,pd.read_parquet(file, columns=['hit_z'])])
+
+            has_nans = np.any(np.isnan(recon_df.values), axis=1)
+            has_nans = np.arange(recon_df.shape[0])[has_nans]
+            recon_df_raw = recon_df.drop(has_nans)
+            labels_df_raw = labels_df.drop(has_nans)
+            ylocal_df_raw = ylocal_df.drop(has_nans)
+            z_loc_df_raw = z_loc_df.drop(has_nans)
+
+            recon_values = recon_df_raw.values    
+
+            nonzeros = abs(recon_values) > 0
+            
+            recon_values[nonzeros] = np.sign(recon_values[nonzeros])*np.log1p(abs(recon_values[nonzeros]))/math.log(2)
+            
+            if self.to_standardize:
+                recon_values[nonzeros] = self.standardize(recon_values[nonzeros])
+            
+            recon_values = recon_values.reshape((-1, *self.input_shape))            
+                        
+            if self.transpose is not None:
+                recon_values = recon_values.transpose(self.transpose)
+            
+            self.recon_df = recon_values 
+            self.labels_df = labels_df_raw.values
+            self.ylocal_df = ylocal_df_raw.values
+            self.z_loc_df = z_loc_df_raw.values
+
     
             if tfrecords_dir is None:
                 raise ValueError(f"tfrecords_dir is None")
@@ -197,7 +240,6 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             self.tfrecords_dir = tfrecords_dir    
             os.makedirs(self.tfrecords_dir, exist_ok=True)
             self.save_batches_parallel() # save all the batches
-            del self.current_dataframes 
             
             
         self.tfrecord_filenames = np.sort(np.array(tf.io.gfile.glob(os.path.join(self.tfrecords_dir, "*.tfrecord"))))
@@ -275,8 +317,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         """
         Saves data batches as multiple TFRecord files.
         """
-        # TODO: Make this parallelized
-        num_batches = self.__len__() # Total num of batches
+        num_batches = round(math.ceil(self.labels_df.shape[0]/self.batch_size)) # Total num of batches
         paths_or_errors = []
 
         # The max_workers is set to 1 because processing large batches in multiple threads can significantly
@@ -305,13 +346,9 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             filename = f"batch_{batch_index}.tfrecord"
             TFRfile_path = os.path.join(self.tfrecords_dir, filename)
 
-            if self.include_y_local:
-                X, y, y_local = self.prepare_batch_data(batch_index)
-            else:
-                X, y = self.prepare_batch_data(batch_index)
-                y_local = None
+            X, y, y_local, z_loc = self.prepare_batch_data(batch_index)
 
-            serialized_example = self.serialize_example(X, y, y_local)
+            serialized_example = self.serialize_example(X, y, y_local, z_loc)
 
             with tf.io.TFRecordWriter(TFRfile_path) as writer:
                 writer.write(serialized_example)
@@ -327,78 +364,26 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         """
         index = batch_index * self.batch_size # absolute *event* index
         
-        file_index = np.arange(self.file_offsets.size)[index < self.file_offsets][0] - 1 # first index is 0!
-
-        index = index - self.file_offsets[file_index] # relative event index in file
-        batch_size = min(index + self.batch_size, self.file_offsets[file_index + 1] - self.file_offsets[file_index])
         
-        if file_index != self.current_file_index:
-            self.current_file_index = file_index
-            # print()
-            # print(self.recon_files[file_index])
-            if self.file_type == "csv":
-                recon_df = pd.read_csv(self.recon_files[file_index])
-                if not self.filteringBIB:
-                    labels_df = pd.read_csv(self.label_files[file_index])[self.labels_list]
-                ylocal_df = pd.read_parquet(self.label_files[file_index], columns=['y-local'])
-            elif self.file_type == "parquet":
-                recon_df = pd.read_parquet(self.recon_files[file_index], columns=self.use_time_stamps)
-                if not self.filteringBIB:
-                    labels_df = pd.read_parquet(self.label_files[file_index], columns=self.labels_list)
-                ylocal_df = pd.read_parquet(self.label_files[file_index], columns=['y-local'])
-
-            if self.filteringBIB:
-                if "sig" in self.recon_files[file_index]:
-                    labels_df = pd.DataFrame({'signal': [1] * len(recon_df)})
-                else:
-                    labels_df = pd.DataFrame({'signal': [0] * len(recon_df)})    
-
-            has_nans = np.any(np.isnan(recon_df.values), axis=1)
-            has_nans = np.arange(recon_df.shape[0])[has_nans]
-            recon_df_raw = recon_df.drop(has_nans)
-            labels_df_raw = labels_df.drop(has_nans)
-            ylocal_df_raw = ylocal_df.drop(has_nans)
-
-            joined_df = recon_df_raw.join(labels_df_raw)
-            joined_df = joined_df.join(ylocal_df_raw)
-
-            if self.shuffle: # Changed
-                joined_df = joined_df.sample(frac=1, random_state=self.seed).reset_index(drop=True)  
-
-            recon_values = joined_df[recon_df_raw.columns].values            
-
-            nonzeros = abs(recon_values) > 0
-            
-            recon_values[nonzeros] = np.sign(recon_values[nonzeros])*np.log1p(abs(recon_values[nonzeros]))/math.log(2)
-            
-            if self.to_standardize:
-                recon_values[nonzeros] = self.standardize(recon_values[nonzeros])
-            
-            recon_values = recon_values.reshape((-1, *self.input_shape))            
-                        
-            if self.transpose is not None:
-                recon_values = recon_values.transpose(self.transpose)
-            
-            self.current_dataframes = (
-                recon_values, 
-                joined_df[labels_df_raw.columns].values,
-                joined_df[ylocal_df_raw.columns].values
-            )        
-        
-        recon_df, labels_df, ylocal_df = self.current_dataframes
 
         # print(f'start_index: {index}\t end_index: {batch_size}')
-        X = recon_df[index:batch_size]
-        y = labels_df[index:batch_size] / self.normalization 
+        X = self.recon_df[index:index+self.batch_size]
+        y = self.labels_df[index:index+self.batch_size] / self.normalization 
     
         if self.include_y_local:
-            y_local = ylocal_df[index:batch_size]
-            return X, y, y_local
+            y_local = self.ylocal_df[index:index+self.batch_size]
         else:
-            return X, y
+            y_local = None
+
+        if self.include_z_loc:
+            z_loc = self.z_loc_df[index:index+self.batch_size]
+        else:
+            z_loc = None
+       
+        return X, y, y_local, z_loc
 
     
-    def serialize_example(self, X, y, y_local = None):
+    def serialize_example(self, X, y, y_local = None, z_loc = None):
         """
         Serializes a single example (featuresand labels) to TFRecord format. 
         
@@ -413,7 +398,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         # X and y are float32 (maybe we can reduce this)
         X = tf.cast(X, tf.float32)
         y = tf.cast(y, tf.float32)
-
+        
         feature = {
             'X': self._bytes_feature(tf.io.serialize_tensor(X)),
             'y': self._bytes_feature(tf.io.serialize_tensor(y)),
@@ -422,6 +407,9 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         if y_local is not None:
             y_local = tf.cast(y_local, tf.float32)
             feature['y_local'] = self._bytes_feature(tf.io.serialize_tensor(y_local))
+        if z_loc is not None:
+            z_loc = tf.cast(z_loc, tf.float32)
+            feature['z_loc'] = self._bytes_feature(tf.io.serialize_tensor(z_loc))
 
         example_proto = tf.train.Example(features=tf.train.Features(feature=feature))
         return example_proto.SerializeToString()
@@ -456,8 +444,12 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
 
         for data in parsed_dataset:
             ''' Add the reshaping in saving'''
-            if self.include_y_local:
+            if self.include_y_local and not self.include_z_loc:
                 (X_batch, y_local_batch), y_batch = data
+            elif not self.include_y_local and self.include_z_loc:
+                (X_batch, z_loc_batch), y_batch = data
+            elif self.include_y_local and self.include_z_loc:
+                (X_batch, y_local_batch, z_loc_batch), y_batch = data
             else:
                 X_batch, y_batch = data
 
@@ -465,7 +457,8 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             y_batch = tf.reshape(y_batch, [-1, *y_batch.shape[1:]])
             if self.include_y_local:
                 y_local_batch = tf.reshape(y_local_batch, [-1, *y_local_batch.shape[1:]])
-
+            if self.include_z_loc:
+                z_loc_batch = tf.reshape(z_loc_batch, [-1, *z_loc_batch.shape[1:]])
             if self.quantize:
                 X_batch = QKeras_data_prep_quantizer(X_batch, bits=4, int_bits=0, alpha=1)
 
@@ -479,8 +472,12 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
                     y_local_batch = tf.gather(y_local_batch, shuffled_indices)
                 
             del raw_dataset, parsed_dataset
-            if self.include_y_local:
+            if self.include_y_local and not self.include_z_loc:
                 X_batch = [X_batch, y_local_batch]
+            if not self.include_y_local and self.include_z_loc:
+                X_batch = [X_batch, z_loc_batch]
+            if self.include_y_local and self.include_z_loc:
+                X_batch = [X_batch, y_local_batch, z_loc_batch]
             return X_batch, y_batch
             
     
@@ -499,13 +496,23 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         if self.include_y_local:
             feature_description['y_local'] = tf.io.FixedLenFeature([], tf.string)
 
+        if self.include_z_loc:
+            feature_description['z_loc'] = tf.io.FixedLenFeature([], tf.string)
+
         example = tf.io.parse_single_example(example, feature_description)
         X = tf.io.parse_tensor(example['X'], out_type=tf.float32)
         y = tf.io.parse_tensor(example['y'], out_type=tf.float32)
         
-        if self.include_y_local:
+        if self.include_y_local and not self.include_z_loc:
             y_local = tf.io.parse_tensor(example['y_local'], out_type=tf.float32)
             return (X, y_local), y
+        elif not self.include_y_local and self.include_z_loc:
+            z_loc = tf.io.parse_tensor(example['z_loc'], out_type=tf.float32)
+            return (X, z_loc), y
+        elif self.include_y_local and self.include_z_loc:
+            y_local = tf.io.parse_tensor(example['y_local'], out_type=tf.float32)
+            z_loc = tf.io.parse_tensor(example['z_loc'], out_type=tf.float32)
+            return (X, y_local, z_loc), y
         else:
             return X, y
 

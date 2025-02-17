@@ -9,14 +9,10 @@ import math
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 import os
-import datetime
-import random 
 import logging
 import gc
 import traceback
-
-import utils
-
+from pathlib import Path
 
 # custom quantizer
 
@@ -52,19 +48,15 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             transpose = None,
             files_from_end = False,
             tag: str = "",
-            x_feature_description: list = ['cluster'],
+            x_feature_description: Union[list,str] = ['cluster'],
             filteringBIB: bool = False,
 
             # Added in Optimized datagenerators 
-            load_from_training_dir: str = None,
-            training_dir: str = None,
-            tf_records_dir: str = 'tf_records_train',
+            load_records: bool = False,
+            tf_records_dir: str = None,
             use_time_stamps = -1,
             quantize: bool = False,
             max_workers: int = 1,
-            cut_hit_time: bool = False,
-            hit_time_version: str = "adjusted_hit_time"
-                 
             ):
         super().__init__() 
 
@@ -99,22 +91,35 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         seed: Random seed for shuffling.
         quantize: Whether to quantize the data.
         """
+        if tf_records_dir is None:
+            raise ValueError(f"tf_records_dir is None")
+
         self.file_offsets = [0]
+
+        allowed_features = ['cluster', 'x_profile', 'y_profile', 'x_size', 'y_size', 'y_local', 'z_global', 'total_charge', 'adjusted_hit_time', 'adjusted_hit_time_30ps_gaussian', 'adjusted_hit_time_60ps_gaussian']
         
+        if isinstance(x_feature_description, str) and x_feature_description == "all":
+            self.x_feature_description=allowed_features
+
+        elif isinstance(x_feature_description, str): raise Exception("x_feature_description must be a list of features or \'all\'")
+        
+        else:
+            # check that the listed features are allowed
+            invalid_items = [item for item in x_feature_description if item not in allowed_features]
+            
+            if invalid_items:
+                raise Exception(f"The following features are not allowed in x_feature_description: {invalid_items}\nAllowed features include: {allowed_features}")
+            self.x_feature_description = x_feature_description
+
         # If data is already prepared load and use that data
-        if load_from_training_dir is not None:
-            tf_records_dir = f"{load_from_training_dir}/{tf_records_dir}"
+        if load_records:
             if not os.path.isdir(tf_records_dir):
                 raise ValueError(f"Directory {tf_records_dir} does not exist.")
             else:
-                self.training_dir = tf_records_dir
-                with open(f'{load_from_training_dir}/x_features.txt', 'r') as file:
-                    self.x_feature_description = file.read()
-                self.x_feature_description = self.x_feature_description.split()
-
+                self.tf_records_dir = tf_records_dir
+                
         else:
             self.normalization = normalization
-            self.x_feature_description = x_feature_description
 
             # decide on which time stamps to load
             self.use_time_stamps = np.arange(0,20) if use_time_stamps == -1 else use_time_stamps
@@ -186,6 +191,8 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             z_loc_df = pd.DataFrame()
             eh_pairs = pd.DataFrame()
             hit_time_df = pd.DataFrame()
+            hit_time_30_df = pd.DataFrame()
+            hit_time_60_df = pd.DataFrame()
 
             for file in self.recon_files:
                 tempDf = pd.read_parquet(file, columns=self.use_time_stamps)
@@ -201,7 +208,9 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
                 ylocal_df = pd.concat([ylocal_df,pd.read_parquet(file, columns=['y-local'])])
                 eh_pairs = pd.concat([eh_pairs,pd.read_parquet(file, columns=['number_eh_pairs'])])
                 z_loc_df = pd.concat([z_loc_df,pd.read_parquet(file, columns=['z-global'])])
-                hit_time_df = pd.concat([hit_time_df,pd.read_parquet(file, columns=[hit_time_version])])
+                hit_time_df = pd.concat([hit_time_df,pd.read_parquet(file, columns=['adjusted_hit_time'])])
+                hit_time_30_df = pd.concat([hit_time_30_df,pd.read_parquet(file, columns=['adjusted_hit_time_30ps_gaussian'])])
+                hit_time_60_df = pd.concat([hit_time_60_df,pd.read_parquet(file, columns=['adjusted_hit_time_60ps_gaussian'])])
 
             has_nans = np.any(np.isnan(recon_df.values), axis=1)
             has_nans = np.arange(recon_df.shape[0])[has_nans]
@@ -211,32 +220,12 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             ylocal_df_raw = ylocal_df.drop(has_nans)
             z_loc_df_raw = z_loc_df.drop(has_nans)
             eh_pairs_raw = eh_pairs.drop(has_nans)
-            hit_time_df_raw = hit_time_df.drop(has_nans)
+            hit_time = hit_time_df.drop(has_nans).values
+            hit_time_30 = hit_time_30_df.drop(has_nans).values
+            hit_time_60 = hit_time_60_df.drop(has_nans).values
 
             self.dataPoints = len(labels_df_raw)
 
-            """
-            if cut_hit_time:
-                # First determine how many signal hits are being cut
-                cut = (np.any(hit_time_df_raw.values<0, axis=1) | np.any(hit_time_df_raw.values>0.105, axis=1))&np.any(labels_df_raw.values==1, axis=1)
-                cut = np.arange(recon_df_raw.shape[0])[cut]
-
-                self.signalCut = len(cut)
-
-                cut = np.any(recon_df_raw.values<0, axis=1) | np.any(recon_df_raw.values>0.105, axis=1)
-                cut = np.arange(recon_df_raw.shape[0])[cut]
-
-                self.bibCut = self.signalCut-len(cut)
-
-                recon_df_raw = recon_df_raw.drop(cut)
-                labels_df_raw = labels_df_raw.drop(cut)
-                ylocal_df_raw = ylocal_df_raw.drop(cut)
-                z_loc_df_raw = z_loc_df_raw.drop(cut)
-                eh_pairs_raw = eh_pairs_raw.drop(cut)
-
-                print(f"Total number of clusters: {self.dataPoints}\nNumber of signal clusters cut: {self.signalCut}\nNumber of BIB clusters cut: {self.bib}")
-            """
-            
             recon_values = recon_df_raw.values    
             nonzeros = abs(recon_values) > 0
             recon_values[nonzeros] = np.sign(recon_values[nonzeros])*np.log1p(abs(recon_values[nonzeros]))/math.log(2)
@@ -265,7 +254,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
 
             y_locals = ylocal_df_raw.values/8.5
             z_locs = z_loc_df_raw.values/65
-            eh_pairs = eh_pairs_raw/150000
+            eh_pairs = eh_pairs_raw.values/150000
 
             y_profiles=y_profiles.reshape((-1,13))
             x_profiles=x_profiles.reshape((-1,21))
@@ -291,21 +280,25 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
                 self.x_features['z_global'] = z_locs
             if 'total_charge' in self.x_feature_description:
                 self.x_features['total_charge'] = eh_pairs
-    
-            if training_dir is None:
-                raise ValueError(f"training_dir is None")
+            if 'adjusted_hit_time' in self.x_feature_description:
+                self.x_features['adjusted_hit_time'] = hit_time
+            if 'adjusted_hit_time_30ps_gaussian' in self.x_feature_description:
+                self.x_features['adjusted_hit_time_30ps_gaussian'] = hit_time_30
+            if 'adjusted_hit_time_60ps_gaussian' in self.x_feature_description:
+                self.x_features['adjusted_hit_time_60ps_gaussian'] = hit_time_60
                 
-            self.training_dir = f"{training_dir}/{tf_records_dir}"
-            os.makedirs(training_dir, exist_ok=True)
-            os.makedirs(self.training_dir, exist_ok=True)
-            self.save_batches_parallel() # save all the batches
+            self.tf_records_dir = tf_records_dir
 
-            # Write x_feature names in text file
-            with open(f'{training_dir}/x_features.txt', "w") as f:
+            os.makedirs(self.tf_records_dir, exist_ok=True)
+
+            # Write x_feature names in text file for record keeping
+            with open(f'{self.tf_records_dir}/x_features.txt', "w") as f:
                 for x_feature in self.x_feature_description:
                     f.write(f"{x_feature} ")
-                    
-        self.tfrecord_filenames = np.sort(np.array(tf.io.gfile.glob(os.path.join(self.training_dir, "*.tfrecord"))))
+
+            self.save_batches_parallel() # save all the batches
+
+        self.tfrecord_filenames = np.sort(np.array(tf.io.gfile.glob(os.path.join(self.tf_records_dir, "*.tfrecord"))))
         self.quantize = quantize
         self.epoch_count = 0
         self.on_epoch_end()
@@ -407,7 +400,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         
         try:
             filename = f"batch_{batch_index}.tfrecord"
-            TFRfile_path = os.path.join(self.training_dir, filename)
+            TFRfile_path = os.path.join(self.tf_records_dir, filename)
 
             X, y = self.prepare_batch_data(batch_index)
             serialized_example = self.serialize_example(X,y)
@@ -429,6 +422,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         y = self.labels[index:index+self.batch_size] / self.normalization 
 
         X = []
+
         for x_feature in self.x_feature_description:
             X.append(self.x_features[x_feature][index:index+self.batch_size])
 
@@ -485,7 +479,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         shuffling is also done here.
         TODO: prefetching (un-done)
         """
-        
+                
         tfrecord_path = self.tfrecord_filenames[batch_index]
         raw_dataset = tf.data.TFRecordDataset(tfrecord_path)
         parsed_dataset = raw_dataset.map(self._parse_tfrecord_fn, num_parallel_calls=tf.data.AUTOTUNE)
@@ -532,7 +526,8 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         if len(self.file_offsets) != 1: # used when TFRecord files are created during initialization
             num_batches = self.file_offsets[-1] // self.batch_size
         else: # used during loading saved TFRecord files
-            num_batches = len(os.listdir(self.training_dir))
+            files=[f for f in os.listdir(self.tf_records_dir) if f.endswith(".tfrecord")]
+            num_batches = len(files)
         return num_batches
 
     def on_epoch_end(self):
