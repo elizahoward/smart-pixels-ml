@@ -9,12 +9,12 @@ sys.path.insert(0, parentdir)
 import OptimizedDataGenerator4 as ODG
 
 # Make general tf records directory
-directory_name = 'filtering_records'
-data_directory_path = "/home/elizahoward/MuonColliderSim/Simulation_Output_Beam_Spot/"
+batch_size = 2000
+directory_name = f'filtering_records{batch_size}'
+data_directory_path = "/home/elizahoward/MuonColliderSim/Simulation_Output/"
 is_directory_recursive = False
 file_type = "parquet"
 data_format = "3D" # can't get 2D working
-batch_size = 300
 normalization = 1
 muon_collider = True
 file_fraction = .8 # fraction of files used for training
@@ -102,7 +102,7 @@ validation_generator = ODG.OptimizedDataGenerator(
                 batch_size = batch_size,
                 to_standardize= to_standardize,
                 normalization=normalization,
-                file_count=file_count,
+                file_count=total_files-file_count,
                 files_from_end=True,
                 input_shape = input_shape,
                 transpose = transpose,

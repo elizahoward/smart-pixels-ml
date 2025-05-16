@@ -3,12 +3,12 @@ import os
 #os.environ['TF_USE_LEGACY_KERAS'] = '1' 
 
 import tensorflow as tf
-# import keras
+import keras
 from tensorflow.keras.layers import *
 from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.utils import Sequence
 from qkeras import *
-
+import keras_tuner as kt
 
 # from tensorflow.keras import datasets, layers, models
 
@@ -75,67 +75,8 @@ def CreatePredictionModel(shape, n_filters, pool_size, include_y_local):
     stack = var_network(stack, hidden=16, output=14)
     model = Model(inputs=x_in, outputs=stack)
     return model
-"""
-def CreatePredictionModelYLocal(shape, n_filters, pool_size):
-    x_base = x_in = Input(shape, name="X_input")  # Main input (X)
-    y_local_in = Input(shape=(1,), name="y_local_input")  # y_local input
-    
-    stack = conv_network(x_base, n_filters)
-    stack = AveragePooling2D(
-        pool_size=(pool_size, pool_size), 
-        strides=None, 
-        padding="valid", 
-        data_format=None,        
-    )(stack)
-    stack = QActivation("quantized_bits(8, 0, alpha=1)")(stack)
-    stack = Flatten()(stack)
-    stack = Concatenate()([stack, y_local_in])
-    stack = var_network(stack, hidden=16, output=14)
-    model = Model(inputs=[x_in, y_local_in], outputs=stack)
-    return model
-"""
 
-
-# Can't tell if this is working or not
-"""def CreateClassificationModel(shape, include_y_local=False, include_z_loc=False):
-    x_in = x_base = Input(shape)
-    cluster = Reshape((13, 21))(x_in)
-
-    y_profile = Lambda(lambda x: tf.reduce_sum(x, axis=2))(cluster) # convert to y_profile
-    y_profile = Lambda(lambda x: tf.cast(x != 0, tf.int32))(y_profile)  # Convert non-zero values to 1
-    y_size = Lambda(lambda x: tf.reduce_sum(x, axis=1))(y_profile)  # get y_size
-    y_size = Lambda(lambda x: x / 13)(y_size) # normalize (range is 0 to 13)
-    y_size = Reshape((1,))(y_size)
-
-    y_local_in = Input(shape=(1,), name="y_local_input")
-    y_local_in = Lambda(lambda x: x / 8.5)(y_local_in) # Normalize (range is -4.5 to 8.5)
-
-    stack1 = Concatenate()([y_size, y_local_in])
-
-    output1 = Dense(3, activation='sigmoid', kernel_initializer='glorot_uniform')(stack1)
-
-    x_profile = Lambda(lambda x: tf.reduce_sum(x, axis=1))(cluster) # convert to x_profile
-    x_profile = Lambda(lambda x: tf.cast(x != 0, tf.int32))(x_profile)  # Convert non-zero values to 1
-    x_size = Lambda(lambda x: tf.reduce_sum(x, axis=1))(x_profile) # get x-size
-    x_size = Lambda(lambda x: x / 21)(x_size) # Normalize (range is 0 to 21)
-    x_size = Reshape((1,))(x_size)
-
-    z_loc_in = Input(shape=(1,), name="z_loc_input")
-    z_loc_in = Lambda(lambda x: x / 65)(z_loc_in) # Normalize (range is 0 to 65)
-
-    stack2 = Concatenate()([x_size, z_loc_in])
-
-    output2 = Dense(3, activation='sigmoid', kernel_initializer='glorot_uniform')(stack2)
-
-    stack = Concatenate()([output1, output2])
-
-    output = Dense(1, activation='sigmoid', kernel_initializer='glorot_uniform')(stack)
-
-    model = Model(inputs=[x_in, y_local_in, z_loc_in], outputs=output)
-    
-    return model"""
-
-def CreateClassificationModel(input_features, layer1=3, layer2=3, numLayers=1):
+def CreateClassificationModel(input_features, pairInputs = True, addDirectPath=False,y_local_layer=[3,1], z_global_layer=[3,1], x_profile_layer=[3,1], y_profile_layer=[3,1], classification_layer=[3,1]):
     x_size = Input(shape=(1,), name="x_size")
     y_size = Input(shape=(1,), name="y_size")
 
@@ -169,53 +110,63 @@ def CreateClassificationModel(input_features, layer1=3, layer2=3, numLayers=1):
     if 'cluster' in input_features:
         inputs.append(cluster)
 
-    if 'y_size' in input_features and 'y_local' in input_features:
+    if pairInputs and 'y_size' in input_features and 'y_local' in input_features:
 
         stack1 = Concatenate()([y_size, y_local])
 
-        for num in range(numLayers):
-            stack1 = Dense(layer1, activation='relu', kernel_initializer='glorot_uniform')(stack1)
+        for num in range(y_local_layer[1]):
+            stack1 = Dense(y_local_layer[0], activation='relu', kernel_initializer='glorot_uniform')(stack1)
 
         stacks.append(stack1)
+        if addDirectPath:
+            stacks.append(y_size)
 
-    if 'x_size' in input_features and 'z_global' in input_features:
+    if pairInputs and 'x_size' in input_features and 'z_global' in input_features:
         stack2 = Concatenate()([x_size, z_global])
 
-        for num in range(numLayers):
-            stack2 = Dense(layer2, activation='relu', kernel_initializer='glorot_uniform')(stack2)
-
+        for num in range(z_global_layer[1]):
+            stack2 = Dense(z_global_layer[0], activation='relu', kernel_initializer='glorot_uniform')(stack2)
+        
         stacks.append(stack2)
+        if addDirectPath:
+            stacks.append(x_size) 
 
-    if 'y_profile' in input_features and 'y_local' in input_features:
+    if pairInputs and 'y_profile' in input_features and 'y_local' in input_features:
         stack3 = Conv1D(filters=5, kernel_size=3, activation='relu')(y_profile)
 
         stack3 = MaxPooling1D(pool_size=2)(stack3)
 
         stack3 = Flatten()(stack3)
-
-        stack3 = Dense(5, activation='relu')(stack3)
+        
+        """for num in range(y_profile_layer[1]):
+            stack3 = Dense(y_profile_layer[0], activation='relu')(stack3)"""
 
         stack3 = Concatenate()([stack3, y_local])
-
-        stack3 = Dense(3, activation='relu', kernel_initializer='glorot_uniform')(stack3)
+        for num in range(y_local_layer[1]):
+            stack3 = Dense(y_local_layer[0], activation='relu', kernel_initializer='glorot_uniform')(stack3)
 
         stacks.append(stack3)
 
-    if 'x_profile' in input_features and 'z_global' in input_features:
+    if pairInputs and 'x_profile' in input_features and 'z_global' in input_features:
         stack4 = Conv1D(filters=5, kernel_size=3, activation='relu')(x_profile)
 
-        stack4 = MaxPooling1D(pool_size=2)(stack4)
+        #stack4 = MaxPooling1D(pool_size=2)(stack4)
 
         stack4 = Flatten()(stack4)
 
-        stack4 = Dense(5, activation='relu')(stack4)
+        """for num in range(x_profile_layer[1]):
+            stack4 = Dense(x_profile_layer[0], activation='relu')(stack4)"""
 
         stack4 = Concatenate()([stack4, z_global])
 
-        stack4 = Dense(3, activation='relu', kernel_initializer='glorot_uniform')(stack4)
+        for num in range(z_global_layer[1]):
+            stack4 = Dense(z_global_layer[0], activation='relu', kernel_initializer='glorot_uniform')(stack4)
 
         stacks.append(stack4)
 
+    if not pairInputs:
+        stacks = inputs
+        
     if 'total_charge' in input_features:
         stacks.append(total_charge)
 
@@ -223,7 +174,7 @@ def CreateClassificationModel(input_features, layer1=3, layer2=3, numLayers=1):
 
         stack5 = Conv2D(filters=5, kernel_size=3, activation='relu')(cluster)
 
-        stack5 = MaxPooling2D(pool_size=2)(stack5)
+        #stack5 = MaxPooling2D(pool_size=2)(stack5)
 
         stack5 = Flatten()(stack5)
 
@@ -235,12 +186,43 @@ def CreateClassificationModel(input_features, layer1=3, layer2=3, numLayers=1):
 
         stacks.append(stack5)
 
-    stack = Concatenate()(stacks)
+    #stacks.append(x_size) # Test to see if this helps with the model
 
-    stack = Dense(3, activation='relu', kernel_initializer='glorot_uniform')(stack)
+    stack = Concatenate()(stacks)
+    
+    for num in range(classification_layer[1]):
+        stack = Dense(classification_layer[0], activation='relu', kernel_initializer='glorot_uniform')(stack)
 
     output = Dense(1, activation='sigmoid', kernel_initializer='glorot_uniform')(stack)
 
     model = Model(inputs=inputs, outputs=output)
+
+    return model
+
+def model_builder(hp):
+
+    x_size = Input(shape=(1,), name="x_size")
+    y_size = Input(shape=(1,), name="y_size")
+
+    y_local = Input(shape=(1,), name="y_local")
+    z_global = Input(shape=(1,), name="z_global")
+
+    inputs=[x_size, y_size, y_local, z_global]
+    stacks = [x_size, y_size, y_local, z_global]
+        
+    stack = Concatenate()(stacks)
+
+    hp_units = hp.Int('units', min_value=1, max_value=10, step=1)
+    
+    # num in range(3):
+    stack = Dense(units=hp_units, activation='relu', kernel_initializer='glorot_uniform')(stack)
+
+    output = Dense(1, activation='sigmoid', kernel_initializer='glorot_uniform')(stack)
+
+    model = Model(inputs=inputs, outputs=output)    
+
+    hp_learning_rate = hp.Choice('learning_rate', values=[1, 1e-1, 1e-2])
+
+    model.compile(optimizer=keras.optimizers.Adam(learning_rate=hp_learning_rate), loss='binary_crossentropy', metrics=['binary_accuracy'])
 
     return model
