@@ -118,6 +118,7 @@ def CreateClassificationModel(input_features, pairInputs = True, addDirectPath=F
             stack1 = Dense(y_local_layer[0], activation='relu', kernel_initializer='glorot_uniform')(stack1)
 
         stacks.append(stack1)
+        
         if addDirectPath:
             stacks.append(y_size)
 
@@ -128,6 +129,7 @@ def CreateClassificationModel(input_features, pairInputs = True, addDirectPath=F
             stack2 = Dense(z_global_layer[0], activation='relu', kernel_initializer='glorot_uniform')(stack2)
         
         stacks.append(stack2)
+        
         if addDirectPath:
             stacks.append(x_size) 
 

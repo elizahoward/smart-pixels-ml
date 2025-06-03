@@ -67,6 +67,7 @@ class FilteringModel:
 
         # get number of batches
         self.nBatches=len([f for f in os.listdir(training_dir) if ".tfrecord" in f])
+        print("batches: ", self.nBatches)
         self.training_generator = ODG.OptimizedDataGenerator(load_records=True, tf_records_dir=training_dir, x_feature_description=x_feature_description)
 
         self.validation_generator = ODG.OptimizedDataGenerator(load_records=True, tf_records_dir=validation_dir, x_feature_description=x_feature_description)
@@ -123,7 +124,7 @@ class FilteringModel:
             print(f"Compiling model with learning rate: {learning_rate}")
         self.learning_rate = learning_rate
         decay_steps = self.nSteps*self.nBatches
-        warmup_steps = int(self.nSteps/10)
+        warmup_steps = int(self.nSteps*self.nBatches/10)
         warmup_target = learning_rate
         lr_scheduler = keras.optimizers.schedules.CosineDecay(initial_learning_rate=learning_rate/3, decay_steps=decay_steps,warmup_steps=warmup_steps, alpha=learning_rate/5, warmup_target=warmup_target)
         self.model.compile(optimizer=Adam(learning_rate=lr_scheduler,clipnorm=self.clipnorm), loss='binary_crossentropy', metrics=['binary_accuracy'])
@@ -156,7 +157,7 @@ class FilteringModel:
 
     def runTraining(self, epochs=None, early_stopping=True, save_weights=True, save_weights_files=False,plotTraining=False):
         if epochs is None:
-            epochs = int(self.nSteps*self.nBatches*1.1)
+            epochs = int(self.nSteps*1.1)
 
         early_stopping_patience = 20
 
