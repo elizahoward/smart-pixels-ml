@@ -38,13 +38,12 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             is_directory_recursive: bool = False,
             file_type: str = "parquet",
             data_format: str = "3D",
-            muon_collider: bool = False,
             batch_size: int = 32,
             file_count = None,
             labels_list: Union[List,str] = None,
             to_standardize: bool = False,
             normalization: Union[list,int] = 1,
-            input_shape: Tuple = (13,21),
+            input_shape: Tuple = (1,13, 21),
             transpose = None,
             files_from_end = False,
             tag: str = "",
@@ -54,7 +53,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             # Added in Optimized datagenerators 
             load_records: bool = False,
             tf_records_dir: str = None,
-            use_time_stamps = -1,
+            time_stamps = -1,
             quantize: bool = False,
             max_workers: int = 1,
             ):
@@ -66,10 +65,11 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         data_directory_path:
         labels_directory_path: 
         is_directory_recursive: 
-        file_type: Default: "csv"
+        file_type: Default: "parquet"
                    Adapt the data loader according to file type. For now, it only supports csv and parquet file formats.
-        data_format: Default: 2D
-                     Used to refer to the relevant "recon" files, 2D for 2D pixel array, 3D for time series input,
+        data_format: Default: 3D
+                    Used to refer to the relevant "recon" files, 2D for 2D pixel array, 3D for time series input,  
+                    I can't get 2D working, so I just take the last time slice of the 3D cluster
         batch_size: Default: 32
                     The no. of data points to be included in a single batch.
         file_count: Default: None
@@ -77,34 +77,39 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
                     If set to None, all files will be considered as legitimate inputs.
         labels_list: Default: "cotAlpha"
                      Input column name or list of column names to be used as label input to the neural network.
+        x_feature_description: Default: ['cluster']
+                    Which features do you want to save in (or load from) the tf record.   
+                    If loading from tf records, you don't have to load every feature that was saved, you can just load the ones you want
         to_standardize: If set to True, it ensures that batches are normalized prior to being used as inputs
                         for training.
                         Default: False
-        input_shape: Default: (13,21) for image input to a 2D feedforward neural network.
+        input_shape: Default: (1,13, 21) for image input to a 3D feedforward neural network.
                     To reshape the input array per the requirements of the network training.
         current: Default False, calculate the current instead of the integrated charge
         sample_delta_t: how long an "ADC bin" is in picoseconds
         
         load_from_training_dir: Directory to load prepared data from TFRecords.
         training_dir: Directory to save TFRecords.
-        use_time_stamps: which of the 20 time stamps to train on. default -1 is to train on all of them
+        time_stamps: which of the 20 time stamps to train on. default -1 is to train on all of them
         seed: Random seed for shuffling.
         quantize: Whether to quantize the data.
         """
         if tf_records_dir is None:
             raise ValueError(f"tf_records_dir is None")
 
-        self.file_offsets = [0]
-
+        self.file_offsets = [0] # this is leftover from the originial version and I don't know what it is for
+        
+        # This is the list of features that the code is currently built to handle
         allowed_features = ['cluster', 'x_profile', 'y_profile', 'x_size', 'y_size', 'y_local', 'z_global', 'total_charge', 'adjusted_hit_time', 'adjusted_hit_time_30ps_gaussian', 'adjusted_hit_time_60ps_gaussian']
         
+        # you can just send in "all" and it will use the full list of allowed features
         if isinstance(x_feature_description, str) and x_feature_description == "all":
             self.x_feature_description=allowed_features
 
         elif isinstance(x_feature_description, str): raise Exception("x_feature_description must be a list of features or \'all\'")
         
+        # check that the listed features are allowed
         else:
-            # check that the listed features are allowed
             invalid_items = [item for item in x_feature_description if item not in allowed_features]
             
             if invalid_items:
@@ -117,17 +122,18 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
                 raise ValueError(f"Directory {tf_records_dir} does not exist.")
             else:
                 self.tf_records_dir = tf_records_dir
-                
+        
+        # otherwise write the tf record
         else:
             self.normalization = normalization
 
             # decide on which time stamps to load
-            self.use_time_stamps = np.arange(0,20) if use_time_stamps == -1 else use_time_stamps
+            self.time_stamps = np.arange(0,20) if time_stamps == -1 else time_stamps
             len_xy, ntime = 13*21, 20
             idx = [[i*(len_xy),(i+1)*(len_xy)] for i in range(ntime)] # 20 time stamps of length 13*21
-            self.use_time_stamps = np.array([ np.arange(idx[i][0], idx[i][1]).astype("str") for i in self.use_time_stamps]).flatten().tolist()
-            if use_time_stamps != -1 and data_format != '2D':
-                assert len(use_time_stamps) == input_shape[0]
+            self.time_stamps = np.array([ np.arange(idx[i][0], idx[i][1]).astype("str") for i in self.time_stamps]).flatten().tolist()
+            if time_stamps != -1 and data_format != '2D':
+                assert len(time_stamps) == input_shape[0]
 
             self.max_workers = max_workers
             
@@ -135,46 +141,31 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
                 raise ValueError("file_type can only be \"csv\" or \"parquet\"!")
             self.file_type = file_type
 
-            if not muon_collider:
-                self.recon_files = [
-                    f for f in glob.glob(
-                        data_directory_path + "recon" + data_format + "*." + file_type, 
-                        recursive=is_directory_recursive
-                    ) if tag in f
-                ]
-                self.recon_files.sort()
-            else:
-                self.recon_files_bib = [
-                    f for f in glob.glob(
-                        data_directory_path + "recon" + data_format + "bib*." + file_type, 
-                        recursive=is_directory_recursive
-                    ) if tag in f
-                ]
-                self.recon_files_sig = [
-                    f for f in glob.glob(
-                        data_directory_path + "recon" + data_format + "sig*." + file_type, 
-                        recursive=is_directory_recursive
-                    ) if tag in f
-                ]
-                self.recon_files_sig.sort()
-                self.recon_files_bib.sort()
+            # pull all of the bib files
+            self.recon_files_bib = [
+                f for f in glob.glob(
+                    data_directory_path + "recon" + data_format + "bib*." + file_type, 
+                    recursive=is_directory_recursive
+                ) if tag in f
+            ]
+            # get all of the sig files
+            self.recon_files_sig = [
+                f for f in glob.glob(
+                    data_directory_path + "recon" + data_format + "sig*." + file_type, 
+                    recursive=is_directory_recursive
+                ) if tag in f
+            ]
+            self.recon_files_sig.sort()
+            self.recon_files_bib.sort()
             
+            # Get a subset of the files for validation (usually use files_from_end) or training making sure that you don't overlap
             if file_count != None:
-                if not muon_collider:
-                    if not files_from_end:
-                        self.recon_files = self.recon_files[:file_count]
-                    else:
-                        self.recon_files = self.recon_files[-file_count:]
+                if not files_from_end:
+                    self.recon_files = self.recon_files_bib[:file_count]+self.recon_files_sig[:file_count]
                 else:
-                    if not files_from_end:
-                        self.recon_files = self.recon_files_bib[:file_count]+self.recon_files_sig[:file_count]
-                    else:
-                        self.recon_files = self.recon_files_bib[-file_count:]+self.recon_files_sig[-file_count:]
+                    self.recon_files = self.recon_files_bib[-file_count:]+self.recon_files_sig[-file_count:]
             else:
-                if not muon_collider:
-                        self.recon_files = self.recon_files
-                else:
-                        self.recon_files = self.recon_files_bib+self.recon_files_sig
+                self.recon_files = self.recon_files_bib+self.recon_files_sig
 
             self.dataset_mean = None
             self.dataset_std = None
@@ -195,16 +186,21 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             hit_time_60_df = pd.DataFrame()
 
             for file in self.recon_files:
-                tempDf = pd.read_parquet(file, columns=self.use_time_stamps)
+                tempDf = pd.read_parquet(file, columns=self.time_stamps)
                 recon_df = pd.concat([recon_df,tempDf])
+
+                # Swap recon3D for labels in the file name to get the corresponding labels file
                 file = file.replace(f"recon{data_format}","labels")
-                if not filteringBIB:
+                
+                if not filteringBIB: 
+                    # If you aren't filtering BIB for some reason, you can get truth info from the labels file
                     labels_df = pd.concat([labels_df,pd.read_parquet(file, columns=self.labels_list)])
                 else:
                     if "sig" in file:
                         labels_df = pd.concat([labels_df, pd.DataFrame({'signal': [1] * tempDf.shape[0]})])
                     else:
                         labels_df = pd.concat([labels_df, pd.DataFrame({'signal': [0] * tempDf.shape[0]})])
+
                 ylocal_df = pd.concat([ylocal_df,pd.read_parquet(file, columns=['y-local'])])
                 eh_pairs = pd.concat([eh_pairs,pd.read_parquet(file, columns=['number_eh_pairs'])])
                 z_loc_df = pd.concat([z_loc_df,pd.read_parquet(file, columns=['z-global'])])
@@ -212,6 +208,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
                 hit_time_30_df = pd.concat([hit_time_30_df,pd.read_parquet(file, columns=['adjusted_hit_time_30ps_gaussian'])])
                 hit_time_60_df = pd.concat([hit_time_60_df,pd.read_parquet(file, columns=['adjusted_hit_time_60ps_gaussian'])])
 
+            # Get rid of any invalid values (I don't think there should ever be any, but just in case)
             has_nans = np.any(np.isnan(recon_df.values), axis=1)
             has_nans = np.arange(recon_df.shape[0])[has_nans]
 
@@ -226,6 +223,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
 
             self.dataPoints = len(labels_df_raw)
 
+            # I don't really know what is going on here, I didn't write this
             recon_values = recon_df_raw.values    
             nonzeros = abs(recon_values) > 0
             recon_values[nonzeros] = np.sign(recon_values[nonzeros])*np.log1p(abs(recon_values[nonzeros]))/math.log(2)
@@ -240,18 +238,20 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             
             clusters = recon_values
             
-            if use_time_stamps is list and len(use_time_stamps) == 1:
+            if time_stamps is list and len(time_stamps) == 1:
                 clusters = recon_values.reshape((recon_values.shape[0],13,21))
-
+            
+            #  Get x and y profiles
             y_profiles = np.sum(clusters, axis = 2)
             x_profiles = np.sum(clusters, axis = 1)
 
+            # Get x and y sizes
             bool_arr = x_profiles != 0
             x_sizes = np.sum(bool_arr, axis = 1)/21 
-
             bool_arr = y_profiles != 0
             y_sizes = np.sum(bool_arr, axis = 1)/13
-
+            
+            # scale values to range between 0 and 1
             y_locals = ylocal_df_raw.values/8.5
             z_locs = z_loc_df_raw.values/65
             eh_pairs = eh_pairs_raw.values/150000
@@ -303,8 +303,9 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         self.epoch_count = 0
         self.on_epoch_end()
 
+    # I don't use this, because it caused some of the data to not be included for some reason
     def process_file_parallel(self):
-        file_infos = [(afile, self.use_time_stamps, self.file_type, self.input_shape, self.transpose) for afile in self.recon_files]
+        file_infos = [(afile, self.time_stamps, self.file_type, self.input_shape, self.transpose) for afile in self.recon_files]
         results = []
         with ProcessPoolExecutor(self.max_workers) as executor:
             futures = [executor.submit(self._process_file_single, file_info) for file_info in file_infos]
@@ -332,11 +333,11 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
 
     @staticmethod
     def _process_file_single(file_info):
-        afile, use_time_stamps, file_type, input_shape, transpose = file_info
+        afile, time_stamps, file_type, input_shape, transpose = file_info
         if file_type == "csv":
             adf = pd.read_csv(afile).dropna()
         elif file_type == "parquet":
-            adf = pd.read_parquet(afile, columns=use_time_stamps).dropna()
+            adf = pd.read_parquet(afile, columns=time_stamps).dropna()
     
         x = adf.values
         nonzeros = abs(x) > 0

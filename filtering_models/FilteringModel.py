@@ -31,6 +31,7 @@ def scheduler(epoch, lr):
         return lr
 """  
 
+# This just allows plotting the learning rate after training finishes
 class LearningRate(tf.keras.callbacks.Callback):
     def __init__(self) -> None:
         super().__init__()
@@ -65,17 +66,21 @@ class FilteringModel:
         training_dir = Path(tf_records_dir, 'tfrecords_train')
         validation_dir = Path(tf_records_dir, 'tfrecords_validation')
 
-        # get number of batches
+        # get number of batches from number of tf records files
         self.nBatches=len([f for f in os.listdir(training_dir) if ".tfrecord" in f])
         print("batches: ", self.nBatches)
+
+        # create the set of training data
         self.training_generator = ODG.OptimizedDataGenerator(load_records=True, tf_records_dir=training_dir, x_feature_description=x_feature_description)
 
+        # Create the validation data set, with different features
         self.validation_generator = ODG.OptimizedDataGenerator(load_records=True, tf_records_dir=validation_dir, x_feature_description=x_feature_description)
-        self.validation_generator_with_hit_time = ODG.OptimizedDataGenerator(load_records=True, tf_records_dir=validation_dir, x_feature_description=["adjusted_hit_time", "adjusted_hit_time_30ps_gaussian", "adjusted_hit_time_60ps_gaussian"])
         self.all_features=["x_profile", "y_profile", "x_size", "y_size", "y_local", "z_global", "total_charge", "adjusted_hit_time", "adjusted_hit_time_30ps_gaussian", "adjusted_hit_time_60ps_gaussian"]
         self.validation_generator_all_features = ODG.OptimizedDataGenerator(load_records=True, tf_records_dir=validation_dir, x_feature_description=self.all_features)
         
+        # in the tf records the data is scaled to all range from 0 to 1, but we want to be able to scale it back if needed, so here are the factors to multiply by
         self.scaling={"x_size":21, "y_size":13, "y_local":8.5, "z_global":65, "total_charge":150000}
+        
         self.x_features=x_feature_description
 
         self.nSteps = nSteps
@@ -92,6 +97,7 @@ class FilteringModel:
 
         self.info = None
 
+    # Testing library that does hyperparameter optimization on it's own
     def optimizeKerasTunerModel(self):
         stamp = os.urandom(3).hex()
         folder = f"/home/elizahoward/smart-pixels-ml/filtering_models/hyperparameter_optimization_{stamp}"
@@ -114,6 +120,7 @@ class FilteringModel:
         is {self.best_hps.get('learning_rate')}.
         """)
     
+    # use models.py file to make the model
     def createModel(self, pairInputs,addDirectPath, y_local_layer,z_global_layer,x_profile_layer,y_profile_layer,classification_layer):
         self.model=CreateClassificationModel(self.x_features, pairInputs, addDirectPath,y_local_layer,z_global_layer,x_profile_layer,y_profile_layer,classification_layer)
         if self.verbose:
@@ -123,10 +130,16 @@ class FilteringModel:
         if self.verbose:
             print(f"Compiling model with learning rate: {learning_rate}")
         self.learning_rate = learning_rate
+        
+        # the number of epochs you want to decay over = number of steps in cosine decay * the batch size
         decay_steps = self.nSteps*self.nBatches
+
+        # we can have the learning rate start lower and "warm up" to the learning rate we want before it decays
         warmup_steps = int(self.nSteps*self.nBatches/10)
         warmup_target = learning_rate
+
         lr_scheduler = keras.optimizers.schedules.CosineDecay(initial_learning_rate=learning_rate/3, decay_steps=decay_steps,warmup_steps=warmup_steps, alpha=learning_rate/5, warmup_target=warmup_target)
+        
         self.model.compile(optimizer=Adam(learning_rate=lr_scheduler,clipnorm=self.clipnorm), loss='binary_crossentropy', metrics=['binary_accuracy'])
 
     def loadWeights(self, weightsFile):
@@ -145,7 +158,7 @@ class FilteringModel:
             raise Exception("Model exists. To overwrite existing saved model, set overwrite to True.")
         self.modelName=f"Model {model_number}"
         self.model.save(file_path)
-
+    
     def saveWeights(self, folder=None, overwrite=False):
         if folder==None:
             file_path = Path(f'./{self.modelName}_{self.nSteps}steps_clipnorm{round(self.clipnorm,1)}.weights.h5').resolve()
@@ -159,15 +172,14 @@ class FilteringModel:
         if epochs is None:
             epochs = int(self.nSteps*1.1)
 
+        # we can stop training early if training is not improving the weights 
         early_stopping_patience = 20
-
-        # launch quick training once gpu is available
         es = EarlyStopping( 
         patience=early_stopping_patience,
         restore_best_weights=True
         )
     
-        # checkpoint path
+        # checkpoint path if saving weights at each epoch (generally, don't do this)
         checkpoint_filepath = Path("./weights", 'epoch.{epoch:02d}-t{loss:.2f}-v{val_loss:.2f}.weights.h5').resolve()
         mcp = tf.keras.callbacks.ModelCheckpoint(
             filepath=checkpoint_filepath,
@@ -218,15 +230,6 @@ class FilteringModel:
             ax.set_title(f"Learning Rate: {self.learning_rate}")
             ax.grid(True, linestyle='--', linewidth=0.5, color='gray')
 
-            # determine slope toward end of training (last 5 epochs)
-            """
-            if len(self.history.history['val_binary_accuracy'])>=10:
-                slope_i = (self.history.history['val_binary_accuracy'][4]-self.history.history['val_binary_accuracy'][0])/5*100
-                print(f"Slope at beggining of training: {round(slope_i, 2)}% per epoch")
-                slope_f = (self.history.history['val_binary_accuracy'][len(self.history.history['val_binary_accuracy'])-1]-self.history.history['val_binary_accuracy'][len(self.history.history['val_binary_accuracy'])-5])/5*100
-                print(f"\nSlope towards the end of training: {round(slope_f, 2)}% per epoch")
-            """
-
         else:
             fig, ax = plt.subplots(ncols=1, nrows=2, gridspec_kw={'height_ratios': [3, 1]}, sharex=True)
             ax[0].plot(range(1,len(self.history.history['val_binary_accuracy'])+1),self.history.history['val_binary_accuracy'],c='seagreen',label='validation')
@@ -257,14 +260,19 @@ class FilteringModel:
         else:
             plt.show()
 
-
+    # This needs a better name, but I can't think of one 
+    # This puts the validation clusters through the model, gets predictions, and also pulls other info
     def getInfo(self): 
         
         if self.info is None: 
+
             self.info = {}
+
+            # get predictions (use regular validation generator)
             p_test = self.model.predict(self.validation_generator)
             prediction=p_test.flatten()
-    
+
+            # Iterate through feature info and label on each cluster (use validation generator with the extra info)
             for tuple, y in tqdm(self.validation_generator_all_features):
                 features_array=[*tuple] 
                 if not bool(self.info):
@@ -285,49 +293,38 @@ class FilteringModel:
 
             self.info['prediction']=prediction
 
-
+    # Check model accuracy on validation data, optionally taking into account a cut on the hit time
     def checkAccuracy(self, threshold=0.5): 
         self.getInfo()
-
-        # background regection
-        backgroundCount = 0
+        
         rejectedBackgrounds = np.array([0,0,0])
-        # signal efficiency
         acceptedSignals = np.array([0,0,0])
-        signalCount = 0
 
-        for l, p, t in zip(self.info['labels'], self.info['prediction'], self.info["adjusted_hit_time_30ps_gaussian"]):
-            # background
-            if l <= threshold:
-                backgroundCount += 1 
-                if p <= threshold:
-                    rejectedBackgrounds[0] += 1
-            else:
-                signalCount += 1
-                if p > threshold:
-                    acceptedSignals[0] += 1
+        bibClusters={}
+        bibClusters['prediction']=self.info['prediction'][self.info['labels']==0]
+        bibClusters['adjusted_hit_time_30ps_gaussian']=self.info['adjusted_hit_time_30ps_gaussian'][self.info['labels']==0]
+        totalBackground = len(bibClusters['prediction'])
+        rejectedBackgrounds[0] = len(bibClusters['prediction'][bibClusters['prediction']<threshold])
+        rejectedBackgrounds[1] = len(bibClusters['prediction'][(bibClusters['adjusted_hit_time_30ps_gaussian']<-3*30e-3) | (bibClusters['adjusted_hit_time_30ps_gaussian']>3*30e-3)])
+        rejectedBackgrounds[2] = len(bibClusters['prediction'][(bibClusters['adjusted_hit_time_30ps_gaussian']<-3*30e-3) | (bibClusters['adjusted_hit_time_30ps_gaussian']>3*30e-3) | (bibClusters['prediction']<threshold)])
+        
+        sigClusters = {}
+        sigClusters['prediction']=self.info['prediction'][self.info['labels']==1]
+        sigClusters['adjusted_hit_time_30ps_gaussian']=self.info['adjusted_hit_time_30ps_gaussian'][self.info['labels']==1]
+        totalSignal = len(sigClusters['prediction'])
+        acceptedSignals[0] = len(sigClusters['prediction'][sigClusters['prediction']>=threshold])
+        acceptedSignals[1] = len(sigClusters['prediction'][(sigClusters['adjusted_hit_time_30ps_gaussian']>-3*30e-3) & (sigClusters['adjusted_hit_time_30ps_gaussian']<3*30e-3)])
+        acceptedSignals[2] = len(sigClusters['prediction'][(sigClusters['adjusted_hit_time_30ps_gaussian']>-3*30e-3) & (sigClusters['adjusted_hit_time_30ps_gaussian']<3*30e-3) & (sigClusters['prediction']>=threshold)])
+        
 
-            if l <= threshold:
-                if t<-3*30e-3 or t>3*30e-3 or p <= threshold:
-                    rejectedBackgrounds[1] += 1
-            else:
-                if t>-3*30e-3 and t<3*30e-3 and p > threshold:
-                    acceptedSignals[1] += 1
+        signalEfficiency = acceptedSignals/totalSignal*100
+        backgroundRejection = rejectedBackgrounds/totalBackground*100
 
-            if l <= threshold:
-                if t<-3*30e-3 or t>3*30e-3:
-                    rejectedBackgrounds[2] += 1
-            else:
-                if t>-3*30e-3 and t<3*30e-3:
-                    acceptedSignals[2] += 1
+        accuracy = (acceptedSignals+rejectedBackgrounds)/(totalSignal+totalBackground)*100  
 
-        signalEfficiency = acceptedSignals/signalCount*100
-        backgroundRejection = rejectedBackgrounds/backgroundCount*100
+        fractionSignal = totalSignal/(totalSignal+totalBackground)*100
 
-        accuracy = (acceptedSignals+rejectedBackgrounds)/(signalCount+backgroundCount)*100  
-
-        fractionSignal = signalCount/(signalCount+backgroundCount)*100
-
+        # Print fraction of signal to see if the network is just predicting everything is signal/bib
         print(f"Overall Accuracy of Neural Network: {round(accuracy[0],2)}%\nFraction of Data that are Signal: {round(fractionSignal,2)}%\n")
 
         print(f"Neural Network results without cutting based on hit time: \n")
@@ -342,23 +339,26 @@ class FilteringModel:
 
         print(f"\nSignal Efficiency: {round(signalEfficiency[2],2)}%\nBackground Rejection: {round(backgroundRejection[2],2)}%\n\n")
 
-        print(f"Total number of clusters: {signalCount+backgroundCount}")
+        #print(f"Total number of clusters: {signalCount+backgroundCount}")
 
-    def compareRejectedBIB(self, threshold=0.5):
-        self.getInfo() 
 
-        # Cut all make arrays of just bib clusters
+    # Sorts BIB/signal clusters by whether they were accepted or rejected 
+    def compareAcceptedRejectedClusters(self, threshold=0.5):
+        self.getInfo()
 
+        # Make dict of just bib clusters
         self.bibInfo={} 
         cut=self.info['labels']==0
         for item in list(self.info.keys()):
             self.bibInfo[item]=self.info[item][cut]
-
+        
+        # Make dict of just signal clusters
         self.sigInfo={} 
         cut=self.info['labels']==1
         for item in list(self.info.keys()):
             self.sigInfo[item]=self.info[item][cut]
         
+        # Sort by whether they were accepted or rejected
         self.rejected_by_nn={}
         self.rejected_by_time={}
         self.rejected_by_both={}
@@ -370,51 +370,6 @@ class FilteringModel:
             self.rejected_by_time[item]=self.bibInfo[item][cut2]
             self.rejected_by_both[item]=self.bibInfo[item][cut1 | cut2]
             self.not_rejected[item]=self.bibInfo[item][~(cut1 | cut2)]
-                    
-
-    def checkAccuracyTrainingData(self, threshold=0.5):
-        p_test = self.model.predict(self.training_generator)
-
-        complete_truth = None
-        for _, y in tqdm(self.training_generator):
-            if complete_truth is None:
-                complete_truth = y
-            else:
-                complete_truth = np.concatenate((complete_truth, y), axis=0)
-
-        prediction=p_test.flatten()
-        labels = complete_truth.flatten()
-
-        # background regection
-        backgroundCount = 0
-        rejectedBackground = 0
-        # signal efficiency
-        acceptedSignal = 0
-        signalCount = 0
-
-        for l, p in zip(labels, prediction):
-            # background
-            if l <= threshold:
-                backgroundCount += 1
-                if p <= threshold:
-                    rejectedBackground += 1
-            else:
-                signalCount += 1
-                if p > threshold:
-                    acceptedSignal += 1
-
-        signalEfficiency = acceptedSignal/signalCount*100
-        backgroundRejection = rejectedBackground/backgroundCount*100
-
-        accuracy = (acceptedSignal+rejectedBackground)/(signalCount+backgroundCount)*100
-
-        fractionSignal = signalCount/(signalCount+backgroundCount)*100
-
-        print(f"\nSignal Efficiency: {round(signalEfficiency,2)}%\nBackground Rejection: {round(backgroundRejection,2)}%\n")
-
-        print(f"Overall Accuracy: {round(accuracy,2)}%\nFraction of Data that are Signal: {round(fractionSignal,2)}%")
-
-        print(f"\nTotal number of clusters: {signalCount+backgroundCount}")
 
 
     def countClusters(self):
