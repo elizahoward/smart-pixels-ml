@@ -9,9 +9,9 @@ sys.path.insert(0, parentdir)
 import OptimizedDataGenerator4 as ODG
 
 # Make general tf records directory
-batch_size = 2000
-directory_name = f'filtering_records{batch_size}'
-data_directory_path = "/home/elizahoward/MuonColliderSim/Simulation_Output/"
+batch_size = 1000
+directory_name = f'../tf_records{batch_size}Daniel'
+data_directory_path = "/local/d1/smartpixML/MuonColliderSim/Simulation_Output/"
 is_directory_recursive = False
 file_type = "parquet"
 data_format = "3D" # can't get 2D working
@@ -70,7 +70,8 @@ total_files = len(glob.glob(
             recursive=is_directory_recursive
             ))
 file_count = round(file_fraction*total_files)
-
+print(f"training file count: {file_count}")
+print(f"validation file count: {total_files-file_count}")
 start_time = time.time()
 training_generator = ODG.OptimizedDataGenerator(
                 data_directory_path = data_directory_path,
@@ -89,6 +90,7 @@ training_generator = ODG.OptimizedDataGenerator(
                 tag = tag,
                 x_feature_description=x_feature_description,
                 filteringBIB=filteringBIB,
+                load_records=False,
             )
 print("--- Training generator %s seconds ---" % (time.time() - start_time))
 
@@ -111,5 +113,6 @@ validation_generator = ODG.OptimizedDataGenerator(
                 tag = tag,
                 x_feature_description=x_feature_description,
                 filteringBIB=filteringBIB,
+                load_records=False,
             )
 print("--- Validation generator %s seconds ---" % (time.time() - start_time))

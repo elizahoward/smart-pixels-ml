@@ -158,7 +158,11 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
                 ]
                 self.recon_files_sig.sort()
                 self.recon_files_bib.sort()
-            
+                # print("filles??????")
+                # print(self.recon_files_sig)
+                # print(self.recon_files_bib)
+                # print(data_directory_path + "recon" + data_format + "bib*." + file_type)
+            # print(f"GEEZ, file count: {file_count}")
             if file_count != None:
                 if not muon_collider:
                     if not files_from_end:
@@ -193,8 +197,10 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             hit_time_df = pd.DataFrame()
             hit_time_30_df = pd.DataFrame()
             hit_time_60_df = pd.DataFrame()
-
+            # print("Please!!!!")
+            # print(self.recon_files)
             for file in self.recon_files:
+                # print("GAAAAAA")
                 tempDf = pd.read_parquet(file, columns=self.use_time_stamps)
                 recon_df = pd.concat([recon_df,tempDf])
                 file = file.replace(f"recon{data_format}","labels")
