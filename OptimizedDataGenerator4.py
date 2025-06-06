@@ -492,12 +492,11 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             X_batch, y_batch = data
 
             y_batch = tf.reshape(y_batch, [-1, *y_batch.shape[1:]])
-
-            for batch in X_batch:
-                batch = tf.reshape(batch, [-1, *batch.shape[1:]])       
             
-            return X_batch, y_batch # NOTE: list(X_batch) works for venv
+            for x_feature in X_batch.keys():
+                X_batch[x_feature] = tf.reshape(X_batch[x_feature], [-1, *X_batch[x_feature].shape[1:]])
             
+            return X_batch, y_batch
     
     def _parse_tfrecord_fn(self, example):
         """
@@ -519,15 +518,12 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
 
         y = tf.io.parse_tensor(example['y'], out_type=tf.float32)
 
-        X = []
+        X = {}
         for x_feature in self.x_feature_description:
-            X.append(tf.io.parse_tensor(example[x_feature], out_type=tf.float32))
+             X[x_feature]= tf.io.parse_tensor(example[x_feature], out_type=tf.float32)
 
-        if len(X)==1:
-            X = X[0]
-        else:
-            X =tuple([row for row in X])
         return X, y
+
 
     def __len__(self):
         if len(self.file_offsets) != 1: # used when TFRecord files are created during initialization

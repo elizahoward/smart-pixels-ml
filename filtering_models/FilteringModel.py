@@ -159,16 +159,16 @@ class FilteringModel:
         self.modelName=f"Model {model_number}"
         self.model.save(file_path)
     
-    def saveWeights(self, folder=None, overwrite=False):
+    def saveWeights(self, folder=None, fileName = "", overwrite=False):
         if folder==None:
-            file_path = Path(f'./{self.modelName}_{self.nSteps}steps_clipnorm{round(self.clipnorm,1)}.weights.h5').resolve()
+            file_path = Path(f'./{self.modelName}{fileName}.weights.h5').resolve()
         else:
-            file_path = Path(f'{folder}/{self.modelName}_{self.nSteps}steps_clipnorm{round(self.clipnorm,1)}.weights.h5').resolve()
+            file_path = Path(f'{folder}/{self.modelName}{fileName}.weights.h5').resolve()
         if not overwrite and os.path.exists(file_path):
             raise Exception("Weights file exists. To overwrite existing saved model, set overwrite to True.")
         self.model.save_weights(file_path)
 
-    def runTraining(self, epochs=None, early_stopping=True, save_weights=True, save_weights_files=False,plotTraining=False):
+    def runTraining(self, epochs=None, early_stopping=True, save_learning_rate=True, save_weights_files=False,plotTraining=False):
         if epochs is None:
             epochs = int(self.nSteps*1.1)
 
@@ -191,7 +191,7 @@ class FilteringModel:
         callbacks = []
         if early_stopping:
             callbacks.append(es)
-        if save_weights:
+        if save_learning_rate:
             callbacks.append(LearningRate())
         if save_weights_files:
             callbacks.append(mcp)
@@ -273,16 +273,16 @@ class FilteringModel:
             prediction=p_test.flatten()
 
             # Iterate through feature info and label on each cluster (use validation generator with the extra info)
-            for tuple, y in tqdm(self.validation_generator_all_features):
-                features_array=[*tuple] 
+            for x_features, y in tqdm(self.validation_generator_all_features):
+                #features_=[*tuple] 
                 if not bool(self.info):
                     self.info['labels']=y 
-                    for feature_name, feature_array in zip(self.all_features,features_array):
-                        self.info[feature_name]=feature_array
+                    for x_feature in x_features.keys():
+                        self.info[x_feature]=x_features[x_feature]
                 else:
                     self.info['labels'] = np.concatenate((self.info['labels'], y), axis=0) 
-                    for feature_name, feature_array in zip(self.all_features,features_array):
-                        self.info[feature_name]=np.concatenate((self.info[feature_name], feature_array), axis=0)
+                    for x_feature in x_features.keys():
+                        self.info[x_feature]=np.concatenate((self.info[x_feature], x_features[x_feature]), axis=0)
             for item in list(self.info.keys()):
                 if self.info[item].shape[1]==1:
                     self.info[item] = np.array(self.info[item]).flatten()

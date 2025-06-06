@@ -10,20 +10,17 @@ import OptimizedDataGenerator4 as ODG
 
 # Make general tf records directory
 batch_size = 2000
-directory_name = f'filtering_records{batch_size}'
+directory_name = f'filtering_records{batch_size}test'
 data_directory_path = "/home/elizahoward/MuonColliderSim/Simulation_Output/"
 is_directory_recursive = False
 file_type = "parquet"
 data_format = "3D" # can't get 2D working
 normalization = 1
-muon_collider = True
 file_fraction = .8 # fraction of files used for training
 to_standardize = False
 input_shape = (1,13, 21) # dimension of 3D cluster
 transpose=(0, 2, 3, 1) # not sure what this does 
-use_time_stamps=[19] # last timestamp is 19
-learning_rate = 0.001
-tag = ""
+time_stamps=[19] # last timestamp is 19
 x_feature_description = "all"
 filteringBIB = True
 
@@ -77,16 +74,14 @@ training_generator = ODG.OptimizedDataGenerator(
                 is_directory_recursive = is_directory_recursive,
                 file_type = file_type,
                 data_format = data_format,
-                muon_collider = muon_collider,
                 batch_size = batch_size,
                 to_standardize= to_standardize,
                 normalization=normalization,
                 file_count=file_count,
                 input_shape = input_shape,
                 transpose = transpose,
-                use_time_stamps = use_time_stamps,
+                time_stamps = time_stamps,
                 tf_records_dir = tf_dir_train,
-                tag = tag,
                 x_feature_description=x_feature_description,
                 filteringBIB=filteringBIB,
             )
@@ -98,7 +93,6 @@ validation_generator = ODG.OptimizedDataGenerator(
                 is_directory_recursive = is_directory_recursive,
                 file_type = file_type,
                 data_format = data_format,
-                muon_collider = muon_collider,
                 batch_size = batch_size,
                 to_standardize= to_standardize,
                 normalization=normalization,
@@ -106,9 +100,8 @@ validation_generator = ODG.OptimizedDataGenerator(
                 files_from_end=True,
                 input_shape = input_shape,
                 transpose = transpose,
-                use_time_stamps = use_time_stamps,
+                time_stamps = time_stamps,
                 tf_records_dir = tf_dir_validation,
-                tag = tag,
                 x_feature_description=x_feature_description,
                 filteringBIB=filteringBIB,
             )
