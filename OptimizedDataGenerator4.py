@@ -43,17 +43,17 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             labels_list: Union[List,str] = None,
             to_standardize: bool = False,
             normalization: Union[list,int] = 1,
-            input_shape: Tuple = (1,13, 21),
+            input_shape: Tuple = (1, 13, 21),
             transpose = None,
             files_from_end = False,
             tag: str = "",
             x_feature_description: Union[list,str] = ['cluster'],
-            filteringBIB: bool = False,
+            filteringBIB: bool = True,
 
             # Added in Optimized datagenerators 
             load_records: bool = False,
             tf_records_dir: str = None,
-            time_stamps = -1,
+            time_stamps = [19],
             quantize: bool = False,
             max_workers: int = 1,
             ):
@@ -223,7 +223,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
 
             self.dataPoints = len(labels_df_raw)
 
-            # I don't really know what is going on here, I didn't write this
+            # Log normalization to avoid compressing small numbers to zero and to make difference between small numbers visible
             recon_values = recon_df_raw.values    
             nonzeros = abs(recon_values) > 0
             recon_values[nonzeros] = np.sign(recon_values[nonzeros])*np.log1p(abs(recon_values[nonzeros]))/math.log(2)
@@ -242,7 +242,8 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
                 clusters = recon_values.reshape((recon_values.shape[0],13,21))
             
             #  Get x and y profiles
-            y_profiles = np.sum(clusters, axis = 2)
+            # make sure summing on right axis
+            y_profiles = np.sum(clusters, axis = 2) 
             x_profiles = np.sum(clusters, axis = 1)
 
             # Get x and y sizes
@@ -254,8 +255,9 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             # scale values to range between 0 and 1
             y_locals = ylocal_df_raw.values/8.5
             z_locs = z_loc_df_raw.values/65
-            eh_pairs = eh_pairs_raw.values/150000
+            eh_pairs = eh_pairs_raw.values/150000 # Scale better here
 
+            # This does nothing. Remove
             y_profiles=y_profiles.reshape((-1,13))
             x_profiles=x_profiles.reshape((-1,21))
 
@@ -521,7 +523,11 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         for x_feature in self.x_feature_description:
             X.append(tf.io.parse_tensor(example[x_feature], out_type=tf.float32))
 
-        return tuple([row for row in X]), y
+        if len(X)==1:
+            X = X[0]
+        else:
+            X =tuple([row for row in X])
+        return X, y
 
     def __len__(self):
         if len(self.file_offsets) != 1: # used when TFRecord files are created during initialization
