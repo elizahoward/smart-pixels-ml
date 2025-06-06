@@ -526,7 +526,11 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
         for x_feature in self.x_feature_description:
             X.append(tf.io.parse_tensor(example[x_feature], out_type=tf.float32))
 
-        return tuple([row for row in X]), y
+        if len(X)==1:
+            X = X[0]
+        else:
+            X =tuple([row for row in X]) 
+        return X, y
 
     def __len__(self):
         if len(self.file_offsets) != 1: # used when TFRecord files are created during initialization

@@ -1,1 +1,1 @@
-cluster x_profile 
+cluster x_profile x_size 
