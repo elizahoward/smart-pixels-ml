@@ -9,7 +9,7 @@ sys.path.insert(0, parentdir)
 import OptimizedDataGenerator4 as ODG
 
 # Make general tf records directory
-batch_size = 1000
+batch_size = 10000
 directory_name = f'../tf_records{batch_size}Daniel'
 data_directory_path = "/local/d1/smartpixML/MuonColliderSim/Simulation_Output/"
 is_directory_recursive = False

@@ -188,7 +188,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             # print(self.recon_files)
             for file in self.recon_files:
                 # print("GAAAAAA")
-                tempDf = pd.read_parquet(file, columns=self.use_time_stamps)
+                tempDf = pd.read_parquet(file, columns=self.time_stamps)
                 recon_df = pd.concat([recon_df,tempDf])
 
                 # Swap recon3D for labels in the file name to get the corresponding labels file
