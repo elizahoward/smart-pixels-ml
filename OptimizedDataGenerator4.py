@@ -132,6 +132,7 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             len_xy, ntime = 13*21, 20
             idx = [[i*(len_xy),(i+1)*(len_xy)] for i in range(ntime)] # 20 time stamps of length 13*21
             self.time_stamps = np.array([ np.arange(idx[i][0], idx[i][1]).astype("str") for i in self.time_stamps]).flatten().tolist()
+            print(f"lenght time stamps {len(time_stamps)} and input shape thing {input_shape[0]}")
             if time_stamps != -1 and data_format != '2D':
                 assert len(time_stamps) == input_shape[0]
 
