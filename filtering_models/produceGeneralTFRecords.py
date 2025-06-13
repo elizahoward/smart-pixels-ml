@@ -7,10 +7,12 @@ import sys
 parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, parentdir) 
 import OptimizedDataGenerator4 as ODG
+import tensorflow as tf
+tf.config.set_visible_devices([], 'GPU')
 
 # Make general tf records directory
-batch_size = 1000
-directory_name = f'../tf_records{batch_size}DanielWithTiming'
+batch_size = 3000
+directory_name = f'../tf_records{batch_size}DanielWith20Timing'
 data_directory_path = "/local/d1/smartpixML/MuonColliderSim/Simulation_Output/"
 is_directory_recursive = False
 file_type = "parquet"
@@ -18,9 +20,9 @@ data_format = "3D" # can't get 2D working
 normalization = 1
 file_fraction = .8 # fraction of files used for training
 to_standardize = False
-input_shape = (3,13, 21) # dimension of 3D cluster
+input_shape = (20,13, 21) # dimension of 3D cluster
 transpose=(0, 2, 3, 1) # not sure what this does 
-time_stamps=[17,18,19] # last timestamp is 19
+time_stamps=list(range(20)) # last timestamp is 19
 x_feature_description = "all"
 filteringBIB = True
 
