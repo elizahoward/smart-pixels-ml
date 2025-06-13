@@ -38,22 +38,22 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             is_directory_recursive: bool = False,
             file_type: str = "parquet",
             data_format: str = "3D",
-            batch_size: int = 200,
+            batch_size: int = 32,
             file_count = None,
             labels_list: Union[List,str] = None,
             to_standardize: bool = False,
             normalization: Union[list,int] = 1,
-            input_shape: Tuple = (1,13, 21),
+            input_shape: Tuple = (1, 13, 21),
             transpose = None,
             files_from_end = False,
             tag: str = "",
             x_feature_description: Union[list,str] = ['cluster'],
-            filteringBIB: bool = False,
+            filteringBIB: bool = True,
 
             # Added in Optimized datagenerators 
             load_records: bool = False,
             tf_records_dir: str = None,
-            time_stamps = -1,
+            time_stamps = [19],
             quantize: bool = False,
             max_workers: int = 1,
             ):
@@ -223,16 +223,16 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
 
             self.dataPoints = len(labels_df_raw)
 
-            # I don't really know what is going on here, I didn't write this
-            recon_values = recon_df_raw.values
+            # Log normalization to avoid compressing small numbers to zero and to make difference between small numbers visible
+            recon_values = recon_df_raw.values    
             nonzeros = abs(recon_values) > 0
             recon_values[nonzeros] = np.sign(recon_values[nonzeros])*np.log1p(abs(recon_values[nonzeros]))/math.log(2)
             
             if self.to_standardize:
                 recon_values[nonzeros] = self.standardize(recon_values[nonzeros])
             
-            recon_values = recon_values.reshape((-1, *self.input_shape))        #do it for everything and it works     
-
+            recon_values = recon_values.reshape((-1, *self.input_shape))            
+                        
             if self.transpose is not None:
                 recon_values = recon_values.transpose(self.transpose)
             
@@ -240,11 +240,16 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             
             if time_stamps is list and len(time_stamps) == 1:
                 clusters = recon_values.reshape((recon_values.shape[0],13,21))
-
+            
             #  Get x and y profiles
-            y_profiles = np.sum(clusters, axis = 2)
+            # make sure summing on right axis
+            y_profiles = np.sum(clusters, axis = 2) 
             x_profiles = np.sum(clusters, axis = 1)
 
+            
+            print(x_profiles.shape)   # NOT x_profiles.shape()
+            print(y_profiles.shape)   # similarly, to inspect y_profiles
+            
             # Get x and y sizes
             bool_arr = x_profiles != 0
             x_sizes = np.sum(bool_arr, axis = 1)/21 
@@ -254,8 +259,9 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             # scale values to range between 0 and 1
             y_locals = ylocal_df_raw.values/8.5
             z_locs = z_loc_df_raw.values/65
-            eh_pairs = eh_pairs_raw.values/150000 #probably not good proctice
+            eh_pairs = eh_pairs_raw.values/150000 # Scale better here
 
+            # This does nothing. Remove
             y_profiles=y_profiles.reshape((-1,13))
             x_profiles=x_profiles.reshape((-1,21))
 
@@ -490,12 +496,11 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             X_batch, y_batch = data
 
             y_batch = tf.reshape(y_batch, [-1, *y_batch.shape[1:]])
-
-            for batch in X_batch:
-                batch = tf.reshape(batch, [-1, *batch.shape[1:]])       
             
-            return X_batch, y_batch # NOTE: list(X_batch) works for venv
+            for x_feature in X_batch.keys():
+                X_batch[x_feature] = tf.reshape(X_batch[x_feature], [-1, *X_batch[x_feature].shape[1:]])
             
+            return X_batch, y_batch
     
     def _parse_tfrecord_fn(self, example):
         """
@@ -517,11 +522,12 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
 
         y = tf.io.parse_tensor(example['y'], out_type=tf.float32)
 
-        X = []
+        X = {}
         for x_feature in self.x_feature_description:
-            X.append(tf.io.parse_tensor(example[x_feature], out_type=tf.float32))
+             X[x_feature]= tf.io.parse_tensor(example[x_feature], out_type=tf.float32)
 
-        return tuple([row for row in X]), y
+        return X, y
+
 
     def __len__(self):
         if len(self.file_offsets) != 1: # used when TFRecord files are created during initialization
