@@ -260,9 +260,9 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             z_locs = z_loc_df_raw.values/65
             eh_pairs = eh_pairs_raw.values/150000 # Scale better here
 
-            # This does nothing. Remove
-            y_profiles=y_profiles.reshape((-1,13))
-            x_profiles=x_profiles.reshape((-1,21))
+            # # This does nothing. Remove
+            # y_profiles=y_profiles.reshape((-1,13))
+            # x_profiles=x_profiles.reshape((-1,21))
 
             # Save the labels 
             self.labels = labels_df_raw.values
