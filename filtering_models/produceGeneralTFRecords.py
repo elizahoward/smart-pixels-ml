@@ -9,7 +9,7 @@ sys.path.insert(0, parentdir)
 import OptimizedDataGenerator4 as ODG
 
 # Make general tf records directory
-batch_size = 2000
+batch_size = 2048
 directory_name = f'filtering_records{batch_size}test'
 data_directory_path = "/home/elizahoward/MuonColliderSim/Simulation_Output/"
 is_directory_recursive = False
