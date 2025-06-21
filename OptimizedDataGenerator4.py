@@ -246,6 +246,10 @@ class OptimizedDataGenerator(tf.keras.utils.Sequence):
             y_profiles = np.sum(clusters, axis = 2) 
             x_profiles = np.sum(clusters, axis = 1)
 
+            
+            print(x_profiles.shape)   # NOT x_profiles.shape()
+            print(y_profiles.shape)   # similarly, to inspect y_profiles
+            
             # Get x and y sizes
             bool_arr = x_profiles != 0
             x_sizes = np.sum(bool_arr, axis = 1)/21 
