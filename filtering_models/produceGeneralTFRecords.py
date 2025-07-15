@@ -11,16 +11,16 @@ import OptimizedDataGenerator4 as ODG
 # Make general tf records directory
 batch_size = 2048
 directory_name = f'filtering_records{batch_size}test'
-data_directory_path = "/home/youeric/PixelML/MuonColliderSim/Simulation_Output/"
+data_directory_path = "/home/youeric/PixelSim2/MuonColliderSim/Simulation_Output/"
 is_directory_recursive = False
 file_type = "parquet"
 data_format = "3D" # can't get 2D working
 normalization = 1
 file_fraction = .8 # fraction of files used for training
 to_standardize = False
-input_shape = (20,13, 21) # dimension of 3D cluster
+input_shape = (1 ,13, 21) # dimension of 3D cluster
 transpose=(0, 2, 3, 1) # not sure what this does 
-time_stamps = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19] # last timestamp is 19
+time_stamps = [19] # last timestamp is 19
 x_feature_description = "all"
 filteringBIB = True
 
@@ -81,7 +81,7 @@ training_generator = ODG.OptimizedDataGenerator(
                 input_shape = input_shape,
                 transpose = transpose,
                 time_stamps = time_stamps,
-                tf_records_dir = tf_dir_train,
+                tf_records_dir = str(tf_dir_train),
                 x_feature_description=x_feature_description,
                 filteringBIB=filteringBIB,
             )
@@ -101,7 +101,7 @@ validation_generator = ODG.OptimizedDataGenerator(
                 input_shape = input_shape,
                 transpose = transpose,
                 time_stamps = time_stamps,
-                tf_records_dir = tf_dir_validation,
+                tf_records_dir = str(tf_dir_validation),
                 x_feature_description=x_feature_description,
                 filteringBIB=filteringBIB,
             )
