@@ -14,8 +14,8 @@ import sys
 # All are in the parent directory
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import OptimizedDataGenerator4 as ODG
-import OptimizedDataGenerator4_shuffled as ODG_BATCH
-import OptimizedDataGenerator4_data_shuffled as ODG_DATA
+from shuffling_data import OptimizedDataGenerator4_shuffled as ODG_BATCH
+from shuffling_data import OptimizedDataGenerator4_data_shuffled as ODG_DATA
 
 # --- Model definition (fixed hyperparameters) ---
 def build_model():
