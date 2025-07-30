@@ -1,0 +1,104 @@
+## model1 
+
+input1 = tf.keras.layers.Input(shape=(1,), name="z_global")
+input2 = tf.keras.layers.Input(shape=(1,), name="x_size")
+input3 = tf.keras.layers.Input(shape=(1,), name="y_size")
+input4 = tf.keras.layers.Input(shape=(1,), name="y_local")
+x = tf.keras.layers.Concatenate()([input1, input2, input3, input4])
+
+## I want to try this with 1 int bit and 7 fractional
+## I want to try this with 0 int bit and 7 fractional
+
+# layer 1
+x = QDense(
+    17,
+    kernel_quantizer=quantized_bits(8, 0, alpha=1),
+    bias_quantizer=quantized_bits(8, 0, alpha=1),
+    #kernel_regularizer=tf.keras.regularizers.L1L2(0.0001),
+    ## adds sum of the activations squared to the loss function 
+    #activity_regularizer=tf.keras.regularizers.L2(0.0001),
+)(x)
+x = QActivation(
+    activation=quantized_relu(8, 0),
+    name="q_relu1"
+)(x)
+
+# layer 2 (example—you can tweak per‐layer bits)
+x = QDense(
+    20,
+    kernel_quantizer=quantized_bits(8, 0, alpha=1),
+    bias_quantizer=quantized_bits(8, 0, alpha=1),
+    #kernel_regularizer=tf.keras.regularizers.L1L2(0.0001),
+    ## adds sum of the activations squared to the loss function 
+    #activity_regularizer=tf.keras.regularizers.L2(0.0001),
+)(x)
+x = QActivation(
+    activation=quantized_relu(8, 0),
+    name="q_relu2"
+)(x)
+
+# layer 3
+x = QDense(
+    9,
+    kernel_quantizer=quantized_bits(8, 0, alpha=1),
+    bias_quantizer=quantized_bits(8, 0, alpha=1),
+    #kernel_regularizer=tf.keras.regularizers.L1L2(0.0001),
+    ## adds sum of the activations squared to the loss function 
+    #activity_regularizer=tf.keras.regularizers.L2(0.0001),
+)(x)
+x = QActivation(
+    activation=quantized_relu(8, 0),
+    name="q_relu3"
+)(x)
+
+# layer 4
+x = QDense(
+    16,
+    kernel_quantizer=quantized_bits(8, 0, alpha=1),
+    bias_quantizer=quantized_bits(8, 0, alpha=1),
+    #kernel_regularizer=tf.keras.regularizers.L1L2(0.0001),
+    ## adds sum of the activations squared to the loss function 
+    #activity_regularizer=tf.keras.regularizers.L2(0.0001),
+)(x)
+x = QActivation(
+    activation=quantized_relu(8, 0),
+    name="q_relu4"
+)(x)
+
+# layer 5
+x = QDense(
+    8,
+    kernel_quantizer=quantized_bits(8, 0, alpha=1),
+    bias_quantizer=quantized_bits(8, 0, alpha=1),
+    #kernel_regularizer=tf.keras.regularizers.L1L2(0.0001),
+    ## adds sum of the activations squared to the loss function 
+    #activity_regularizer=tf.keras.regularizers.L2(0.0001),
+)(x)
+x = QActivation(
+    activation=quantized_relu(8, 0),
+    name="q_relu5"
+)(x)
+
+# output
+x = QDense(
+    1,
+    kernel_quantizer=quantized_bits(8, 0, alpha=1),
+    bias_quantizer=quantized_bits(8, 0, alpha=1),
+    #kernel_regularizer=tf.keras.regularizers.L2(0.0001),
+)(x)
+out = QActivation("smooth_sigmoid")(x)
+
+m = tf.keras.Model(inputs=[input1, input2, input3, input4], outputs=out)
+m.compile(
+    optimizer="adam",
+    loss="binary_crossentropy",
+    metrics=["binary_accuracy"],
+    run_eagerly=True
+)
+
+hist  = m.fit(
+        x=trainODG,
+        validation_data=validationODG,
+        epochs=100,        # you can shorten for quick experiments
+        verbose=1
+    )
