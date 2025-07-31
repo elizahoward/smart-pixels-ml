@@ -99,6 +99,6 @@ m.compile(
 hist  = m.fit(
         x=trainODG,
         validation_data=validationODG,
-        epochs=100,        # you can shorten for quick experiments
+        epochs=100,       
         verbose=1
     )
