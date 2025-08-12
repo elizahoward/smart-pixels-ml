@@ -1,0 +1,11 @@
+{
+  "model_type": "quantized",
+  "weight_bits": 2,
+  "activation_bits": 8,
+  "integer_bits": 0,
+  "test_accuracy": 0.917435884475708,
+  "test_loss": 0.25021693110466003,
+  "roc_auc": 0.9515062117000116,
+  "model_name": "quantized_model_2bit_0int",
+  "epochs_trained": 150
+}

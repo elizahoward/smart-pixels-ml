@@ -1,0 +1,7 @@
+{
+  "trial": 6,
+  "test_accuracy": 0.9207791090011597,
+  "test_loss": 0.249497652053833,
+  "roc_auc": 0.9547099481508534,
+  "epochs_trained": 150
+}

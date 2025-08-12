@@ -14,12 +14,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 import OptimizedDataGenerator4 as ODG
 
 # Data directories
-base_dir = Path("/home/youeric/PixelML/smart_pixels_ml/filtering_models/filtering_records2000")
+# base_dir = Path("/home/youeric/PixelML/smart_pixels_ml/filtering_models/filtering_records2000")
+base_dir = Path("/home/youeric/PixelML/smart_pixels_ml/shuffling_data/filtering_records1024_data_shuffled_single")
 train_dir = base_dir / "tfrecords_train"
 val_dir = base_dir / "tfrecords_validation"
 
 # Results directory
-results_dir = Path(__file__).resolve().parent / "results"
+results_dir = Path(__file__).resolve().parent / "resultsss"
 os.makedirs(results_dir, exist_ok=True)
 
 # Data generators
@@ -41,7 +42,7 @@ config = {
     "end_lr":      1e-5,
     "power":       0.5,
 }
-n_epochs = 160
+n_epochs = 200
 steps_per_epoch = len(train_gen)
 decay_steps = steps_per_epoch * n_epochs
 
@@ -64,7 +65,7 @@ model.compile(optimizer=optimizer, loss="binary_crossentropy", metrics=["accurac
 callbacks = [
     tf.keras.callbacks.EarlyStopping(
         monitor='val_loss',
-        patience=40,
+        patience=60,
         restore_best_weights=True
     )
 ]

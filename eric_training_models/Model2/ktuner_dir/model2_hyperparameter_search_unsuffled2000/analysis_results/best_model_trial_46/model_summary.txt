@@ -1,0 +1,22 @@
+BEST MODEL SUMMARY
+==================================================
+Trial ID: 46
+Validation Accuracy: 0.920988
+Validation Loss: 0.258198
+Training Accuracy: 0.923106
+Training Loss: 0.223467
+Best Step: 115
+
+HYPERPARAMETERS:
+==============================
+dropout1_rate: 0.0
+dropout2_rate: 0.1
+dropout3_rate: 0.30000000000000004
+end_lr: 5.5318601129909455e-05
+initial_lr: 0.0017980232644233866
+merged_dense1_units: 256
+merged_dense2_units: 128
+merged_dense3_units: 64
+poly_power: 0.5
+xz_units: 128
+yl_units: 112

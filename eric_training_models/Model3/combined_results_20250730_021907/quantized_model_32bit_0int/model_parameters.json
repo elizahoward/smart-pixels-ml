@@ -1,0 +1,17 @@
+{
+  "model_type": "quantized",
+  "weight_bits": 32,
+  "activation_bits": 8,
+  "integer_bits": 0,
+  "conv_filters": 32,
+  "kernel_rows": 3,
+  "kernel_cols": 5,
+  "z_units": 16,
+  "y_units": 32,
+  "head_units": 200,
+  "head_units_2": 100,
+  "dropout_rate": 0.0,
+  "initial_lr": 0.000871145,
+  "end_lr": 5.3e-05,
+  "power": 2
+}

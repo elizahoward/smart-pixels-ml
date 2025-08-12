@@ -6,21 +6,21 @@ import time
 import sys
 parentdir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, parentdir)
-from . import OptimizedDataGenerator4_data_shuffled as ODG
+import OptimizedDataGenerator4_data_shuffled as ODG
 
 # Make general tf records directory
-batch_size = 2048
+batch_size = 2000
 directory_name = f'filtering_records{batch_size}_data_shuffled'
-data_directory_path = "/home/youeric/PixelSim2/MuonColliderSim/Simulation_Output/"
+data_directory_path = "/local/d1/smartpixML/PixelSim2/MuonColliderSim/Simulation_Output/"
 is_directory_recursive = False
 file_type = "parquet"
 data_format = "3D" # can't get 2D working
 normalization = 1
 file_fraction = .8 # fraction of files used for training
 to_standardize = False
-input_shape = (1, 13, 21) # Only last timestamp
+input_shape = (20, 13, 21) # All 20 timestamps
 transpose=None # No transpose needed for 2D
-time_stamps = [19] # Only the last timestamp
+time_stamps = list(range(20)) # All 20 timestamps (0-19)
 x_feature_description = "all"
 filteringBIB = True
 

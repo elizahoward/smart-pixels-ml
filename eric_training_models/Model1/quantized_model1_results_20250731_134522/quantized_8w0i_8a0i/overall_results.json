@@ -1,0 +1,79 @@
+{
+  "model_type": "quantized",
+  "weight_bits": 8,
+  "weight_integer_bits": 0,
+  "activation_bits": 8,
+  "activation_integer_bits": 0,
+  "n_trials": 6,
+  "avg_test_accuracy": 0.887358566125234,
+  "avg_test_loss": 0.3147475024064382,
+  "avg_roc_auc": 0.9214282692986449,
+  "individual_results": [
+    {
+      "trial": 1,
+      "weight_bits": 8,
+      "weight_integer_bits": 0,
+      "activation_bits": 8,
+      "activation_integer_bits": 0,
+      "test_accuracy": 0.8887273669242859,
+      "test_loss": 0.3079172670841217,
+      "roc_auc": 0.9251069445619393,
+      "epochs_trained": 139
+    },
+    {
+      "trial": 2,
+      "weight_bits": 8,
+      "weight_integer_bits": 0,
+      "activation_bits": 8,
+      "activation_integer_bits": 0,
+      "test_accuracy": 0.8862562775611877,
+      "test_loss": 0.3363839089870453,
+      "roc_auc": 0.905971379843622,
+      "epochs_trained": 105
+    },
+    {
+      "trial": 3,
+      "weight_bits": 8,
+      "weight_integer_bits": 0,
+      "activation_bits": 8,
+      "activation_integer_bits": 0,
+      "test_accuracy": 0.888145923614502,
+      "test_loss": 0.31244415044784546,
+      "roc_auc": 0.9235127223839039,
+      "epochs_trained": 150
+    },
+    {
+      "trial": 4,
+      "weight_bits": 8,
+      "weight_integer_bits": 0,
+      "activation_bits": 8,
+      "activation_integer_bits": 0,
+      "test_accuracy": 0.8869830369949341,
+      "test_loss": 0.31105560064315796,
+      "roc_auc": 0.9239112433188668,
+      "epochs_trained": 123
+    },
+    {
+      "trial": 5,
+      "weight_bits": 8,
+      "weight_integer_bits": 0,
+      "activation_bits": 8,
+      "activation_integer_bits": 0,
+      "test_accuracy": 0.8869103789329529,
+      "test_loss": 0.31064310669898987,
+      "roc_auc": 0.9246440711696647,
+      "epochs_trained": 87
+    },
+    {
+      "trial": 6,
+      "weight_bits": 8,
+      "weight_integer_bits": 0,
+      "activation_bits": 8,
+      "activation_integer_bits": 0,
+      "test_accuracy": 0.8871284127235413,
+      "test_loss": 0.31004098057746887,
+      "roc_auc": 0.9254232545138728,
+      "epochs_trained": 93
+    }
+  ]
+}

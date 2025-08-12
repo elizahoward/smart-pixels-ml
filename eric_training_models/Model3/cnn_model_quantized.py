@@ -31,9 +31,9 @@ def build_quantized_cnn_model(cluster_shape=(13, 21, 20), z_global_length=1, y_l
         raise ImportError("QKeras is required for quantized models")
     
     if weight_quantizer is None:
-        weight_quantizer = quantized_bits(2, 0, 1)
+        weight_quantizer = quantized_bits(8, 2, 1)
     if activation_quantizer is None:
-        activation_quantizer = quantized_relu(6, 0)
+        activation_quantizer = quantized_relu(8, 0)
 
     # Inputs
     cluster_input = Input(shape=cluster_shape, name="cluster")

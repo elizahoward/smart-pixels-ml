@@ -1,0 +1,57 @@
+{
+  "model_type": "non_quantized",
+  "n_trials": 6,
+  "avg_test_accuracy": 0.8884124358495077,
+  "avg_test_loss": 0.30720797677834827,
+  "avg_roc_auc": 0.9260602423199251,
+  "individual_results": [
+    {
+      "trial": 1,
+      "model_type": "non_quantized",
+      "test_accuracy": 0.8878552317619324,
+      "test_loss": 0.3068515658378601,
+      "roc_auc": 0.9266278583970767,
+      "epochs_trained": 146
+    },
+    {
+      "trial": 2,
+      "model_type": "non_quantized",
+      "test_accuracy": 0.8897448778152466,
+      "test_loss": 0.30652597546577454,
+      "roc_auc": 0.9259879438658295,
+      "epochs_trained": 133
+    },
+    {
+      "trial": 3,
+      "model_type": "non_quantized",
+      "test_accuracy": 0.8880006074905396,
+      "test_loss": 0.3078901171684265,
+      "roc_auc": 0.9255848757689814,
+      "epochs_trained": 118
+    },
+    {
+      "trial": 4,
+      "model_type": "non_quantized",
+      "test_accuracy": 0.8886547088623047,
+      "test_loss": 0.30746087431907654,
+      "roc_auc": 0.9257426420531243,
+      "epochs_trained": 127
+    },
+    {
+      "trial": 5,
+      "model_type": "non_quantized",
+      "test_accuracy": 0.8879278898239136,
+      "test_loss": 0.30719536542892456,
+      "roc_auc": 0.9260158231862403,
+      "epochs_trained": 112
+    },
+    {
+      "trial": 6,
+      "model_type": "non_quantized",
+      "test_accuracy": 0.8882912993431091,
+      "test_loss": 0.30732396245002747,
+      "roc_auc": 0.9264023106482988,
+      "epochs_trained": 115
+    }
+  ]
+}

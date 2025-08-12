@@ -20,7 +20,7 @@ train_dir = base_dir / "tfrecords_train"
 val_dir = base_dir / "tfrecords_validation"
 
 # Results directory
-results_dir = Path(__file__).resolve().parent / "results_quantized"
+results_dir = Path(__file__).resolve().parent / "results_quantizedtesting111111"
 os.makedirs(results_dir, exist_ok=True)
 
 # Data generators - only need cluster, z_global, y_local
@@ -42,7 +42,7 @@ config = {
     "end_lr": 1e-5,
     "power": 0.5,
 }
-n_epochs = 120
+n_epochs = 160
 steps_per_epoch = len(train_gen)
 decay_steps = steps_per_epoch * n_epochs
 

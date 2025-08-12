@@ -1,0 +1,8 @@
+{
+  "trial": 6,
+  "model_type": "non_quantized",
+  "test_accuracy": 0.8882912993431091,
+  "test_loss": 0.30732396245002747,
+  "roc_auc": 0.9264023106482988,
+  "epochs_trained": 115
+}

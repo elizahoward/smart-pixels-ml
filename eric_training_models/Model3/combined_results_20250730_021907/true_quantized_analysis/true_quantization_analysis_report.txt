@@ -1,0 +1,66 @@
+TRUE QUANTIZATION ANALYSIS REPORT
+==================================================
+
+This analysis applies actual quantization to the stored weights
+to show the real quantized weight distributions.
+
+QUANTIZATION EFFECTS (ACTUAL):
+-----------------------------------
+Original Model Unique Values: 413,004
+
+32bit:
+  Weight Bits: 32
+  Theoretical Max Unique Values: 4,294,967,296
+  Actual Unique Values: 413,111
+  Compression Ratio: 1.00x
+  Size Reduction: -0.0%
+  Utilization: 0.0% of theoretical maximum
+
+16bit:
+  Weight Bits: 16
+  Theoretical Max Unique Values: 65,536
+  Actual Unique Values: 413,085
+  Compression Ratio: 1.00x
+  Size Reduction: -0.0%
+  Utilization: 630.3% of theoretical maximum
+
+8bit:
+  Weight Bits: 8
+  Theoretical Max Unique Values: 256
+  Actual Unique Values: 342
+  Compression Ratio: 1207.61x
+  Size Reduction: 99.9%
+  Utilization: 133.6% of theoretical maximum
+
+6bit:
+  Weight Bits: 6
+  Theoretical Max Unique Values: 64
+  Actual Unique Values: 113
+  Compression Ratio: 3654.90x
+  Size Reduction: 100.0%
+  Utilization: 176.6% of theoretical maximum
+
+4bit:
+  Weight Bits: 4
+  Theoretical Max Unique Values: 16
+  Actual Unique Values: 32
+  Compression Ratio: 12906.38x
+  Size Reduction: 100.0%
+  Utilization: 200.0% of theoretical maximum
+
+3bit:
+  Weight Bits: 3
+  Theoretical Max Unique Values: 8
+  Actual Unique Values: 16
+  Compression Ratio: 25812.75x
+  Size Reduction: 100.0%
+  Utilization: 200.0% of theoretical maximum
+
+2bit:
+  Weight Bits: 2
+  Theoretical Max Unique Values: 4
+  Actual Unique Values: 8
+  Compression Ratio: 51625.50x
+  Size Reduction: 100.0%
+  Utilization: 200.0% of theoretical maximum
+

@@ -1,0 +1,84 @@
+{
+  "model_type": "quantized",
+  "weight_bits": 3,
+  "weight_integer_bits": 0,
+  "activation_bits": 8,
+  "activation_integer_bits": 0,
+  "n_trials": 6,
+  "avg_test_accuracy": 0.8319039642810822,
+  "avg_test_loss": 0.39208578566710156,
+  "avg_roc_auc": 0.8854985732631766,
+  "final_train_accuracy": 0.8244030872980753,
+  "final_val_accuracy": 0.8319039642810822,
+  "final_train_loss": 0.3949177066485087,
+  "final_val_loss": 0.39208578566710156,
+  "epochs_trained": 150,
+  "individual_results": [
+    {
+      "trial": 1,
+      "weight_bits": 3,
+      "weight_integer_bits": 0,
+      "activation_bits": 8,
+      "activation_integer_bits": 0,
+      "test_accuracy": 0.8284032344818115,
+      "test_loss": 0.4074513912200928,
+      "roc_auc": 0.8820305299217734,
+      "epochs_trained": 150
+    },
+    {
+      "trial": 2,
+      "weight_bits": 3,
+      "weight_integer_bits": 0,
+      "activation_bits": 8,
+      "activation_integer_bits": 0,
+      "test_accuracy": 0.7820335626602173,
+      "test_loss": 0.45929673314094543,
+      "roc_auc": 0.8457011983464773,
+      "epochs_trained": 150
+    },
+    {
+      "trial": 3,
+      "weight_bits": 3,
+      "weight_integer_bits": 0,
+      "activation_bits": 8,
+      "activation_integer_bits": 0,
+      "test_accuracy": 0.8528236150741577,
+      "test_loss": 0.3645499646663666,
+      "roc_auc": 0.8981604419321677,
+      "epochs_trained": 150
+    },
+    {
+      "trial": 4,
+      "weight_bits": 3,
+      "weight_integer_bits": 0,
+      "activation_bits": 8,
+      "activation_integer_bits": 0,
+      "test_accuracy": 0.8201904296875,
+      "test_loss": 0.4022548496723175,
+      "roc_auc": 0.8833170892098212,
+      "epochs_trained": 150
+    },
+    {
+      "trial": 5,
+      "weight_bits": 3,
+      "weight_integer_bits": 0,
+      "activation_bits": 8,
+      "activation_integer_bits": 0,
+      "test_accuracy": 0.8550766706466675,
+      "test_loss": 0.35739466547966003,
+      "roc_auc": 0.9015962220773378,
+      "epochs_trained": 150
+    },
+    {
+      "trial": 6,
+      "weight_bits": 3,
+      "weight_integer_bits": 0,
+      "activation_bits": 8,
+      "activation_integer_bits": 0,
+      "test_accuracy": 0.8528962731361389,
+      "test_loss": 0.36156710982322693,
+      "roc_auc": 0.9021859580914817,
+      "epochs_trained": 150
+    }
+  ]
+}

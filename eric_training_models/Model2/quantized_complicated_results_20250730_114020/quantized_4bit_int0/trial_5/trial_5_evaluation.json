@@ -1,0 +1,11 @@
+{
+  "trial": 5,
+  "weight_bits": 4,
+  "weight_integer_bits": 0,
+  "activation_bits": 8,
+  "activation_integer_bits": 0,
+  "test_accuracy": 0.8508612513542175,
+  "test_loss": 0.36779725551605225,
+  "roc_auc": 0.9000919314733546,
+  "epochs_trained": 150
+}

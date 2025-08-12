@@ -1,8 +1,0 @@
-{
-  "weight_bits": 3,
-  "activation_bits": 8,
-  "test_accuracy": 0.9203946590423584,
-  "test_loss": 0.24065078794956207,
-  "roc_auc": 0.9550561099121441,
-  "model_name": "quantized_model_3bit"
-}

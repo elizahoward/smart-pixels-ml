@@ -11,7 +11,7 @@ except ImportError:
     print("QKeras not available. Please install with: pip install qkeras")
     QKERAS_AVAILABLE = False
 
-def build_quantized_cnn_model(x_profile_length=21, z_global_length=1, y_profile_length=13, y_local_length=1, dropout_rate=0.0,
+def build_quantized_cnn_model(x_profile_length=21, z_global_length=1, y_profile_length=13, y_local_length=1, dropout_rate=0.2,
                               weight_bits=8, weight_integer_bits=4, weight_alpha=1,
                               activation_bits=8, activation_integer_bits=2):
     """
@@ -34,22 +34,22 @@ def build_quantized_cnn_model(x_profile_length=21, z_global_length=1, y_profile_
 
     # x_profile + z_global
     xz_concat = Concatenate(name="xz_concat")([x_profile_input, z_global_input])
-    xz_dense = QDense(32, kernel_quantizer=weight_quantizer, bias_quantizer=weight_quantizer, name="xz_dense1")(xz_concat)
+    xz_dense = QDense(128, kernel_quantizer=weight_quantizer, bias_quantizer=weight_quantizer, name="xz_dense1")(xz_concat)
     xz_dense = QActivation(activation_quantizer, name="xz_act1")(xz_dense)
 
     # y_profile + y_local
     yl_concat = Concatenate(name="yl_concat")([y_profile_input, y_local_input])
-    yl_dense = QDense(32, kernel_quantizer=weight_quantizer, bias_quantizer=weight_quantizer, name="yl_dense1")(yl_concat)
+    yl_dense = QDense(128, kernel_quantizer=weight_quantizer, bias_quantizer=weight_quantizer, name="yl_dense1")(yl_concat)
     yl_dense = QActivation(activation_quantizer, name="yl_act1")(yl_dense)
 
     # Merged features
     merged = Concatenate(name="merged_features")([xz_dense, yl_dense])
-    merged_dense = QDense(128, kernel_quantizer=weight_quantizer, bias_quantizer=weight_quantizer, name="merged_dense1")(merged)
+    merged_dense = QDense(256, kernel_quantizer=weight_quantizer, bias_quantizer=weight_quantizer, name="merged_dense1")(merged)
     merged_dense = QActivation(activation_quantizer, name="merged_act1")(merged_dense)
     merged_dense = Dropout(dropout_rate, name="dropout1")(merged_dense)
-    merged_dense = QDense(64, kernel_quantizer=weight_quantizer, bias_quantizer=weight_quantizer, name="merged_dense2")(merged_dense)
+    merged_dense = QDense(128, kernel_quantizer=weight_quantizer, bias_quantizer=weight_quantizer, name="merged_dense2")(merged_dense)
     merged_dense = QActivation(activation_quantizer, name="merged_act2")(merged_dense)
-    merged_dense = QDense(32, kernel_quantizer=weight_quantizer, bias_quantizer=weight_quantizer, name="merged_dense3")(merged_dense)
+    merged_dense = QDense(64, kernel_quantizer=weight_quantizer, bias_quantizer=weight_quantizer, name="merged_dense3")(merged_dense)
     merged_dense = QActivation(activation_quantizer, name="merged_act3")(merged_dense)
 
     # Output layer for binary classification

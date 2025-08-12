@@ -159,15 +159,49 @@ class OptimizedDataGeneratorDataShuffled(tf.keras.utils.Sequence):
             if transpose is not None:
                 recon_values = recon_values.transpose(transpose)
             clusters = recon_values
-            if time_stamps is list and len(time_stamps) == 1:
+            if isinstance(time_stamps, list) and len(time_stamps) == 1:
                 clusters = recon_values.reshape((recon_values.shape[0],13,21))
-            y_profiles = np.sum(clusters, axis = 2)
-            x_profiles = np.sum(clusters, axis = 1)
             
-            bool_arr = x_profiles != 0
-            x_sizes = np.sum(bool_arr, axis = 1)/21 
-            bool_arr = y_profiles != 0
-            y_sizes = np.sum(bool_arr, axis = 1)/13
+            # Calculate profiles - sum across the appropriate axes
+            if len(time_stamps) == 1:
+                # Single timestamp case - sum across spatial dimensions
+                y_profiles = np.sum(clusters, axis = 2)  # Sum across x dimension
+                x_profiles = np.sum(clusters, axis = 1)  # Sum across y dimension
+            else:
+                # Multiple timestamps case - sum across time and spatial dimensions
+                # Reshape to (batch_size, time_steps, y, x) for proper summing
+                clusters_reshaped = clusters.reshape((clusters.shape[0], len(time_stamps), 13, 21))
+                y_profiles = np.sum(clusters_reshaped, axis=(1, 3))  # Sum across time and x dimensions
+                x_profiles = np.sum(clusters_reshaped, axis=(1, 2))  # Sum across time and y dimensions
+            
+            print(f"x_profiles.shape: {x_profiles.shape}")   # Debug print
+            print(f"y_profiles.shape: {y_profiles.shape}")   # Debug print
+            
+            # Calculate sizes
+            if len(time_stamps) == 1:
+                bool_arr = x_profiles != 0
+                x_sizes = np.sum(bool_arr, axis = 1)/21 
+                bool_arr = y_profiles != 0
+                y_sizes = np.sum(bool_arr, axis = 1)/13
+            else:
+                # For multiple timestamps, calculate sizes across all timestamps
+                clusters_reshaped = clusters.reshape((clusters.shape[0], len(time_stamps), 13, 21))
+                x_profiles_3d = np.sum(clusters_reshaped, axis=(1, 2))  # Sum across time and y
+                y_profiles_3d = np.sum(clusters_reshaped, axis=(1, 3))  # Sum across time and x
+                bool_arr = x_profiles_3d != 0
+                x_sizes = np.sum(bool_arr, axis = 1)/21 
+                bool_arr = y_profiles_3d != 0
+                y_sizes = np.sum(bool_arr, axis = 1)/13
+            
+            # Reshape profiles to match expected output format (like in original code)
+            if len(time_stamps) == 1:
+                y_profiles = y_profiles.reshape((-1, 13))
+                x_profiles = x_profiles.reshape((-1, 21))
+            else:
+                # For multiple timestamps, ensure proper 2D output
+                y_profiles = y_profiles.reshape((-1, 13))
+                x_profiles = x_profiles.reshape((-1, 21))
+            
             y_locals = ylocal_df_raw.values/8.5
             z_locs = z_loc_df_raw.values/65
             eh_pairs = eh_pairs_raw.values/150000
