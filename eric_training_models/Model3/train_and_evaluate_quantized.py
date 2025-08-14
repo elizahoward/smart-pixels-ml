@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 import OptimizedDataGenerator4 as ODG
 
 # Data directories
-base_dir = Path("/home/youeric/PixelML/smart_pixels_ml/filtering_models/filtering_records2000")
+base_dir = Path("/local/d1/smartpixML/filtering_models/shuffling_data/filtering_records1024_data_shuffled_single")
 train_dir = base_dir / "tfrecords_train"
 val_dir = base_dir / "tfrecords_validation"
 
