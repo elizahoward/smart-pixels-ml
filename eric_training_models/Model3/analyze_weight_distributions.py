@@ -6,9 +6,6 @@ This script analyzes the weight and bias distributions of quantized models
 compared to the non-quantized baseline model. It extracts weights from 
 Keras model files and generates comprehensive visualizations showing 
 the effects of quantization on different layers.
-
-Author: Eric
-Date: Generated automatically
 """
 
 import tensorflow as tf
