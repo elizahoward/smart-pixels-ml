@@ -1,0 +1,55 @@
+Backend: Vivado
+ClockPeriod: 5
+HLSConfig:
+  LayerName:
+    concatenate:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    dense1:
+      Precision:
+        bias: fixed<4,1>
+        result: fixed<16,6>
+        weight: fixed<4,1>
+      Trace: false
+    dense1_linear:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    output_dense:
+      Precision:
+        bias: fixed<4,1>
+        result: fixed<16,6>
+        weight: fixed<4,1>
+      Trace: false
+    output_dense_linear:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    relu1:
+      Precision:
+        result: ufixed<8,0,RND_CONV,SAT>
+      Trace: false
+    y_local:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    y_profile:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+  Model:
+    BramFactor: 1000000000
+    Precision: fixed<16,6>
+    ReuseFactor: 1
+    Strategy: Latency
+    TraceOutput: false
+IOType: io_parallel
+InputData: null
+KerasModel: !keras_model './hlsTmp/keras_model.h5'
+OutputDir: ./hlsTmp
+OutputPredictions: null
+Part: xcvu13p-flga2577-2-e
+ProjectName: myproject
+Stamp: CF5CD92b
+Version: 1.0.0
