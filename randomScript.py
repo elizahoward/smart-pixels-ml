@@ -4,7 +4,9 @@ import numpy as np
 import tensorflow as tf
 from qkeras import QDense, QActivation, QDenseBatchnorm
 from qkeras.quantizers import quantized_bits, quantized_relu
+import qkeras
 import hls4ml
+
 
 noGPU=False
 if noGPU:
@@ -75,12 +77,18 @@ quantizedModel.compile(optimizer='adam', loss='binary_crossentropy', metrics=['b
 # learningRates = [0.1,0.9,0.6,0.3,0.1,0.03,0.01,0.001,0.0001,0.00001,0.000001]
 # callbacks.append(tf.keras.callbacks.LearningRateScheduler(lambda epoch,lr : lr if epoch<5 else lr*np.exp(-0.1)))
 callbacks=[]
-historyQ = quantizedModel.fit(x=trainODG,validation_data=validationODG, callbacks=callbacks,epochs=5)
+# historyQ = quantizedModel.fit(x=trainODG,validation_data=validationODG, callbacks=callbacks,epochs=5)
+print("instead of training, loading fermi model")
+qmodel_file = "/local/d1/smartpixLab/fermiModels/ds8l6_padded_noscaling_qkeras_foldbatchnorm_d58w4a8model.h5"
+# filepath = ""
+co = {}       
+qkeras.utils._add_supported_quantized_objects(co)
+quantizedModel = tf.keras.models.load_model(qmodel_file,custom_objects=co,compile=True)
 
 
 ######################
 
-config = hls4ml.utils.config_from_keras_model(quantizedModel, granularity='name')
+config = hls4ml.utils.config_from_keras_model(quantizedModel, granularity='name',backend="Vitis")
 # Convert to an hls model
 output_dir = "./hlsTmp"
 hls_model = hls4ml.converters.convert_from_keras_model(quantizedModel, hls_config=config, output_dir=output_dir)

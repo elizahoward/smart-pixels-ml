@@ -1,11 +1,7 @@
-Backend: Vivado
+Backend: Vitis
 ClockPeriod: 5
 HLSConfig:
   LayerName:
-    concatenate:
-      Precision:
-        result: fixed<16,6>
-      Trace: false
     dense1:
       Precision:
         bias: fixed<4,1>
@@ -16,27 +12,27 @@ HLSConfig:
       Precision:
         result: fixed<16,6>
       Trace: false
-    output_dense:
+    dense2:
       Precision:
         bias: fixed<4,1>
         result: fixed<16,6>
         weight: fixed<4,1>
       Trace: false
-    output_dense_linear:
+    dense2_linear:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    input1:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    linear:
       Precision:
         result: fixed<16,6>
       Trace: false
     relu1:
       Precision:
         result: ufixed<8,0,RND_CONV,SAT>
-      Trace: false
-    y_local:
-      Precision:
-        result: fixed<16,6>
-      Trace: false
-    y_profile:
-      Precision:
-        result: fixed<16,6>
       Trace: false
   Model:
     BramFactor: 1000000000
@@ -51,5 +47,5 @@ OutputDir: ./hlsTmp
 OutputPredictions: null
 Part: xcvu13p-flga2577-2-e
 ProjectName: myproject
-Stamp: CF5CD92b
+Stamp: 90ccDaF3
 Version: 1.0.0
