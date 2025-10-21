@@ -1,37 +1,172 @@
 {
-    "0": {
-        "name": "myproject",
-        "file": "myproject.cpp",
-        "fileloc": "6",
-        "instructions": "137",
-        "total_instructions": "3782",
-        "calls": "2 3 1",
-        "basicblocks": "1"
-    },
     "1": {
-        "name": "dense_latency<ap_ufixed<8, 0, 4, 0, 0>, ap_fixed<16, 6, 5, 3, 0>, config5>",
+        "name": "dense_latency<ap_ufixed<2, 0, 4, 0, 0>, ap_fixed<16, 6, 5, 3, 0>, config19>",
         "file": "firmware\/nnet_utils\/nnet_dense_latency.h",
-        "fileloc": "17",
-        "instructions": "948",
-        "total_instructions": "948",
+        "fileloc": "33",
+        "instructions": "23",
+        "total_instructions": "23",
         "calls": "",
         "basicblocks": "1"
     },
     "2": {
-        "name": "dense_latency<ap_fixed<16, 6, 5, 3, 0>, ap_fixed<16, 6, 5, 3, 0>, config2>",
-        "file": "firmware\/nnet_utils\/nnet_dense_latency.h",
-        "fileloc": "17",
-        "instructions": "1187",
-        "total_instructions": "1187",
+        "name": "relu<ap_fixed<16, 6, 5, 3, 0>, ap_ufixed<2, 0, 4, 0, 0>, relu_config9>",
+        "file": "firmware\/nnet_utils\/nnet_activation.h",
+        "fileloc": "42",
+        "instructions": "542",
+        "total_instructions": "542",
         "calls": "",
         "basicblocks": "1"
     },
     "3": {
-        "name": "relu<ap_fixed<16, 6, 5, 3, 0>, ap_ufixed<8, 0, 4, 0, 0>, relu_config4>",
+        "name": "relu<ap_fixed<16, 6, 5, 3, 0>, ap_ufixed<2, 0, 4, 0, 0>, relu_config15>",
         "file": "firmware\/nnet_utils\/nnet_activation.h",
         "fileloc": "42",
-        "instructions": "1510",
-        "total_instructions": "1510",
+        "instructions": "434",
+        "total_instructions": "434",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "4": {
+        "name": "relu<ap_fixed<16, 6, 5, 3, 0>, ap_ufixed<2, 0, 4, 0, 0>, relu_config18>",
+        "file": "firmware\/nnet_utils\/nnet_activation.h",
+        "fileloc": "42",
+        "instructions": "137",
+        "total_instructions": "137",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "5": {
+        "name": "dense_latency<ap_fixed<16, 6, 5, 3, 0>, ap_fixed<16, 6, 5, 3, 0>, config4>",
+        "file": "firmware\/nnet_utils\/nnet_dense_latency.h",
+        "fileloc": "33",
+        "instructions": "35",
+        "total_instructions": "35",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "6": {
+        "name": "relu<ap_fixed<16, 6, 5, 3, 0>, ap_ufixed<2, 0, 4, 0, 0>, relu_config12>",
+        "file": "firmware\/nnet_utils\/nnet_activation.h",
+        "fileloc": "42",
+        "instructions": "245",
+        "total_instructions": "245",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "7": {
+        "name": "dense_latency<ap_ufixed<2, 0, 4, 0, 0>, ap_fixed<16, 6, 5, 3, 0>, config10>",
+        "file": "firmware\/nnet_utils\/nnet_dense_latency.h",
+        "fileloc": "33",
+        "instructions": "280",
+        "total_instructions": "280",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "8": {
+        "name": "concatenate1d<ap_fixed,ap_fixed,ap_fixed<16,6,5,3,0>,config3>",
+        "file": "firmware\/nnet_utils\/nnet_merge.h",
+        "fileloc": "120",
+        "instructions": "6",
+        "total_instructions": "6",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "9": {
+        "name": "normalize<ap_fixed<16, 6, 5, 3, 0>, ap_fixed<16, 6, 5, 3, 0>, config25>",
+        "file": "firmware\/nnet_utils\/nnet_batchnorm.h",
+        "fileloc": "48",
+        "instructions": "35",
+        "total_instructions": "35",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "10": {
+        "name": "dense_latency<ap_ufixed<2, 0, 4, 0, 0>, ap_fixed<16, 6, 5, 3, 0>, config16>",
+        "file": "firmware\/nnet_utils\/nnet_dense_latency.h",
+        "fileloc": "33",
+        "instructions": "146",
+        "total_instructions": "146",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "0": {
+        "name": "myproject",
+        "file": "myproject.cpp",
+        "fileloc": "6",
+        "instructions": "285",
+        "total_instructions": "3353",
+        "calls": "8 5 13 18 16 12 2 7 17 6 14 9 3 10 11 4 1 15",
+        "basicblocks": "1"
+    },
+    "11": {
+        "name": "normalize<ap_fixed<16, 6, 5, 3, 0>, ap_fixed<16, 6, 5, 3, 0>, config26>",
+        "file": "firmware\/nnet_utils\/nnet_batchnorm.h",
+        "fileloc": "48",
+        "instructions": "13",
+        "total_instructions": "13",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "12": {
+        "name": "normalize<ap_fixed<16, 6, 5, 3, 0>, ap_fixed<16, 6, 5, 3, 0>, config23>",
+        "file": "firmware\/nnet_utils\/nnet_batchnorm.h",
+        "fileloc": "48",
+        "instructions": "45",
+        "total_instructions": "45",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "13": {
+        "name": "normalize<ap_fixed<16, 6, 5, 3, 0>, ap_fixed<16, 6, 5, 3, 0>, config22>",
+        "file": "firmware\/nnet_utils\/nnet_batchnorm.h",
+        "fileloc": "48",
+        "instructions": "54",
+        "total_instructions": "54",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "14": {
+        "name": "dense_latency<ap_ufixed<2, 0, 4, 0, 0>, ap_fixed<16, 6, 5, 3, 0>, config13>",
+        "file": "firmware\/nnet_utils\/nnet_dense_latency.h",
+        "fileloc": "33",
+        "instructions": "170",
+        "total_instructions": "170",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "15": {
+        "name": "normalize<ap_fixed<16, 6, 5, 3, 0>, ap_fixed<16, 6, 5, 3, 0>, config27>",
+        "file": "firmware\/nnet_utils\/nnet_batchnorm.h",
+        "fileloc": "48",
+        "instructions": "4",
+        "total_instructions": "4",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "16": {
+        "name": "dense_latency<ap_ufixed<2, 0, 4, 0, 0>, ap_fixed<16, 6, 5, 3, 0>, config7>",
+        "file": "firmware\/nnet_utils\/nnet_dense_latency.h",
+        "fileloc": "33",
+        "instructions": "415",
+        "total_instructions": "415",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "17": {
+        "name": "normalize<ap_fixed<16, 6, 5, 3, 0>, ap_fixed<16, 6, 5, 3, 0>, config24>",
+        "file": "firmware\/nnet_utils\/nnet_batchnorm.h",
+        "fileloc": "48",
+        "instructions": "23",
+        "total_instructions": "23",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "18": {
+        "name": "relu<ap_fixed<16, 6, 5, 3, 0>, ap_ufixed<2, 0, 4, 0, 0>, relu_config6>",
+        "file": "firmware\/nnet_utils\/nnet_activation.h",
+        "fileloc": "42",
+        "instructions": "461",
+        "total_instructions": "461",
         "calls": "",
         "basicblocks": "1"
     }

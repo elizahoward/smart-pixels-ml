@@ -1,0 +1,80 @@
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /code/Xilinx_2024.1/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_myproject_top glbl -Oenable_linking_all_libraries -prj myproject.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_0_23 -L floating_point_v7_1_18 --lib ieee_proposed=./ieee_proposed -s myproject -debug all 
+Multi-threading is on. Using 62 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_myproject_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/myproject.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module myproject
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.myproject_concatenate1d_ap_fixed...
+Compiling module xil_defaultlib.myproject_dense_latency_ap_fixed...
+Compiling module xil_defaultlib.myproject_normalize_ap_fixed_16_...
+Compiling module xil_defaultlib.myproject_relu_ap_fixed_16_6_5_3...
+Compiling module xil_defaultlib.myproject_dense_latency_ap_ufixe...
+Compiling module xil_defaultlib.myproject_normalize_ap_fixed_16_...
+Compiling module xil_defaultlib.myproject_relu_ap_fixed_16_6_5_3...
+Compiling module xil_defaultlib.myproject_dense_latency_ap_ufixe...
+Compiling module xil_defaultlib.myproject_normalize_ap_fixed_16_...
+Compiling module xil_defaultlib.myproject_relu_ap_fixed_16_6_5_3...
+Compiling module xil_defaultlib.myproject_dense_latency_ap_ufixe...
+Compiling module xil_defaultlib.myproject_normalize_ap_fixed_16_...
+Compiling module xil_defaultlib.myproject_relu_ap_fixed_16_6_5_3...
+Compiling module xil_defaultlib.myproject_dense_latency_ap_ufixe...
+Compiling module xil_defaultlib.myproject_normalize_ap_fixed_16_...
+Compiling module xil_defaultlib.myproject_relu_ap_fixed_16_6_5_3...
+Compiling module xil_defaultlib.myproject_dense_latency_ap_ufixe...
+Compiling module xil_defaultlib.myproject_normalize_ap_fixed_16_...
+Compiling module xil_defaultlib.myproject
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_myproject_top
+Compiling module work.glbl
+Built simulation snapshot myproject

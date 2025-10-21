@@ -11,60 +11,45 @@ set axilite_register_dict [dict create]
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 118 \
-    name input1 \
+    id 207 \
+    name y_size \
     type other \
     dir I \
     reset_level 1 \
     sync_rst true \
-    corename dc_input1 \
+    corename dc_y_size \
     op interface \
-    ports { input1_ap_vld { I 1 bit } input1 { I 256 vector } } \
+    ports { y_size_ap_vld { I 1 bit } y_size { I 16 vector } } \
 } "
 }
 
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 119 \
-    name layer5_out_0 \
+    id 208 \
+    name y_local \
     type other \
-    dir O \
+    dir I \
     reset_level 1 \
     sync_rst true \
-    corename dc_layer5_out_0 \
+    corename dc_y_local \
     op interface \
-    ports { layer5_out_0 { O 16 vector } layer5_out_0_ap_vld { O 1 bit } } \
+    ports { y_local_ap_vld { I 1 bit } y_local { I 16 vector } } \
 } "
 }
 
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 120 \
-    name layer5_out_1 \
+    id 209 \
+    name layer21_out \
     type other \
     dir O \
     reset_level 1 \
     sync_rst true \
-    corename dc_layer5_out_1 \
+    corename dc_layer21_out \
     op interface \
-    ports { layer5_out_1 { O 16 vector } layer5_out_1_ap_vld { O 1 bit } } \
-} "
-}
-
-# Direct connection:
-if {${::AESL::PGuard_autoexp_gen}} {
-eval "cg_default_interface_gen_dc { \
-    id 121 \
-    name layer5_out_2 \
-    type other \
-    dir O \
-    reset_level 1 \
-    sync_rst true \
-    corename dc_layer5_out_2 \
-    op interface \
-    ports { layer5_out_2 { O 16 vector } layer5_out_2_ap_vld { O 1 bit } } \
+    ports { layer21_out { O 8 vector } layer21_out_ap_vld { O 1 bit } } \
 } "
 }
 

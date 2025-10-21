@@ -1,0 +1,23 @@
+<dict>
+  <key>main-file</key>
+  <string>/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp</string>
+  <key>diagnostics</key>
+  <array>
+    <dict>
+      <key>level</key>
+      <string>warning</string>
+      <key>filename</key>
+      <string>firmware/nnet_utils/nnet_activation.h</string>
+      <key>line</key>
+      <integer>464</integer>
+      <key>column</key>
+      <integer>9</integer>
+      <key>message</key>
+      <string>Only for/while/do loop or function body support the pipeline pragma</string>
+      <key>ID</key>
+      <integer>5575</integer>
+      <key>WarningOption</key>
+      <string>ignored-hls-attributes</string>
+    </dict>
+  </array>
+</dict>

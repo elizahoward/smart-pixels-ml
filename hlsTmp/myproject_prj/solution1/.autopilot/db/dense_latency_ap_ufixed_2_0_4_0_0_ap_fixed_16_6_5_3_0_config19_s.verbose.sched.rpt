@@ -1,0 +1,142 @@
+
+
+================================================================
+== Vitis HLS Report for 'dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s'
+================================================================
+* Date:           Mon Oct 20 15:01:56 2025
+
+* Version:        2024.1 (Build 5069499 on May 21 2024)
+* Project:        myproject_prj
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|  3.385 ns|     0.62 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        1|        1|  5.000 ns|  5.000 ns|    1|    1|      yes|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 0
+IsPipeline: 1
+IsRtlPipelined: 1
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 2
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 2
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 2, States = { 1 2 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 3.21>
+ST_1 : Operation 3 [1/1] (0.00ns)   --->   "%data_6_val_read = read i2 @_ssdm_op_Read.ap_auto.i2, i2 %data_6_val" [firmware/nnet_utils/nnet_mult.h:70->firmware/nnet_utils/nnet_dense_latency.h:42]   --->   Operation 3 'read' 'data_6_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 4 [1/1] (0.00ns)   --->   "%data_5_val_read = read i2 @_ssdm_op_Read.ap_auto.i2, i2 %data_5_val" [firmware/nnet_utils/nnet_mult.h:70->firmware/nnet_utils/nnet_dense_latency.h:42]   --->   Operation 4 'read' 'data_5_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%data_4_val_read = read i2 @_ssdm_op_Read.ap_auto.i2, i2 %data_4_val" [firmware/nnet_utils/nnet_mult.h:70->firmware/nnet_utils/nnet_dense_latency.h:42]   --->   Operation 5 'read' 'data_4_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%data_1_val_read = read i2 @_ssdm_op_Read.ap_auto.i2, i2 %data_1_val" [firmware/nnet_utils/nnet_mult.h:70->firmware/nnet_utils/nnet_dense_latency.h:42]   --->   Operation 6 'read' 'data_1_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%data_0_val_read = read i2 @_ssdm_op_Read.ap_auto.i2, i2 %data_0_val" [firmware/nnet_utils/nnet_mult.h:70->firmware/nnet_utils/nnet_dense_latency.h:42]   --->   Operation 7 'read' 'data_0_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%zext_ln70 = zext i2 %data_1_val_read" [firmware/nnet_utils/nnet_mult.h:70->firmware/nnet_utils/nnet_dense_latency.h:42]   --->   Operation 8 'zext' 'zext_ln70' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%zext_ln70_17 = zext i2 %data_4_val_read" [firmware/nnet_utils/nnet_mult.h:70->firmware/nnet_utils/nnet_dense_latency.h:42]   --->   Operation 9 'zext' 'zext_ln70_17' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%data_0_val_cast = zext i2 %data_0_val_read" [firmware/nnet_utils/nnet_mult.h:70->firmware/nnet_utils/nnet_dense_latency.h:42]   --->   Operation 10 'zext' 'data_0_val_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%data_5_val_cast = zext i2 %data_5_val_read" [firmware/nnet_utils/nnet_mult.h:70->firmware/nnet_utils/nnet_dense_latency.h:42]   --->   Operation 11 'zext' 'data_5_val_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%zext_ln58 = zext i2 %data_6_val_read" [firmware/nnet_utils/nnet_dense_latency.h:58]   --->   Operation 12 'zext' 'zext_ln58' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (1.56ns)   --->   "%add_ln58_134 = add i3 %zext_ln70, i3 %zext_ln70_17" [firmware/nnet_utils/nnet_dense_latency.h:58]   --->   Operation 13 'add' 'add_ln58_134' <Predicate = true> <Delay = 1.56> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 14 [1/1] (1.56ns)   --->   "%add_ln58_135 = add i3 %data_5_val_cast, i3 %zext_ln58" [firmware/nnet_utils/nnet_dense_latency.h:58]   --->   Operation 14 'add' 'add_ln58_135' <Predicate = true> <Delay = 1.56> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.56> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%zext_ln58_12 = zext i3 %add_ln58_135" [firmware/nnet_utils/nnet_dense_latency.h:58]   --->   Operation 15 'zext' 'zext_ln58_12' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (1.65ns)   --->   "%add_ln58_136 = add i4 %zext_ln58_12, i4 %data_0_val_cast" [firmware/nnet_utils/nnet_dense_latency.h:58]   --->   Operation 16 'add' 'add_ln58_136' <Predicate = true> <Delay = 1.65> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.65> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 2 <SV = 1> <Delay = 3.38>
+ST_2 : Operation 17 [1/1] (0.00ns)   --->   "%specpipeline_ln33 = specpipeline void @_ssdm_op_SpecPipeline, i32 1, i32 0, i32 0, i32 0, void @empty_0" [firmware/nnet_utils/nnet_dense_latency.h:33]   --->   Operation 17 'specpipeline' 'specpipeline_ln33' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 18 [1/1] (0.00ns)   --->   "%specresourcelimit_ln33 = specresourcelimit void @_ssdm_op_SpecResourceLimit, i64 5, void @empty_1, void @empty_0, void @empty_0, void @empty_0" [firmware/nnet_utils/nnet_dense_latency.h:33]   --->   Operation 18 'specresourcelimit' 'specresourcelimit_ln33' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%zext_ln58_11 = zext i3 %add_ln58_134" [firmware/nnet_utils/nnet_dense_latency.h:58]   --->   Operation 19 'zext' 'zext_ln58_11' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (1.65ns)   --->   "%sub_ln58 = sub i4 0, i4 %zext_ln58_11" [firmware/nnet_utils/nnet_dense_latency.h:58]   --->   Operation 20 'sub' 'sub_ln58' <Predicate = true> <Delay = 1.65> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.65> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%sext_ln58 = sext i4 %sub_ln58" [firmware/nnet_utils/nnet_dense_latency.h:58]   --->   Operation 21 'sext' 'sext_ln58' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (0.00ns)   --->   "%zext_ln58_13 = zext i4 %add_ln58_136" [firmware/nnet_utils/nnet_dense_latency.h:58]   --->   Operation 22 'zext' 'zext_ln58_13' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 23 [1/1] (1.73ns)   --->   "%add_ln58 = add i5 %zext_ln58_13, i5 %sext_ln58" [firmware/nnet_utils/nnet_dense_latency.h:58]   --->   Operation 23 'add' 'add_ln58' <Predicate = true> <Delay = 1.73> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.73> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 24 [1/1] (0.00ns)   --->   "%tmp = bitconcatenate i12 @_ssdm_op_BitConcatenate.i12.i5.i7, i5 %add_ln58, i7 0" [firmware/nnet_utils/nnet_dense_latency.h:58]   --->   Operation 24 'bitconcatenate' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "%ret_ln68 = ret i12 %tmp" [firmware/nnet_utils/nnet_dense_latency.h:68]   --->   Operation 25 'ret' 'ret_ln68' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5.000ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 3.215ns
+The critical path consists of the following:
+	wire read operation ('data_6_val_read', firmware/nnet_utils/nnet_mult.h:70->firmware/nnet_utils/nnet_dense_latency.h:42) on port 'data_6_val' (firmware/nnet_utils/nnet_mult.h:70->firmware/nnet_utils/nnet_dense_latency.h:42) [8]  (0.000 ns)
+	'add' operation 3 bit ('add_ln58_135', firmware/nnet_utils/nnet_dense_latency.h:58) [22]  (1.565 ns)
+	'add' operation 4 bit ('add_ln58_136', firmware/nnet_utils/nnet_dense_latency.h:58) [24]  (1.650 ns)
+
+ <State 2>: 3.385ns
+The critical path consists of the following:
+	'sub' operation 4 bit ('sub_ln58', firmware/nnet_utils/nnet_dense_latency.h:58) [20]  (1.650 ns)
+	'add' operation 5 bit ('add_ln58', firmware/nnet_utils/nnet_dense_latency.h:58) [26]  (1.735 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

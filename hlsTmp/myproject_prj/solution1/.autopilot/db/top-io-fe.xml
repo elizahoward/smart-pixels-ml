@@ -1,19 +1,18 @@
 <root versionMajor = "1" versionMinor = "5">
   <kernel src_name="myproject" language="c" hwCtrl="ap_ctrl_hs" mem_layout="fpga64-xilinx-none">
     <args>
-      <arg id="0" access_type="r" src_name="input1" src_type="ap_fixed&lt;16, 6, AP_TRN, AP_WRAP, 0&gt;*" src_isptr="1" src_bitwidth="16" src_size_or_depth="1">
-        <hw hw_usage="data" hw_interface="Register" hw_name="input1" hw_bitwidth="256" hw_size_or_depth="1" hw_kernel_support="false">
+      <arg id="0" access_type="r" src_name="y_size" src_type="ap_fixed&lt;16, 6, AP_TRN, AP_WRAP, 0&gt;*" src_isptr="1" src_bitwidth="16" src_size_or_depth="1">
+        <hw hw_usage="data" hw_interface="Register" hw_name="y_size" hw_bitwidth="16" hw_size_or_depth="1" hw_kernel_support="false">
           <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0"/>
         </hw>
       </arg>
-      <arg id="1" access_type="w" src_name="layer5_out" src_type="ap_fixed&lt;16, 6, AP_TRN, AP_WRAP, 0&gt;*" src_isptr="1" src_bitwidth="16" src_size_or_depth="3">
-        <hw hw_usage="data" hw_interface="Register" hw_name="layer5_out_0" hw_bitwidth="16" hw_size_or_depth="1" hw_kernel_support="false">
+      <arg id="1" access_type="r" src_name="y_local" src_type="ap_fixed&lt;16, 6, AP_TRN, AP_WRAP, 0&gt;*" src_isptr="1" src_bitwidth="16" src_size_or_depth="1">
+        <hw hw_usage="data" hw_interface="Register" hw_name="y_local" hw_bitwidth="16" hw_size_or_depth="1" hw_kernel_support="false">
           <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0"/>
         </hw>
-        <hw hw_usage="data" hw_interface="Register" hw_name="layer5_out_1" hw_bitwidth="16" hw_size_or_depth="1" hw_kernel_support="false">
-          <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0"/>
-        </hw>
-        <hw hw_usage="data" hw_interface="Register" hw_name="layer5_out_2" hw_bitwidth="16" hw_size_or_depth="1" hw_kernel_support="false">
+      </arg>
+      <arg id="2" access_type="w" src_name="layer21_out" src_type="ap_fixed&lt;8, 1, AP_RND_CONV, AP_SAT, 0&gt;*" src_isptr="1" src_bitwidth="8" src_size_or_depth="1">
+        <hw hw_usage="data" hw_interface="Register" hw_name="layer21_out" hw_bitwidth="8" hw_size_or_depth="1" hw_kernel_support="false">
           <constraint constraint_type="pragma interface" mode="ap_vld" register_option="0"/>
         </hw>
       </arg>

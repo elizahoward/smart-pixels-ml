@@ -1,0 +1,336 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Mon Oct 20 15:02:51 2025
+# Process ID: 1098867
+# Current directory: /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp
+# Command line: vivado -mode batch -source vivado_synth.tcl
+# Log file: /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/vivado.log
+# Journal file: /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/vivado.jou
+# Running On        :kdplab01
+# Platform          :unknown
+# Operating System  :unknown
+# Processor Detail  :Intel(R) Xeon(R) Silver 4314 CPU @ 2.40GHz
+# CPU Frequency     :3400.000 MHz
+# CPU Physical cores:32
+# CPU Logical cores :64
+# Host memory       :134212 MB
+# Swap memory       :4294 MB
+# Total Virtual     :138507 MB
+# Available Virtual :114615 MB
+#-----------------------------------------------------------
+source vivado_synth.tcl
+# set tcldir [file dirname [info script]]
+# source [file join $tcldir project.tcl]
+## variable project_name
+## set project_name "myproject"
+## variable backend
+## set backend "vivado"
+## variable part
+## set part "xc7z020clg400-1"
+## variable clock_period
+## set clock_period 5
+## variable clock_uncertainty
+## set clock_uncertainty 12.5%
+## variable version
+## set version "1.0.0"
+# add_files ${project_name}_prj/solution1/syn/vhdl
+# synth_design -top ${project_name} -part $part
+Command: synth_design -top myproject -part xc7z020clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 1098914
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2105.625 ; gain = 425.594 ; free physical = 85745 ; free virtual = 108157
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'myproject' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:28]
+INFO: [Synth 8-3491] module 'myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s.vhd:11' bound to instance 'call_ret1_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s_fu_127' of component 'myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1186]
+INFO: [Synth 8-638] synthesizing module 'myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s.vhd:22]
+INFO: [Synth 8-256] done synthesizing module 'myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s.vhd:22]
+INFO: [Synth 8-3491] module 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s.vhd:11' bound to instance 'call_ret2_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s_fu_135' of component 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1195]
+INFO: [Synth 8-638] synthesizing module 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s.vhd:37]
+INFO: [Synth 8-256] done synthesizing module 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s.vhd:37]
+INFO: [Synth 8-3491] module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s.vhd:11' bound to instance 'call_ret3_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s_fu_141' of component 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1219]
+INFO: [Synth 8-638] synthesizing module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s.vhd:52]
+INFO: [Synth 8-256] done synthesizing module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s.vhd:52]
+INFO: [Synth 8-3491] module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s.vhd:11' bound to instance 'grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s_fu_162' of component 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1258]
+INFO: [Synth 8-638] synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s.vhd:57]
+INFO: [Synth 8-256] done synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s.vhd:57]
+INFO: [Synth 8-3491] module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s.vhd:11' bound to instance 'grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s_fu_183' of component 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1302]
+INFO: [Synth 8-638] synthesizing module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s.vhd:56]
+INFO: [Synth 8-256] done synthesizing module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s.vhd:56]
+INFO: [Synth 8-3491] module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s.vhd:11' bound to instance 'call_ret6_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s_fu_204' of component 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1345]
+INFO: [Synth 8-638] synthesizing module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s.vhd:58]
+INFO: [Synth 8-256] done synthesizing module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s.vhd:58]
+INFO: [Synth 8-3491] module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s.vhd:11' bound to instance 'grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s_fu_228' of component 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1390]
+INFO: [Synth 8-638] synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s.vhd:63]
+INFO: [Synth 8-256] done synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s.vhd:63]
+INFO: [Synth 8-3491] module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s.vhd:11' bound to instance 'grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s_fu_252' of component 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1440]
+INFO: [Synth 8-638] synthesizing module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s.vhd:48]
+INFO: [Synth 8-3491] module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s.vhd:11' bound to instance 'call_ret8_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s_fu_276' of component 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1475]
+INFO: [Synth 8-638] synthesizing module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s.vhd:36]
+INFO: [Synth 8-256] done synthesizing module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s.vhd:36]
+INFO: [Synth 8-3491] module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s.vhd:11' bound to instance 'grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s_fu_289' of component 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1498]
+INFO: [Synth 8-638] synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s.vhd:41]
+INFO: [Synth 8-3491] module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s.vhd:11' bound to instance 'grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s_fu_302' of component 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1526]
+INFO: [Synth 8-638] synthesizing module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s.vhd:48]
+INFO: [Synth 8-3491] module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s.vhd:11' bound to instance 'call_ret11_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s_fu_315' of component 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1561]
+INFO: [Synth 8-638] synthesizing module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s.vhd:50]
+INFO: [Synth 8-256] done synthesizing module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s.vhd:50]
+INFO: [Synth 8-3491] module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s.vhd:11' bound to instance 'grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s_fu_335' of component 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1598]
+INFO: [Synth 8-638] synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s.vhd:55]
+INFO: [Synth 8-256] done synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s.vhd:55]
+INFO: [Synth 8-3491] module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s.vhd:11' bound to instance 'grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s_fu_355' of component 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1640]
+INFO: [Synth 8-638] synthesizing module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s.vhd:44]
+INFO: [Synth 8-256] done synthesizing module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s.vhd:44]
+INFO: [Synth 8-3491] module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s.vhd:11' bound to instance 'call_ret14_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s_fu_375' of component 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1671]
+INFO: [Synth 8-638] synthesizing module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s.vhd:28]
+INFO: [Synth 8-256] done synthesizing module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s.vhd:28]
+INFO: [Synth 8-3491] module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s.vhd:11' bound to instance 'grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s_fu_384' of component 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1686]
+INFO: [Synth 8-638] synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s.vhd:33]
+INFO: [Synth 8-256] done synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s.vhd:33]
+INFO: [Synth 8-3491] module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s.vhd:11' bound to instance 'grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s_fu_393' of component 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1706]
+INFO: [Synth 8-638] synthesizing module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s.vhd:29]
+INFO: [Synth 8-256] done synthesizing module 'myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s.vhd:29]
+INFO: [Synth 8-3491] module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s.vhd:11' bound to instance 'layer27_out_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s_fu_402' of component 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:1722]
+INFO: [Synth 8-638] synthesizing module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'myproject' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/syn/vhdl/myproject.vhd:28]
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_4_val[0] in module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_5_val[0] in module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_12_val[1] in module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_12_val[0] in module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2240.562 ; gain = 560.531 ; free physical = 85591 ; free virtual = 108005
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2255.406 ; gain = 575.375 ; free physical = 85586 ; free virtual = 108000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2263.410 ; gain = 583.379 ; free physical = 85586 ; free virtual = 108000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:08 . Memory (MB): peak = 2287.434 ; gain = 607.402 ; free physical = 85563 ; free virtual = 108001
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   16 Bit       Adders := 3     
+	   2 Input   14 Bit       Adders := 5     
+	   2 Input   13 Bit       Adders := 20    
+	   3 Input   12 Bit       Adders := 13    
+	   2 Input   12 Bit       Adders := 45    
+	   2 Input   11 Bit       Adders := 83    
+	   3 Input   11 Bit       Adders := 11    
+	   2 Input   10 Bit       Adders := 72    
+	   2 Input    8 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
+	   4 Input    4 Bit       Adders := 1     
+	   3 Input    4 Bit       Adders := 2     
+	   2 Input    3 Bit       Adders := 3     
+	   3 Input    3 Bit       Adders := 4     
+	   2 Input    2 Bit       Adders := 67    
++---XORs : 
+	   2 Input      1 Bit         XORs := 137   
+	   3 Input      1 Bit         XORs := 1     
++---Registers : 
+	               16 Bit    Registers := 150   
+	               15 Bit    Registers := 15    
+	               14 Bit    Registers := 5     
+	               13 Bit    Registers := 1     
+	               12 Bit    Registers := 37    
+	               11 Bit    Registers := 63    
+	               10 Bit    Registers := 55    
+	                9 Bit    Registers := 12    
+	                4 Bit    Registers := 3     
+	                3 Bit    Registers := 43    
+	                2 Bit    Registers := 212   
+	                1 Bit    Registers := 197   
++---Muxes : 
+	   2 Input   16 Bit        Muxes := 31    
+	   2 Input   13 Bit        Muxes := 1     
+	   3 Input   13 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 1     
+	   3 Input    8 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 268   
+	   2 Input    1 Bit        Muxes := 78    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+INFO: [Device 21-9227] Part: xc7z020clg400-1 does not have CEAM library.
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:18 . Memory (MB): peak = 2420.973 ; gain = 740.941 ; free physical = 85447 ; free virtual = 107896
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:18 . Memory (MB): peak = 2420.973 ; gain = 740.941 ; free physical = 85447 ; free virtual = 107896
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:20 ; elapsed = 00:00:19 . Memory (MB): peak = 2420.973 ; gain = 740.941 ; free physical = 85446 ; free virtual = 107895
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:23 ; elapsed = 00:00:22 . Memory (MB): peak = 2420.973 ; gain = 740.941 ; free physical = 85452 ; free virtual = 107901
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:23 ; elapsed = 00:00:22 . Memory (MB): peak = 2420.973 ; gain = 740.941 ; free physical = 85452 ; free virtual = 107901
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:23 ; elapsed = 00:00:22 . Memory (MB): peak = 2420.973 ; gain = 740.941 ; free physical = 85452 ; free virtual = 107901
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:23 ; elapsed = 00:00:22 . Memory (MB): peak = 2420.973 ; gain = 740.941 ; free physical = 85452 ; free virtual = 107901
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:23 ; elapsed = 00:00:22 . Memory (MB): peak = 2420.973 ; gain = 740.941 ; free physical = 85452 ; free virtual = 107901
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:23 ; elapsed = 00:00:22 . Memory (MB): peak = 2420.973 ; gain = 740.941 ; free physical = 85452 ; free virtual = 107901
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |   116|
+|3     |LUT1   |   109|
+|4     |LUT2   |   683|
+|5     |LUT3   |   419|
+|6     |LUT4   |   321|
+|7     |LUT5   |   266|
+|8     |LUT6   |   535|
+|9     |FDRE   |  2147|
+|10    |FDSE   |     5|
+|11    |IBUF   |    37|
+|12    |OBUF   |    12|
++------+-------+------+
+
+Report Instance Areas: 
++------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+------+
+|      |Instance                                                                      |Module                                                                     |Cells |
++------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+------+
+|1     |top                                                                           |                                                                           |  4651|
+|2     |  grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s_fu_252 |myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s |   712|
+|3     |  grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s_fu_302 |myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s |   222|
+|4     |  grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s_fu_355 |myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s |   222|
+|5     |  grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s_fu_393 |myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s |    20|
+|6     |  grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s_fu_183  |myproject_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s  |  1177|
+|7     |  grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s_fu_289     |myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s     |   193|
+|8     |  grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s_fu_335     |myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s     |   297|
+|9     |  grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s_fu_384     |myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s     |   104|
+|10    |  grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s_fu_162      |myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s      |   495|
+|11    |  grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s_fu_228      |myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s      |   415|
++------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:23 ; elapsed = 00:00:22 . Memory (MB): peak = 2420.973 ; gain = 740.941 ; free physical = 85452 ; free virtual = 107901
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 18 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:23 ; elapsed = 00:00:22 . Memory (MB): peak = 2420.973 ; gain = 740.941 ; free physical = 85452 ; free virtual = 107901
+Synthesis Optimization Complete : Time (s): cpu = 00:00:23 ; elapsed = 00:00:22 . Memory (MB): peak = 2420.980 ; gain = 740.941 ; free physical = 85452 ; free virtual = 107901
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2431.879 ; gain = 0.000 ; free physical = 85725 ; free virtual = 108174
+INFO: [Netlist 29-17] Analyzing 116 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2542.688 ; gain = 0.000 ; free physical = 85665 ; free virtual = 108126
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: be6a0fbb
+INFO: [Common 17-83] Releasing license: Synthesis
+69 Infos, 18 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:26 . Memory (MB): peak = 2542.688 ; gain = 868.621 ; free physical = 85666 ; free virtual = 108126
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2031.982; main = 1808.454; forked = 446.962
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 4077.375; main = 2542.691; forked = 1656.398
+# report_utilization -file vivado_synth.rpt
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 20 15:03:25 2025...

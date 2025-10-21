@@ -70,7 +70,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_helpers.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2351424
+        Offset:          2353538
         Length:          0
         ReplacementText: 'VITIS_LOOP_265_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -79,7 +79,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_helpers.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2351811
+        Offset:          2353925
         Length:          0
         ReplacementText: 'VITIS_LOOP_275_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -88,7 +88,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_helpers.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2352146
+        Offset:          2354260
         Length:          0
         ReplacementText: 'VITIS_LOOP_286_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -97,7 +97,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_helpers.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2352369
+        Offset:          2354483
         Length:          0
         ReplacementText: 'VITIS_LOOP_293_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -106,7 +106,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_helpers.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2352464
+        Offset:          2354578
         Length:          0
         ReplacementText: 'VITIS_LOOP_295_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -115,7 +115,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_helpers.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2352828
+        Offset:          2354942
         Length:          0
         ReplacementText: 'VITIS_LOOP_307_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -124,7 +124,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_helpers.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2352910
+        Offset:          2355024
         Length:          0
         ReplacementText: 'VITIS_LOOP_309_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -133,7 +133,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_helpers.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2353253
+        Offset:          2355367
         Length:          0
         ReplacementText: 'VITIS_LOOP_324_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -142,7 +142,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_helpers.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2353706
+        Offset:          2355820
         Length:          0
         ReplacementText: 'VITIS_LOOP_344_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -151,7 +151,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_helpers.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2353751
+        Offset:          2355865
         Length:          0
         ReplacementText: 'VITIS_LOOP_345_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -160,7 +160,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_helpers.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2354160
+        Offset:          2356274
         Length:          0
         ReplacementText: 'VITIS_LOOP_360_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -169,7 +169,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_helpers.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2354373
+        Offset:          2356487
         Length:          0
         ReplacementText: 'VITIS_LOOP_367_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -178,7 +178,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2357503
+        Offset:          2359617
         Length:          0
         ReplacementText: 'VITIS_LOOP_31_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -187,7 +187,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2357756
+        Offset:          2359870
         Length:          0
         ReplacementText: 'VITIS_LOOP_43_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -196,7 +196,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2358117
+        Offset:          2360231
         Length:          0
         ReplacementText: 'VITIS_LOOP_57_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -205,7 +205,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2358933
+        Offset:          2361047
         Length:          0
         ReplacementText: 'VITIS_LOOP_84_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -214,7 +214,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2359594
+        Offset:          2361708
         Length:          0
         ReplacementText: 'VITIS_LOOP_114_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -223,7 +223,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2360728
+        Offset:          2362842
         Length:          0
         ReplacementText: 'VITIS_LOOP_151_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -232,7 +232,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2361090
+        Offset:          2363204
         Length:          0
         ReplacementText: 'VITIS_LOOP_162_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -241,7 +241,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2361993
+        Offset:          2364107
         Length:          0
         ReplacementText: 'VITIS_LOOP_195_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -250,7 +250,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2362512
+        Offset:          2364626
         Length:          0
         ReplacementText: 'VITIS_LOOP_209_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -259,7 +259,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2363352
+        Offset:          2365466
         Length:          0
         ReplacementText: 'VITIS_LOOP_243_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -268,7 +268,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2363622
+        Offset:          2365736
         Length:          0
         ReplacementText: 'VITIS_LOOP_252_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -277,7 +277,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2364146
+        Offset:          2366260
         Length:          0
         ReplacementText: 'VITIS_LOOP_266_3: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -286,7 +286,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2364380
+        Offset:          2366494
         Length:          0
         ReplacementText: 'VITIS_LOOP_273_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -295,7 +295,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2364740
+        Offset:          2366854
         Length:          0
         ReplacementText: 'VITIS_LOOP_286_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -304,7 +304,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2365669
+        Offset:          2367783
         Length:          0
         ReplacementText: 'VITIS_LOOP_323_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -313,7 +313,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2365786
+        Offset:          2367900
         Length:          0
         ReplacementText: 'VITIS_LOOP_328_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -322,7 +322,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2365840
+        Offset:          2367954
         Length:          0
         ReplacementText: 'VITIS_LOOP_329_3: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -331,7 +331,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2366421
+        Offset:          2368535
         Length:          0
         ReplacementText: 'VITIS_LOOP_346_4: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -340,7 +340,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2366908
+        Offset:          2369022
         Length:          0
         ReplacementText: 'VITIS_LOOP_359_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -349,7 +349,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2367049
+        Offset:          2369163
         Length:          0
         ReplacementText: 'VITIS_LOOP_367_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -358,7 +358,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2368014
+        Offset:          2370128
         Length:          0
         ReplacementText: 'VITIS_LOOP_402_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -367,7 +367,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2368651
+        Offset:          2370765
         Length:          0
         ReplacementText: 'VITIS_LOOP_432_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -376,7 +376,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2369164
+        Offset:          2371278
         Length:          0
         ReplacementText: 'VITIS_LOOP_451_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -385,7 +385,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2369622
+        Offset:          2371736
         Length:          0
         ReplacementText: 'VITIS_LOOP_467_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -394,7 +394,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2370076
+        Offset:          2372190
         Length:          0
         ReplacementText: 'VITIS_LOOP_485_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -403,7 +403,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2370463
+        Offset:          2372577
         Length:          0
         ReplacementText: 'VITIS_LOOP_502_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -412,7 +412,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2370858
+        Offset:          2372972
         Length:          0
         ReplacementText: 'VITIS_LOOP_519_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -421,7 +421,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2371524
+        Offset:          2373638
         Length:          0
         ReplacementText: 'VITIS_LOOP_549_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -430,7 +430,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2372098
+        Offset:          2374212
         Length:          0
         ReplacementText: 'VITIS_LOOP_568_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -439,7 +439,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2372764
+        Offset:          2374878
         Length:          0
         ReplacementText: 'VITIS_LOOP_598_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -448,7 +448,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2373318
+        Offset:          2375432
         Length:          0
         ReplacementText: 'VITIS_LOOP_617_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -457,7 +457,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2373950
+        Offset:          2376064
         Length:          0
         ReplacementText: 'VITIS_LOOP_647_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -466,7 +466,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2374776
+        Offset:          2376890
         Length:          0
         ReplacementText: 'VITIS_LOOP_674_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -475,7 +475,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2375394
+        Offset:          2377508
         Length:          0
         ReplacementText: 'VITIS_LOOP_703_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -484,7 +484,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2376005
+        Offset:          2378119
         Length:          0
         ReplacementText: 'VITIS_LOOP_724_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -493,7 +493,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2376394
+        Offset:          2378508
         Length:          0
         ReplacementText: 'VITIS_LOOP_742_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -502,7 +502,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2376790
+        Offset:          2378904
         Length:          0
         ReplacementText: 'VITIS_LOOP_762_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -511,7 +511,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2378866
+        Offset:          2380980
         Length:          0
         ReplacementText: 'VITIS_LOOP_73_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -520,7 +520,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2379006
+        Offset:          2381120
         Length:          0
         ReplacementText: 'VITIS_LOOP_80_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -529,7 +529,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2379271
+        Offset:          2381385
         Length:          0
         ReplacementText: 'VITIS_LOOP_89_3: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -538,7 +538,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2379465
+        Offset:          2381579
         Length:          0
         ReplacementText: 'VITIS_LOOP_98_4: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -547,7 +547,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2379558
+        Offset:          2381672
         Length:          0
         ReplacementText: 'VITIS_LOOP_102_5: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -556,7 +556,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2379884
+        Offset:          2381998
         Length:          0
         ReplacementText: 'VITIS_LOOP_113_6: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -565,7 +565,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2379994
+        Offset:          2382108
         Length:          0
         ReplacementText: 'VITIS_LOOP_117_7: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -574,7 +574,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2380960
+        Offset:          2383074
         Length:          0
         ReplacementText: 'VITIS_LOOP_141_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -583,7 +583,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2381046
+        Offset:          2383160
         Length:          0
         ReplacementText: 'VITIS_LOOP_145_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -592,7 +592,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2381722
+        Offset:          2383836
         Length:          0
         ReplacementText: 'VITIS_LOOP_164_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -601,7 +601,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2382654
+        Offset:          2384768
         Length:          0
         ReplacementText: 'VITIS_LOOP_187_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -610,7 +610,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2382792
+        Offset:          2384906
         Length:          0
         ReplacementText: 'VITIS_LOOP_190_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -619,7 +619,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2382942
+        Offset:          2385056
         Length:          0
         ReplacementText: 'VITIS_LOOP_195_3: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -628,7 +628,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2383066
+        Offset:          2385180
         Length:          0
         ReplacementText: 'VITIS_LOOP_199_4: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -637,7 +637,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2388921
+        Offset:          2391035
         Length:          0
         ReplacementText: 'VITIS_LOOP_213_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -646,7 +646,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2389205
+        Offset:          2391319
         Length:          0
         ReplacementText: 'VITIS_LOOP_222_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -655,7 +655,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2392418
+        Offset:          2394532
         Length:          0
         ReplacementText: 'VITIS_LOOP_328_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -664,7 +664,7 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2392560
+        Offset:          2394674
         Length:          0
         ReplacementText: 'VITIS_LOOP_333_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -673,16 +673,34 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_activation_stream.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2392764
+        Offset:          2394878
         Length:          0
         ReplacementText: 'VITIS_LOOP_341_3: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_88_1:  '
+    FileOffset:      88
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_batchnorm.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2423373
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_88_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_108_1:  '
+    FileOffset:      108
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_batchnorm.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2424030
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_108_1: '
   - DiagnosticName:  xilinx-label-all-loops
     Message:         'Added loop label VITIS_LOOP_14_1:  '
     FileOffset:      14
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_dense_compressed.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2419230
+        Offset:          2428415
         Length:          0
         ReplacementText: 'VITIS_LOOP_14_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -691,7 +709,223 @@ Diagnostics:
     FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_dense_compressed.h
     Replacements:    
       - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
-        Offset:          2421101
+        Offset:          2430286
         Length:          0
         ReplacementText: 'VITIS_LOOP_74_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_39_1:  '
+    FileOffset:      39
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2435993
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_39_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_48_1:  '
+    FileOffset:      48
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2436301
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_48_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_57_1:  '
+    FileOffset:      57
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2436609
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_57_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_66_1:  '
+    FileOffset:      66
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2436916
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_66_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_75_1:  '
+    FileOffset:      75
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2437236
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_75_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_84_1:  '
+    FileOffset:      84
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2437569
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_84_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_119_1:  '
+    FileOffset:      119
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2438772
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_119_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_122_2:  '
+    FileOffset:      122
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2438862
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_122_2: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_133_1:  '
+    FileOffset:      133
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2439351
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_133_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_136_2:  '
+    FileOffset:      136
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2439463
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_136_2: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_147_1:  '
+    FileOffset:      147
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2439996
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_147_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_148_2:  '
+    FileOffset:      148
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2440055
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_148_2: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_151_3:  '
+    FileOffset:      151
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2440235
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_151_3: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_178_1:  '
+    FileOffset:      178
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2441556
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_178_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_181_2:  '
+    FileOffset:      181
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2441690
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_181_2: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_193_1:  '
+    FileOffset:      193
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2442386
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_193_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_194_2:  '
+    FileOffset:      194
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2442445
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_194_2: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_195_3:  '
+    FileOffset:      195
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2442508
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_195_3: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_202_4:  '
+    FileOffset:      202
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2442904
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_202_4: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_203_5:  '
+    FileOffset:      203
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2442967
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_203_5: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_220_1:  '
+    FileOffset:      220
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2443895
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_220_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_221_2:  '
+    FileOffset:      221
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2443954
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_221_2: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_222_3:  '
+    FileOffset:      222
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2444017
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_222_3: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_228_4:  '
+    FileOffset:      228
+    FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/firmware/nnet_utils/nnet_merge.h
+    Replacements:    
+      - FilePath:        /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp
+        Offset:          2444441
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_228_4: '
 ...

@@ -1,0 +1,152 @@
+
+
+================================================================
+== Vitis HLS Report for 'normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s'
+================================================================
+* Date:           Mon Oct 20 15:01:55 2025
+
+* Version:        2024.1 (Build 5069499 on May 21 2024)
+* Project:        myproject_prj
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|      0 ns|     0.62 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|      0 ns|      0 ns|    1|    1|      yes|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 0
+IsPipeline: 1
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 1
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 1
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 1, States = { 1 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.00>
+ST_1 : Operation 2 [1/1] (0.00ns)   --->   "%specpipeline_ln48 = specpipeline void @_ssdm_op_SpecPipeline, i32 1, i32 0, i32 0, i32 0, void @empty_0" [firmware/nnet_utils/nnet_batchnorm.h:48]   --->   Operation 2 'specpipeline' 'specpipeline_ln48' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 3 [1/1] (0.00ns)   --->   "%specresourcelimit_ln48 = specresourcelimit void @_ssdm_op_SpecResourceLimit, i64 20, void @empty_1, void @empty_0, void @empty_0, void @empty_0" [firmware/nnet_utils/nnet_batchnorm.h:48]   --->   Operation 3 'specresourcelimit' 'specresourcelimit_ln48' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 4 [1/1] (0.00ns)   --->   "%data_19_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_19_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 4 'read' 'data_19_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%data_18_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_18_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 5 'read' 'data_18_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%data_17_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_17_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 6 'read' 'data_17_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%data_16_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_16_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 7 'read' 'data_16_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%data_15_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_15_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 8 'read' 'data_15_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%data_14_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_14_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 9 'read' 'data_14_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%data_13_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_13_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 10 'read' 'data_13_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%data_12_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_12_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 11 'read' 'data_12_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%data_11_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_11_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 12 'read' 'data_11_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%data_10_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_10_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 13 'read' 'data_10_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%data_9_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_9_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 14 'read' 'data_9_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%data_8_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_8_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 15 'read' 'data_8_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%data_7_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_7_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 16 'read' 'data_7_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%data_6_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_6_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 17 'read' 'data_6_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%data_5_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_5_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 18 'read' 'data_5_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%data_4_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_4_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 19 'read' 'data_4_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%data_3_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_3_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 20 'read' 'data_3_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%data_2_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_2_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 21 'read' 'data_2_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%data_1_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_1_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 22 'read' 'data_1_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%data_0_val_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %data_0_val" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 23 'read' 'data_0_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "%trunc_ln = partselect i15 @_ssdm_op_PartSelect.i15.i16.i32.i32, i16 %data_5_val_read, i32 1, i32 15" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 24 'partselect' 'trunc_ln' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "%sext_ln54 = sext i15 %trunc_ln" [firmware/nnet_utils/nnet_batchnorm.h:54]   --->   Operation 25 'sext' 'sext_ln54' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "%mrv = insertvalue i320 <undef>, i16 %data_0_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 26 'insertvalue' 'mrv' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "%mrv_1 = insertvalue i320 %mrv, i16 %data_1_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 27 'insertvalue' 'mrv_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 28 [1/1] (0.00ns)   --->   "%mrv_2 = insertvalue i320 %mrv_1, i16 %data_2_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 28 'insertvalue' 'mrv_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 29 [1/1] (0.00ns)   --->   "%mrv_3 = insertvalue i320 %mrv_2, i16 %data_3_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 29 'insertvalue' 'mrv_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 30 [1/1] (0.00ns)   --->   "%mrv_4 = insertvalue i320 %mrv_3, i16 %data_4_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 30 'insertvalue' 'mrv_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 31 [1/1] (0.00ns)   --->   "%mrv_5 = insertvalue i320 %mrv_4, i16 %sext_ln54" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 31 'insertvalue' 'mrv_5' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 32 [1/1] (0.00ns)   --->   "%mrv_6 = insertvalue i320 %mrv_5, i16 %data_6_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 32 'insertvalue' 'mrv_6' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 33 [1/1] (0.00ns)   --->   "%mrv_7 = insertvalue i320 %mrv_6, i16 %data_7_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 33 'insertvalue' 'mrv_7' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%mrv_8 = insertvalue i320 %mrv_7, i16 %data_8_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 34 'insertvalue' 'mrv_8' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 35 [1/1] (0.00ns)   --->   "%mrv_9 = insertvalue i320 %mrv_8, i16 %data_9_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 35 'insertvalue' 'mrv_9' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%mrv_10 = insertvalue i320 %mrv_9, i16 %data_10_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 36 'insertvalue' 'mrv_10' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 37 [1/1] (0.00ns)   --->   "%mrv_11 = insertvalue i320 %mrv_10, i16 %data_11_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 37 'insertvalue' 'mrv_11' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%mrv_12 = insertvalue i320 %mrv_11, i16 %data_12_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 38 'insertvalue' 'mrv_12' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 39 [1/1] (0.00ns)   --->   "%mrv_13 = insertvalue i320 %mrv_12, i16 %data_13_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 39 'insertvalue' 'mrv_13' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 40 [1/1] (0.00ns)   --->   "%mrv_14 = insertvalue i320 %mrv_13, i16 %data_14_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 40 'insertvalue' 'mrv_14' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 41 [1/1] (0.00ns)   --->   "%mrv_15 = insertvalue i320 %mrv_14, i16 %data_15_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 41 'insertvalue' 'mrv_15' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 42 [1/1] (0.00ns)   --->   "%mrv_16 = insertvalue i320 %mrv_15, i16 %data_16_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 42 'insertvalue' 'mrv_16' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 43 [1/1] (0.00ns)   --->   "%mrv_17 = insertvalue i320 %mrv_16, i16 %data_17_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 43 'insertvalue' 'mrv_17' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 44 [1/1] (0.00ns)   --->   "%mrv_18 = insertvalue i320 %mrv_17, i16 %data_18_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 44 'insertvalue' 'mrv_18' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 45 [1/1] (0.00ns)   --->   "%mrv_s = insertvalue i320 %mrv_18, i16 %data_19_val_read" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 45 'insertvalue' 'mrv_s' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 46 [1/1] (0.00ns)   --->   "%ret_ln63 = ret i320 %mrv_s" [firmware/nnet_utils/nnet_batchnorm.h:63]   --->   Operation 46 'ret' 'ret_ln63' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5.000ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 0.000ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

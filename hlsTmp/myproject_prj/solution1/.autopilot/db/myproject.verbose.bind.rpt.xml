@@ -1,13 +1,13 @@
 <profile>
 
 <section name = "Vitis HLS Report for 'myproject'" level="0">
-<item name = "Date">Fri Oct 17 13:15:31 2025
+<item name = "Date">Mon Oct 20 15:01:56 2025
 </item>
 <item name = "Version">2024.1 (Build 5069499 on May 21 2024)</item>
 <item name = "Project">myproject_prj</item>
 <item name = "Solution">solution1 (Vivado IP Flow Target)</item>
-<item name = "Product family">virtexuplus</item>
-<item name = "Target device">xcvu13p-flga2577-2-e</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020-clg400-1</item>
 </section>
 
 <section name = "Performance Estimates" level="0">
@@ -15,7 +15,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="4">Clock, Target, Estimated, Uncertainty</keys>
-<column name="ap_clk">5.00 ns, 4.360 ns, 0.62 ns</column>
+<column name="ap_clk">5.00 ns, 4.154 ns, 0.62 ns</column>
 </table>
 </item>
 </section>
@@ -24,16 +24,31 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="8">, min, max, min, max, min, max, Type</keys>
-<column name="">3, 3, 15.000 ns, 15.000 ns, 1, 1, yes</column>
+<column name="">30, 30, 0.150 us, 0.150 us, 1, 1, yes</column>
 </table>
 </item>
 <item name = "Detail">
 <section name = "" level="1">
 <item name = "Instance"><table name="" hasTotal="0">
 <keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
-<column name="call_ret1_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config2_s_fu_63">dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config2_s, 0, 0, 0 ns, 0 ns, 1, 1, yes</column>
-<column name="call_ret_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config4_s_fu_69">relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config4_s, 0, 0, 0 ns, 0 ns, 1, 1, yes</column>
-<column name="grp_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config5_s_fu_131">dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config5_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, yes</column>
+<column name="call_ret1_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s_fu_127">concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s, 0, 0, 0 ns, 0 ns, 1, 1, yes</column>
+<column name="call_ret2_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s_fu_135">dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config4_s, 0, 0, 0 ns, 0 ns, 1, 1, yes</column>
+<column name="call_ret3_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s_fu_141">normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config22_s, 0, 0, 0 ns, 0 ns, 1, 1, yes</column>
+<column name="grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s_fu_162">relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config6_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, yes</column>
+<column name="grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s_fu_183">dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config7_s, 3, 3, 15.000 ns, 15.000 ns, 1, 1, yes</column>
+<column name="call_ret6_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s_fu_204">normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config23_s, 0, 0, 0 ns, 0 ns, 1, 1, yes</column>
+<column name="grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s_fu_228">relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config9_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, yes</column>
+<column name="grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s_fu_252">dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config10_s, 3, 3, 15.000 ns, 15.000 ns, 1, 1, yes</column>
+<column name="call_ret8_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s_fu_276">normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config24_s, 0, 0, 0 ns, 0 ns, 1, 1, yes</column>
+<column name="grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s_fu_289">relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config12_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, yes</column>
+<column name="grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s_fu_302">dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config13_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, yes</column>
+<column name="call_ret11_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s_fu_315">normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config25_s, 0, 0, 0 ns, 0 ns, 1, 1, yes</column>
+<column name="grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s_fu_335">relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config15_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, yes</column>
+<column name="grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s_fu_355">dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config16_s, 2, 2, 10.000 ns, 10.000 ns, 1, 1, yes</column>
+<column name="call_ret14_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s_fu_375">normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config26_s, 0, 0, 0 ns, 0 ns, 1, 1, yes</column>
+<column name="grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s_fu_384">relu_ap_fixed_16_6_5_3_0_ap_ufixed_2_0_4_0_0_relu_config18_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, yes</column>
+<column name="grp_dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s_fu_393">dense_latency_ap_ufixed_2_0_4_0_0_ap_fixed_16_6_5_3_0_config19_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, yes</column>
+<column name="layer27_out_normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s_fu_402">normalize_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config27_s, 0, 0, 0 ns, 0 ns, 1, 1, yes</column>
 </table>
 </item>
 <item name = "Loop"><table name="" hasTotal="0">

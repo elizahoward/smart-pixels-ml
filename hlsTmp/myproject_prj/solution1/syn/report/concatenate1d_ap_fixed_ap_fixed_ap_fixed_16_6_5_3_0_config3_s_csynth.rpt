@@ -1,0 +1,104 @@
+
+
+================================================================
+== Vitis HLS Report for 'concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config3_s'
+================================================================
+* Date:           Mon Oct 20 15:01:56 2025
+
+* Version:        2024.1 (Build 5069499 on May 21 2024)
+* Project:        myproject_prj
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|      0 ns|     0.62 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|      0 ns|      0 ns|    1|    1|      yes|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       -|      -|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    -|       -|      -|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       -|      -|    -|
+|Register         |        -|    -|       -|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    0|       0|      0|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|    0|       0|      0|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------+-----+-----+------------+---------------------------------------------------------------+--------------+
+|  RTL Ports  | Dir | Bits|  Protocol  |                         Source Object                         |    C Type    |
++-------------+-----+-----+------------+---------------------------------------------------------------+--------------+
+|ap_ready     |  out|    1|  ap_ctrl_hs|  concatenate1d<ap_fixed,ap_fixed,ap_fixed<16,6,5,3,0>,config3>|  return value|
+|ap_return_0  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_fixed,ap_fixed,ap_fixed<16,6,5,3,0>,config3>|  return value|
+|ap_return_1  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_fixed,ap_fixed,ap_fixed<16,6,5,3,0>,config3>|  return value|
+|ap_rst       |   in|    1|  ap_ctrl_hs|  concatenate1d<ap_fixed,ap_fixed,ap_fixed<16,6,5,3,0>,config3>|  return value|
+|data1_val    |   in|   16|     ap_none|                                                      data1_val|        scalar|
+|data2_val    |   in|   16|     ap_none|                                                      data2_val|        scalar|
++-------------+-----+-----+------------+---------------------------------------------------------------+--------------+
+

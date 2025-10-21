@@ -243,10 +243,9 @@ class AESL_RUNTIME_BC {
     string mName;
 };
 using hls::sim::Byte;
-struct __cosim_s32__ { char data[32]; };
-extern "C" void myproject(volatile void *, volatile void *, volatile void *, volatile void *);
-extern "C" void apatb_myproject_hw(volatile void * __xlx_apatb_param_input1, volatile void * __xlx_apatb_param_layer5_out_0, volatile void * __xlx_apatb_param_layer5_out_1, volatile void * __xlx_apatb_param_layer5_out_2) {
+extern "C" void myproject(volatile void *, volatile void *, volatile void *);
+extern "C" void apatb_myproject_hw(volatile void * __xlx_apatb_param_y_size, volatile void * __xlx_apatb_param_y_local, volatile void * __xlx_apatb_param_layer21_out) {
 using hls::sim::createStream;
   // DUT call
-  myproject(__xlx_apatb_param_input1, __xlx_apatb_param_layer5_out_0, __xlx_apatb_param_layer5_out_1, __xlx_apatb_param_layer5_out_2);
+  myproject(__xlx_apatb_param_y_size, __xlx_apatb_param_y_local, __xlx_apatb_param_layer21_out);
 }

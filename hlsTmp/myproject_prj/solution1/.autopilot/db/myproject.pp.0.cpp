@@ -33231,32 +33231,73 @@ template <typename T, unsigned N, T (*func)(T)> class lookup_table {
 # 1 "/code/Xilinx_2024.1/Vitis_HLS/2024.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/cstdio" 1 3
 # 40 "/code/Xilinx_2024.1/Vitis_HLS/2024.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/cstdio" 3
 # 9 "firmware/defines.h" 2
-
-
-
-
-
-
-
-
+# 34 "firmware/defines.h"
 typedef ap_fixed<16,6> input_t;
+typedef ap_fixed<16,6> input2_t;
+typedef ap_fixed<16,6> layer3_t;
 typedef ap_fixed<16,6> model_default_t;
-typedef ap_fixed<16,6> layer2_t;
-typedef ap_fixed<4,1> weight2_t;
-typedef ap_fixed<4,1> bias2_t;
-typedef ap_uint<1> layer2_index;
-typedef ap_ufixed<8,0,AP_RND_CONV,AP_SAT> layer4_t;
-typedef ap_fixed<18,8> relu1_table_t;
-typedef ap_fixed<16,6> result_t;
-typedef ap_fixed<4,1> weight5_t;
-typedef ap_fixed<4,1> bias5_t;
-typedef ap_uint<1> layer5_index;
+typedef ap_fixed<16,6> layer4_t;
+typedef ap_fixed<2,1> weight4_t;
+typedef ap_fixed<2,1> bias4_t;
+typedef ap_uint<1> layer4_index;
+typedef ap_fixed<16,6> layer22_t;
+typedef struct exponent_scale22_t {ap_uint<1> sign;ap_int<3> weight; } exponent_scale22_t;
+typedef ap_fixed<2,1> bias22_t;
+typedef ap_ufixed<2,0,AP_RND_CONV,AP_SAT> layer6_t;
+typedef ap_fixed<18,8> q_relu1_table_t;
+typedef ap_fixed<16,6> layer7_t;
+typedef ap_fixed<2,1> weight7_t;
+typedef ap_fixed<2,1> bias7_t;
+typedef ap_uint<1> layer7_index;
+typedef ap_fixed<16,6> layer23_t;
+typedef struct exponent_scale23_t {ap_uint<1> sign;ap_int<2> weight; } exponent_scale23_t;
+typedef ap_fixed<2,1> bias23_t;
+typedef ap_ufixed<2,0,AP_RND_CONV,AP_SAT> layer9_t;
+typedef ap_fixed<18,8> q_relu2_table_t;
+typedef ap_fixed<16,6> layer10_t;
+typedef ap_fixed<2,1> weight10_t;
+typedef ap_fixed<2,1> bias10_t;
+typedef ap_uint<1> layer10_index;
+typedef ap_fixed<16,6> layer24_t;
+typedef struct exponent_scale24_t {ap_uint<1> sign;ap_int<2> weight; } exponent_scale24_t;
+typedef ap_fixed<2,1> bias24_t;
+typedef ap_ufixed<2,0,AP_RND_CONV,AP_SAT> layer12_t;
+typedef ap_fixed<18,8> q_relu3_table_t;
+typedef ap_fixed<16,6> layer13_t;
+typedef ap_fixed<2,1> weight13_t;
+typedef ap_fixed<2,1> bias13_t;
+typedef ap_uint<1> layer13_index;
+typedef ap_fixed<16,6> layer25_t;
+typedef struct exponent_scale25_t {ap_uint<1> sign;ap_int<2> weight; } exponent_scale25_t;
+typedef ap_fixed<2,1> bias25_t;
+typedef ap_ufixed<2,0,AP_RND_CONV,AP_SAT> layer15_t;
+typedef ap_fixed<18,8> q_relu4_table_t;
+typedef ap_fixed<16,6> layer16_t;
+typedef ap_fixed<2,1> weight16_t;
+typedef ap_fixed<2,1> bias16_t;
+typedef ap_uint<1> layer16_index;
+typedef ap_fixed<16,6> layer26_t;
+typedef struct exponent_scale26_t {ap_uint<1> sign;ap_int<2> weight; } exponent_scale26_t;
+typedef ap_fixed<2,1> bias26_t;
+typedef ap_ufixed<2,0,AP_RND_CONV,AP_SAT> layer18_t;
+typedef ap_fixed<18,8> q_relu5_table_t;
+typedef ap_fixed<16,6> layer19_t;
+typedef ap_fixed<2,1> weight19_t;
+typedef ap_fixed<2,1> bias19_t;
+typedef ap_uint<1> layer19_index;
+typedef ap_fixed<16,6> layer27_t;
+typedef struct exponent_scale27_t {ap_uint<1> sign;ap_int<2> weight; } exponent_scale27_t;
+typedef ap_fixed<2,1> bias27_t;
+typedef ap_fixed<8,1,AP_RND_CONV,AP_SAT> result_t;
+typedef ap_ufixed<2,0> slope21_t;
+typedef ap_ufixed<2,0> shift21_t;
+typedef ap_fixed<18,8> output_table_t;
 # 9 "firmware/myproject.h" 2
 
 
 __attribute__((sdx_kernel("myproject", 0))) void myproject(
-    input_t input1[16],
-    result_t layer5_out[3]
+    input_t y_size[1], input2_t y_local[1],
+    result_t layer21_out[1]
 );
 # 4 "firmware/myproject.cpp" 2
 # 1 "firmware/parameters.h" 1
@@ -58086,6 +58127,12 @@ PReLUActLoop:
 
 }
 # 12 "firmware/parameters.h" 2
+# 1 "firmware/nnet_utils/nnet_batchnorm.h" 1
+
+
+
+
+
 # 1 "firmware/nnet_utils/nnet_dense.h" 1
 
 
@@ -58595,7 +58642,249 @@ void dense(data_T data[CONFIG_T::n_in], res_T res[CONFIG_T::n_out],
 }
 
 }
+# 7 "firmware/nnet_utils/nnet_batchnorm.h" 2
+# 1 "/code/Xilinx_2024.1/Vitis_HLS/2024.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/math.h" 1 3
+# 8 "firmware/nnet_utils/nnet_batchnorm.h" 2
+
+namespace nnet {
+
+struct batchnorm_config {
+
+    typedef float bias_t;
+    typedef float scale_t;
+
+
+    static const unsigned n_in = 10;
+    static const unsigned n_filt = -1;
+    static const unsigned n_scale_bias = 10;
+
+
+    static const unsigned io_type = io_parallel;
+    static const unsigned reuse_factor = 1;
+    static const bool store_weights_in_bram = false;
+    static const unsigned n_zeros = 0;
+
+    template <class x_T, class y_T> using product = nnet::product::mult<x_T, y_T>;
+};
+
+template <class data_T, class res_T, typename CONFIG_T>
+void normalize(data_T data[CONFIG_T::n_in], res_T res[CONFIG_T::n_in],
+               typename CONFIG_T::scale_t scale[CONFIG_T::n_scale_bias],
+               typename CONFIG_T::bias_t bias[CONFIG_T::n_scale_bias]) {
+    data_T cache;
+
+
+#pragma HLS function_instantiate variable=scale,bias
+
+
+
+
+#pragma HLS PIPELINE II=CONFIG_T::reuse_factor
+
+
+#pragma HLS ARRAY_PARTITION variable=scale complete
+#pragma HLS ARRAY_PARTITION variable=bias complete
+
+#pragma HLS ALLOCATION operation instances=mul limit=CONFIG_T::multiplier_limit
+
+
+Result:
+    for (int ires = 0; ires < CONFIG_T::n_in; ires++) {
+        if (CONFIG_T::n_filt == -1) {
+            res[ires] = CONFIG_T::template product<data_T, typename CONFIG_T::scale_t>::product(data[ires], scale[ires]) +
+                        bias[ires];
+        } else {
+            int norm_index = ires % CONFIG_T::n_filt;
+            res[ires] =
+                CONFIG_T::template product<data_T, typename CONFIG_T::scale_t>::product(data[ires], scale[norm_index]) +
+                bias[norm_index];
+        }
+    }
+}
+
+
+
+
+struct batchnorm_quantized_tanh_config {
+
+    static const unsigned n_in = 10;
+    static const unsigned n_filt = -1;
+    static const unsigned n_scale_bias = 10;
+
+
+    static const unsigned io_type = io_parallel;
+    static const unsigned reuse_factor = 1;
+    static const unsigned n_zeros = 0;
+};
+
+template <class data_T, typename CONFIG_T>
+void normalize_binary_tanh(data_T data[CONFIG_T::n_in], ap_uint<1> res[CONFIG_T::n_in],
+                           data_T threshold[CONFIG_T::n_scale_bias]) {
+#pragma HLS PIPELINE
+#pragma HLS ARRAY_PARTITION variable=res complete
+
+ data_T datareg;
+    ap_uint<1> cache;
+    VITIS_LOOP_88_1: for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+        datareg = data[ii];
+        int norm_index = CONFIG_T::n_filt == -1 ? ii : ii % CONFIG_T::n_filt;
+        if (datareg >= threshold[norm_index])
+            cache = 1;
+        else
+            cache = 0;
+
+        res[ii] = cache;
+    }
+}
+
+template <class data_T, typename CONFIG_T>
+void normalize_ternary_tanh(data_T data[CONFIG_T::n_in], ap_int<2> res[CONFIG_T::n_in],
+                            data_T threshold_hi[CONFIG_T::n_scale_bias], data_T threshold_lo[CONFIG_T::n_scale_bias]) {
+#pragma HLS PIPELINE
+#pragma HLS ARRAY_PARTITION variable=res complete
+
+ data_T datareg;
+    ap_int<2> cache;
+    VITIS_LOOP_108_1: for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+        datareg = data[ii];
+        int norm_index = CONFIG_T::n_filt == -1 ? ii : ii % CONFIG_T::n_filt;
+        if (datareg > threshold_hi[norm_index])
+            cache = 1;
+        else if (datareg <= threshold_lo[norm_index])
+            cache = -1;
+        else
+            cache = 0;
+
+        res[ii] = cache;
+    }
+}
+
+}
 # 13 "firmware/parameters.h" 2
+# 1 "firmware/nnet_utils/nnet_batchnorm_stream.h" 1
+
+
+
+
+
+
+
+
+namespace nnet {
+
+
+
+
+
+template <class data_T, class res_T, typename CONFIG_T>
+void normalize(hls::stream<data_T> &data, hls::stream<res_T> &res, typename CONFIG_T::scale_t scale[CONFIG_T::n_scale_bias],
+               typename CONFIG_T::bias_t bias[CONFIG_T::n_scale_bias]) {
+#pragma HLS ARRAY_PARTITION variable=scale complete
+#pragma HLS ARRAY_PARTITION variable=bias complete
+
+ constexpr unsigned ii = CONFIG_T::n_in / CONFIG_T::multiplier_limit;
+#pragma HLS ALLOCATION operation instances=mul limit=CONFIG_T::multiplier_limit
+
+BatchNormLoop:
+    for (int i = 0; i < CONFIG_T::n_in / data_T::size; i++) {
+#pragma HLS PIPELINE II=ii
+
+ data_T in_data = data.read();
+        res_T out_data;
+
+
+    BatchNormpack:
+        for (int j = 0; j < data_T::size; j++) {
+#pragma HLS UNROLL
+ int norm_index;
+            if (CONFIG_T::n_filt == -1) {
+                norm_index = i * data_T::size + j;
+            } else {
+                norm_index = j % CONFIG_T::n_filt;
+            }
+            out_data[j] = CONFIG_T::template product<typename data_T::value_type, typename CONFIG_T::scale_t>::product(
+                              in_data[j], scale[norm_index]) +
+                          bias[norm_index];
+        }
+
+        res.write(out_data);
+    }
+}
+
+
+
+
+template <class data_T, typename CONFIG_T>
+void normalize_binary_tanh(hls::stream<data_T> &data, hls::stream<nnet::array<ap_uint<1>, CONFIG_T::n_scale_bias>> &res,
+                           typename data_T::value_type threshold[CONFIG_T::n_scale_bias]) {
+#pragma HLS ARRAY_PARTITION variable=threshold complete
+
+BinaryNormLoop:
+    for (int i = 0; i < CONFIG_T::n_in / data_T::size; i++) {
+#pragma HLS PIPELINE
+
+ data_T in_data = data.read();
+        nnet::array<ap_uint<1>, CONFIG_T::n_scale_bias> out_data;
+
+
+    BatchNormPack:
+        for (int j = 0; j < data_T::size; j++) {
+#pragma HLS UNROLL
+ int norm_index;
+            if (CONFIG_T::n_filt == -1) {
+                norm_index = i * data_T::size + j;
+            } else {
+                norm_index = j % CONFIG_T::n_filt;
+            }
+            out_data[j] = (in_data[j] >= threshold[norm_index]) ? 1 : 0;
+        }
+
+        res.write(out_data);
+    }
+}
+
+template <class data_T, typename CONFIG_T>
+void normalize_ternary_tanh(hls::stream<data_T> &data, hls::stream<nnet::array<ap_int<2>, CONFIG_T::n_scale_bias>> &res,
+                            typename data_T::value_type threshold_hi[CONFIG_T::n_scale_bias],
+                            typename data_T::value_type threshold_lo[CONFIG_T::n_scale_bias]) {
+#pragma HLS ARRAY_PARTITION variable=threshold_hi complete
+#pragma HLS ARRAY_PARTITION variable=threshold_lo complete
+
+TernaryNormLoop:
+    for (int i = 0; i < CONFIG_T::n_in / data_T::size; i++) {
+#pragma HLS PIPELINE
+
+ data_T in_data = data.read();
+        nnet::array<ap_int<2>, CONFIG_T::n_scale_bias> out_data;
+
+
+    BatchNormPack:
+        for (int j = 0; j < data_T::size; j++) {
+#pragma HLS UNROLL
+
+ int norm_index;
+            if (CONFIG_T::n_filt == -1) {
+                norm_index = i * data_T::size + j;
+            } else {
+                norm_index = j % CONFIG_T::n_filt;
+            }
+
+            if (in_data[j] > threshold_hi[norm_index]) {
+                out_data[j] = 1;
+            } else if (in_data[j] <= threshold_lo[norm_index]) {
+                out_data[j] = -1;
+            } else {
+                out_data[j] = 0;
+            }
+        }
+
+        res.write(out_data);
+    }
+}
+
+}
+# 14 "firmware/parameters.h" 2
+
 # 1 "firmware/nnet_utils/nnet_dense_compressed.h" 1
 
 
@@ -58686,7 +58975,7 @@ ResultLoop:
 }
 
 }
-# 14 "firmware/parameters.h" 2
+# 16 "firmware/parameters.h" 2
 # 1 "firmware/nnet_utils/nnet_dense_stream.h" 1
 
 
@@ -58814,78 +59103,1011 @@ void dense(hls::stream<data_T> &data_stream, hls::stream<res_T> &res_stream,
 }
 
 }
-# 15 "firmware/parameters.h" 2
+# 17 "firmware/parameters.h" 2
+# 1 "firmware/nnet_utils/nnet_merge.h" 1
 
 
-# 1 "firmware/weights/w2.h" 1
-# 12 "firmware/weights/w2.h"
-weight2_t w2[928] = {0.125, 0.250, 0.000, -0.125, 0.000, 0.000, 0.000, 0.125, 0.375, -0.125, 0.000, -0.125, -0.250, 0.000, 0.000, 0.125, 0.125, -0.125, 0.000, 0.125, 0.125, -0.125, 0.250, 0.000, 0.000, 0.000, 0.000, -0.125, 0.000, -0.125, 0.000, -0.125, -0.375, 0.125, 0.000, -0.125, 0.125, 0.000, 0.125, 0.125, 0.125, 0.000, -0.250, 0.125, 0.125, 0.000, 0.000, 0.000, 0.000, -0.250, -0.125, 0.000, 0.000, 0.000, 0.000, 0.125, 0.000, -0.375, 0.250, 0.125, 0.125, 0.000, 0.000, 0.125, 0.000, -0.125, 0.125, 0.250, 0.125, 0.250, 0.125, 0.000, -0.125, -0.125, -0.125, 0.000, 0.000, 0.250, 0.125, 0.125, 0.125, -1.000, 0.375, -0.125, 0.125, 0.000, 0.125, 0.250, -0.125, 0.125, 0.250, 0.125, -0.125, 0.125, 0.375, -0.125, 0.000, -0.250, 0.125, 0.000, 0.000, 0.125, 0.125, 0.000, 0.125, -0.125, 0.000, 0.000, 0.000, -0.125, 0.000, -0.250, 0.000, 0.000, 0.000, -0.375, -0.750, 0.000, -0.125, 0.000, 0.125, -0.250, 0.000, -0.125, -0.375, -0.250, 0.000, 0.125, 0.375, 0.250, 0.000, 0.000, 0.250, 0.375, 0.000, 0.000, 0.125, 0.125, -0.250, 0.875, -0.500, 0.000, 0.000, -0.125, 0.000, -0.250, 0.000, -0.250, -0.375, 0.000, 0.125, 0.250, -0.125, 0.125, 0.000, 0.625, -0.250, 0.000, 0.000, 0.000, 0.000, -0.125, -0.375, 0.000, 0.125, 0.125, 0.000, 0.000, 0.000, -0.250, 0.125, 0.125, 0.000, -0.375, 0.125, -0.375, 0.125, 0.125, -0.125, 0.000, -0.125, 0.125, -0.250, -0.125, -0.250, -0.250, -0.250, -0.250, 0.000, 0.125, -0.375, 0.125, -0.125, -0.375, 0.125, 0.125, 0.000, -0.125, -0.250, 0.125, -0.250, 0.250, -0.125, 0.000, 0.125, -0.125, -0.250, 0.000, 0.125, 0.125, -0.500, 0.250, 0.000, -0.125, -0.125, 0.125, 0.500, 0.000, 0.250, 0.125, -0.125, 0.000, -0.250, 0.500, 0.125, 0.000, -0.250, -0.250, -0.125, -0.125, 0.125, 0.375, -0.375, -0.125, 0.125, -0.125, -0.250, 0.125, -0.125, 0.000, 0.000, 0.125, -0.125, -0.125, -0.250, -0.125, -0.250, 0.125, 0.500, 0.000, -0.125, 0.000, 0.125, -0.250, 0.375, -0.125, 0.250, 0.000, -0.125, -0.500, -0.125, 0.125, 0.125, 0.250, 0.000, 0.125, -0.125, 0.000, 0.125, -0.500, 0.125, 0.000, 0.250, 0.125, -0.250, 0.125, -0.250, 0.125, 0.125, -0.125, -0.250, -0.250, 0.000, 0.125, -0.250, 0.125, -0.125, -0.250, 0.125, -0.125, -0.250, 0.125, -0.250, -0.250, 0.000, -0.125, -0.125, 0.125, -0.125, -0.250, 0.250, 0.000, 0.125, -0.125, 0.375, 0.125, -0.125, 0.125, 0.000, 0.250, 0.125, -0.125, -0.250, -0.125, -0.375, 0.125, 0.250, 0.000, 0.125, -0.375, 0.125, -0.125, -0.250, 0.125, -0.125, 0.125, -0.125, 0.125, 0.125, -0.250, -0.125, 0.125, 0.125, 0.125, -0.250, 0.125, 0.000, -0.125, 0.125, 0.000, -0.250, 0.125, 0.000, -0.250, 0.000, 0.125, 0.125, 0.000, 0.000, 0.125, -0.125, 0.250, 0.125, -0.125, 0.125, 0.125, 0.375, -0.125, -0.125, -0.125, -0.250, 0.000, -0.125, 0.000, 0.125, -0.125, 0.125, -0.125, 0.000, 0.125, 0.000, -0.125, 0.125, -0.125, -0.125, 0.125, 0.000, 0.250, 0.125, -0.250, 0.375, 0.125, 0.000, 0.125, -0.500, 0.000, 0.000, 0.250, -0.250, 0.000, -0.250, 0.125, 0.125, 0.125, -0.375, 0.125, 0.000, -0.250, 0.000, 0.125, -0.250, 0.375, 0.125, 0.125, 0.000, -0.250, -0.625, -0.250, 0.250, 0.125, -0.125, 0.125, -0.125, 0.000, -0.125, 0.125, -0.125, 0.250, 0.000, 0.375, 0.000, 0.125, -0.375, 0.125, 0.000, -0.375, 0.125, 0.000, -0.375, 0.875, -0.125, 0.125, -0.250, 0.000, -0.125, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, -0.250, -0.500, 0.125, 0.125, 0.000, -0.125, 0.375, 0.000, 0.000, 0.000, 0.000, 0.125, 0.000, 0.375, 0.125, 0.000, -0.250, 0.375, 0.000, -0.125, 0.000, 0.250, 0.500, -0.250, 0.000, -0.125, -0.250, 0.000, -0.125, 0.125, 0.000, -0.125, 0.000, 0.125, 0.375, -0.500, 0.000, 0.000, 0.500, -0.125, -0.125, 0.000, 0.000, -0.250, 0.000, -1.000, 0.000, -0.250, 0.000, 0.000, -0.125, 0.000, 0.000, 0.000, -0.125, 0.250, -0.125, -0.125, -0.125, 0.000, 0.000, -0.375, 0.125, 0.000, -0.125, 0.250, -0.250, 0.125, 0.125, 0.000, 0.000, 0.000, -0.250, 0.000, 0.125, -0.250, -0.125, -0.250, 0.000, 0.000, 0.125, 0.125, 0.000, -0.125, 0.000, -0.125, 0.000, -0.250, 0.125, 0.000, 0.000, 0.125, -0.125, -0.250, -0.250, -0.125, 0.000, -0.250, 0.000, 0.250, -0.125, 0.125, 0.125, 0.125, -0.250, -0.125, 0.125, -0.500, 0.000, -0.125, 0.000, 0.125, 0.000, 0.125, 0.000, -0.125, 0.250, 0.250, 0.000, -0.375, 0.000, 0.000, -0.250, 0.125, 0.000, -0.125, 0.250, -0.125, 0.125, -0.125, 0.000, 0.000, 0.125, -0.125, 0.000, 0.125, 0.000, 0.125, -0.125, 0.000, 0.000, -0.125, 0.000, 0.000, 0.125, -0.125, -0.375, 0.000, 0.000, 0.250, 0.125, 0.125, 0.000, 0.000, 0.000, -0.250, 0.000, 0.000, 0.125, -0.125, 0.000, -0.250, -0.125, 0.125, -0.125, -0.250, 0.000, 0.000, 0.000, -0.125, 0.000, 0.250, -0.125, 0.000, -0.125, 0.250, -0.125, -0.375, 0.000, 0.000, -0.125, 0.125, -0.125, -0.125, 0.000, 0.000, 0.125, 0.375, 0.125, 0.000, 0.000, 0.000, 0.000, -0.125, 0.125, 0.500, -0.375, 0.000, 0.000, 0.125, 0.125, 0.000, -0.125, -0.125, 0.125, 0.000, -0.125, 0.000, -0.125, -0.125, -0.375, -0.125, 0.000, 0.125, -0.125, 0.000, 0.000, 0.000, 0.125, -0.375, -0.375, 0.000, 0.000, -0.375, 0.000, 0.125, 0.125, 0.000, 0.000, 0.125, 0.000, 0.000, 0.250, -0.375, 0.000, -0.500, 0.000, 0.000, 0.000, 0.125, 0.000, -0.125, -0.125, 0.000, -0.125, 0.125, -0.125, 0.000, 0.000, 0.000, 0.000, -0.125, 0.125, -0.125, 0.250, 0.125, 0.125, -0.125, 0.125, 0.125, 0.000, -0.125, 0.000, 0.000, 0.000, 0.000, 0.125, -0.250, -0.375, 0.000, -0.250, -0.125, 0.000, -0.125, 0.000, 0.125, -0.250, -0.500, 0.125, 0.125, 0.000, 0.000, 0.000, 0.250, 0.000, 0.125, 0.250, -0.250, 0.000, 0.125, 0.000, 0.125, 0.000, -0.625, 0.000, 0.000, 0.125, 0.000, 0.000, -0.125, 0.125, 0.000, 0.000, 0.125, 0.000, 0.000, 0.125, 0.125, 0.000, -0.125, 0.125, 0.000, -0.500, 0.000, 0.000, 0.000, -0.125, -0.125, 0.000, -0.125, -0.125, 0.125, -0.125, 0.000, 0.000, -0.375, -0.250, 0.000, -0.125, 0.250, 0.000, -0.250, 0.000, 0.000, -0.375, -0.125, 0.125, -0.125, 0.000, 0.125, 0.000, -0.250, 0.000, 0.000, -0.125, 0.000, 0.125, 0.125, -0.250, -0.375, 0.000, 0.500, -0.125, 0.000, 0.000, -0.125, 0.000, 0.125, 0.250, 0.000, 0.000, -0.125, -0.125, 0.000, 0.250, 0.000, 0.000, 0.125, 0.000, 0.125, -0.500, -0.250, 0.125, -0.125, 0.000, -0.125, 0.125, 0.125, -0.250, 0.125, 0.000, 0.000, -0.125, 0.250, 0.250, 0.000, 0.375, -0.125, 0.000, 0.125, -0.125, -0.125, -0.125, -0.250, 0.000, 0.125, 0.000, 0.000, 0.125, 0.250, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, -0.125, 0.250, 0.000, 0.000, 0.000, 0.000, -0.125, -0.125, 0.000, -0.125, 0.000, 0.000, -0.125, 0.250, -0.125, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.125, -0.375, 0.000, 0.125, 0.000, -0.125, 0.000, 0.000, 0.125, 0.125, 0.000, -0.125, 0.000, -0.250, 0.125, 0.000, 0.000, 0.250, 0.000, 0.000, -0.125, 0.125, -0.125, 0.000, 0.250, -0.125, 0.000, -0.125, 0.000, -0.125, 0.125, 0.000, 0.000, -0.250, 0.000, 0.000, 0.125, 0.500, -0.125, 0.000, 0.250, 0.000, 0.000, 0.000, 0.000, 0.125, 0.000, -0.250, 0.125, 0.000, 0.125, -0.250, 0.000, 0.000, -0.125, 0.000, 0.000, 0.000, 0.000};
+
+
+
+
+# 1 "/code/Xilinx_2024.1/Vitis_HLS/2024.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/math.h" 1 3
+# 8 "firmware/nnet_utils/nnet_merge.h" 2
+
+namespace nnet {
+
+struct merge_config {
+    static const unsigned n_elem = 10;
+};
+
+struct dot_config {
+    static const unsigned n_in = 10;
+    static const unsigned n_out = 1;
+    static const unsigned reuse_factor = 1;
+    typedef float accum_t;
+
+    template <class x_T, class y_T> using product = nnet::product::mult<x_T, y_T>;
+};
+
+struct concat_config {
+    static const unsigned n_elem1_0 = 10;
+    static const unsigned n_elem1_1 = 10;
+    static const unsigned n_elem1_2 = 10;
+    static const unsigned n_elem2_0 = 10;
+    static const unsigned n_elem2_1 = 10;
+    static const unsigned n_elem2_2 = 10;
+
+    static const unsigned axis = -1;
+};
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void add(input1_T data1[CONFIG_T::n_elem], input2_T data2[CONFIG_T::n_elem], res_T res[CONFIG_T::n_elem]) {
+#pragma HLS PIPELINE
+
+ VITIS_LOOP_39_1: for (int ii = 0; ii < CONFIG_T::n_elem; ii++) {
+        res[ii] = data1[ii] + data2[ii];
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void subtract(input1_T data1[CONFIG_T::n_elem], input2_T data2[CONFIG_T::n_elem], res_T res[CONFIG_T::n_elem]) {
+#pragma HLS PIPELINE
+
+ VITIS_LOOP_48_1: for (int ii = 0; ii < CONFIG_T::n_elem; ii++) {
+        res[ii] = data1[ii] - data2[ii];
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void multiply(input1_T data1[CONFIG_T::n_elem], input2_T data2[CONFIG_T::n_elem], res_T res[CONFIG_T::n_elem]) {
+#pragma HLS PIPELINE
+
+ VITIS_LOOP_57_1: for (int ii = 0; ii < CONFIG_T::n_elem; ii++) {
+        res[ii] = data1[ii] * data2[ii];
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void average(input1_T data1[CONFIG_T::n_elem], input2_T data2[CONFIG_T::n_elem], res_T res[CONFIG_T::n_elem]) {
+#pragma HLS PIPELINE
+
+ VITIS_LOOP_66_1: for (int ii = 0; ii < CONFIG_T::n_elem; ii++) {
+        res[ii] = (data1[ii] + data2[ii]) / (res_T)2;
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void maximum(input1_T data1[CONFIG_T::n_elem], input2_T data2[CONFIG_T::n_elem], res_T res[CONFIG_T::n_elem]) {
+#pragma HLS PIPELINE
+
+ VITIS_LOOP_75_1: for (int ii = 0; ii < CONFIG_T::n_elem; ii++) {
+        res[ii] = (data1[ii] > data2[ii]) ? data1[ii] : data2[ii];
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void minimum(input1_T data1[CONFIG_T::n_elem], input2_T data2[CONFIG_T::n_elem], res_T res[CONFIG_T::n_elem]) {
+#pragma HLS PIPELINE
+
+ VITIS_LOOP_84_1: for (int ii = 0; ii < CONFIG_T::n_elem; ii++) {
+        res[ii] = (data1[ii] < data2[ii]) ? data1[ii] : data2[ii];
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void dot1d(input1_T data1[CONFIG_T::n_in], input2_T data2[CONFIG_T::n_in], res_T res[CONFIG_T::n_out]) {
+#pragma HLS PIPELINE II=CONFIG_T::reuse_factor
+
+#pragma HLS ALLOCATION operation instances=mul limit=CONFIG_T::multiplier_limit
+
+ typename CONFIG_T::accum_t mult[CONFIG_T::n_in];
+#pragma HLS ARRAY_PARTITION variable=mult complete
+ typename CONFIG_T::accum_t acc = 0;
+
+Product:
+    for (int i_mult = 0; i_mult < CONFIG_T::n_in; i_mult++) {
+#pragma HLS UNROLL
+ mult[i_mult] = CONFIG_T::template product<input1_T, input2_T>::product(data1[i_mult], data2[i_mult]);
+    }
+
+Accum:
+    for (int i_acc = 0; i_acc < CONFIG_T::n_in; i_acc++) {
+#pragma HLS UNROLL
+ acc += mult[i_acc];
+    }
+
+    res[0] = cast<input1_T, res_T, CONFIG_T>(acc);
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate1d(input1_T data1[CONFIG_T::n_elem1_0], input2_T data2[CONFIG_T::n_elem2_0],
+                   res_T res[CONFIG_T::n_elem1_0 + CONFIG_T::n_elem2_0]) {
+#pragma HLS PIPELINE
+
+ VITIS_LOOP_119_1: for (int ii = 0; ii < CONFIG_T::n_elem1_0; ii++) {
+        res[ii] = data1[ii];
+    }
+    VITIS_LOOP_122_2: for (int ii = 0; ii < CONFIG_T::n_elem2_0; ii++) {
+        res[CONFIG_T::n_elem1_0 + ii] = data2[ii];
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate2d_0(input1_T data1[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1],
+                     input2_T data2[CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1],
+                     res_T res[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 + CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1]) {
+#pragma HLS PIPELINE
+
+ VITIS_LOOP_133_1: for (int ii = 0; ii < CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1; ii++) {
+        res[ii] = data1[ii];
+    }
+    VITIS_LOOP_136_2: for (int ii = 0; ii < CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1; ii++) {
+        res[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 + ii] = data2[ii];
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate2d_1(input1_T data1[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1],
+                     input2_T data2[CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1],
+                     res_T res[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 + CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1]) {
+#pragma HLS PIPELINE
+
+ VITIS_LOOP_147_1: for (int ii = 0; ii < CONFIG_T::n_elem1_0; ii++) {
+        VITIS_LOOP_148_2: for (int jj = 0; jj < CONFIG_T::n_elem1_1; jj++) {
+            res[ii * (CONFIG_T::n_elem1_1 + CONFIG_T::n_elem2_1) + jj] = data1[ii * CONFIG_T::n_elem1_1 + jj];
+        }
+        VITIS_LOOP_151_3: for (int jj = 0; jj < CONFIG_T::n_elem2_1; jj++) {
+            res[ii * (CONFIG_T::n_elem1_1 + CONFIG_T::n_elem2_1) + CONFIG_T::n_elem1_1 + jj] =
+                data2[ii * CONFIG_T::n_elem2_1 + jj];
+        }
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate2d(input1_T data1[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1],
+                   input2_T data2[CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1],
+                   res_T res[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 + CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1]) {
+#pragma HLS INLINE
+
+ if (CONFIG_T::axis == 2 || CONFIG_T::axis == -1) {
+        concatenate2d_1<input1_T, input2_T, res_T, CONFIG_T>(data1, data2, res);
+    } else {
+        concatenate2d_0<input1_T, input2_T, res_T, CONFIG_T>(data1, data2, res);
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate3d_0(input1_T data1[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2],
+                     input2_T data2[CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1 * CONFIG_T::n_elem2_2],
+                     res_T res[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2 +
+                               CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1 * CONFIG_T::n_elem2_2]) {
+#pragma HLS PIPELINE
+
+ VITIS_LOOP_178_1: for (int ii = 0; ii < CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2; ii++) {
+        res[ii] = data1[ii];
+    }
+    VITIS_LOOP_181_2: for (int ii = 0; ii < CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1 * CONFIG_T::n_elem2_2; ii++) {
+        res[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2 + ii] = data2[ii];
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate3d_1(input1_T data1[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2],
+                     input2_T data2[CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1 * CONFIG_T::n_elem2_2],
+                     res_T res[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2 +
+                               CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1 * CONFIG_T::n_elem2_2]) {
+#pragma HLS PIPELINE
+
+ VITIS_LOOP_193_1: for (int ii = 0; ii < CONFIG_T::n_elem1_0; ii++) {
+        VITIS_LOOP_194_2: for (int jj = 0; jj < CONFIG_T::n_elem1_1; jj++) {
+            VITIS_LOOP_195_3: for (int kk = 0; kk < CONFIG_T::n_elem1_2; kk++) {
+                int res_idx =
+                    ii * (CONFIG_T::n_elem1_1 + CONFIG_T::n_elem2_1) * CONFIG_T::n_elem1_2 + jj * CONFIG_T::n_elem1_2 + kk;
+                int data_idx = ii * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2 + jj * CONFIG_T::n_elem1_2 + kk;
+                res[res_idx] = data1[data_idx];
+            }
+        }
+        VITIS_LOOP_202_4: for (int jj = 0; jj < CONFIG_T::n_elem2_1; jj++) {
+            VITIS_LOOP_203_5: for (int kk = 0; kk < CONFIG_T::n_elem2_2; kk++) {
+                int res_idx = ii * (CONFIG_T::n_elem1_1 + CONFIG_T::n_elem2_1) * CONFIG_T::n_elem1_2 +
+                              (jj + CONFIG_T::n_elem1_1) * CONFIG_T::n_elem1_2 + kk;
+                int data_idx = ii * CONFIG_T::n_elem2_1 * CONFIG_T::n_elem2_2 + jj * CONFIG_T::n_elem2_2 + kk;
+                res[res_idx] = data2[data_idx];
+            }
+        }
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate3d_2(input1_T data1[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2],
+                     input2_T data2[CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1 * CONFIG_T::n_elem2_2],
+                     res_T res[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2 +
+                               CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1 * CONFIG_T::n_elem2_2]) {
+#pragma HLS PIPELINE
+
+ VITIS_LOOP_220_1: for (int ii = 0; ii < CONFIG_T::n_elem1_0; ii++) {
+        VITIS_LOOP_221_2: for (int jj = 0; jj < CONFIG_T::n_elem1_1; jj++) {
+            VITIS_LOOP_222_3: for (int kk = 0; kk < CONFIG_T::n_elem1_2; kk++) {
+                int res_idx = ii * CONFIG_T::n_elem1_1 * (CONFIG_T::n_elem1_2 + CONFIG_T::n_elem2_2) +
+                              jj * (CONFIG_T::n_elem1_2 + CONFIG_T::n_elem2_2) + kk;
+                int data_idx = ii * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2 + jj * CONFIG_T::n_elem1_2 + kk;
+                res[res_idx] = data1[data_idx];
+            }
+            VITIS_LOOP_228_4: for (int kk = 0; kk < CONFIG_T::n_elem1_2; kk++) {
+                int res_idx = ii * CONFIG_T::n_elem1_1 * (CONFIG_T::n_elem1_2 + CONFIG_T::n_elem2_2) +
+                              jj * (CONFIG_T::n_elem1_2 + CONFIG_T::n_elem2_2) + kk + CONFIG_T::n_elem1_2;
+                int data_idx = ii * CONFIG_T::n_elem2_1 * CONFIG_T::n_elem2_2 + jj * CONFIG_T::n_elem2_2 + kk;
+                res[res_idx] = data2[data_idx];
+            }
+        }
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate3d(input1_T data1[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2],
+                   input2_T data2[CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1 * CONFIG_T::n_elem2_2],
+                   res_T res[CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2 +
+                             CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1 * CONFIG_T::n_elem2_2]) {
+#pragma HLS INLINE
+
+ if (CONFIG_T::axis == 3 || CONFIG_T::axis == -1) {
+        concatenate3d_2<input1_T, input2_T, res_T, CONFIG_T>(data1, data2, res);
+    } else if (CONFIG_T::axis == 2 || CONFIG_T::axis == -2) {
+        concatenate3d_1<input1_T, input2_T, res_T, CONFIG_T>(data1, data2, res);
+    } else {
+        concatenate3d_0<input1_T, input2_T, res_T, CONFIG_T>(data1, data2, res);
+    }
+}
+
+}
 # 18 "firmware/parameters.h" 2
-# 1 "firmware/weights/b2.h" 1
-# 12 "firmware/weights/b2.h"
-bias2_t b2[58] = {0.875, 0.375, 0.375, 0.125, 0.375, 0.000, 0.500, -1.000, 0.750, 0.750, 0.250, 0.750, 0.875, 0.875, 0.625, -1.000, -0.250, -0.125, 0.250, 0.125, -1.000, 0.500, 0.750, 0.625, 0.750, -0.125, 0.250, 0.875, 0.000, 0.250, -1.000, 0.125, 0.875, -1.000, 0.500, -1.000, 0.875, 0.875, -1.000, 0.875, 0.125, -1.000, 0.375, -1.000, 0.375, -1.000, 0.125, 0.875, 0.500, 0.750, 0.250, -1.000, 0.875, 0.000, 0.250, 0.250, -1.000, 0.125};
+# 1 "firmware/nnet_utils/nnet_merge_stream.h" 1
+
+
+
+
+
+# 1 "/code/Xilinx_2024.1/Vitis_HLS/2024.1/tps/lnx64/gcc-8.3.0/lib/gcc/x86_64-pc-linux-gnu/8.3.0/../../../../include/c++/8.3.0/math.h" 1 3
+# 7 "firmware/nnet_utils/nnet_merge_stream.h" 2
+
+namespace nnet {
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void add(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+    ({ bool _AssertPred = input1_T::size == input2_T::size && input1_T::size == res_T::size; __builtin_assume(_AssertPred); });
+
+AddLoop:
+    for (int i = 0; i < CONFIG_T::n_elem / input1_T::size; i++) {
+#pragma HLS PIPELINE
+
+ input1_T in_data1 = data1.read();
+        input2_T in_data2 = data2.read();
+        res_T out_data;
+
+
+    AddPack:
+        for (int j = 0; j < res_T::size; j++) {
+#pragma HLS UNROLL
+ out_data[j] = in_data1[j] + in_data2[j];
+        }
+
+        res.write(out_data);
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void subtract(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+    ({ bool _AssertPred = input1_T::size == input2_T::size && input1_T::size == res_T::size; __builtin_assume(_AssertPred); });
+
+SubtractLoop:
+    for (int i = 0; i < CONFIG_T::n_elem / input1_T::size; i++) {
+#pragma HLS PIPELINE
+
+ input1_T in_data1 = data1.read();
+        input2_T in_data2 = data2.read();
+        res_T out_data;
+
+
+    SubtractPack:
+        for (int j = 0; j < res_T::size; j++) {
+#pragma HLS UNROLL
+ out_data[j] = in_data1[j] - in_data2[j];
+        }
+
+        res.write(out_data);
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void multiply(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+    ({ bool _AssertPred = input1_T::size == input2_T::size && input1_T::size == res_T::size; __builtin_assume(_AssertPred); });
+
+MultiplyLoop:
+    for (int i = 0; i < CONFIG_T::n_elem / input1_T::size; i++) {
+#pragma HLS PIPELINE II=CONFIG_T::reuse_factor
+
+ input1_T in_data1 = data1.read();
+        input2_T in_data2 = data2.read();
+        res_T out_data;
+
+
+    MultiplyPack:
+        for (int j = 0; j < res_T::size; j++) {
+#pragma HLS UNROLL
+ out_data[j] = in_data1[j] * in_data2[j];
+        }
+
+        res.write(out_data);
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void average(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+    ({ bool _AssertPred = input1_T::size == input2_T::size && input1_T::size == res_T::size; __builtin_assume(_AssertPred); });
+
+AverageLoop:
+    for (int i = 0; i < CONFIG_T::n_elem / input1_T::size; i++) {
+#pragma HLS PIPELINE II=CONFIG_T::reuse_factor
+
+ input1_T in_data1 = data1.read();
+        input2_T in_data2 = data2.read();
+        res_T out_data;
+
+
+    AveragePack:
+        for (int j = 0; j < res_T::size; j++) {
+#pragma HLS UNROLL
+ out_data[j] = (in_data1[j] + in_data2[j]) / (typename res_T::value_type)2;
+        }
+
+        res.write(out_data);
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void maximum(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+    ({ bool _AssertPred = input1_T::size == input2_T::size && input1_T::size == res_T::size; __builtin_assume(_AssertPred); });
+
+MaximumLoop:
+    for (int i = 0; i < CONFIG_T::n_elem / input1_T::size; i++) {
+#pragma HLS PIPELINE II=CONFIG_T::reuse_factor
+
+ input1_T in_data1 = data1.read();
+        input2_T in_data2 = data2.read();
+        res_T out_data;
+
+
+    MaximumPack:
+        for (int j = 0; j < res_T::size; j++) {
+#pragma HLS UNROLL
+ out_data[j] = (in_data1[j] > in_data2[j]) ? in_data1[j] : in_data2[j];
+        }
+
+        res.write(out_data);
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void minimum(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+    ({ bool _AssertPred = input1_T::size == input2_T::size && input1_T::size == res_T::size; __builtin_assume(_AssertPred); });
+
+MinimumLoop:
+    for (int i = 0; i < CONFIG_T::n_elem / input1_T::size; i++) {
+#pragma HLS PIPELINE II=CONFIG_T::reuse_factor
+
+ input1_T in_data1 = data1.read();
+        input2_T in_data2 = data2.read();
+        res_T out_data;
+
+
+    MinimumPack:
+        for (int j = 0; j < res_T::size; j++) {
+#pragma HLS UNROLL
+ out_data[j] = (in_data1[j] < in_data2[j]) ? in_data1[j] : in_data2[j];
+        }
+
+        res.write(out_data);
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate3d_0(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+ConcatLoopHeight1:
+    for (int i = 0; i < CONFIG_T::n_elem1_0; i++) {
+    ConcatLoopWidth1:
+        for (int j = 0; j < CONFIG_T::n_elem1_1; j++) {
+#pragma HLS PIPELINE II=1
+
+ input1_T in_data1 = data1.read();
+            res_T out_data;
+
+
+        ConcatPackInput1:
+            for (int k = 0; k < input1_T::size; k++) {
+#pragma HLS UNROLL
+ out_data[k] = in_data1[k];
+            }
+
+            res.write(out_data);
+        }
+    }
+ConcatLoopHeight2:
+    for (int i = 0; i < CONFIG_T::n_elem2_0; i++) {
+    ConcatLoopWidth2:
+        for (int j = 0; j < CONFIG_T::n_elem2_1; j++) {
+#pragma HLS PIPELINE II=1
+
+ input2_T in_data2 = data2.read();
+            res_T out_data;
+
+
+        ConcatPackInput2:
+            for (int k = 0; k < input2_T::size; k++) {
+#pragma HLS UNROLL
+ out_data[k] = in_data2[k];
+            }
+
+            res.write(out_data);
+        }
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate3d_1(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+ConcatLoopHeight:
+    for (int i = 0; i < CONFIG_T::n_elem1_0; i++) {
+    ConcatLoopWidth1:
+        for (int j = 0; j < CONFIG_T::n_elem1_1; j++) {
+#pragma HLS PIPELINE II=1
+
+ input1_T in_data1 = data1.read();
+            res_T out_data;
+
+
+        ConcatPackInput1:
+            for (int k = 0; k < input1_T::size; k++) {
+#pragma HLS UNROLL
+ out_data[k] = in_data1[k];
+            }
+
+            res.write(out_data);
+        }
+    ConcatLoopWidth2:
+        for (int j = 0; j < CONFIG_T::n_elem2_1; j++) {
+#pragma HLS PIPELINE II=1
+
+ input2_T in_data2 = data2.read();
+            res_T out_data;
+
+
+        ConcatPackInput2:
+            for (int k = 0; k < input2_T::size; k++) {
+#pragma HLS UNROLL
+ out_data[k] = in_data2[k];
+            }
+
+            res.write(out_data);
+        }
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate3d_2(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+ConcatLoopHeight:
+    for (int i = 0; i < CONFIG_T::n_elem1_0; i++) {
+    ConcatLoopWidth:
+        for (int j = 0; j < CONFIG_T::n_elem1_1; j++) {
+#pragma HLS PIPELINE II=1
+
+ input1_T in_data1 = data1.read();
+            input2_T in_data2 = data2.read();
+            res_T out_data;
+
+
+        ConcatPackInput1:
+            for (int k = 0; k < input1_T::size; k++) {
+#pragma HLS UNROLL
+ out_data[k] = in_data1[k];
+            }
+
+        ConcatPackInput2:
+            for (int k = 0; k < input2_T::size; k++) {
+#pragma HLS UNROLL
+ out_data[input1_T::size + k] = in_data2[k];
+            }
+
+            res.write(out_data);
+        }
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate3d(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+    if (CONFIG_T::axis == 3 || CONFIG_T::axis == -1) {
+        concatenate3d_2<input1_T, input2_T, res_T, CONFIG_T>(data1, data2, res);
+    } else if (CONFIG_T::axis == 2 || CONFIG_T::axis == -2) {
+        concatenate3d_1<input1_T, input2_T, res_T, CONFIG_T>(data1, data2, res);
+    } else {
+        concatenate3d_0<input1_T, input2_T, res_T, CONFIG_T>(data1, data2, res);
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate2d_0(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+ConcatLoopHeight1:
+    for (int i = 0; i < CONFIG_T::n_elem1_0; i++) {
+#pragma HLS PIPELINE II=1
+
+ input1_T in_data1 = data1.read();
+        res_T out_data;
+
+
+    ConcatPackInput1:
+        for (int k = 0; k < input1_T::size; k++) {
+#pragma HLS UNROLL
+ out_data[k] = in_data1[k];
+        }
+
+        res.write(out_data);
+    }
+ConcatLoopHeight2:
+    for (int i = 0; i < CONFIG_T::n_elem2_0; i++) {
+#pragma HLS PIPELINE II=1
+
+ input2_T in_data2 = data2.read();
+        res_T out_data;
+
+
+    ConcatPackInput2:
+        for (int k = 0; k < input2_T::size; k++) {
+#pragma HLS UNROLL
+ out_data[k] = in_data2[k];
+        }
+
+        res.write(out_data);
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate2d_1(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+ConcatLoopHeight:
+    for (int i = 0; i < CONFIG_T::n_elem1_0; i++) {
+#pragma HLS PIPELINE II=1
+
+ input1_T in_data1 = data1.read();
+        input2_T in_data2 = data2.read();
+        res_T out_data;
+
+
+    ConcatPackInput1:
+        for (int k = 0; k < input1_T::size; k++) {
+#pragma HLS UNROLL
+ out_data[k] = in_data1[k];
+        }
+
+    ConcatPackInput2:
+        for (int k = 0; k < input2_T::size; k++) {
+#pragma HLS UNROLL
+ out_data[input1_T::size + k] = in_data2[k];
+        }
+
+        res.write(out_data);
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate2d(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+    if (CONFIG_T::axis == 2 || CONFIG_T::axis == -1) {
+        concatenate2d_1<input1_T, input2_T, res_T, CONFIG_T>(data1, data2, res);
+    } else {
+        concatenate2d_0<input1_T, input2_T, res_T, CONFIG_T>(data1, data2, res);
+    }
+}
+
+template <class input1_T, class input2_T, class res_T, typename CONFIG_T>
+void concatenate1d(hls::stream<input1_T> &data1, hls::stream<input2_T> &data2, hls::stream<res_T> &res) {
+    res_T out_data;
+
+ConcatLoop1:
+    for (int i = 0; i < CONFIG_T::n_elem1_0 / input1_T::size; i++) {
+#pragma HLS PIPELINE
+ input1_T in_data1 = data1.read();
+    ConcatPack1:
+        for (int j = 0; j < input1_T::size; j++) {
+#pragma HLS UNROLL
+ out_data[j + (i * input1_T::size)] = in_data1[j];
+        }
+    }
+ConcatLoop2:
+    for (int i = 0; i < CONFIG_T::n_elem2_0 / input2_T::size; i++) {
+#pragma HLS PIPELINE
+ input2_T in_data2 = data2.read();
+    ConcatPack2:
+        for (int j = 0; j < input2_T::size; j++) {
+#pragma HLS UNROLL
+ out_data[j + (i * input2_T::size) + (CONFIG_T::n_elem1_0)] = in_data2[j];
+        }
+    }
+    res.write(out_data);
+}
+}
 # 19 "firmware/parameters.h" 2
-# 1 "firmware/weights/w5.h" 1
-# 12 "firmware/weights/w5.h"
-weight5_t w5[174] = {-1.000, 0.875, -0.250, 0.375, 0.250, -0.500, -0.125, 0.375, -0.375, 0.125, 0.875, -0.750, 0.375, 0.500, -0.750, 0.125, 0.875, -0.875, -0.125, 0.875, -0.750, 0.250, 0.250, 0.250, 0.375, -0.875, 0.500, -0.500, 0.375, -0.375, -0.125, 0.250, -0.750, -0.125, 0.500, -0.500, -0.625, 0.250, 0.250, -0.125, -0.375, 0.375, 0.250, -0.500, 0.250, -0.125, -0.125, 0.000, 0.625, -0.375, 0.125, 0.125, -0.250, 0.250, 0.125, 0.375, -0.625, 0.500, 0.500, -0.875, 0.000, -0.250, -0.250, 0.000, 0.875, -1.000, 0.125, -0.750, 0.125, 0.250, -0.625, 0.500, -0.375, 0.750, 0.125, 0.125, 0.000, 0.000, 0.000, 0.750, -1.000, -0.375, 0.250, 0.000, 0.000, 0.625, -0.875, -0.375, 0.750, -0.500, -0.250, -0.125, 0.000, 0.375, 0.750, -1.000, 0.125, -0.500, 0.500, 0.125, 0.125, 0.250, 0.125, 0.500, -0.500, -0.250, 0.250, 0.500, -0.375, 0.875, -0.500, -0.500, 0.000, 0.125, -0.250, 0.000, 0.250, 0.125, -0.875, 0.625, 0.375, 0.625, -0.875, -0.250, 0.375, -0.125, 0.375, -0.500, 0.375, -0.125, -0.125, 0.125, 0.000, 0.875, -0.750, 0.125, -0.250, -0.250, 0.125, 0.750, -1.000, -0.250, -0.500, 0.375, 0.000, 0.375, -0.750, 0.125, -0.625, 0.250, 0.375, 0.750, -0.875, -0.125, -0.125, 0.125, -0.250, 0.750, 0.250, 0.375, -0.375, 0.375, 0.125, 0.125, -0.375, -0.125, 0.500, -0.875, -0.250, -0.250, -0.125, 0.000, -0.750, -0.375};
-# 20 "firmware/parameters.h" 2
-# 1 "firmware/weights/b5.h" 1
-# 12 "firmware/weights/b5.h"
-bias5_t b5[3] = {0.000, -0.375, 0.375};
-# 21 "firmware/parameters.h" 2
+
+
+# 1 "firmware/weights/w4.h" 1
+# 12 "firmware/weights/w4.h"
+weight4_t w4[34] = {-0.5, 0.0, -0.5, 0.5, 0.5, 0.0, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.0, 0.5, 0.0, -0.5, 0.5, -0.5, -0.5, 0.0, 0.5, 0.5, 0.5, 0.0, -0.5, 0.0, -0.5, 0.0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5};
+# 22 "firmware/parameters.h" 2
+# 1 "firmware/weights/b4.h" 1
+# 12 "firmware/weights/b4.h"
+bias4_t b4[17] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+# 23 "firmware/parameters.h" 2
+# 1 "firmware/weights/s22.h" 1
+# 12 "firmware/weights/s22.h"
+exponent_scale22_t s22[17] = {{1.0, 1}, {1.0, 1}, {1.0, 1}, {1.0, 1}, {1.0, 1}, {1.0, 1}, {1.0, 1}, {1.0, 1}, {1.0, 1}, {1.0, 1}, {1.0, 1}, {1.0, 1}, {1.0, -2}, {1.0, 1}, {1.0, 1}, {1.0, 0}, {1.0, 1}};
+# 24 "firmware/parameters.h" 2
+# 1 "firmware/weights/b22.h" 1
+# 12 "firmware/weights/b22.h"
+bias22_t b22[17] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+# 25 "firmware/parameters.h" 2
+# 1 "firmware/weights/w7.h" 1
+# 12 "firmware/weights/w7.h"
+weight7_t w7[340] = {0.0, 0.0, -0.5, -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5, 0.5, -0.5, 0.0, -0.5, 0.5, -0.5, 0.0, 0.5, 0.0, 0.5, -0.5, 0.0, 0.5, 0.5, 0.0, 0.5, 0.5, 0.0, 0.5, 0.5, 0.0, 0.0, -0.5, 0.5, 0.5, -0.5, 0.0, 0.5, -0.5, 0.0, 0.5, 0.0, 0.0, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.0, 0.5, 0.0, 0.5, -0.5, 0.0, -0.5, -0.5, 0.0, 0.5, -0.5, 0.5, -0.5, 0.5, 0.0, 0.0, -0.5, 0.0, 0.0, 0.5, 0.0, -0.5, 0.0, 0.5, 0.5, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, -0.5, -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.5, -0.5, 0.0, 0.5, -0.5, 0.5, 0.0, 0.5, -0.5, -0.5, 0.5, 0.0, -0.5, -0.5, 0.5, 0.0, 0.5, 0.0, -0.5, -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, -0.5, -0.5, 0.5, -0.5, 0.0, 0.0, 0.0, 0.5, -0.5, 0.0, 0.0, 0.5, 0.0, -0.5, -0.5, 0.0, 0.0, -0.5, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, -0.5, -0.5, -0.5, -0.5, 0.5, 0.0, -0.5, 0.0, -0.5, 0.0, 0.5, 0.0, 0.0, -0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, -0.5, 0.0, 0.0, 0.5, 0.0, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.0, 0.0, -0.5, -0.5, -0.5, 0.0, -0.5, 0.5, -0.5, 0.5, 0.0, -0.5, -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, -0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, -0.5, 0.5, 0.0, 0.0, 0.0, 0.5, 0.0, -0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.0, 0.0, -0.5, 0.0, -0.5, 0.0, 0.0, -0.5, 0.0, -0.5, 0.0, 0.0, -0.5, -0.5, -0.5, 0.5, 0.5, 0.0, -0.5, 0.0, 0.0, 0.0, 0.5, -0.5, 0.0, 0.0, 0.0, 0.5, -0.5, -0.5, -0.5, -0.5, 0.0, 0.0, 0.0, -0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, -0.5, 0.5, -0.5, 0.0, -0.5, 0.0, 0.5, -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.5, 0.0, -0.5, 0.0, -0.5, -0.5, 0.0, 0.0, -0.5, 0.5, 0.0, -0.5, 0.5, -0.5, 0.0, 0.5, -0.5, 0.0, 0.0};
+# 26 "firmware/parameters.h" 2
+# 1 "firmware/weights/b7.h" 1
+# 12 "firmware/weights/b7.h"
+bias7_t b7[20] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+# 27 "firmware/parameters.h" 2
+# 1 "firmware/weights/s23.h" 1
+# 12 "firmware/weights/s23.h"
+exponent_scale23_t s23[20] = {{1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, -1}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}};
+# 28 "firmware/parameters.h" 2
+# 1 "firmware/weights/b23.h" 1
+# 12 "firmware/weights/b23.h"
+bias23_t b23[20] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+# 29 "firmware/parameters.h" 2
+# 1 "firmware/weights/w10.h" 1
+# 12 "firmware/weights/w10.h"
+weight10_t w10[180] = {0.0, -0.5, 0.5, 0.5, -0.5, 0.0, -0.5, -0.5, 0.0, 0.5, 0.0, 0.5, 0.5, 0.0, -0.5, 0.0, 0.0, -0.5, 0.0, 0.0, -0.5, 0.0, 0.5, 0.0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.0, -0.5, -0.5, 0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5, 0.0, 0.0, 0.5, 0.5, 0.0, 0.0, -0.5, 0.0, 0.0, 0.5, 0.0, 0.0, 0.5, 0.5, 0.0, -0.5, 0.0, -0.5, 0.0, -0.5, -0.5, -0.5, 0.5, 0.0, 0.0, 0.0, 0.0, -0.5, -0.5, 0.5, 0.5, -0.5, 0.0, 0.0, 0.0, 0.5, 0.0, -0.5, -0.5, 0.0, 0.5, 0.0, -0.5, 0.5, 0.5, 0.0, 0.5, -0.5, 0.0, 0.5, 0.0, -0.5, 0.0, 0.5, -0.5, 0.0, -0.5, 0.0, 0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5, -0.5, 0.0, 0.5, 0.0, -0.5, -0.5, -0.5, -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.5, -0.5, 0.0, -0.5, -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, -0.5, -0.5, -0.5, 0.0, 0.5, 0.5, 0.0, -0.5, 0.0, 0.0, 0.5, 0.0, 0.0, 0.5, 0.0, -0.5, -0.5, 0.0, 0.0, 0.5, 0.0, 0.5, 0.0, 0.0, 0.5, 0.0, 0.5, 0.0, 0.0, -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, -0.5, 0.0, 0.5, 0.0, -0.5, 0.0, 0.0};
+# 30 "firmware/parameters.h" 2
+# 1 "firmware/weights/b10.h" 1
+# 12 "firmware/weights/b10.h"
+bias10_t b10[9] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+# 31 "firmware/parameters.h" 2
+# 1 "firmware/weights/s24.h" 1
+# 12 "firmware/weights/s24.h"
+exponent_scale24_t s24[9] = {{1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, -1}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}};
+# 32 "firmware/parameters.h" 2
+# 1 "firmware/weights/b24.h" 1
+# 12 "firmware/weights/b24.h"
+bias24_t b24[9] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+# 33 "firmware/parameters.h" 2
+# 1 "firmware/weights/w13.h" 1
+# 12 "firmware/weights/w13.h"
+weight13_t w13[144] = {0.5, 0.0, -0.5, -0.5, 0.5, -0.5, 0.0, -0.5, 0.0, 0.0, 0.5, 0.0, 0.0, -0.5, 0.5, 0.0, 0.0, -0.5, -0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.0, 0.5, 0.0, -0.5, -0.5, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.0, 0.0, 0.0, -0.5, 0.5, 0.0, 0.5, 0.0, 0.0, 0.0, 0.5, 0.0, 0.5, -0.5, 0.0, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.5, 0.0, 0.0, -0.5, -0.5, 0.0, 0.5, 0.0, 0.0, 0.0, -0.5, 0.0, 0.5, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, -0.5, 0.0, 0.0, -0.5, 0.0, -0.5, -0.5, 0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5, 0.0, 0.0, 0.5, 0.0, 0.0, 0.5, -0.5, -0.5, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, -0.5, 0.5, 0.0, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5, 0.0, 0.0, 0.0, -0.5, 0.0};
+# 34 "firmware/parameters.h" 2
+# 1 "firmware/weights/b13.h" 1
+# 12 "firmware/weights/b13.h"
+bias13_t b13[16] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+# 35 "firmware/parameters.h" 2
+# 1 "firmware/weights/s25.h" 1
+# 12 "firmware/weights/s25.h"
+exponent_scale25_t s25[16] = {{1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}};
+# 36 "firmware/parameters.h" 2
+# 1 "firmware/weights/b25.h" 1
+# 12 "firmware/weights/b25.h"
+bias25_t b25[16] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+# 37 "firmware/parameters.h" 2
+# 1 "firmware/weights/w16.h" 1
+# 12 "firmware/weights/w16.h"
+weight16_t w16[128] = {-0.5, 0.5, -0.5, -0.5, 0.0, 0.0, -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, -0.5, -0.5, -0.5, 0.0, 0.5, -0.5, 0.5, 0.5, 0.5, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5, 0.0, 0.0, 0.5, 0.5, 0.0, 0.0, 0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5, 0.0, 0.5, -0.5, 0.5, 0.0, 0.0, -0.5, -0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, -0.5, 0.0, 0.0, 0.0, 0.0, 0.5, -0.5, 0.0, 0.5, -0.5, 0.5, -0.5, -0.5, 0.0, 0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5, -0.5, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, -0.5, 0.5, 0.0, -0.5, 0.0, 0.0, -0.5, 0.0, 0.0, -0.5, 0.0, -0.5, 0.5, 0.0, -0.5, 0.0, -0.5, 0.0, -0.5, 0.0, -0.5, 0.5, 0.0, -0.5, 0.5, 0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5};
+# 38 "firmware/parameters.h" 2
+# 1 "firmware/weights/b16.h" 1
+# 12 "firmware/weights/b16.h"
+bias16_t b16[8] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+# 39 "firmware/parameters.h" 2
+# 1 "firmware/weights/s26.h" 1
+# 12 "firmware/weights/s26.h"
+exponent_scale26_t s26[8] = {{1.0, 0}, {1.0, 0}, {1.0, -1}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}, {1.0, 0}};
+# 40 "firmware/parameters.h" 2
+# 1 "firmware/weights/b26.h" 1
+# 12 "firmware/weights/b26.h"
+bias26_t b26[8] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+# 41 "firmware/parameters.h" 2
+# 1 "firmware/weights/w19.h" 1
+# 12 "firmware/weights/w19.h"
+weight19_t w19[8] = {0.5, -0.5, 0.0, 0.0, -0.5, 0.5, 0.5, 0.0};
+# 42 "firmware/parameters.h" 2
+# 1 "firmware/weights/b19.h" 1
+# 12 "firmware/weights/b19.h"
+bias19_t b19[1] = {0.0};
+# 43 "firmware/parameters.h" 2
+# 1 "firmware/weights/s27.h" 1
+# 12 "firmware/weights/s27.h"
+exponent_scale27_t s27[1] = {{1.0, 0}};
+# 44 "firmware/parameters.h" 2
+# 1 "firmware/weights/b27.h" 1
+# 12 "firmware/weights/b27.h"
+bias27_t b27[1] = {0.0};
+# 45 "firmware/parameters.h" 2
 
 
 
-struct config2 : nnet::dense_config {
-    static const unsigned n_in = 16;
-    static const unsigned n_out = 58;
+struct config3 : nnet::concat_config {
+    static const unsigned n_elem1_0 = 1;
+    static const unsigned n_elem1_1 = 0;
+    static const unsigned n_elem1_2 = 0;
+    static const unsigned n_elem2_0 = 1;
+    static const unsigned n_elem2_1 = 0;
+    static const unsigned n_elem2_2 = 0;
+
+    static const int axis = -1;
+};
+
+
+struct config4 : nnet::dense_config {
+    static const unsigned n_in = 2;
+    static const unsigned n_out = 17;
     static const unsigned io_type = nnet::io_parallel;
     static const unsigned strategy = nnet::latency;
     static const unsigned reuse_factor = 1;
-    static const unsigned n_zeros = 87;
-    static const unsigned n_nonzeros = 841;
+    static const unsigned n_zeros = 8;
+    static const unsigned n_nonzeros = 26;
     static const unsigned multiplier_limit = ((n_in * n_out + reuse_factor - 1) / reuse_factor) - n_zeros / reuse_factor;
     static const bool store_weights_in_bram = false;
     typedef model_default_t accum_t;
-    typedef bias2_t bias_t;
-    typedef weight2_t weight_t;
-    typedef layer2_index index_t;
+    typedef bias4_t bias_t;
+    typedef weight4_t weight_t;
+    typedef layer4_index index_t;
     template<class x_T, class y_T>
     using product = nnet::product::mult<x_T, y_T>;
 };
 
 
-struct relu_config4 : nnet::activ_config {
-    static const unsigned n_in = 58;
+struct config22 : nnet::batchnorm_config {
+    static const unsigned n_in = 17;
+    static const unsigned n_filt = -1;
+    static const unsigned n_scale_bias = (n_filt == -1) ? n_in : n_filt;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    static const unsigned multiplier_limit = ((n_in + reuse_factor - 1) / reuse_factor);
+    static const bool store_weights_in_bram = false;
+    typedef bias22_t bias_t;
+    typedef exponent_scale22_t scale_t;
+    template<class x_T, class y_T>
+    using product = nnet::product::weight_exponential<x_T, y_T>;
+};
+
+
+struct relu_config6 : nnet::activ_config {
+    static const unsigned n_in = 17;
     static const unsigned table_size = 1024;
     static const unsigned io_type = nnet::io_parallel;
     static const unsigned reuse_factor = 1;
-    typedef relu1_table_t table_t;
+    typedef q_relu1_table_t table_t;
 };
 
 
-struct config5 : nnet::dense_config {
-    static const unsigned n_in = 58;
-    static const unsigned n_out = 3;
+struct config7 : nnet::dense_config {
+    static const unsigned n_in = 17;
+    static const unsigned n_out = 20;
     static const unsigned io_type = nnet::io_parallel;
     static const unsigned strategy = nnet::latency;
     static const unsigned reuse_factor = 1;
-    static const unsigned n_zeros = 14;
-    static const unsigned n_nonzeros = 160;
+    static const unsigned n_zeros = 171;
+    static const unsigned n_nonzeros = 169;
     static const unsigned multiplier_limit = ((n_in * n_out + reuse_factor - 1) / reuse_factor) - n_zeros / reuse_factor;
     static const bool store_weights_in_bram = false;
     typedef model_default_t accum_t;
-    typedef bias5_t bias_t;
-    typedef weight5_t weight_t;
-    typedef layer5_index index_t;
+    typedef bias7_t bias_t;
+    typedef weight7_t weight_t;
+    typedef layer7_index index_t;
     template<class x_T, class y_T>
     using product = nnet::product::mult<x_T, y_T>;
 };
+
+
+struct config23 : nnet::batchnorm_config {
+    static const unsigned n_in = 20;
+    static const unsigned n_filt = -1;
+    static const unsigned n_scale_bias = (n_filt == -1) ? n_in : n_filt;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    static const unsigned multiplier_limit = ((n_in + reuse_factor - 1) / reuse_factor);
+    static const bool store_weights_in_bram = false;
+    typedef bias23_t bias_t;
+    typedef exponent_scale23_t scale_t;
+    template<class x_T, class y_T>
+    using product = nnet::product::weight_exponential<x_T, y_T>;
+};
+
+
+struct relu_config9 : nnet::activ_config {
+    static const unsigned n_in = 20;
+    static const unsigned table_size = 1024;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    typedef q_relu2_table_t table_t;
+};
+
+
+struct config10 : nnet::dense_config {
+    static const unsigned n_in = 20;
+    static const unsigned n_out = 9;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned strategy = nnet::latency;
+    static const unsigned reuse_factor = 1;
+    static const unsigned n_zeros = 92;
+    static const unsigned n_nonzeros = 88;
+    static const unsigned multiplier_limit = ((n_in * n_out + reuse_factor - 1) / reuse_factor) - n_zeros / reuse_factor;
+    static const bool store_weights_in_bram = false;
+    typedef model_default_t accum_t;
+    typedef bias10_t bias_t;
+    typedef weight10_t weight_t;
+    typedef layer10_index index_t;
+    template<class x_T, class y_T>
+    using product = nnet::product::mult<x_T, y_T>;
+};
+
+
+struct config24 : nnet::batchnorm_config {
+    static const unsigned n_in = 9;
+    static const unsigned n_filt = -1;
+    static const unsigned n_scale_bias = (n_filt == -1) ? n_in : n_filt;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    static const unsigned multiplier_limit = ((n_in + reuse_factor - 1) / reuse_factor);
+    static const bool store_weights_in_bram = false;
+    typedef bias24_t bias_t;
+    typedef exponent_scale24_t scale_t;
+    template<class x_T, class y_T>
+    using product = nnet::product::weight_exponential<x_T, y_T>;
+};
+
+
+struct relu_config12 : nnet::activ_config {
+    static const unsigned n_in = 9;
+    static const unsigned table_size = 1024;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    typedef q_relu3_table_t table_t;
+};
+
+
+struct config13 : nnet::dense_config {
+    static const unsigned n_in = 9;
+    static const unsigned n_out = 16;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned strategy = nnet::latency;
+    static const unsigned reuse_factor = 1;
+    static const unsigned n_zeros = 81;
+    static const unsigned n_nonzeros = 63;
+    static const unsigned multiplier_limit = ((n_in * n_out + reuse_factor - 1) / reuse_factor) - n_zeros / reuse_factor;
+    static const bool store_weights_in_bram = false;
+    typedef model_default_t accum_t;
+    typedef bias13_t bias_t;
+    typedef weight13_t weight_t;
+    typedef layer13_index index_t;
+    template<class x_T, class y_T>
+    using product = nnet::product::mult<x_T, y_T>;
+};
+
+
+struct config25 : nnet::batchnorm_config {
+    static const unsigned n_in = 16;
+    static const unsigned n_filt = -1;
+    static const unsigned n_scale_bias = (n_filt == -1) ? n_in : n_filt;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    static const unsigned multiplier_limit = ((n_in + reuse_factor - 1) / reuse_factor);
+    static const bool store_weights_in_bram = false;
+    typedef bias25_t bias_t;
+    typedef exponent_scale25_t scale_t;
+    template<class x_T, class y_T>
+    using product = nnet::product::weight_exponential<x_T, y_T>;
+};
+
+
+struct relu_config15 : nnet::activ_config {
+    static const unsigned n_in = 16;
+    static const unsigned table_size = 1024;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    typedef q_relu4_table_t table_t;
+};
+
+
+struct config16 : nnet::dense_config {
+    static const unsigned n_in = 16;
+    static const unsigned n_out = 8;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned strategy = nnet::latency;
+    static const unsigned reuse_factor = 1;
+    static const unsigned n_zeros = 65;
+    static const unsigned n_nonzeros = 63;
+    static const unsigned multiplier_limit = ((n_in * n_out + reuse_factor - 1) / reuse_factor) - n_zeros / reuse_factor;
+    static const bool store_weights_in_bram = false;
+    typedef model_default_t accum_t;
+    typedef bias16_t bias_t;
+    typedef weight16_t weight_t;
+    typedef layer16_index index_t;
+    template<class x_T, class y_T>
+    using product = nnet::product::mult<x_T, y_T>;
+};
+
+
+struct config26 : nnet::batchnorm_config {
+    static const unsigned n_in = 8;
+    static const unsigned n_filt = -1;
+    static const unsigned n_scale_bias = (n_filt == -1) ? n_in : n_filt;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    static const unsigned multiplier_limit = ((n_in + reuse_factor - 1) / reuse_factor);
+    static const bool store_weights_in_bram = false;
+    typedef bias26_t bias_t;
+    typedef exponent_scale26_t scale_t;
+    template<class x_T, class y_T>
+    using product = nnet::product::weight_exponential<x_T, y_T>;
+};
+
+
+struct relu_config18 : nnet::activ_config {
+    static const unsigned n_in = 8;
+    static const unsigned table_size = 1024;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    typedef q_relu5_table_t table_t;
+};
+
+
+struct config19 : nnet::dense_config {
+    static const unsigned n_in = 8;
+    static const unsigned n_out = 1;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned strategy = nnet::latency;
+    static const unsigned reuse_factor = 1;
+    static const unsigned n_zeros = 3;
+    static const unsigned n_nonzeros = 5;
+    static const unsigned multiplier_limit = ((n_in * n_out + reuse_factor - 1) / reuse_factor) - n_zeros / reuse_factor;
+    static const bool store_weights_in_bram = false;
+    typedef model_default_t accum_t;
+    typedef bias19_t bias_t;
+    typedef weight19_t weight_t;
+    typedef layer19_index index_t;
+    template<class x_T, class y_T>
+    using product = nnet::product::mult<x_T, y_T>;
+};
+
+
+struct config27 : nnet::batchnorm_config {
+    static const unsigned n_in = 1;
+    static const unsigned n_filt = -1;
+    static const unsigned n_scale_bias = (n_filt == -1) ? n_in : n_filt;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+    static const unsigned multiplier_limit = ((n_in + reuse_factor - 1) / reuse_factor);
+    static const bool store_weights_in_bram = false;
+    typedef bias27_t bias_t;
+    typedef exponent_scale27_t scale_t;
+    template<class x_T, class y_T>
+    using product = nnet::product::weight_exponential<x_T, y_T>;
+};
+
+
+struct hard_tanh_config21 {
+    static const unsigned n_in = 1;
+    static const slope21_t slope;
+    static const shift21_t shift;
+    static const unsigned io_type = nnet::io_parallel;
+    static const unsigned reuse_factor = 1;
+};
+const slope21_t hard_tanh_config21::slope = 0.5;
+const shift21_t hard_tanh_config21::shift = 0.5;
 # 5 "firmware/myproject.cpp" 2
 
 __attribute__((sdx_kernel("myproject", 0))) void myproject(
-    input_t input1[16],
-    result_t layer5_out[3]
+    input_t y_size[1], input2_t y_local[1],
+    result_t layer21_out[1]
 ) {
 #line 183 "/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmp/build_prj.tcl"
 #pragma HLSDIRECTIVE TOP name=myproject
@@ -58893,19 +60115,84 @@ __attribute__((sdx_kernel("myproject", 0))) void myproject(
 
 
 
-#pragma HLS ARRAY_RESHAPE variable=input1 complete dim=0
-#pragma HLS ARRAY_PARTITION variable=layer5_out complete dim=0
-#pragma HLS INTERFACE ap_vld port=input1,layer5_out
+#pragma HLS ARRAY_RESHAPE variable=y_size complete dim=0
+#pragma HLS ARRAY_RESHAPE variable=y_local complete dim=0
+#pragma HLS ARRAY_PARTITION variable=layer21_out complete dim=0
+#pragma HLS INTERFACE ap_vld port=y_size,y_local,layer21_out
 #pragma HLS PIPELINE
-# 35 "firmware/myproject.cpp"
- layer2_t layer2_out[58];
-#pragma HLS ARRAY_PARTITION variable=layer2_out complete dim=0
- nnet::dense<input_t, layer2_t, config2>(input1, layer2_out, w2, b2);
+# 56 "firmware/myproject.cpp"
+ layer3_t layer3_out[2];
+#pragma HLS ARRAY_PARTITION variable=layer3_out complete dim=0
+ nnet::concatenate1d<input_t, input2_t, layer3_t, config3>(y_size, y_local, layer3_out);
 
-    layer4_t layer4_out[58];
+    layer4_t layer4_out[17];
 #pragma HLS ARRAY_PARTITION variable=layer4_out complete dim=0
- nnet::relu<layer2_t, layer4_t, relu_config4>(layer2_out, layer4_out);
+ nnet::dense<layer3_t, layer4_t, config4>(layer3_out, layer4_out, w4, b4);
 
-    nnet::dense<layer4_t, result_t, config5>(layer4_out, layer5_out, w5, b5);
+    layer22_t layer22_out[17];
+#pragma HLS ARRAY_PARTITION variable=layer22_out complete dim=0
+ nnet::normalize<layer4_t, layer22_t, config22>(layer4_out, layer22_out, s22, b22);
+
+    layer6_t layer6_out[17];
+#pragma HLS ARRAY_PARTITION variable=layer6_out complete dim=0
+ nnet::relu<layer22_t, layer6_t, relu_config6>(layer22_out, layer6_out);
+
+    layer7_t layer7_out[20];
+#pragma HLS ARRAY_PARTITION variable=layer7_out complete dim=0
+ nnet::dense<layer6_t, layer7_t, config7>(layer6_out, layer7_out, w7, b7);
+
+    layer23_t layer23_out[20];
+#pragma HLS ARRAY_PARTITION variable=layer23_out complete dim=0
+ nnet::normalize<layer7_t, layer23_t, config23>(layer7_out, layer23_out, s23, b23);
+
+    layer9_t layer9_out[20];
+#pragma HLS ARRAY_PARTITION variable=layer9_out complete dim=0
+ nnet::relu<layer23_t, layer9_t, relu_config9>(layer23_out, layer9_out);
+
+    layer10_t layer10_out[9];
+#pragma HLS ARRAY_PARTITION variable=layer10_out complete dim=0
+ nnet::dense<layer9_t, layer10_t, config10>(layer9_out, layer10_out, w10, b10);
+
+    layer24_t layer24_out[9];
+#pragma HLS ARRAY_PARTITION variable=layer24_out complete dim=0
+ nnet::normalize<layer10_t, layer24_t, config24>(layer10_out, layer24_out, s24, b24);
+
+    layer12_t layer12_out[9];
+#pragma HLS ARRAY_PARTITION variable=layer12_out complete dim=0
+ nnet::relu<layer24_t, layer12_t, relu_config12>(layer24_out, layer12_out);
+
+    layer13_t layer13_out[16];
+#pragma HLS ARRAY_PARTITION variable=layer13_out complete dim=0
+ nnet::dense<layer12_t, layer13_t, config13>(layer12_out, layer13_out, w13, b13);
+
+    layer25_t layer25_out[16];
+#pragma HLS ARRAY_PARTITION variable=layer25_out complete dim=0
+ nnet::normalize<layer13_t, layer25_t, config25>(layer13_out, layer25_out, s25, b25);
+
+    layer15_t layer15_out[16];
+#pragma HLS ARRAY_PARTITION variable=layer15_out complete dim=0
+ nnet::relu<layer25_t, layer15_t, relu_config15>(layer25_out, layer15_out);
+
+    layer16_t layer16_out[8];
+#pragma HLS ARRAY_PARTITION variable=layer16_out complete dim=0
+ nnet::dense<layer15_t, layer16_t, config16>(layer15_out, layer16_out, w16, b16);
+
+    layer26_t layer26_out[8];
+#pragma HLS ARRAY_PARTITION variable=layer26_out complete dim=0
+ nnet::normalize<layer16_t, layer26_t, config26>(layer16_out, layer26_out, s26, b26);
+
+    layer18_t layer18_out[8];
+#pragma HLS ARRAY_PARTITION variable=layer18_out complete dim=0
+ nnet::relu<layer26_t, layer18_t, relu_config18>(layer26_out, layer18_out);
+
+    layer19_t layer19_out[1];
+#pragma HLS ARRAY_PARTITION variable=layer19_out complete dim=0
+ nnet::dense<layer18_t, layer19_t, config19>(layer18_out, layer19_out, w19, b19);
+
+    layer27_t layer27_out[1];
+#pragma HLS ARRAY_PARTITION variable=layer27_out complete dim=0
+ nnet::normalize<layer19_t, layer27_t, config27>(layer19_out, layer27_out, s27, b27);
+
+    nnet::hard_tanh<layer27_t, result_t, hard_tanh_config21>(layer27_out, layer21_out);
 
 }

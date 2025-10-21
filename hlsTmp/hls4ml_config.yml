@@ -2,11 +2,15 @@ Backend: Vitis
 ClockPeriod: 5
 HLSConfig:
   LayerName:
+    concatenate_1:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
     dense1:
       Precision:
-        bias: fixed<4,1>
+        bias: fixed<2,1>
         result: fixed<16,6>
-        weight: fixed<4,1>
+        weight: fixed<2,1>
       Trace: false
     dense1_linear:
       Precision:
@@ -14,25 +18,87 @@ HLSConfig:
       Trace: false
     dense2:
       Precision:
-        bias: fixed<4,1>
+        bias: fixed<2,1>
         result: fixed<16,6>
-        weight: fixed<4,1>
+        weight: fixed<2,1>
       Trace: false
     dense2_linear:
       Precision:
         result: fixed<16,6>
       Trace: false
-    input1:
+    dense3:
+      Precision:
+        bias: fixed<2,1>
+        result: fixed<16,6>
+        weight: fixed<2,1>
+      Trace: false
+    dense3_linear:
       Precision:
         result: fixed<16,6>
       Trace: false
-    linear:
+    dense4:
+      Precision:
+        bias: fixed<2,1>
+        result: fixed<16,6>
+        weight: fixed<2,1>
+      Trace: false
+    dense4_linear:
       Precision:
         result: fixed<16,6>
       Trace: false
-    relu1:
+    dense5:
       Precision:
-        result: ufixed<8,0,RND_CONV,SAT>
+        bias: fixed<2,1>
+        result: fixed<16,6>
+        weight: fixed<2,1>
+      Trace: false
+    dense5_linear:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    output:
+      Precision:
+        result: fixed<8,1,RND_CONV,SAT>
+        shift: fixed<16,6>
+        slope: fixed<16,6>
+      Trace: false
+    output_dense:
+      Precision:
+        bias: fixed<2,1>
+        result: fixed<16,6>
+        weight: fixed<2,1>
+      Trace: false
+    output_dense_linear:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    q_relu1:
+      Precision:
+        result: ufixed<2,0,RND_CONV,SAT>
+      Trace: false
+    q_relu2:
+      Precision:
+        result: ufixed<2,0,RND_CONV,SAT>
+      Trace: false
+    q_relu3:
+      Precision:
+        result: ufixed<2,0,RND_CONV,SAT>
+      Trace: false
+    q_relu4:
+      Precision:
+        result: ufixed<2,0,RND_CONV,SAT>
+      Trace: false
+    q_relu5:
+      Precision:
+        result: ufixed<2,0,RND_CONV,SAT>
+      Trace: false
+    y_local:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    y_size:
+      Precision:
+        result: fixed<16,6>
       Trace: false
   Model:
     BramFactor: 1000000000
@@ -45,7 +111,7 @@ InputData: null
 KerasModel: !keras_model './hlsTmp/keras_model.h5'
 OutputDir: ./hlsTmp
 OutputPredictions: null
-Part: xcvu13p-flga2577-2-e
+Part: xc7z020clg400-1
 ProjectName: myproject
-Stamp: 90ccDaF3
+Stamp: 7B6Ff89c
 Version: 1.0.0
