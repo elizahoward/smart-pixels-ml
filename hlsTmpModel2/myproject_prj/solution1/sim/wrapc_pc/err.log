@@ -1,0 +1,12 @@
+   Build using "/code/Xilinx_2024.1/Vitis_HLS/2024.1/vcxx/libexec/clang++"
+   Compiling apatb_myproject.cpp
+apatb_myproject.cpp:38:14: warning: nested namespace definition is a C++17 extension; define each namespace separately [-Wc++17-extensions]
+namespace hls::sim
+             ^~~~~
+              { namespace sim
+apatb_myproject.cpp:85:14: warning: nested namespace definition is a C++17 extension; define each namespace separately [-Wc++17-extensions]
+namespace hls::sim
+             ^~~~~
+              { namespace sim
+2 warnings generated.
+   Generating cosim.pc.exe

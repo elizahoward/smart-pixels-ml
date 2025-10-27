@@ -1,0 +1,546 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Mon Oct 27 14:29:28 2025
+# Process ID: 992659
+# Current directory: /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2
+# Command line: vivado -mode batch -source vivado_synth.tcl
+# Log file: /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/vivado.log
+# Journal file: /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/vivado.jou
+# Running On        :kdplab01
+# Platform          :unknown
+# Operating System  :unknown
+# Processor Detail  :Intel(R) Xeon(R) Silver 4314 CPU @ 2.40GHz
+# CPU Frequency     :3400.000 MHz
+# CPU Physical cores:32
+# CPU Logical cores :64
+# Host memory       :134212 MB
+# Swap memory       :4294 MB
+# Total Virtual     :138507 MB
+# Available Virtual :117084 MB
+#-----------------------------------------------------------
+source vivado_synth.tcl
+# set tcldir [file dirname [info script]]
+# source [file join $tcldir project.tcl]
+## variable project_name
+## set project_name "myproject"
+## variable backend
+## set backend "vivado"
+## variable part
+## set part "xc7z020clg400-1"
+## variable clock_period
+## set clock_period 5
+## variable clock_uncertainty
+## set clock_uncertainty 12.5%
+## variable version
+## set version "1.0.0"
+# add_files ${project_name}_prj/solution1/syn/vhdl
+add_files: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1674.035 ; gain = 38.836 ; free physical = 66658 ; free virtual = 111298
+# synth_design -top ${project_name} -part $part
+Command: synth_design -top myproject -part xc7z020clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 992731
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2105.625 ; gain = 425.629 ; free physical = 65775 ; free virtual = 110416
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'myproject' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:32]
+INFO: [Synth 8-3491] module 'myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config5_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config5_s.vhd:11' bound to instance 'call_ret1_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config5_s_fu_139' of component 'myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config5_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:2951]
+INFO: [Synth 8-638] synthesizing module 'myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config5_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config5_s.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config5_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config5_s.vhd:42]
+INFO: [Synth 8-3491] module 'myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config6_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config6_s.vhd:11' bound to instance 'call_ret2_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config6_s_fu_147' of component 'myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config6_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:2980]
+INFO: [Synth 8-638] synthesizing module 'myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config6_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config6_s.vhd:34]
+INFO: [Synth 8-256] done synthesizing module 'myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config6_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config6_s.vhd:34]
+INFO: [Synth 8-3491] module 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s.vhd:11' bound to instance 'grp_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s_fu_155' of component 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:3001]
+INFO: [Synth 8-638] synthesizing module 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s.vhd:73]
+INFO: [Synth 8-256] done synthesizing module 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s.vhd:73]
+INFO: [Synth 8-3491] module 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s.vhd:11' bound to instance 'grp_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s_fu_181' of component 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:3061]
+INFO: [Synth 8-638] synthesizing module 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s.vhd:65]
+INFO: [Synth 8-256] done synthesizing module 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s.vhd:65]
+INFO: [Synth 8-3491] module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s.vhd:11' bound to instance 'grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s_fu_199' of component 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:3113]
+INFO: [Synth 8-638] synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s.vhd:87]
+INFO: [Synth 8-256] done synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s.vhd:87]
+INFO: [Synth 8-3491] module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s.vhd:11' bound to instance 'grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s_fu_235' of component 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:3187]
+INFO: [Synth 8-638] synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s.vhd:87]
+INFO: [Synth 8-256] done synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s.vhd:87]
+INFO: [Synth 8-3491] module 'myproject_concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s.vhd:11' bound to instance 'call_ret7_concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s_fu_271' of component 'myproject_concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:3261]
+INFO: [Synth 8-638] synthesizing module 'myproject_concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s.vhd:146]
+INFO: [Synth 8-256] done synthesizing module 'myproject_concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s.vhd:146]
+INFO: [Synth 8-3491] module 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s.vhd:11' bound to instance 'grp_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s_fu_339' of component 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:3394]
+INFO: [Synth 8-638] synthesizing module 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s.vhd:211]
+INFO: [Synth 8-256] done synthesizing module 'myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s.vhd:211]
+INFO: [Synth 8-3491] module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s.vhd:11' bound to instance 'grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s_fu_407' of component 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:3592]
+INFO: [Synth 8-638] synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s.vhd:279]
+INFO: [Synth 8-256] done synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s.vhd:279]
+INFO: [Synth 8-3491] module 'myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s.vhd:11' bound to instance 'grp_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s_fu_539' of component 'myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:3858]
+INFO: [Synth 8-638] synthesizing module 'myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s.vhd:211]
+INFO: [Synth 8-256] done synthesizing module 'myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s.vhd:211]
+INFO: [Synth 8-3491] module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s.vhd:11' bound to instance 'grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s_fu_671' of component 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:4056]
+INFO: [Synth 8-638] synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s.vhd:151]
+INFO: [Synth 8-256] done synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s.vhd:151]
+INFO: [Synth 8-3491] module 'myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s.vhd:11' bound to instance 'grp_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s_fu_739' of component 'myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:4194]
+INFO: [Synth 8-638] synthesizing module 'myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s.vhd:109]
+INFO: [Synth 8-256] done synthesizing module 'myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s.vhd:109]
+INFO: [Synth 8-3491] module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s.vhd:11' bound to instance 'grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s_fu_807' of component 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:4290]
+INFO: [Synth 8-638] synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s.vhd:75]
+INFO: [Synth 8-256] done synthesizing module 'myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s.vhd:75]
+INFO: [Synth 8-3491] module 'myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s' declared at '/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s.vhd:11' bound to instance 'grp_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s_fu_837' of component 'myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:4352]
+INFO: [Synth 8-638] synthesizing module 'myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s' [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'myproject' (0#1) [/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/syn/vhdl/myproject.vhd:32]
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config6_s is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config5_s is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 3134.273 ; gain = 1454.277 ; free physical = 64853 ; free virtual = 109506
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 3134.273 ; gain = 1454.277 ; free physical = 64703 ; free virtual = 109355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 3142.277 ; gain = 1462.281 ; free physical = 64701 ; free virtual = 109353
+---------------------------------------------------------------------------------
+INFO: [Device 21-9227] Part: xc7z020clg400-1 does not have CEAM library.
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:55 ; elapsed = 00:00:54 . Memory (MB): peak = 3142.277 ; gain = 1462.281 ; free physical = 66170 ; free virtual = 110834
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   19 Bit       Adders := 238   
+	   2 Input   19 Bit       Adders := 22    
+	   3 Input   16 Bit       Adders := 1829  
+	   2 Input   16 Bit       Adders := 1072  
+	   2 Input   15 Bit       Adders := 1172  
+	   2 Input   14 Bit       Adders := 520   
+	   3 Input   14 Bit       Adders := 4     
+	   2 Input   13 Bit       Adders := 237   
+	   3 Input   13 Bit       Adders := 21    
+	   4 Input   13 Bit       Adders := 10    
+	   2 Input   12 Bit       Adders := 388   
+	   4 Input   12 Bit       Adders := 13    
+	   3 Input   12 Bit       Adders := 77    
+	   2 Input   11 Bit       Adders := 606   
+	   4 Input   11 Bit       Adders := 109   
+	   3 Input   11 Bit       Adders := 230   
+	   3 Input   10 Bit       Adders := 354   
+	   4 Input   10 Bit       Adders := 24    
+	   2 Input   10 Bit       Adders := 942   
+	   3 Input    9 Bit       Adders := 441   
+	   2 Input    9 Bit       Adders := 851   
+	   4 Input    9 Bit       Adders := 5     
+	   2 Input    8 Bit       Adders := 496   
+	   3 Input    8 Bit       Adders := 49    
++---XORs : 
+	   2 Input      1 Bit         XORs := 567   
+	   3 Input      1 Bit         XORs := 1     
++---Registers : 
+	              336 Bit    Registers := 1     
+	              208 Bit    Registers := 1     
+	               19 Bit    Registers := 7     
+	               16 Bit    Registers := 3834  
+	               15 Bit    Registers := 987   
+	               14 Bit    Registers := 620   
+	               13 Bit    Registers := 267   
+	               12 Bit    Registers := 359   
+	               11 Bit    Registers := 609   
+	               10 Bit    Registers := 1182  
+	                9 Bit    Registers := 1290  
+	                8 Bit    Registers := 1331  
+	                7 Bit    Registers := 52    
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 913   
++---Muxes : 
+	   2 Input  336 Bit        Muxes := 1     
+	   2 Input  208 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 284   
+	   2 Input   15 Bit        Muxes := 1     
+	   2 Input   14 Bit        Muxes := 1     
+	   3 Input   13 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 1128  
+	   3 Input    8 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 293   
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[0]' (FDE) to 'mult_787_reg_42226_reg[1]'
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[1]' (FDE) to 'mult_787_reg_42226_reg[2]'
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[2]' (FDE) to 'mult_787_reg_42226_reg[3]'
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[3]' (FDE) to 'mult_787_reg_42226_reg[4]'
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[4]' (FDE) to 'mult_787_reg_42226_reg[5]'
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[5]' (FDE) to 'mult_787_reg_42226_reg[6]'
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[6]' (FDE) to 'mult_787_reg_42226_reg[7]'
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[7]' (FDE) to 'mult_787_reg_42226_reg[8]'
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[8]' (FDE) to 'mult_787_reg_42226_reg[9]'
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[9]' (FDE) to 'mult_787_reg_42226_reg[10]'
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[10]' (FDE) to 'mult_787_reg_42226_reg[11]'
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[11]' (FDE) to 'mult_787_reg_42226_reg[12]'
+INFO: [Synth 8-3886] merging instance 'mult_788_reg_42232_reg[12]' (FDE) to 'mult_787_reg_42226_reg[13]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[1]' (FDE) to 'mult_897_reg_43234_reg[0]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[2]' (FDE) to 'mult_897_reg_43234_reg[1]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[3]' (FDE) to 'mult_897_reg_43234_reg[2]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[4]' (FDE) to 'mult_897_reg_43234_reg[3]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[5]' (FDE) to 'mult_897_reg_43234_reg[4]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[6]' (FDE) to 'mult_897_reg_43234_reg[5]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[7]' (FDE) to 'mult_897_reg_43234_reg[6]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[8]' (FDE) to 'mult_897_reg_43234_reg[7]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[9]' (FDE) to 'mult_897_reg_43234_reg[8]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[10]' (FDE) to 'mult_897_reg_43234_reg[9]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[11]' (FDE) to 'mult_897_reg_43234_reg[10]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[12]' (FDE) to 'mult_897_reg_43234_reg[11]'
+INFO: [Synth 8-3886] merging instance 'mult_898_reg_43251_reg[13]' (FDE) to 'mult_897_reg_43234_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[13]' (FDE) to 'mult_941_reg_43622_reg[13]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[0]' (FDE) to 'mult_941_reg_43622_reg[1]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[1]' (FDE) to 'mult_941_reg_43622_reg[2]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[2]' (FDE) to 'mult_941_reg_43622_reg[3]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[3]' (FDE) to 'mult_941_reg_43622_reg[4]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[4]' (FDE) to 'mult_941_reg_43622_reg[5]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[5]' (FDE) to 'mult_941_reg_43622_reg[6]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[6]' (FDE) to 'mult_941_reg_43622_reg[7]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[7]' (FDE) to 'mult_941_reg_43622_reg[8]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[8]' (FDE) to 'mult_941_reg_43622_reg[9]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[9]' (FDE) to 'mult_941_reg_43622_reg[10]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[10]' (FDE) to 'mult_941_reg_43622_reg[11]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[11]' (FDE) to 'mult_941_reg_43622_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_736_reg_43610_reg[12]' (FDE) to 'mult_941_reg_43622_reg[13]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[1]' (FDE) to 'mult_931_reg_43497_reg[0]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[2]' (FDE) to 'mult_931_reg_43497_reg[1]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[3]' (FDE) to 'mult_931_reg_43497_reg[2]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[4]' (FDE) to 'mult_931_reg_43497_reg[3]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[5]' (FDE) to 'mult_931_reg_43497_reg[4]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[6]' (FDE) to 'mult_931_reg_43497_reg[5]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[7]' (FDE) to 'mult_931_reg_43497_reg[6]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[8]' (FDE) to 'mult_931_reg_43497_reg[7]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[9]' (FDE) to 'mult_931_reg_43497_reg[8]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[10]' (FDE) to 'mult_931_reg_43497_reg[9]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[11]' (FDE) to 'mult_931_reg_43497_reg[10]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[12]' (FDE) to 'mult_931_reg_43497_reg[11]'
+INFO: [Synth 8-3886] merging instance 'mult_929_reg_43491_reg[13]' (FDE) to 'mult_931_reg_43497_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[0]' (FDE) to 'mult_787_reg_42226_reg[1]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[1]' (FDE) to 'mult_787_reg_42226_reg[2]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[2]' (FDE) to 'mult_787_reg_42226_reg[3]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[3]' (FDE) to 'mult_787_reg_42226_reg[4]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[4]' (FDE) to 'mult_787_reg_42226_reg[5]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[5]' (FDE) to 'mult_787_reg_42226_reg[6]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[6]' (FDE) to 'mult_787_reg_42226_reg[7]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[7]' (FDE) to 'mult_787_reg_42226_reg[8]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[8]' (FDE) to 'mult_787_reg_42226_reg[9]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[9]' (FDE) to 'mult_787_reg_42226_reg[10]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[10]' (FDE) to 'mult_787_reg_42226_reg[11]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[11]' (FDE) to 'mult_787_reg_42226_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[12]' (FDE) to 'mult_787_reg_42226_reg[13]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_637_reg_42237_reg[13]' (FDE) to 'mult_787_reg_42226_reg[13]'
+INFO: [Synth 8-3886] merging instance 'mult_945_reg_43651_reg[0]' (FDE) to 'mult_944_reg_43645_reg[1]'
+INFO: [Synth 8-3886] merging instance 'mult_945_reg_43651_reg[1]' (FDE) to 'mult_944_reg_43645_reg[2]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[2]' (FDE) to 'sext_ln17_579_reg_41835_reg[0]'
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[3]' (FDE) to 'sext_ln17_579_reg_41835_reg[1]'
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[4]' (FDE) to 'sext_ln17_579_reg_41835_reg[2]'
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[5]' (FDE) to 'sext_ln17_579_reg_41835_reg[3]'
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[6]' (FDE) to 'sext_ln17_579_reg_41835_reg[4]'
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[7]' (FDE) to 'sext_ln17_579_reg_41835_reg[5]'
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[8]' (FDE) to 'sext_ln17_579_reg_41835_reg[6]'
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[9]' (FDE) to 'sext_ln17_579_reg_41835_reg[7]'
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[10]' (FDE) to 'sext_ln17_579_reg_41835_reg[8]'
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[11]' (FDE) to 'sext_ln17_579_reg_41835_reg[9]'
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[12]' (FDE) to 'sext_ln17_579_reg_41835_reg[10]'
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[13]' (FDE) to 'sext_ln17_579_reg_41835_reg[11]'
+INFO: [Synth 8-3886] merging instance 'mult_706_reg_41876_reg[14]' (FDE) to 'sext_ln17_579_reg_41835_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_579_reg_41835_reg[12]' (FDE) to 'sext_ln17_579_reg_41835_reg[13]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_579_reg_41835_reg[13]' (FDE) to 'sext_ln17_579_reg_41835_reg[14]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[13]' (FDE) to 'mult_965_reg_43827_reg[13]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[12]' (FDE) to 'mult_965_reg_43827_reg[13]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[0]' (FDE) to 'mult_965_reg_43827_reg[1]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[1]' (FDE) to 'mult_965_reg_43827_reg[2]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[2]' (FDE) to 'mult_965_reg_43827_reg[3]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[3]' (FDE) to 'mult_965_reg_43827_reg[4]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[4]' (FDE) to 'mult_965_reg_43827_reg[5]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[5]' (FDE) to 'mult_965_reg_43827_reg[6]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[6]' (FDE) to 'mult_965_reg_43827_reg[7]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[7]' (FDE) to 'mult_965_reg_43827_reg[8]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[8]' (FDE) to 'mult_965_reg_43827_reg[9]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[9]' (FDE) to 'mult_965_reg_43827_reg[10]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[10]' (FDE) to 'mult_965_reg_43827_reg[11]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_752_reg_43822_reg[11]' (FDE) to 'mult_965_reg_43827_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_756_reg_43896_reg[13]' (FDE) to 'sext_ln17_756_reg_43896_reg[12]'
+INFO: [Synth 8-3886] merging instance 'sext_ln17_772_reg_44113_reg[13]' (FDE) to 'sext_ln17_772_reg_44113_reg[12]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s_fu_407/\ap_CS_fsm_reg[0] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s_fu_671/\ap_CS_fsm_reg[0] )
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O312[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O312[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O312[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O312[12] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O312[11] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O312[10] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O312[1] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O312[0] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O313[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O313[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O313[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O313[12] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O313[11] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O313[10] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O313[1] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O313[0] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O314[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O314[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O314[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O314[12] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O314[11] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O314[10] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O314[1] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O314[0] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O315[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O315[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O315[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O315[12] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O315[11] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O315[10] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O315[1] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O315[0] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O316[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O316[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O316[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O316[12] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O316[11] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O316[10] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O316[1] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O316[0] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O317[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O317[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O317[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O317[12] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O317[11] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O317[10] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O317[1] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O317[0] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O318[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O318[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O318[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O318[12] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O318[11] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O318[10] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O318[1] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O318[0] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O319[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O319[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O319[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O319[12] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O319[11] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O319[10] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O319[1] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O319[0] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O320[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O320[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O320[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O320[12] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O320[11] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O320[10] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O320[1] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O320[0] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O321[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O321[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O321[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O321[12] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O321[11] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O321[10] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O321[1] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O321[0] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O322[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O322[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O322[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O322[12] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O322[11] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O322[10] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O322[1] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O322[0] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O323[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O323[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O323[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O323[12] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O323[11] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O323[10] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O323[1] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O323[0] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O324[15] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O324[14] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O324[13] driven by constant 0
+WARNING: [Synth 8-3917] design myproject__GCB1 has port O324[12] driven by constant 0
+INFO: [Common 17-14] Message 'Synth 8-3917' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-3917' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-7129] Port ap_rst in module myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s is either unconnected or has no load
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s_fu_807/\ap_CS_fsm_reg[0] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s_fu_235/\ap_CS_fsm_reg[0] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s_fu_199/\ap_CS_fsm_reg[0] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\ap_CS_fsm_reg[0] )
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:43 ; elapsed = 00:02:07 . Memory (MB): peak = 3170.211 ; gain = 1490.215 ; free physical = 60700 ; free virtual = 105541
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:02:02 ; elapsed = 00:02:27 . Memory (MB): peak = 3170.211 ; gain = 1490.215 ; free physical = 60590 ; free virtual = 105584
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:02:15 ; elapsed = 00:02:40 . Memory (MB): peak = 3193.902 ; gain = 1513.906 ; free physical = 60529 ; free virtual = 105549
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:02:39 ; elapsed = 00:03:04 . Memory (MB): peak = 3525.832 ; gain = 1845.836 ; free physical = 60145 ; free virtual = 105303
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:40 ; elapsed = 00:03:05 . Memory (MB): peak = 3525.832 ; gain = 1845.836 ; free physical = 60149 ; free virtual = 105306
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:48 ; elapsed = 00:03:14 . Memory (MB): peak = 3525.832 ; gain = 1845.836 ; free physical = 60165 ; free virtual = 105322
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:49 ; elapsed = 00:03:14 . Memory (MB): peak = 3525.832 ; gain = 1845.836 ; free physical = 60165 ; free virtual = 105323
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:51 ; elapsed = 00:03:16 . Memory (MB): peak = 3525.832 ; gain = 1845.836 ; free physical = 60169 ; free virtual = 105326
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:52 ; elapsed = 00:03:17 . Memory (MB): peak = 3525.832 ; gain = 1845.836 ; free physical = 60172 ; free virtual = 105329
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+-------+
+|      |Cell   |Count  |
++------+-------+-------+
+|1     |BUFG   |      1|
+|2     |CARRY4 |  35117|
+|3     |LUT1   |   6064|
+|4     |LUT2   |  70021|
+|5     |LUT3   |  45083|
+|6     |LUT4   |  36120|
+|7     |LUT5   |   3843|
+|8     |LUT6   |   4174|
+|9     |FDRE   | 127735|
+|10    |IBUF   |    583|
+|11    |OBUF   |     12|
++------+-------+-------+
+
+Report Instance Areas: 
++------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+-------+
+|      |Instance                                                                      |Module                                                                     |Cells  |
++------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+-------+
+|1     |top                                                                           |                                                                           | 328753|
+|2     |  grp_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s_fu_339 |myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s | 149671|
+|3     |  grp_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s_fu_155  |myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s  |  22800|
+|4     |  grp_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s_fu_181  |myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s  |  15289|
+|5     |  grp_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s_fu_539 |myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s |  91646|
+|6     |  grp_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s_fu_739 |myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s |  26886|
+|7     |  grp_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s_fu_837 |myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s |    958|
+|8     |  grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s_fu_199     |myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s     |   1568|
+|9     |  grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s_fu_235     |myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s     |   1568|
+|10    |  grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s_fu_407     |myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s     |   6147|
+|11    |  grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s_fu_671     |myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s     |   3008|
+|12    |  grp_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s_fu_807     |myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s     |   1226|
++------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+-------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:52 ; elapsed = 00:03:18 . Memory (MB): peak = 3525.832 ; gain = 1845.836 ; free physical = 60173 ; free virtual = 105330
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 110 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:55 ; elapsed = 00:03:20 . Memory (MB): peak = 3529.742 ; gain = 1849.746 ; free physical = 66294 ; free virtual = 111451
+Synthesis Optimization Complete : Time (s): cpu = 00:02:55 ; elapsed = 00:03:20 . Memory (MB): peak = 3529.742 ; gain = 1849.746 ; free physical = 66331 ; free virtual = 111452
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 3529.742 ; gain = 0.000 ; free physical = 66357 ; free virtual = 111477
+INFO: [Netlist 29-17] Analyzing 35117 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3573.855 ; gain = 0.000 ; free physical = 66402 ; free virtual = 111523
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 8eed67f7
+INFO: [Common 17-83] Releasing license: Synthesis
+170 Infos, 110 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:03:40 ; elapsed = 00:04:03 . Memory (MB): peak = 3573.855 ; gain = 1899.820 ; free physical = 66406 ; free virtual = 111527
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 8723.529; main = 2769.783; forked = 6356.167
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 17290.980; main = 3573.859; forked = 13765.145
+# report_utilization -file vivado_synth.rpt
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 27 14:33:40 2025...

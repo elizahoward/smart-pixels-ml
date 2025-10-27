@@ -1,0 +1,133 @@
+Backend: Vitis
+ClockPeriod: 5
+HLSConfig:
+  LayerName:
+    merged_dense1:
+      Precision:
+        bias: fixed<4,1>
+        result: fixed<16,6>
+        weight: fixed<4,1>
+      Trace: false
+    merged_dense1_linear:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    merged_dense2:
+      Precision:
+        bias: fixed<4,1>
+        result: fixed<16,6>
+        weight: fixed<4,1>
+      Trace: false
+    merged_dense2_linear:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    merged_dense3:
+      Precision:
+        bias: fixed<4,1>
+        result: fixed<16,6>
+        weight: fixed<4,1>
+      Trace: false
+    merged_dense3_linear:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    merged_features:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    merged_relu1:
+      Precision:
+        result: ufixed<8,0,RND_CONV,SAT>
+      Trace: false
+    merged_relu2:
+      Precision:
+        result: ufixed<8,0,RND_CONV,SAT>
+      Trace: false
+    merged_relu3:
+      Precision:
+        result: ufixed<8,0,RND_CONV,SAT>
+      Trace: false
+    output:
+      Precision:
+        result: fixed<8,1,RND_CONV,SAT>
+        shift: fixed<16,6>
+        slope: fixed<16,6>
+      Trace: false
+    output_dense:
+      Precision:
+        bias: fixed<4,1>
+        result: fixed<16,6>
+        weight: fixed<4,1>
+      Trace: false
+    output_dense_linear:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    x_profile:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    xz_concat:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    xz_dense1:
+      Precision:
+        bias: fixed<4,1>
+        result: fixed<16,6>
+        weight: fixed<4,1>
+      Trace: false
+    xz_dense1_linear:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    xz_relu1:
+      Precision:
+        result: ufixed<8,0,RND_CONV,SAT>
+      Trace: false
+    y_local:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    y_profile:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    yl_concat:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    yl_dense1:
+      Precision:
+        bias: fixed<4,1>
+        result: fixed<16,6>
+        weight: fixed<4,1>
+      Trace: false
+    yl_dense1_linear:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    yl_relu1:
+      Precision:
+        result: ufixed<8,0,RND_CONV,SAT>
+      Trace: false
+    z_global:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+  Model:
+    BramFactor: 1000000000
+    Precision: fixed<16,6>
+    ReuseFactor: 1
+    Strategy: Latency
+    TraceOutput: false
+IOType: io_parallel
+InputData: null
+KerasModel: !keras_model './hlsTmpModel2/keras_model.h5'
+OutputDir: ./hlsTmpModel2
+OutputPredictions: null
+Part: xc7z020clg400-1
+ProjectName: myproject
+Stamp: D0bcdc01
+Version: 1.0.0

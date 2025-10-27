@@ -2,59 +2,51 @@ Backend: Vitis
 ClockPeriod: 5
 HLSConfig:
   LayerName:
-    concatenate_1:
+    merged_dense1:
+      Precision:
+        bias: fixed<4,1>
+        result: fixed<16,6>
+        weight: fixed<4,1>
+      Trace: false
+    merged_dense1_linear:
       Precision:
         result: fixed<16,6>
       Trace: false
-    dense1:
+    merged_dense2:
       Precision:
-        bias: fixed<2,1>
+        bias: fixed<4,1>
         result: fixed<16,6>
-        weight: fixed<2,1>
+        weight: fixed<4,1>
       Trace: false
-    dense1_linear:
-      Precision:
-        result: fixed<16,6>
-      Trace: false
-    dense2:
-      Precision:
-        bias: fixed<2,1>
-        result: fixed<16,6>
-        weight: fixed<2,1>
-      Trace: false
-    dense2_linear:
+    merged_dense2_linear:
       Precision:
         result: fixed<16,6>
       Trace: false
-    dense3:
+    merged_dense3:
       Precision:
-        bias: fixed<2,1>
+        bias: fixed<4,1>
         result: fixed<16,6>
-        weight: fixed<2,1>
+        weight: fixed<4,1>
       Trace: false
-    dense3_linear:
-      Precision:
-        result: fixed<16,6>
-      Trace: false
-    dense4:
-      Precision:
-        bias: fixed<2,1>
-        result: fixed<16,6>
-        weight: fixed<2,1>
-      Trace: false
-    dense4_linear:
+    merged_dense3_linear:
       Precision:
         result: fixed<16,6>
       Trace: false
-    dense5:
+    merged_features:
       Precision:
-        bias: fixed<2,1>
         result: fixed<16,6>
-        weight: fixed<2,1>
       Trace: false
-    dense5_linear:
+    merged_relu1:
       Precision:
-        result: fixed<16,6>
+        result: ufixed<8,0,RND_CONV,SAT>
+      Trace: false
+    merged_relu2:
+      Precision:
+        result: ufixed<8,0,RND_CONV,SAT>
+      Trace: false
+    merged_relu3:
+      Precision:
+        result: ufixed<8,0,RND_CONV,SAT>
       Trace: false
     output:
       Precision:
@@ -64,39 +56,63 @@ HLSConfig:
       Trace: false
     output_dense:
       Precision:
-        bias: fixed<2,1>
+        bias: fixed<4,1>
         result: fixed<16,6>
-        weight: fixed<2,1>
+        weight: fixed<4,1>
       Trace: false
     output_dense_linear:
       Precision:
         result: fixed<16,6>
       Trace: false
-    q_relu1:
+    x_profile:
       Precision:
-        result: ufixed<2,0,RND_CONV,SAT>
+        result: fixed<16,6>
       Trace: false
-    q_relu2:
+    xz_concat:
       Precision:
-        result: ufixed<2,0,RND_CONV,SAT>
+        result: fixed<16,6>
       Trace: false
-    q_relu3:
+    xz_dense1:
       Precision:
-        result: ufixed<2,0,RND_CONV,SAT>
+        bias: fixed<4,1>
+        result: fixed<16,6>
+        weight: fixed<4,1>
       Trace: false
-    q_relu4:
+    xz_dense1_linear:
       Precision:
-        result: ufixed<2,0,RND_CONV,SAT>
+        result: fixed<16,6>
       Trace: false
-    q_relu5:
+    xz_relu1:
       Precision:
-        result: ufixed<2,0,RND_CONV,SAT>
+        result: ufixed<8,0,RND_CONV,SAT>
       Trace: false
     y_local:
       Precision:
         result: fixed<16,6>
       Trace: false
-    y_size:
+    y_profile:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    yl_concat:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    yl_dense1:
+      Precision:
+        bias: fixed<4,1>
+        result: fixed<16,6>
+        weight: fixed<4,1>
+      Trace: false
+    yl_dense1_linear:
+      Precision:
+        result: fixed<16,6>
+      Trace: false
+    yl_relu1:
+      Precision:
+        result: ufixed<8,0,RND_CONV,SAT>
+      Trace: false
+    z_global:
       Precision:
         result: fixed<16,6>
       Trace: false
@@ -113,5 +129,5 @@ OutputDir: ./hlsTmp
 OutputPredictions: null
 Part: xc7z020clg400-1
 ProjectName: myproject
-Stamp: 7B6Ff89c
+Stamp: Fbb0930F
 Version: 1.0.0

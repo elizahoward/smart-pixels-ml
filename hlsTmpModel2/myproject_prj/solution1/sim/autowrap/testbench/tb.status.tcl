@@ -1,0 +1,1 @@
+set ::AESL_AUTOSIM::gTopFileName /home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/./sim/autowrap/testbench/myproject.cpp_pre.cpp.tb.cpp

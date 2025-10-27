@@ -1,0 +1,230 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s'" level="0">
+<item name = "Date">Mon Oct 27 14:27:48 2025
+</item>
+<item name = "Version">2024.1 (Build 5069499 on May 21 2024)</item>
+<item name = "Project">myproject_prj</item>
+<item name = "Solution">solution1 (Vivado IP Flow Target)</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020-clg400-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00 ns, 0 ns, 0.62 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">0, 0, 0 ns, 0 ns, 1, 1, yes</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, -, -, -</column>
+<column name="FIFO">-, -, -, -, -</column>
+<column name="Instance">-, -, -, -, -</column>
+<column name="Memory">-, -, -, -, -</column>
+<column name="Multiplexer">-, -, -, -, -</column>
+<column name="Register">-, -, -, -, -</column>
+<specialColumn name="Available">280, 220, 106400, 53200, 0</specialColumn>
+<specialColumn name="Utilization (%)">0, 0, 0, 0, 0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP, FF, LUT, URAM</keys>
+</table>
+</item>
+<item name = "DSP"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_ready">out, 1, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_0">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_1">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_2">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_3">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_4">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_5">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_6">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_7">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_8">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_9">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_10">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_11">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_12">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_13">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_14">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_15">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_16">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_17">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_18">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_19">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_20">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_21">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_22">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_23">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_24">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_25">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_26">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_27">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_28">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_29">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_30">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_31">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_32">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_33">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_34">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_35">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_36">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_37">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_38">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_39">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_40">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_41">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_42">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_43">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_44">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_45">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_46">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_47">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_48">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_49">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_50">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_51">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_52">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_53">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_54">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_55">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_56">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_57">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_58">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_59">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_60">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_61">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_62">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_return_63">out, 16, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, concatenate1d&lt;ap_ufixed,ap_ufixed,ap_fixed&lt;16,6,5,3,0&gt;,config13&gt;, return value</column>
+<column name="data1_0_val">in, 8, ap_none, data1_0_val, scalar</column>
+<column name="data1_1_val">in, 8, ap_none, data1_1_val, scalar</column>
+<column name="data1_2_val">in, 8, ap_none, data1_2_val, scalar</column>
+<column name="data1_3_val">in, 8, ap_none, data1_3_val, scalar</column>
+<column name="data1_4_val">in, 8, ap_none, data1_4_val, scalar</column>
+<column name="data1_5_val">in, 8, ap_none, data1_5_val, scalar</column>
+<column name="data1_6_val">in, 8, ap_none, data1_6_val, scalar</column>
+<column name="data1_7_val">in, 8, ap_none, data1_7_val, scalar</column>
+<column name="data1_8_val">in, 8, ap_none, data1_8_val, scalar</column>
+<column name="data1_9_val">in, 8, ap_none, data1_9_val, scalar</column>
+<column name="data1_10_val">in, 8, ap_none, data1_10_val, scalar</column>
+<column name="data1_11_val">in, 8, ap_none, data1_11_val, scalar</column>
+<column name="data1_12_val">in, 8, ap_none, data1_12_val, scalar</column>
+<column name="data1_13_val">in, 8, ap_none, data1_13_val, scalar</column>
+<column name="data1_14_val">in, 8, ap_none, data1_14_val, scalar</column>
+<column name="data1_15_val">in, 8, ap_none, data1_15_val, scalar</column>
+<column name="data1_16_val">in, 8, ap_none, data1_16_val, scalar</column>
+<column name="data1_17_val">in, 8, ap_none, data1_17_val, scalar</column>
+<column name="data1_18_val">in, 8, ap_none, data1_18_val, scalar</column>
+<column name="data1_19_val">in, 8, ap_none, data1_19_val, scalar</column>
+<column name="data1_20_val">in, 8, ap_none, data1_20_val, scalar</column>
+<column name="data1_21_val">in, 8, ap_none, data1_21_val, scalar</column>
+<column name="data1_22_val">in, 8, ap_none, data1_22_val, scalar</column>
+<column name="data1_23_val">in, 8, ap_none, data1_23_val, scalar</column>
+<column name="data1_24_val">in, 8, ap_none, data1_24_val, scalar</column>
+<column name="data1_25_val">in, 8, ap_none, data1_25_val, scalar</column>
+<column name="data1_26_val">in, 8, ap_none, data1_26_val, scalar</column>
+<column name="data1_27_val">in, 8, ap_none, data1_27_val, scalar</column>
+<column name="data1_28_val">in, 8, ap_none, data1_28_val, scalar</column>
+<column name="data1_29_val">in, 8, ap_none, data1_29_val, scalar</column>
+<column name="data1_30_val">in, 8, ap_none, data1_30_val, scalar</column>
+<column name="data1_31_val">in, 8, ap_none, data1_31_val, scalar</column>
+<column name="data2_0_val">in, 8, ap_none, data2_0_val, scalar</column>
+<column name="data2_1_val">in, 8, ap_none, data2_1_val, scalar</column>
+<column name="data2_2_val">in, 8, ap_none, data2_2_val, scalar</column>
+<column name="data2_3_val">in, 8, ap_none, data2_3_val, scalar</column>
+<column name="data2_4_val">in, 8, ap_none, data2_4_val, scalar</column>
+<column name="data2_5_val">in, 8, ap_none, data2_5_val, scalar</column>
+<column name="data2_6_val">in, 8, ap_none, data2_6_val, scalar</column>
+<column name="data2_7_val">in, 8, ap_none, data2_7_val, scalar</column>
+<column name="data2_8_val">in, 8, ap_none, data2_8_val, scalar</column>
+<column name="data2_9_val">in, 8, ap_none, data2_9_val, scalar</column>
+<column name="data2_10_val">in, 8, ap_none, data2_10_val, scalar</column>
+<column name="data2_11_val">in, 8, ap_none, data2_11_val, scalar</column>
+<column name="data2_12_val">in, 8, ap_none, data2_12_val, scalar</column>
+<column name="data2_13_val">in, 8, ap_none, data2_13_val, scalar</column>
+<column name="data2_14_val">in, 8, ap_none, data2_14_val, scalar</column>
+<column name="data2_15_val">in, 8, ap_none, data2_15_val, scalar</column>
+<column name="data2_16_val">in, 8, ap_none, data2_16_val, scalar</column>
+<column name="data2_17_val">in, 8, ap_none, data2_17_val, scalar</column>
+<column name="data2_18_val">in, 8, ap_none, data2_18_val, scalar</column>
+<column name="data2_19_val">in, 8, ap_none, data2_19_val, scalar</column>
+<column name="data2_20_val">in, 8, ap_none, data2_20_val, scalar</column>
+<column name="data2_21_val">in, 8, ap_none, data2_21_val, scalar</column>
+<column name="data2_22_val">in, 8, ap_none, data2_22_val, scalar</column>
+<column name="data2_23_val">in, 8, ap_none, data2_23_val, scalar</column>
+<column name="data2_24_val">in, 8, ap_none, data2_24_val, scalar</column>
+<column name="data2_25_val">in, 8, ap_none, data2_25_val, scalar</column>
+<column name="data2_26_val">in, 8, ap_none, data2_26_val, scalar</column>
+<column name="data2_27_val">in, 8, ap_none, data2_27_val, scalar</column>
+<column name="data2_28_val">in, 8, ap_none, data2_28_val, scalar</column>
+<column name="data2_29_val">in, 8, ap_none, data2_29_val, scalar</column>
+<column name="data2_30_val">in, 8, ap_none, data2_30_val, scalar</column>
+<column name="data2_31_val">in, 8, ap_none, data2_31_val, scalar</column>
+</table>
+</item>
+</section>
+</profile>

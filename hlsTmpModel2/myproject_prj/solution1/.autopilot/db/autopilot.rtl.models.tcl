@@ -1,0 +1,17 @@
+set SynModuleInfo {
+  {SRCNAME concatenate1d<ap_fixed,ap_fixed,ap_fixed<16,6,5,3,0>,config5> MODELNAME concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config5_s RTLNAME myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config5_s}
+  {SRCNAME concatenate1d<ap_fixed,ap_fixed,ap_fixed<16,6,5,3,0>,config6> MODELNAME concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config6_s RTLNAME myproject_concatenate1d_ap_fixed_ap_fixed_ap_fixed_16_6_5_3_0_config6_s}
+  {SRCNAME {dense_latency<ap_fixed<16, 6, 5, 3, 0>, ap_fixed<16, 6, 5, 3, 0>, config7>} MODELNAME dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s RTLNAME myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config7_s}
+  {SRCNAME {dense_latency<ap_fixed<16, 6, 5, 3, 0>, ap_fixed<16, 6, 5, 3, 0>, config9>} MODELNAME dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s RTLNAME myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config9_s}
+  {SRCNAME {relu<ap_fixed<16, 6, 5, 3, 0>, ap_ufixed<8, 0, 4, 0, 0>, relu_config11>} MODELNAME relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s RTLNAME myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config11_s}
+  {SRCNAME {relu<ap_fixed<16, 6, 5, 3, 0>, ap_ufixed<8, 0, 4, 0, 0>, relu_config12>} MODELNAME relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s RTLNAME myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config12_s}
+  {SRCNAME concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13> MODELNAME concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s RTLNAME myproject_concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s}
+  {SRCNAME {dense_latency<ap_fixed<16, 6, 5, 3, 0>, ap_fixed<16, 6, 5, 3, 0>, config14>} MODELNAME dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s RTLNAME myproject_dense_latency_ap_fixed_16_6_5_3_0_ap_fixed_16_6_5_3_0_config14_s}
+  {SRCNAME {relu<ap_fixed<16, 6, 5, 3, 0>, ap_ufixed<8, 0, 4, 0, 0>, relu_config16>} MODELNAME relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s RTLNAME myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config16_s}
+  {SRCNAME {dense_latency<ap_ufixed<8, 0, 4, 0, 0>, ap_fixed<16, 6, 5, 3, 0>, config17>} MODELNAME dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s RTLNAME myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config17_s}
+  {SRCNAME {relu<ap_fixed<16, 6, 5, 3, 0>, ap_ufixed<8, 0, 4, 0, 0>, relu_config19>} MODELNAME relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s RTLNAME myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config19_s}
+  {SRCNAME {dense_latency<ap_ufixed<8, 0, 4, 0, 0>, ap_fixed<16, 6, 5, 3, 0>, config20>} MODELNAME dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s RTLNAME myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config20_s}
+  {SRCNAME {relu<ap_fixed<16, 6, 5, 3, 0>, ap_ufixed<8, 0, 4, 0, 0>, relu_config22>} MODELNAME relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s RTLNAME myproject_relu_ap_fixed_16_6_5_3_0_ap_ufixed_8_0_4_0_0_relu_config22_s}
+  {SRCNAME {dense_latency<ap_ufixed<8, 0, 4, 0, 0>, ap_fixed<16, 6, 5, 3, 0>, config23>} MODELNAME dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s RTLNAME myproject_dense_latency_ap_ufixed_8_0_4_0_0_ap_fixed_16_6_5_3_0_config23_s}
+  {SRCNAME myproject MODELNAME myproject RTLNAME myproject IS_TOP 1}
+}

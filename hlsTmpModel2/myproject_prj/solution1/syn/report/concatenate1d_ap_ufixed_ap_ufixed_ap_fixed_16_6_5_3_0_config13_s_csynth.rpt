@@ -1,0 +1,228 @@
+
+
+================================================================
+== Vitis HLS Report for 'concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s'
+================================================================
+* Date:           Mon Oct 27 14:27:48 2025
+
+* Version:        2024.1 (Build 5069499 on May 21 2024)
+* Project:        myproject_prj
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|      0 ns|     0.62 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|      0 ns|      0 ns|    1|    1|      yes|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       -|      -|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    -|       -|      -|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       -|      -|    -|
+|Register         |        -|    -|       -|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    0|       0|      0|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|    0|       0|      0|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------+-----+-----+------------+------------------------------------------------------------------+--------------+
+|   RTL Ports  | Dir | Bits|  Protocol  |                           Source Object                          |    C Type    |
++--------------+-----+-----+------------+------------------------------------------------------------------+--------------+
+|ap_ready      |  out|    1|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_0   |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_1   |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_2   |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_3   |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_4   |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_5   |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_6   |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_7   |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_8   |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_9   |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_10  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_11  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_12  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_13  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_14  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_15  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_16  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_17  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_18  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_19  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_20  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_21  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_22  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_23  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_24  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_25  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_26  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_27  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_28  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_29  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_30  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_31  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_32  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_33  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_34  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_35  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_36  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_37  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_38  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_39  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_40  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_41  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_42  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_43  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_44  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_45  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_46  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_47  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_48  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_49  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_50  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_51  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_52  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_53  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_54  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_55  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_56  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_57  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_58  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_59  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_60  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_61  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_62  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_return_63  |  out|   16|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|ap_rst        |   in|    1|  ap_ctrl_hs|  concatenate1d<ap_ufixed,ap_ufixed,ap_fixed<16,6,5,3,0>,config13>|  return value|
+|data1_0_val   |   in|    8|     ap_none|                                                       data1_0_val|        scalar|
+|data1_1_val   |   in|    8|     ap_none|                                                       data1_1_val|        scalar|
+|data1_2_val   |   in|    8|     ap_none|                                                       data1_2_val|        scalar|
+|data1_3_val   |   in|    8|     ap_none|                                                       data1_3_val|        scalar|
+|data1_4_val   |   in|    8|     ap_none|                                                       data1_4_val|        scalar|
+|data1_5_val   |   in|    8|     ap_none|                                                       data1_5_val|        scalar|
+|data1_6_val   |   in|    8|     ap_none|                                                       data1_6_val|        scalar|
+|data1_7_val   |   in|    8|     ap_none|                                                       data1_7_val|        scalar|
+|data1_8_val   |   in|    8|     ap_none|                                                       data1_8_val|        scalar|
+|data1_9_val   |   in|    8|     ap_none|                                                       data1_9_val|        scalar|
+|data1_10_val  |   in|    8|     ap_none|                                                      data1_10_val|        scalar|
+|data1_11_val  |   in|    8|     ap_none|                                                      data1_11_val|        scalar|
+|data1_12_val  |   in|    8|     ap_none|                                                      data1_12_val|        scalar|
+|data1_13_val  |   in|    8|     ap_none|                                                      data1_13_val|        scalar|
+|data1_14_val  |   in|    8|     ap_none|                                                      data1_14_val|        scalar|
+|data1_15_val  |   in|    8|     ap_none|                                                      data1_15_val|        scalar|
+|data1_16_val  |   in|    8|     ap_none|                                                      data1_16_val|        scalar|
+|data1_17_val  |   in|    8|     ap_none|                                                      data1_17_val|        scalar|
+|data1_18_val  |   in|    8|     ap_none|                                                      data1_18_val|        scalar|
+|data1_19_val  |   in|    8|     ap_none|                                                      data1_19_val|        scalar|
+|data1_20_val  |   in|    8|     ap_none|                                                      data1_20_val|        scalar|
+|data1_21_val  |   in|    8|     ap_none|                                                      data1_21_val|        scalar|
+|data1_22_val  |   in|    8|     ap_none|                                                      data1_22_val|        scalar|
+|data1_23_val  |   in|    8|     ap_none|                                                      data1_23_val|        scalar|
+|data1_24_val  |   in|    8|     ap_none|                                                      data1_24_val|        scalar|
+|data1_25_val  |   in|    8|     ap_none|                                                      data1_25_val|        scalar|
+|data1_26_val  |   in|    8|     ap_none|                                                      data1_26_val|        scalar|
+|data1_27_val  |   in|    8|     ap_none|                                                      data1_27_val|        scalar|
+|data1_28_val  |   in|    8|     ap_none|                                                      data1_28_val|        scalar|
+|data1_29_val  |   in|    8|     ap_none|                                                      data1_29_val|        scalar|
+|data1_30_val  |   in|    8|     ap_none|                                                      data1_30_val|        scalar|
+|data1_31_val  |   in|    8|     ap_none|                                                      data1_31_val|        scalar|
+|data2_0_val   |   in|    8|     ap_none|                                                       data2_0_val|        scalar|
+|data2_1_val   |   in|    8|     ap_none|                                                       data2_1_val|        scalar|
+|data2_2_val   |   in|    8|     ap_none|                                                       data2_2_val|        scalar|
+|data2_3_val   |   in|    8|     ap_none|                                                       data2_3_val|        scalar|
+|data2_4_val   |   in|    8|     ap_none|                                                       data2_4_val|        scalar|
+|data2_5_val   |   in|    8|     ap_none|                                                       data2_5_val|        scalar|
+|data2_6_val   |   in|    8|     ap_none|                                                       data2_6_val|        scalar|
+|data2_7_val   |   in|    8|     ap_none|                                                       data2_7_val|        scalar|
+|data2_8_val   |   in|    8|     ap_none|                                                       data2_8_val|        scalar|
+|data2_9_val   |   in|    8|     ap_none|                                                       data2_9_val|        scalar|
+|data2_10_val  |   in|    8|     ap_none|                                                      data2_10_val|        scalar|
+|data2_11_val  |   in|    8|     ap_none|                                                      data2_11_val|        scalar|
+|data2_12_val  |   in|    8|     ap_none|                                                      data2_12_val|        scalar|
+|data2_13_val  |   in|    8|     ap_none|                                                      data2_13_val|        scalar|
+|data2_14_val  |   in|    8|     ap_none|                                                      data2_14_val|        scalar|
+|data2_15_val  |   in|    8|     ap_none|                                                      data2_15_val|        scalar|
+|data2_16_val  |   in|    8|     ap_none|                                                      data2_16_val|        scalar|
+|data2_17_val  |   in|    8|     ap_none|                                                      data2_17_val|        scalar|
+|data2_18_val  |   in|    8|     ap_none|                                                      data2_18_val|        scalar|
+|data2_19_val  |   in|    8|     ap_none|                                                      data2_19_val|        scalar|
+|data2_20_val  |   in|    8|     ap_none|                                                      data2_20_val|        scalar|
+|data2_21_val  |   in|    8|     ap_none|                                                      data2_21_val|        scalar|
+|data2_22_val  |   in|    8|     ap_none|                                                      data2_22_val|        scalar|
+|data2_23_val  |   in|    8|     ap_none|                                                      data2_23_val|        scalar|
+|data2_24_val  |   in|    8|     ap_none|                                                      data2_24_val|        scalar|
+|data2_25_val  |   in|    8|     ap_none|                                                      data2_25_val|        scalar|
+|data2_26_val  |   in|    8|     ap_none|                                                      data2_26_val|        scalar|
+|data2_27_val  |   in|    8|     ap_none|                                                      data2_27_val|        scalar|
+|data2_28_val  |   in|    8|     ap_none|                                                      data2_28_val|        scalar|
+|data2_29_val  |   in|    8|     ap_none|                                                      data2_29_val|        scalar|
+|data2_30_val  |   in|    8|     ap_none|                                                      data2_30_val|        scalar|
+|data2_31_val  |   in|    8|     ap_none|                                                      data2_31_val|        scalar|
++--------------+-----+-----+------------+------------------------------------------------------------------+--------------+
+

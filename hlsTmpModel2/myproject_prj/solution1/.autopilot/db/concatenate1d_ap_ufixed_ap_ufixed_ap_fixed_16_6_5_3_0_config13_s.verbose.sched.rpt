@@ -1,0 +1,365 @@
+
+
+================================================================
+== Vitis HLS Report for 'concatenate1d_ap_ufixed_ap_ufixed_ap_fixed_16_6_5_3_0_config13_s'
+================================================================
+* Date:           Mon Oct 27 14:27:03 2025
+
+* Version:        2024.1 (Build 5069499 on May 21 2024)
+* Project:        myproject_prj
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|      0 ns|     0.62 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|      0 ns|      0 ns|    1|    1|      yes|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 0
+IsPipeline: 1
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 1
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 1
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 1, States = { 1 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.00>
+ST_1 : Operation 2 [1/1] (0.00ns)   --->   "%specpipeline_ln120 = specpipeline void @_ssdm_op_SpecPipeline, i32 4294967295, i32 0, i32 0, i32 0, void @empty_0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 2 'specpipeline' 'specpipeline_ln120' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 3 [1/1] (0.00ns)   --->   "%data2_31_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_31_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 3 'read' 'data2_31_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 4 [1/1] (0.00ns)   --->   "%data2_30_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_30_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 4 'read' 'data2_30_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%data2_29_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_29_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 5 'read' 'data2_29_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%data2_28_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_28_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 6 'read' 'data2_28_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%data2_27_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_27_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 7 'read' 'data2_27_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%data2_26_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_26_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 8 'read' 'data2_26_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%data2_25_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_25_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 9 'read' 'data2_25_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%data2_24_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_24_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 10 'read' 'data2_24_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%data2_23_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_23_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 11 'read' 'data2_23_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%data2_22_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_22_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 12 'read' 'data2_22_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%data2_21_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_21_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 13 'read' 'data2_21_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%data2_20_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_20_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 14 'read' 'data2_20_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%data2_19_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_19_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 15 'read' 'data2_19_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%data2_18_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_18_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 16 'read' 'data2_18_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%data2_17_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_17_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 17 'read' 'data2_17_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%data2_16_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_16_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 18 'read' 'data2_16_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%data2_15_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_15_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 19 'read' 'data2_15_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%data2_14_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_14_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 20 'read' 'data2_14_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%data2_13_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_13_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 21 'read' 'data2_13_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%data2_12_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_12_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 22 'read' 'data2_12_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%data2_11_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_11_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 23 'read' 'data2_11_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "%data2_10_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_10_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 24 'read' 'data2_10_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "%data2_9_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_9_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 25 'read' 'data2_9_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "%data2_8_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_8_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 26 'read' 'data2_8_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "%data2_7_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_7_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 27 'read' 'data2_7_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 28 [1/1] (0.00ns)   --->   "%data2_6_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_6_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 28 'read' 'data2_6_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 29 [1/1] (0.00ns)   --->   "%data2_5_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_5_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 29 'read' 'data2_5_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 30 [1/1] (0.00ns)   --->   "%data2_4_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_4_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 30 'read' 'data2_4_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 31 [1/1] (0.00ns)   --->   "%data2_3_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_3_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 31 'read' 'data2_3_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 32 [1/1] (0.00ns)   --->   "%data2_2_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_2_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 32 'read' 'data2_2_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 33 [1/1] (0.00ns)   --->   "%data2_1_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_1_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 33 'read' 'data2_1_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%data2_0_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data2_0_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 34 'read' 'data2_0_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 35 [1/1] (0.00ns)   --->   "%data1_31_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_31_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 35 'read' 'data1_31_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%data1_30_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_30_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 36 'read' 'data1_30_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 37 [1/1] (0.00ns)   --->   "%data1_29_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_29_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 37 'read' 'data1_29_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%data1_28_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_28_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 38 'read' 'data1_28_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 39 [1/1] (0.00ns)   --->   "%data1_27_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_27_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 39 'read' 'data1_27_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 40 [1/1] (0.00ns)   --->   "%data1_26_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_26_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 40 'read' 'data1_26_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 41 [1/1] (0.00ns)   --->   "%data1_25_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_25_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 41 'read' 'data1_25_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 42 [1/1] (0.00ns)   --->   "%data1_24_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_24_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 42 'read' 'data1_24_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 43 [1/1] (0.00ns)   --->   "%data1_23_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_23_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 43 'read' 'data1_23_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 44 [1/1] (0.00ns)   --->   "%data1_22_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_22_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 44 'read' 'data1_22_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 45 [1/1] (0.00ns)   --->   "%data1_21_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_21_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 45 'read' 'data1_21_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 46 [1/1] (0.00ns)   --->   "%data1_20_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_20_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 46 'read' 'data1_20_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 47 [1/1] (0.00ns)   --->   "%data1_19_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_19_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 47 'read' 'data1_19_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 48 [1/1] (0.00ns)   --->   "%data1_18_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_18_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 48 'read' 'data1_18_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 49 [1/1] (0.00ns)   --->   "%data1_17_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_17_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 49 'read' 'data1_17_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 50 [1/1] (0.00ns)   --->   "%data1_16_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_16_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 50 'read' 'data1_16_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 51 [1/1] (0.00ns)   --->   "%data1_15_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_15_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 51 'read' 'data1_15_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 52 [1/1] (0.00ns)   --->   "%data1_14_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_14_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 52 'read' 'data1_14_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 53 [1/1] (0.00ns)   --->   "%data1_13_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_13_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 53 'read' 'data1_13_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 54 [1/1] (0.00ns)   --->   "%data1_12_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_12_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 54 'read' 'data1_12_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 55 [1/1] (0.00ns)   --->   "%data1_11_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_11_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 55 'read' 'data1_11_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 56 [1/1] (0.00ns)   --->   "%data1_10_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_10_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 56 'read' 'data1_10_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 57 [1/1] (0.00ns)   --->   "%data1_9_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_9_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 57 'read' 'data1_9_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 58 [1/1] (0.00ns)   --->   "%data1_8_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_8_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 58 'read' 'data1_8_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 59 [1/1] (0.00ns)   --->   "%data1_7_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_7_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 59 'read' 'data1_7_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 60 [1/1] (0.00ns)   --->   "%data1_6_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_6_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 60 'read' 'data1_6_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 61 [1/1] (0.00ns)   --->   "%data1_5_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_5_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 61 'read' 'data1_5_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 62 [1/1] (0.00ns)   --->   "%data1_4_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_4_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 62 'read' 'data1_4_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 63 [1/1] (0.00ns)   --->   "%data1_3_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_3_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 63 'read' 'data1_3_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 64 [1/1] (0.00ns)   --->   "%data1_2_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_2_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 64 'read' 'data1_2_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 65 [1/1] (0.00ns)   --->   "%data1_1_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_1_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 65 'read' 'data1_1_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 66 [1/1] (0.00ns)   --->   "%data1_0_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %data1_0_val" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 66 'read' 'data1_0_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 67 [1/1] (0.00ns)   --->   "%shl_ln = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_0_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 67 'bitconcatenate' 'shl_ln' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 68 [1/1] (0.00ns)   --->   "%zext_ln120 = zext i10 %shl_ln" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 68 'zext' 'zext_ln120' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 69 [1/1] (0.00ns)   --->   "%shl_ln120_1 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_1_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 69 'bitconcatenate' 'shl_ln120_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 70 [1/1] (0.00ns)   --->   "%zext_ln120_1 = zext i10 %shl_ln120_1" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 70 'zext' 'zext_ln120_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 71 [1/1] (0.00ns)   --->   "%shl_ln120_2 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_2_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 71 'bitconcatenate' 'shl_ln120_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 72 [1/1] (0.00ns)   --->   "%zext_ln120_2 = zext i10 %shl_ln120_2" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 72 'zext' 'zext_ln120_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 73 [1/1] (0.00ns)   --->   "%shl_ln120_3 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_3_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 73 'bitconcatenate' 'shl_ln120_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 74 [1/1] (0.00ns)   --->   "%zext_ln120_3 = zext i10 %shl_ln120_3" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 74 'zext' 'zext_ln120_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 75 [1/1] (0.00ns)   --->   "%shl_ln120_4 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_4_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 75 'bitconcatenate' 'shl_ln120_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 76 [1/1] (0.00ns)   --->   "%zext_ln120_4 = zext i10 %shl_ln120_4" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 76 'zext' 'zext_ln120_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 77 [1/1] (0.00ns)   --->   "%shl_ln120_5 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_5_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 77 'bitconcatenate' 'shl_ln120_5' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 78 [1/1] (0.00ns)   --->   "%zext_ln120_5 = zext i10 %shl_ln120_5" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 78 'zext' 'zext_ln120_5' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 79 [1/1] (0.00ns)   --->   "%shl_ln120_6 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_6_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 79 'bitconcatenate' 'shl_ln120_6' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 80 [1/1] (0.00ns)   --->   "%zext_ln120_6 = zext i10 %shl_ln120_6" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 80 'zext' 'zext_ln120_6' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 81 [1/1] (0.00ns)   --->   "%shl_ln120_7 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_7_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 81 'bitconcatenate' 'shl_ln120_7' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 82 [1/1] (0.00ns)   --->   "%zext_ln120_7 = zext i10 %shl_ln120_7" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 82 'zext' 'zext_ln120_7' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 83 [1/1] (0.00ns)   --->   "%shl_ln120_8 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_8_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 83 'bitconcatenate' 'shl_ln120_8' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 84 [1/1] (0.00ns)   --->   "%zext_ln120_8 = zext i10 %shl_ln120_8" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 84 'zext' 'zext_ln120_8' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 85 [1/1] (0.00ns)   --->   "%shl_ln120_9 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_9_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 85 'bitconcatenate' 'shl_ln120_9' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 86 [1/1] (0.00ns)   --->   "%zext_ln120_9 = zext i10 %shl_ln120_9" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 86 'zext' 'zext_ln120_9' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 87 [1/1] (0.00ns)   --->   "%shl_ln120_s = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_10_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 87 'bitconcatenate' 'shl_ln120_s' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 88 [1/1] (0.00ns)   --->   "%zext_ln120_10 = zext i10 %shl_ln120_s" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 88 'zext' 'zext_ln120_10' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 89 [1/1] (0.00ns)   --->   "%shl_ln120_10 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_11_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 89 'bitconcatenate' 'shl_ln120_10' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 90 [1/1] (0.00ns)   --->   "%zext_ln120_11 = zext i10 %shl_ln120_10" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 90 'zext' 'zext_ln120_11' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 91 [1/1] (0.00ns)   --->   "%shl_ln120_11 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_12_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 91 'bitconcatenate' 'shl_ln120_11' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 92 [1/1] (0.00ns)   --->   "%zext_ln120_12 = zext i10 %shl_ln120_11" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 92 'zext' 'zext_ln120_12' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 93 [1/1] (0.00ns)   --->   "%shl_ln120_12 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_13_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 93 'bitconcatenate' 'shl_ln120_12' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 94 [1/1] (0.00ns)   --->   "%zext_ln120_13 = zext i10 %shl_ln120_12" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 94 'zext' 'zext_ln120_13' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 95 [1/1] (0.00ns)   --->   "%shl_ln120_13 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_14_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 95 'bitconcatenate' 'shl_ln120_13' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 96 [1/1] (0.00ns)   --->   "%zext_ln120_14 = zext i10 %shl_ln120_13" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 96 'zext' 'zext_ln120_14' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 97 [1/1] (0.00ns)   --->   "%shl_ln120_14 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_15_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 97 'bitconcatenate' 'shl_ln120_14' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 98 [1/1] (0.00ns)   --->   "%zext_ln120_15 = zext i10 %shl_ln120_14" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 98 'zext' 'zext_ln120_15' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 99 [1/1] (0.00ns)   --->   "%shl_ln120_15 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_16_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 99 'bitconcatenate' 'shl_ln120_15' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 100 [1/1] (0.00ns)   --->   "%zext_ln120_16 = zext i10 %shl_ln120_15" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 100 'zext' 'zext_ln120_16' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 101 [1/1] (0.00ns)   --->   "%shl_ln120_16 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_17_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 101 'bitconcatenate' 'shl_ln120_16' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 102 [1/1] (0.00ns)   --->   "%zext_ln120_17 = zext i10 %shl_ln120_16" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 102 'zext' 'zext_ln120_17' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 103 [1/1] (0.00ns)   --->   "%shl_ln120_17 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_18_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 103 'bitconcatenate' 'shl_ln120_17' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 104 [1/1] (0.00ns)   --->   "%zext_ln120_18 = zext i10 %shl_ln120_17" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 104 'zext' 'zext_ln120_18' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 105 [1/1] (0.00ns)   --->   "%shl_ln120_18 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_19_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 105 'bitconcatenate' 'shl_ln120_18' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 106 [1/1] (0.00ns)   --->   "%zext_ln120_19 = zext i10 %shl_ln120_18" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 106 'zext' 'zext_ln120_19' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 107 [1/1] (0.00ns)   --->   "%shl_ln120_19 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_20_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 107 'bitconcatenate' 'shl_ln120_19' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 108 [1/1] (0.00ns)   --->   "%zext_ln120_20 = zext i10 %shl_ln120_19" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 108 'zext' 'zext_ln120_20' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 109 [1/1] (0.00ns)   --->   "%shl_ln120_20 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_21_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 109 'bitconcatenate' 'shl_ln120_20' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 110 [1/1] (0.00ns)   --->   "%zext_ln120_21 = zext i10 %shl_ln120_20" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 110 'zext' 'zext_ln120_21' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 111 [1/1] (0.00ns)   --->   "%shl_ln120_21 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_22_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 111 'bitconcatenate' 'shl_ln120_21' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 112 [1/1] (0.00ns)   --->   "%zext_ln120_22 = zext i10 %shl_ln120_21" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 112 'zext' 'zext_ln120_22' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 113 [1/1] (0.00ns)   --->   "%shl_ln120_22 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_23_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 113 'bitconcatenate' 'shl_ln120_22' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 114 [1/1] (0.00ns)   --->   "%zext_ln120_23 = zext i10 %shl_ln120_22" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 114 'zext' 'zext_ln120_23' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 115 [1/1] (0.00ns)   --->   "%shl_ln120_23 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_24_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 115 'bitconcatenate' 'shl_ln120_23' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 116 [1/1] (0.00ns)   --->   "%zext_ln120_24 = zext i10 %shl_ln120_23" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 116 'zext' 'zext_ln120_24' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 117 [1/1] (0.00ns)   --->   "%shl_ln120_24 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_25_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 117 'bitconcatenate' 'shl_ln120_24' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 118 [1/1] (0.00ns)   --->   "%zext_ln120_25 = zext i10 %shl_ln120_24" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 118 'zext' 'zext_ln120_25' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 119 [1/1] (0.00ns)   --->   "%shl_ln120_25 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_26_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 119 'bitconcatenate' 'shl_ln120_25' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 120 [1/1] (0.00ns)   --->   "%zext_ln120_26 = zext i10 %shl_ln120_25" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 120 'zext' 'zext_ln120_26' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 121 [1/1] (0.00ns)   --->   "%shl_ln120_26 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_27_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 121 'bitconcatenate' 'shl_ln120_26' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 122 [1/1] (0.00ns)   --->   "%zext_ln120_27 = zext i10 %shl_ln120_26" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 122 'zext' 'zext_ln120_27' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 123 [1/1] (0.00ns)   --->   "%shl_ln120_27 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_28_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 123 'bitconcatenate' 'shl_ln120_27' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 124 [1/1] (0.00ns)   --->   "%zext_ln120_28 = zext i10 %shl_ln120_27" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 124 'zext' 'zext_ln120_28' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 125 [1/1] (0.00ns)   --->   "%shl_ln120_28 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_29_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 125 'bitconcatenate' 'shl_ln120_28' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 126 [1/1] (0.00ns)   --->   "%zext_ln120_29 = zext i10 %shl_ln120_28" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 126 'zext' 'zext_ln120_29' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 127 [1/1] (0.00ns)   --->   "%shl_ln120_29 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_30_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 127 'bitconcatenate' 'shl_ln120_29' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 128 [1/1] (0.00ns)   --->   "%zext_ln120_30 = zext i10 %shl_ln120_29" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 128 'zext' 'zext_ln120_30' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 129 [1/1] (0.00ns)   --->   "%shl_ln120_30 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data1_31_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:120]   --->   Operation 129 'bitconcatenate' 'shl_ln120_30' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 130 [1/1] (0.00ns)   --->   "%zext_ln123 = zext i10 %shl_ln120_30" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 130 'zext' 'zext_ln123' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 131 [1/1] (0.00ns)   --->   "%shl_ln2 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_0_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 131 'bitconcatenate' 'shl_ln2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 132 [1/1] (0.00ns)   --->   "%zext_ln123_1 = zext i10 %shl_ln2" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 132 'zext' 'zext_ln123_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 133 [1/1] (0.00ns)   --->   "%shl_ln123_1 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_1_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 133 'bitconcatenate' 'shl_ln123_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 134 [1/1] (0.00ns)   --->   "%zext_ln123_2 = zext i10 %shl_ln123_1" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 134 'zext' 'zext_ln123_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 135 [1/1] (0.00ns)   --->   "%shl_ln123_2 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_2_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 135 'bitconcatenate' 'shl_ln123_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 136 [1/1] (0.00ns)   --->   "%zext_ln123_3 = zext i10 %shl_ln123_2" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 136 'zext' 'zext_ln123_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 137 [1/1] (0.00ns)   --->   "%shl_ln123_3 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_3_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 137 'bitconcatenate' 'shl_ln123_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 138 [1/1] (0.00ns)   --->   "%zext_ln123_4 = zext i10 %shl_ln123_3" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 138 'zext' 'zext_ln123_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 139 [1/1] (0.00ns)   --->   "%shl_ln123_4 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_4_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 139 'bitconcatenate' 'shl_ln123_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 140 [1/1] (0.00ns)   --->   "%zext_ln123_5 = zext i10 %shl_ln123_4" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 140 'zext' 'zext_ln123_5' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 141 [1/1] (0.00ns)   --->   "%shl_ln123_5 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_5_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 141 'bitconcatenate' 'shl_ln123_5' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 142 [1/1] (0.00ns)   --->   "%zext_ln123_6 = zext i10 %shl_ln123_5" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 142 'zext' 'zext_ln123_6' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 143 [1/1] (0.00ns)   --->   "%shl_ln123_6 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_6_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 143 'bitconcatenate' 'shl_ln123_6' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 144 [1/1] (0.00ns)   --->   "%zext_ln123_7 = zext i10 %shl_ln123_6" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 144 'zext' 'zext_ln123_7' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 145 [1/1] (0.00ns)   --->   "%shl_ln123_7 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_7_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 145 'bitconcatenate' 'shl_ln123_7' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 146 [1/1] (0.00ns)   --->   "%zext_ln123_8 = zext i10 %shl_ln123_7" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 146 'zext' 'zext_ln123_8' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 147 [1/1] (0.00ns)   --->   "%shl_ln123_8 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_8_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 147 'bitconcatenate' 'shl_ln123_8' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 148 [1/1] (0.00ns)   --->   "%zext_ln123_9 = zext i10 %shl_ln123_8" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 148 'zext' 'zext_ln123_9' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 149 [1/1] (0.00ns)   --->   "%shl_ln123_9 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_9_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 149 'bitconcatenate' 'shl_ln123_9' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 150 [1/1] (0.00ns)   --->   "%zext_ln123_10 = zext i10 %shl_ln123_9" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 150 'zext' 'zext_ln123_10' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 151 [1/1] (0.00ns)   --->   "%shl_ln123_s = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_10_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 151 'bitconcatenate' 'shl_ln123_s' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 152 [1/1] (0.00ns)   --->   "%zext_ln123_11 = zext i10 %shl_ln123_s" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 152 'zext' 'zext_ln123_11' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 153 [1/1] (0.00ns)   --->   "%shl_ln123_10 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_11_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 153 'bitconcatenate' 'shl_ln123_10' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 154 [1/1] (0.00ns)   --->   "%zext_ln123_12 = zext i10 %shl_ln123_10" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 154 'zext' 'zext_ln123_12' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 155 [1/1] (0.00ns)   --->   "%shl_ln123_11 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_12_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 155 'bitconcatenate' 'shl_ln123_11' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 156 [1/1] (0.00ns)   --->   "%zext_ln123_13 = zext i10 %shl_ln123_11" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 156 'zext' 'zext_ln123_13' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 157 [1/1] (0.00ns)   --->   "%shl_ln123_12 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_13_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 157 'bitconcatenate' 'shl_ln123_12' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 158 [1/1] (0.00ns)   --->   "%zext_ln123_14 = zext i10 %shl_ln123_12" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 158 'zext' 'zext_ln123_14' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 159 [1/1] (0.00ns)   --->   "%shl_ln123_13 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_14_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 159 'bitconcatenate' 'shl_ln123_13' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 160 [1/1] (0.00ns)   --->   "%zext_ln123_15 = zext i10 %shl_ln123_13" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 160 'zext' 'zext_ln123_15' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 161 [1/1] (0.00ns)   --->   "%shl_ln123_14 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_15_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 161 'bitconcatenate' 'shl_ln123_14' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 162 [1/1] (0.00ns)   --->   "%zext_ln123_16 = zext i10 %shl_ln123_14" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 162 'zext' 'zext_ln123_16' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 163 [1/1] (0.00ns)   --->   "%shl_ln123_15 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_16_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 163 'bitconcatenate' 'shl_ln123_15' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 164 [1/1] (0.00ns)   --->   "%zext_ln123_17 = zext i10 %shl_ln123_15" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 164 'zext' 'zext_ln123_17' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 165 [1/1] (0.00ns)   --->   "%shl_ln123_16 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_17_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 165 'bitconcatenate' 'shl_ln123_16' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 166 [1/1] (0.00ns)   --->   "%zext_ln123_18 = zext i10 %shl_ln123_16" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 166 'zext' 'zext_ln123_18' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 167 [1/1] (0.00ns)   --->   "%shl_ln123_17 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_18_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 167 'bitconcatenate' 'shl_ln123_17' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 168 [1/1] (0.00ns)   --->   "%zext_ln123_19 = zext i10 %shl_ln123_17" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 168 'zext' 'zext_ln123_19' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 169 [1/1] (0.00ns)   --->   "%shl_ln123_18 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_19_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 169 'bitconcatenate' 'shl_ln123_18' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 170 [1/1] (0.00ns)   --->   "%zext_ln123_20 = zext i10 %shl_ln123_18" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 170 'zext' 'zext_ln123_20' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 171 [1/1] (0.00ns)   --->   "%shl_ln123_19 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_20_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 171 'bitconcatenate' 'shl_ln123_19' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 172 [1/1] (0.00ns)   --->   "%zext_ln123_21 = zext i10 %shl_ln123_19" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 172 'zext' 'zext_ln123_21' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 173 [1/1] (0.00ns)   --->   "%shl_ln123_20 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_21_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 173 'bitconcatenate' 'shl_ln123_20' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 174 [1/1] (0.00ns)   --->   "%zext_ln123_22 = zext i10 %shl_ln123_20" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 174 'zext' 'zext_ln123_22' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 175 [1/1] (0.00ns)   --->   "%shl_ln123_21 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_22_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 175 'bitconcatenate' 'shl_ln123_21' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 176 [1/1] (0.00ns)   --->   "%zext_ln123_23 = zext i10 %shl_ln123_21" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 176 'zext' 'zext_ln123_23' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 177 [1/1] (0.00ns)   --->   "%shl_ln123_22 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_23_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 177 'bitconcatenate' 'shl_ln123_22' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 178 [1/1] (0.00ns)   --->   "%zext_ln123_24 = zext i10 %shl_ln123_22" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 178 'zext' 'zext_ln123_24' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 179 [1/1] (0.00ns)   --->   "%shl_ln123_23 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_24_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 179 'bitconcatenate' 'shl_ln123_23' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 180 [1/1] (0.00ns)   --->   "%zext_ln123_25 = zext i10 %shl_ln123_23" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 180 'zext' 'zext_ln123_25' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 181 [1/1] (0.00ns)   --->   "%shl_ln123_24 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_25_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 181 'bitconcatenate' 'shl_ln123_24' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 182 [1/1] (0.00ns)   --->   "%zext_ln123_26 = zext i10 %shl_ln123_24" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 182 'zext' 'zext_ln123_26' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 183 [1/1] (0.00ns)   --->   "%shl_ln123_25 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_26_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 183 'bitconcatenate' 'shl_ln123_25' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 184 [1/1] (0.00ns)   --->   "%zext_ln123_27 = zext i10 %shl_ln123_25" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 184 'zext' 'zext_ln123_27' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 185 [1/1] (0.00ns)   --->   "%shl_ln123_26 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_27_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 185 'bitconcatenate' 'shl_ln123_26' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 186 [1/1] (0.00ns)   --->   "%zext_ln123_28 = zext i10 %shl_ln123_26" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 186 'zext' 'zext_ln123_28' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 187 [1/1] (0.00ns)   --->   "%shl_ln123_27 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_28_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 187 'bitconcatenate' 'shl_ln123_27' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 188 [1/1] (0.00ns)   --->   "%zext_ln123_29 = zext i10 %shl_ln123_27" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 188 'zext' 'zext_ln123_29' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 189 [1/1] (0.00ns)   --->   "%shl_ln123_28 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_29_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 189 'bitconcatenate' 'shl_ln123_28' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 190 [1/1] (0.00ns)   --->   "%zext_ln123_30 = zext i10 %shl_ln123_28" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 190 'zext' 'zext_ln123_30' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 191 [1/1] (0.00ns)   --->   "%shl_ln123_29 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_30_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 191 'bitconcatenate' 'shl_ln123_29' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 192 [1/1] (0.00ns)   --->   "%zext_ln123_31 = zext i10 %shl_ln123_29" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 192 'zext' 'zext_ln123_31' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 193 [1/1] (0.00ns)   --->   "%shl_ln123_30 = bitconcatenate i10 @_ssdm_op_BitConcatenate.i10.i8.i2, i8 %data2_31_val_read, i2 0" [firmware/nnet_utils/nnet_merge.h:123]   --->   Operation 193 'bitconcatenate' 'shl_ln123_30' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 194 [1/1] (0.00ns)   --->   "%zext_ln125 = zext i10 %shl_ln123_30" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 194 'zext' 'zext_ln125' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 195 [1/1] (0.00ns)   --->   "%mrv = insertvalue i1024 <undef>, i16 %zext_ln120" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 195 'insertvalue' 'mrv' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 196 [1/1] (0.00ns)   --->   "%mrv_1 = insertvalue i1024 %mrv, i16 %zext_ln120_1" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 196 'insertvalue' 'mrv_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 197 [1/1] (0.00ns)   --->   "%mrv_2 = insertvalue i1024 %mrv_1, i16 %zext_ln120_2" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 197 'insertvalue' 'mrv_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 198 [1/1] (0.00ns)   --->   "%mrv_3 = insertvalue i1024 %mrv_2, i16 %zext_ln120_3" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 198 'insertvalue' 'mrv_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 199 [1/1] (0.00ns)   --->   "%mrv_4 = insertvalue i1024 %mrv_3, i16 %zext_ln120_4" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 199 'insertvalue' 'mrv_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 200 [1/1] (0.00ns)   --->   "%mrv_5 = insertvalue i1024 %mrv_4, i16 %zext_ln120_5" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 200 'insertvalue' 'mrv_5' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 201 [1/1] (0.00ns)   --->   "%mrv_6 = insertvalue i1024 %mrv_5, i16 %zext_ln120_6" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 201 'insertvalue' 'mrv_6' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 202 [1/1] (0.00ns)   --->   "%mrv_7 = insertvalue i1024 %mrv_6, i16 %zext_ln120_7" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 202 'insertvalue' 'mrv_7' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 203 [1/1] (0.00ns)   --->   "%mrv_8 = insertvalue i1024 %mrv_7, i16 %zext_ln120_8" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 203 'insertvalue' 'mrv_8' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 204 [1/1] (0.00ns)   --->   "%mrv_9 = insertvalue i1024 %mrv_8, i16 %zext_ln120_9" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 204 'insertvalue' 'mrv_9' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 205 [1/1] (0.00ns)   --->   "%mrv_10 = insertvalue i1024 %mrv_9, i16 %zext_ln120_10" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 205 'insertvalue' 'mrv_10' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 206 [1/1] (0.00ns)   --->   "%mrv_11 = insertvalue i1024 %mrv_10, i16 %zext_ln120_11" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 206 'insertvalue' 'mrv_11' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 207 [1/1] (0.00ns)   --->   "%mrv_12 = insertvalue i1024 %mrv_11, i16 %zext_ln120_12" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 207 'insertvalue' 'mrv_12' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 208 [1/1] (0.00ns)   --->   "%mrv_13 = insertvalue i1024 %mrv_12, i16 %zext_ln120_13" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 208 'insertvalue' 'mrv_13' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 209 [1/1] (0.00ns)   --->   "%mrv_14 = insertvalue i1024 %mrv_13, i16 %zext_ln120_14" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 209 'insertvalue' 'mrv_14' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 210 [1/1] (0.00ns)   --->   "%mrv_15 = insertvalue i1024 %mrv_14, i16 %zext_ln120_15" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 210 'insertvalue' 'mrv_15' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 211 [1/1] (0.00ns)   --->   "%mrv_16 = insertvalue i1024 %mrv_15, i16 %zext_ln120_16" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 211 'insertvalue' 'mrv_16' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 212 [1/1] (0.00ns)   --->   "%mrv_17 = insertvalue i1024 %mrv_16, i16 %zext_ln120_17" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 212 'insertvalue' 'mrv_17' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 213 [1/1] (0.00ns)   --->   "%mrv_18 = insertvalue i1024 %mrv_17, i16 %zext_ln120_18" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 213 'insertvalue' 'mrv_18' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 214 [1/1] (0.00ns)   --->   "%mrv_19 = insertvalue i1024 %mrv_18, i16 %zext_ln120_19" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 214 'insertvalue' 'mrv_19' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 215 [1/1] (0.00ns)   --->   "%mrv_20 = insertvalue i1024 %mrv_19, i16 %zext_ln120_20" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 215 'insertvalue' 'mrv_20' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 216 [1/1] (0.00ns)   --->   "%mrv_21 = insertvalue i1024 %mrv_20, i16 %zext_ln120_21" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 216 'insertvalue' 'mrv_21' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 217 [1/1] (0.00ns)   --->   "%mrv_22 = insertvalue i1024 %mrv_21, i16 %zext_ln120_22" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 217 'insertvalue' 'mrv_22' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 218 [1/1] (0.00ns)   --->   "%mrv_23 = insertvalue i1024 %mrv_22, i16 %zext_ln120_23" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 218 'insertvalue' 'mrv_23' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 219 [1/1] (0.00ns)   --->   "%mrv_24 = insertvalue i1024 %mrv_23, i16 %zext_ln120_24" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 219 'insertvalue' 'mrv_24' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 220 [1/1] (0.00ns)   --->   "%mrv_25 = insertvalue i1024 %mrv_24, i16 %zext_ln120_25" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 220 'insertvalue' 'mrv_25' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 221 [1/1] (0.00ns)   --->   "%mrv_26 = insertvalue i1024 %mrv_25, i16 %zext_ln120_26" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 221 'insertvalue' 'mrv_26' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 222 [1/1] (0.00ns)   --->   "%mrv_27 = insertvalue i1024 %mrv_26, i16 %zext_ln120_27" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 222 'insertvalue' 'mrv_27' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 223 [1/1] (0.00ns)   --->   "%mrv_28 = insertvalue i1024 %mrv_27, i16 %zext_ln120_28" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 223 'insertvalue' 'mrv_28' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 224 [1/1] (0.00ns)   --->   "%mrv_29 = insertvalue i1024 %mrv_28, i16 %zext_ln120_29" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 224 'insertvalue' 'mrv_29' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 225 [1/1] (0.00ns)   --->   "%mrv_30 = insertvalue i1024 %mrv_29, i16 %zext_ln120_30" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 225 'insertvalue' 'mrv_30' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 226 [1/1] (0.00ns)   --->   "%mrv_31 = insertvalue i1024 %mrv_30, i16 %zext_ln123" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 226 'insertvalue' 'mrv_31' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 227 [1/1] (0.00ns)   --->   "%mrv_32 = insertvalue i1024 %mrv_31, i16 %zext_ln123_1" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 227 'insertvalue' 'mrv_32' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 228 [1/1] (0.00ns)   --->   "%mrv_33 = insertvalue i1024 %mrv_32, i16 %zext_ln123_2" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 228 'insertvalue' 'mrv_33' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 229 [1/1] (0.00ns)   --->   "%mrv_34 = insertvalue i1024 %mrv_33, i16 %zext_ln123_3" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 229 'insertvalue' 'mrv_34' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 230 [1/1] (0.00ns)   --->   "%mrv_35 = insertvalue i1024 %mrv_34, i16 %zext_ln123_4" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 230 'insertvalue' 'mrv_35' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 231 [1/1] (0.00ns)   --->   "%mrv_36 = insertvalue i1024 %mrv_35, i16 %zext_ln123_5" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 231 'insertvalue' 'mrv_36' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 232 [1/1] (0.00ns)   --->   "%mrv_37 = insertvalue i1024 %mrv_36, i16 %zext_ln123_6" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 232 'insertvalue' 'mrv_37' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 233 [1/1] (0.00ns)   --->   "%mrv_38 = insertvalue i1024 %mrv_37, i16 %zext_ln123_7" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 233 'insertvalue' 'mrv_38' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 234 [1/1] (0.00ns)   --->   "%mrv_39 = insertvalue i1024 %mrv_38, i16 %zext_ln123_8" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 234 'insertvalue' 'mrv_39' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 235 [1/1] (0.00ns)   --->   "%mrv_40 = insertvalue i1024 %mrv_39, i16 %zext_ln123_9" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 235 'insertvalue' 'mrv_40' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 236 [1/1] (0.00ns)   --->   "%mrv_41 = insertvalue i1024 %mrv_40, i16 %zext_ln123_10" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 236 'insertvalue' 'mrv_41' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 237 [1/1] (0.00ns)   --->   "%mrv_42 = insertvalue i1024 %mrv_41, i16 %zext_ln123_11" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 237 'insertvalue' 'mrv_42' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 238 [1/1] (0.00ns)   --->   "%mrv_43 = insertvalue i1024 %mrv_42, i16 %zext_ln123_12" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 238 'insertvalue' 'mrv_43' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 239 [1/1] (0.00ns)   --->   "%mrv_44 = insertvalue i1024 %mrv_43, i16 %zext_ln123_13" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 239 'insertvalue' 'mrv_44' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 240 [1/1] (0.00ns)   --->   "%mrv_45 = insertvalue i1024 %mrv_44, i16 %zext_ln123_14" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 240 'insertvalue' 'mrv_45' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 241 [1/1] (0.00ns)   --->   "%mrv_46 = insertvalue i1024 %mrv_45, i16 %zext_ln123_15" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 241 'insertvalue' 'mrv_46' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 242 [1/1] (0.00ns)   --->   "%mrv_47 = insertvalue i1024 %mrv_46, i16 %zext_ln123_16" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 242 'insertvalue' 'mrv_47' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 243 [1/1] (0.00ns)   --->   "%mrv_48 = insertvalue i1024 %mrv_47, i16 %zext_ln123_17" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 243 'insertvalue' 'mrv_48' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 244 [1/1] (0.00ns)   --->   "%mrv_49 = insertvalue i1024 %mrv_48, i16 %zext_ln123_18" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 244 'insertvalue' 'mrv_49' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 245 [1/1] (0.00ns)   --->   "%mrv_50 = insertvalue i1024 %mrv_49, i16 %zext_ln123_19" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 245 'insertvalue' 'mrv_50' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 246 [1/1] (0.00ns)   --->   "%mrv_51 = insertvalue i1024 %mrv_50, i16 %zext_ln123_20" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 246 'insertvalue' 'mrv_51' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 247 [1/1] (0.00ns)   --->   "%mrv_52 = insertvalue i1024 %mrv_51, i16 %zext_ln123_21" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 247 'insertvalue' 'mrv_52' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 248 [1/1] (0.00ns)   --->   "%mrv_53 = insertvalue i1024 %mrv_52, i16 %zext_ln123_22" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 248 'insertvalue' 'mrv_53' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 249 [1/1] (0.00ns)   --->   "%mrv_54 = insertvalue i1024 %mrv_53, i16 %zext_ln123_23" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 249 'insertvalue' 'mrv_54' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 250 [1/1] (0.00ns)   --->   "%mrv_55 = insertvalue i1024 %mrv_54, i16 %zext_ln123_24" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 250 'insertvalue' 'mrv_55' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 251 [1/1] (0.00ns)   --->   "%mrv_56 = insertvalue i1024 %mrv_55, i16 %zext_ln123_25" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 251 'insertvalue' 'mrv_56' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 252 [1/1] (0.00ns)   --->   "%mrv_57 = insertvalue i1024 %mrv_56, i16 %zext_ln123_26" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 252 'insertvalue' 'mrv_57' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 253 [1/1] (0.00ns)   --->   "%mrv_58 = insertvalue i1024 %mrv_57, i16 %zext_ln123_27" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 253 'insertvalue' 'mrv_58' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 254 [1/1] (0.00ns)   --->   "%mrv_59 = insertvalue i1024 %mrv_58, i16 %zext_ln123_28" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 254 'insertvalue' 'mrv_59' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 255 [1/1] (0.00ns)   --->   "%mrv_60 = insertvalue i1024 %mrv_59, i16 %zext_ln123_29" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 255 'insertvalue' 'mrv_60' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 256 [1/1] (0.00ns)   --->   "%mrv_61 = insertvalue i1024 %mrv_60, i16 %zext_ln123_30" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 256 'insertvalue' 'mrv_61' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 257 [1/1] (0.00ns)   --->   "%mrv_62 = insertvalue i1024 %mrv_61, i16 %zext_ln123_31" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 257 'insertvalue' 'mrv_62' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 258 [1/1] (0.00ns)   --->   "%mrv_63 = insertvalue i1024 %mrv_62, i16 %zext_ln125" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 258 'insertvalue' 'mrv_63' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 259 [1/1] (0.00ns)   --->   "%ret_ln125 = ret i1024 %mrv_63" [firmware/nnet_utils/nnet_merge.h:125]   --->   Operation 259 'ret' 'ret_ln125' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5.000ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 0.000ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

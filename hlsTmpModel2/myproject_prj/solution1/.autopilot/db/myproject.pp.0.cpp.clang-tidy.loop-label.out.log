@@ -1,0 +1,505 @@
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:28591:7: warning: Added loop label VITIS_LOOP_1223_1:   [xilinx-label-all-loops]
+      for (i = 0; i < __N - 1; ++i) {
+      ^~~
+      VITIS_LOOP_1223_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:28591:7: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:29565:5: warning: Added loop label VITIS_LOOP_676_1:   [xilinx-label-all-loops]
+    for (unsigned i = low; i != high; ++i) {
+    ^~~
+    VITIS_LOOP_676_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:29565:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:29579:5: warning: Added loop label VITIS_LOOP_690_1:   [xilinx-label-all-loops]
+    for (unsigned i = low; i != high; ++i) {
+    ^~~
+    VITIS_LOOP_690_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:29579:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:29593:5: warning: Added loop label VITIS_LOOP_704_1:   [xilinx-label-all-loops]
+    for (unsigned i = low; i != high; ++i) {
+    ^~~
+    VITIS_LOOP_704_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:29593:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:31210:7: warning: Added loop label VITIS_LOOP_1247_1:   [xilinx-label-all-loops]
+      for (i = 0; i < __N - 1; ++i) {
+      ^~~
+      VITIS_LOOP_1247_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:31210:7: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:33193:9: warning: Added loop label VITIS_LOOP_27_1:   [xilinx-label-all-loops]
+        for (unsigned i = 0; i < N; i++) {
+        ^~~
+        VITIS_LOOP_27_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:33193:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:33206:9: warning: Added loop label VITIS_LOOP_40_1:   [xilinx-label-all-loops]
+        for (size_t i = 0; i < N; i++) {
+        ^~~
+        VITIS_LOOP_40_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:33206:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56160:5: warning: Added loop label VITIS_LOOP_265_1:   [xilinx-label-all-loops]
+    for (typename std::vector<src_T>::const_iterator i = in_begin; i != in_end; ++i) {
+    ^~~
+    VITIS_LOOP_265_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56160:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56170:5: warning: Added loop label VITIS_LOOP_275_1:   [xilinx-label-all-loops]
+    for (auto i = 0; i < SIZE; i++)
+    ^~~
+    VITIS_LOOP_275_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56170:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56181:5: warning: Added loop label VITIS_LOOP_286_1:   [xilinx-label-all-loops]
+    for (int i = 0; i < SIZE; i++) {
+    ^~~
+    VITIS_LOOP_286_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56181:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56188:5: warning: Added loop label VITIS_LOOP_293_1:   [xilinx-label-all-loops]
+    for (int i = 0; i < SIZE / res_T::size; i++) {
+    ^~~
+    VITIS_LOOP_293_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56188:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56190:9: warning: Added loop label VITIS_LOOP_295_2:   [xilinx-label-all-loops]
+        for (int j = 0; j < res_T::size; j++) {
+        ^~~
+        VITIS_LOOP_295_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56190:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56202:5: warning: Added loop label VITIS_LOOP_307_1:   [xilinx-label-all-loops]
+    for (int i = 0; i < SIZE / data_T::size; i++) {
+    ^~~
+    VITIS_LOOP_307_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56202:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56204:9: warning: Added loop label VITIS_LOOP_309_2:   [xilinx-label-all-loops]
+        for (int j = 0; j < data_T::size; j++) {
+        ^~~
+        VITIS_LOOP_309_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56204:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56219:5: warning: Added loop label VITIS_LOOP_324_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < nrows; ii++) {
+    ^~~
+    VITIS_LOOP_324_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56219:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56239:5: warning: Added loop label VITIS_LOOP_344_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < nrows; ii++) {
+    ^~~
+    VITIS_LOOP_344_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56239:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56240:9: warning: Added loop label VITIS_LOOP_345_2:   [xilinx-label-all-loops]
+        for (int jj = 0; jj < ncols; jj++) {
+        ^~~
+        VITIS_LOOP_345_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56240:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56255:5: warning: Added loop label VITIS_LOOP_360_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < N_IN; ii++) {
+    ^~~
+    VITIS_LOOP_360_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56255:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56262:5: warning: Added loop label VITIS_LOOP_367_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < N_IN; ii++) {
+    ^~~
+    VITIS_LOOP_367_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56262:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56385:2: warning: Added loop label VITIS_LOOP_31_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+ ^~~
+ VITIS_LOOP_31_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56385:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56397:5: warning: Added loop label VITIS_LOOP_43_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_43_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56397:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56411:5: warning: Added loop label VITIS_LOOP_57_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_57_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56411:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56438:5: warning: Added loop label VITIS_LOOP_84_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < N_TABLE; ii++) {
+    ^~~
+    VITIS_LOOP_84_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56438:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56468:5: warning: Added loop label VITIS_LOOP_114_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_114_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56468:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56505:5: warning: Added loop label VITIS_LOOP_151_1:   [xilinx-label-all-loops]
+    for (unsigned i = 0; i < CONFIG_T::table_size; i++) {
+    ^~~
+    VITIS_LOOP_151_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56505:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56516:5: warning: Added loop label VITIS_LOOP_162_1:   [xilinx-label-all-loops]
+    for (unsigned i = 0; i < CONFIG_T::table_size; i++) {
+    ^~~
+    VITIS_LOOP_162_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56516:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56549:5: warning: Added loop label VITIS_LOOP_195_1:   [xilinx-label-all-loops]
+    for (unsigned i = 0; i < CONFIG_T::n_in; i++) {
+    ^~~
+    VITIS_LOOP_195_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56549:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56563:5: warning: Added loop label VITIS_LOOP_209_2:   [xilinx-label-all-loops]
+    for (unsigned i = 0; i < CONFIG_T::n_in; i++) {
+    ^~~
+    VITIS_LOOP_209_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56563:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56597:5: warning: Added loop label VITIS_LOOP_243_1:   [xilinx-label-all-loops]
+    for (unsigned i = 0; i < CONFIG_T::n_in; i++) {
+    ^~~
+    VITIS_LOOP_243_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56597:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56606:5: warning: Added loop label VITIS_LOOP_252_2:   [xilinx-label-all-loops]
+    for (unsigned i = 0; i < CONFIG_T::n_in; i++) {
+    ^~~
+    VITIS_LOOP_252_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56606:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56620:5: warning: Added loop label VITIS_LOOP_266_3:   [xilinx-label-all-loops]
+    for (unsigned i = 0; i < CONFIG_T::n_in; i++) {
+    ^~~
+    VITIS_LOOP_266_3: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56620:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56627:5: warning: Added loop label VITIS_LOOP_273_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < N_TABLE; ii++) {
+    ^~~
+    VITIS_LOOP_273_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56627:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56640:5: warning: Added loop label VITIS_LOOP_286_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < N_TABLE; ii++) {
+    ^~~
+    VITIS_LOOP_286_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56640:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56677:5: warning: Added loop label VITIS_LOOP_323_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_323_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56677:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56682:5: warning: Added loop label VITIS_LOOP_328_2:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_328_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56682:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56683:9: warning: Added loop label VITIS_LOOP_329_3:   [xilinx-label-all-loops]
+        for (int jj = 0; jj < CONFIG_T::n_in; jj++) {
+        ^~~
+        VITIS_LOOP_329_3: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56683:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56700:5: warning: Added loop label VITIS_LOOP_346_4:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_346_4: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56700:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56713:5: warning: Added loop label VITIS_LOOP_359_1:   [xilinx-label-all-loops]
+    for (int i = 0; i < CONFIG_T::n_in; i++) {
+    ^~~
+    VITIS_LOOP_359_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56713:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56721:5: warning: Added loop label VITIS_LOOP_367_2:   [xilinx-label-all-loops]
+    for (int i = 1; i < CONFIG_T::n_in; i++) {
+    ^~~
+    VITIS_LOOP_367_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56721:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56756:5: warning: Added loop label VITIS_LOOP_402_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < N_TABLE; ii++) {
+    ^~~
+    VITIS_LOOP_402_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56756:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56786:5: warning: Added loop label VITIS_LOOP_432_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_432_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56786:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56805:2: warning: Added loop label VITIS_LOOP_451_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+ ^~~
+ VITIS_LOOP_451_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56805:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56821:5: warning: Added loop label VITIS_LOOP_467_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_467_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56821:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56839:5: warning: Added loop label VITIS_LOOP_485_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_485_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56839:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56856:5: warning: Added loop label VITIS_LOOP_502_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_502_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56856:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56873:5: warning: Added loop label VITIS_LOOP_519_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < N_TABLE; ii++) {
+    ^~~
+    VITIS_LOOP_519_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56873:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56903:5: warning: Added loop label VITIS_LOOP_549_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_549_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56903:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56922:5: warning: Added loop label VITIS_LOOP_568_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < N_TABLE; ii++) {
+    ^~~
+    VITIS_LOOP_568_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56922:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56952:5: warning: Added loop label VITIS_LOOP_598_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_598_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56952:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56971:5: warning: Added loop label VITIS_LOOP_617_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < N_TABLE; ii++) {
+    ^~~
+    VITIS_LOOP_617_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:56971:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57001:5: warning: Added loop label VITIS_LOOP_647_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_647_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57001:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57028:5: warning: Added loop label VITIS_LOOP_674_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < N_TABLE; ii++) {
+    ^~~
+    VITIS_LOOP_674_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57028:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57057:5: warning: Added loop label VITIS_LOOP_703_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_703_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57057:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57078:5: warning: Added loop label VITIS_LOOP_724_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_724_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57078:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57096:5: warning: Added loop label VITIS_LOOP_742_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_742_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57096:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57116:5: warning: Added loop label VITIS_LOOP_762_1:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_in; ii++) {
+    ^~~
+    VITIS_LOOP_762_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57116:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57212:9: warning: Added loop label VITIS_LOOP_73_1:   [xilinx-label-all-loops]
+        for (int i = 0; i < N / data_T::size; i++) {
+        ^~~
+        VITIS_LOOP_73_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57212:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57219:13: warning: Added loop label VITIS_LOOP_80_2:   [xilinx-label-all-loops]
+            for (int j = 0; j < data_T::size; j++) {
+            ^~~
+            VITIS_LOOP_80_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57219:13: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57228:9: warning: Added loop label VITIS_LOOP_89_3:   [xilinx-label-all-loops]
+        for (int i = 0; i < N / data_T::size; i++) {
+        ^~~
+        VITIS_LOOP_89_3: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57228:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57237:13: warning: Added loop label VITIS_LOOP_98_4:   [xilinx-label-all-loops]
+            for (int j = 0; j < pack_diff; j++) {
+            ^~~
+            VITIS_LOOP_98_4: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57237:13: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57241:17: warning: Added loop label VITIS_LOOP_102_5:   [xilinx-label-all-loops]
+                for (int k = 0; k < res_T::size; k++) {
+                ^~~
+                VITIS_LOOP_102_5: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57241:17: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57252:9: warning: Added loop label VITIS_LOOP_113_6:   [xilinx-label-all-loops]
+        for (int i = 0; i < N / data_T::size; i++) {
+        ^~~
+        VITIS_LOOP_113_6: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57252:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57256:13: warning: Added loop label VITIS_LOOP_117_7:   [xilinx-label-all-loops]
+            for (int j = 0; j < data_T::size; j++) {
+            ^~~
+            VITIS_LOOP_117_7: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57256:13: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57280:9: warning: Added loop label VITIS_LOOP_141_1:   [xilinx-label-all-loops]
+        for (int j = 0; j < n_dupl; j++) {
+        ^~~
+        VITIS_LOOP_141_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57280:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57284:13: warning: Added loop label VITIS_LOOP_145_2:   [xilinx-label-all-loops]
+            for (int k = 0; k < res_T::size; k++) {
+            ^~~
+            VITIS_LOOP_145_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57284:13: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57303:9: warning: Added loop label VITIS_LOOP_164_1:   [xilinx-label-all-loops]
+        for (int k = 0; k < res_T::size; k++) {
+        ^~~
+        VITIS_LOOP_164_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57303:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57326:2: warning: Added loop label VITIS_LOOP_187_1:   [xilinx-label-all-loops]
+ for (int i = 0; i < CONFIG_T::height * CONFIG_T::width / data_T::size; i++) {
+ ^~~
+ VITIS_LOOP_187_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57326:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57329:9: warning: Added loop label VITIS_LOOP_190_2:   [xilinx-label-all-loops]
+        for (int j = 0; j < data_T::size; j++) {
+        ^~~
+        VITIS_LOOP_190_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57329:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57334:5: warning: Added loop label VITIS_LOOP_195_3:   [xilinx-label-all-loops]
+    for (int i = 0; i < CONFIG_T::height * CONFIG_T::width / res_T::size; i++) {
+    ^~~
+    VITIS_LOOP_195_3: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57334:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57338:9: warning: Added loop label VITIS_LOOP_199_4:   [xilinx-label-all-loops]
+        for (int j = 0; j < res_T::size; j++) {
+        ^~~
+        VITIS_LOOP_199_4: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57338:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57552:9: warning: Added loop label VITIS_LOOP_213_1:   [xilinx-label-all-loops]
+        for (unsigned j = 0; j < data_T::size; j++) {
+        ^~~
+        VITIS_LOOP_213_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57552:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57561:9: warning: Added loop label VITIS_LOOP_222_2:   [xilinx-label-all-loops]
+        for (unsigned j = 0; j < data_T::size; j++) {
+        ^~~
+        VITIS_LOOP_222_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57561:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57667:5: warning: Added loop label VITIS_LOOP_328_1:   [xilinx-label-all-loops]
+    for (int i = 0; i < CONFIG_T::n_in / res_T::size; i++) {
+    ^~~
+    VITIS_LOOP_328_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57667:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57672:9: warning: Added loop label VITIS_LOOP_333_2:   [xilinx-label-all-loops]
+        for (int i = 0; i < res_T::size; i++) {
+        ^~~
+        VITIS_LOOP_333_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57672:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57680:9: warning: Added loop label VITIS_LOOP_341_3:   [xilinx-label-all-loops]
+        for (int i = 1; i < res_T::size; i++) {
+        ^~~
+        VITIS_LOOP_341_3: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:57680:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58641:5: warning: Added loop label VITIS_LOOP_14_1:   [xilinx-label-all-loops]
+    for (unsigned k = 0; k < CONFIG_T::n_out; k++) {
+    ^~~
+    VITIS_LOOP_14_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58641:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58701:9: warning: Added loop label VITIS_LOOP_74_1:   [xilinx-label-all-loops]
+        for (int im = 0; im < CONFIG_T::n_out; im++) {
+        ^~~
+        VITIS_LOOP_74_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58701:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58885:2: warning: Added loop label VITIS_LOOP_39_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_elem; ii++) {
+ ^~~
+ VITIS_LOOP_39_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58885:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58894:2: warning: Added loop label VITIS_LOOP_48_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_elem; ii++) {
+ ^~~
+ VITIS_LOOP_48_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58894:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58903:2: warning: Added loop label VITIS_LOOP_57_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_elem; ii++) {
+ ^~~
+ VITIS_LOOP_57_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58903:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58912:2: warning: Added loop label VITIS_LOOP_66_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_elem; ii++) {
+ ^~~
+ VITIS_LOOP_66_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58912:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58921:2: warning: Added loop label VITIS_LOOP_75_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_elem; ii++) {
+ ^~~
+ VITIS_LOOP_75_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58921:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58930:2: warning: Added loop label VITIS_LOOP_84_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_elem; ii++) {
+ ^~~
+ VITIS_LOOP_84_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58930:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58965:2: warning: Added loop label VITIS_LOOP_119_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_elem1_0; ii++) {
+ ^~~
+ VITIS_LOOP_119_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58965:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58968:5: warning: Added loop label VITIS_LOOP_122_2:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_elem2_0; ii++) {
+    ^~~
+    VITIS_LOOP_122_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58968:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58979:2: warning: Added loop label VITIS_LOOP_133_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1; ii++) {
+ ^~~
+ VITIS_LOOP_133_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58979:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58982:5: warning: Added loop label VITIS_LOOP_136_2:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1; ii++) {
+    ^~~
+    VITIS_LOOP_136_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58982:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58993:2: warning: Added loop label VITIS_LOOP_147_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_elem1_0; ii++) {
+ ^~~
+ VITIS_LOOP_147_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58993:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58994:9: warning: Added loop label VITIS_LOOP_148_2:   [xilinx-label-all-loops]
+        for (int jj = 0; jj < CONFIG_T::n_elem1_1; jj++) {
+        ^~~
+        VITIS_LOOP_148_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58994:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58997:9: warning: Added loop label VITIS_LOOP_151_3:   [xilinx-label-all-loops]
+        for (int jj = 0; jj < CONFIG_T::n_elem2_1; jj++) {
+        ^~~
+        VITIS_LOOP_151_3: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:58997:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59024:2: warning: Added loop label VITIS_LOOP_178_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_elem1_0 * CONFIG_T::n_elem1_1 * CONFIG_T::n_elem1_2; ii++) {
+ ^~~
+ VITIS_LOOP_178_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59024:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59027:5: warning: Added loop label VITIS_LOOP_181_2:   [xilinx-label-all-loops]
+    for (int ii = 0; ii < CONFIG_T::n_elem2_0 * CONFIG_T::n_elem2_1 * CONFIG_T::n_elem2_2; ii++) {
+    ^~~
+    VITIS_LOOP_181_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59027:5: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59039:2: warning: Added loop label VITIS_LOOP_193_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_elem1_0; ii++) {
+ ^~~
+ VITIS_LOOP_193_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59039:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59040:9: warning: Added loop label VITIS_LOOP_194_2:   [xilinx-label-all-loops]
+        for (int jj = 0; jj < CONFIG_T::n_elem1_1; jj++) {
+        ^~~
+        VITIS_LOOP_194_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59040:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59041:13: warning: Added loop label VITIS_LOOP_195_3:   [xilinx-label-all-loops]
+            for (int kk = 0; kk < CONFIG_T::n_elem1_2; kk++) {
+            ^~~
+            VITIS_LOOP_195_3: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59041:13: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59048:9: warning: Added loop label VITIS_LOOP_202_4:   [xilinx-label-all-loops]
+        for (int jj = 0; jj < CONFIG_T::n_elem2_1; jj++) {
+        ^~~
+        VITIS_LOOP_202_4: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59048:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59049:13: warning: Added loop label VITIS_LOOP_203_5:   [xilinx-label-all-loops]
+            for (int kk = 0; kk < CONFIG_T::n_elem2_2; kk++) {
+            ^~~
+            VITIS_LOOP_203_5: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59049:13: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59066:2: warning: Added loop label VITIS_LOOP_220_1:   [xilinx-label-all-loops]
+ for (int ii = 0; ii < CONFIG_T::n_elem1_0; ii++) {
+ ^~~
+ VITIS_LOOP_220_1: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59066:2: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59067:9: warning: Added loop label VITIS_LOOP_221_2:   [xilinx-label-all-loops]
+        for (int jj = 0; jj < CONFIG_T::n_elem1_1; jj++) {
+        ^~~
+        VITIS_LOOP_221_2: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59067:9: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59068:13: warning: Added loop label VITIS_LOOP_222_3:   [xilinx-label-all-loops]
+            for (int kk = 0; kk < CONFIG_T::n_elem1_2; kk++) {
+            ^~~
+            VITIS_LOOP_222_3: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59068:13: note: FIX-IT applied suggested code changes
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59074:13: warning: Added loop label VITIS_LOOP_228_4:   [xilinx-label-all-loops]
+            for (int kk = 0; kk < CONFIG_T::n_elem1_2; kk++) {
+            ^~~
+            VITIS_LOOP_228_4: 
+/home/dabadjiev/smartpixels_ml_dsabadjiev/smart-pixels-ml/hlsTmpModel2/myproject_prj/solution1/.autopilot/db/myproject.pp.0.cpp:59074:13: note: FIX-IT applied suggested code changes
